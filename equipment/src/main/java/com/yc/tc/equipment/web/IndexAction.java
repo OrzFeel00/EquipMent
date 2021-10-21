@@ -20,6 +20,7 @@ import com.github.pagehelper.PageHelper;
 public class IndexAction {
 	
 	
+	
 
 	//去首登录页面
 			@GetMapping("touIndex.html")
