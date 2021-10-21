@@ -1,0 +1,22 @@
+#yml  文件不能使用制表空格tab    
+#设置值只能使用 :(空格)值
+server:
+ port: 8080
+ 
+ 
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/point_position?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.jdbc.Driver
+    
+
+#日志配置
+logging:
+   level:
+      com:
+       yc:
+        tc:
+         equipment:
+          dao: trace 

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
+<head>
+	
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>车辆入库</title>
+	<meta name="description" content="Bootstrap Metro Dashboard">
+	<meta name="author" content="">
+	<meta name="keyword" content="">
+	<!-- end: Meta -->
+	
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- end: Mobile Specific -->
+	
+	<!-- start: CSS -->
+	<link id="bootstrap-style" href="admin/css/bootstrap.min.css" rel="stylesheet">
+	<link href="admin/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link id="base-style" href="admin/css/style.css" rel="stylesheet">
+	<link id="base-style-responsive" href="admin/css/style-responsive.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+	<!-- end: CSS -->
+	
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<link id="ie-style" href="css/ie.css" rel="stylesheet">
+	<![endif]-->
+	
+	<!--[if IE 9]>
+		<link id="ie9style" href="css/ie9.css" rel="stylesheet">
+	<![endif]-->
+		
+	<!-- start: Favicon -->
+	<link rel="shortcut icon" href="admin/img/favicon.ico">
+	<!-- end: Favicon -->
+
+	<!--start:easyui -->
+	<link rel="stylesheet" type="text/css" href="admin/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="admin/easyui/themes/icon.css">
+	<script type="text/javascript" src="admin/easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="admin/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="admin/easyui/locale/easyui-lang-zh_CN.js"></script>
+	<!--end:easyui-->
+
+	<script type="text/javascript" src="admin/js/vue.js"></script>
+
+
+</head>
+
+<body>
+<div id="app">
+		<!-- start: Header -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.html"><span>雷停停车</span></a>
+								
+				<!-- start: Header Menu -->
+				<div class="nav-no-collapse header-nav">
+					<ul class="nav pull-right">
+						<!-- start: User Dropdown -->
+						<li class="dropdown">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="halflings-icon white user"></i> 
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-menu-title">
+ 									<span>用户名</span>
+								</li>
+                                <li><a href="person.html"><i class="halflings-icon user"></i> 个人中心</a></li>
+								<li><a href="touIndex。html"><i class="halflings-icon off"></i> 退出</a></li>
+							</ul>
+						</li>
+						<!-- end: User Dropdown -->
+					</ul>
+				</div>
+				<!-- end: Header Menu -->
+				
+			</div>
+		</div>
+	</div>
+	<!-- start: Header -->
+	
+		<div class="container-fluid-full">
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				<div class="nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li><a href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> 首页</span></a></li>
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 车辆出入库管理</span> <span class="label label-important"> 2 </span></a>
+							<ul>
+								<li><a class="submenu" href="uinpart.html"><i class="icon-signin"></i><span class="hidden-tablet"> 车辆入库</span></a></li>
+								<li><a class="submenu" href="uoutpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 车辆出库</span></a></li>
+							</ul>
+			
+					
+						<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 订单管理</span></a></li>
+
+						<li><a href="tologin"><i class="icon-lock"></i><span class="hidden-tablet"> 重新登录</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- end: Main Menu -->
+			
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>You need to have <a href="" target="_blank">JavaScript</a> enabled to use this site.</p>
+				</div>
+			</noscript>
+			
+			<!-- start: Content -->
+			<div id="content" class="span10">
+			
+			
+				<ul class="breadcrumb">
+					<li>
+						<i class="icon-home"></i>
+						<a href="index.html">主页</a>
+						<i class="icon-angle-right"></i>
+					</li>
+					<li><a href="#">车辆入库</a></li>
+				</ul>
+
+				<!--车库选择界面-->
+				<div  style="width: 100%;height:140px;background-color: #F1FFED;border-radius: 18px;">
+
+					<form method="get" action="uinpart.html"  style="margin-left: 50px;padding-top:50px;float: left;font-weight: bold">
+						车库：<input name="garage" Sid="cc" class="easyui-combobox"   data-options="valueField:'id',textField:'text',url:'get_data.php'">
+						<input  style="width: 50px;height: 30px;margin-left: 10px;background-color: #00D600;border-radius: 10px;color: white" type="submit" value="搜索"/>
+					</form>
+					
+					<div  style="padding-top:40px;margin-left: 30px;float: left;font-weight: bold">
+						<div style="float: left">
+							名称：<span th:text="${garaged}!=null ? ${garaged} : 1" >A</span>号车库<br><br>
+							车位数：<span th:text="${mum}!=null ? 1 : ${num}" >15568</span>个车位<br>
+						</div>
+						<div style="float:left;margin-left: 30px">
+							描述：<span>这个车库真的好啊</span><br>
+						</div>
+					</div>
+					
+				</div>
+
+				<!--车位图-->
+				<div style="margin-top: 50px">
+					<div th:text="${garaged}!=null ? ${garaged}+号车库  :   ''"  style="font-weight: bold;font-size: 30px;color: orangered;margin-left: 20px">A1车库</div>
+					<div style="float: left;margin-left: 20px;margin-top: 20px"><div style="width: 20px;height: 20px;background-color: #00ee00;float: left"></div><div style="float: left">:空车位</div></div>
+					<div style="float: left;margin-left: 30px;margin-top: 20px"><div style="width: 20px;height: 20px;background-color:red;float: left"></div><div style="float: left">:无车位</div></div>
+					<div style="width: 95%;height:500px;margin-top: 50px;margin-left:20px;border: solid 1px;border-radius: 18px;border-color: silver">
+						
+						<div   th:each="p: ${plist}"  style="float: left;"  th:v-on:click="'onec('+${p.id}+')'"  >
+							<div th:if="${p.status == 0}" style="margin:20px 20px 5px 20px;"><img style="border-radius: 15px;background-color:red; " src="admin/img/chewei/yc.jpg"/>
+							</div>
+							<div th:if="${p.status == 1}" style="margin:20px 20px 5px 20px;"><img style="border-radius: 15px;background-color:red; " src="admin/img/chewei/wc.jpg"/>
+							</div>
+							<div th:if="${p.status == 2}" style="margin:20px 20px 5px 20px;"><img style="border-radius: 15px;background-color:red; " src="admin/img/chewei/yy.jpg"/>
+							</div>
+							<div style="margin-left: 20px;font-weight: bold" th:text="${p.id}+号，价格：">A-1</div>
+							<div style="margin-left: 10px;font-weight: bold" th:text="${p.price}+元每小时">A-1</div>
+							<div style="margin-left: 10px;font-weight: bold" th:text="${p.status}+的状态">A-1</div>
+						</div>
+						
+						
+					</div>
+				</div>
+			</div><!--end span10-->
+		</div>
+		</div>
+
+		<!--弹框入库操作-->
+		<div class="openruku" v-if="openflag" style="background-color:white;width: 600px;height: 300px;position:fixed;top:20%;left:33%;border-radius:15px;text-align:center;z-index: 1000 ">
+			<span id="unshow" @click="showRuku(false)" style="font-weight: bold;">X</span>
+			<div class="rkdialog">
+				
+				<form action="uting.do" method="post" style="margin-top: 60px;margin-left: 20px;text-align: left">
+				   <!-- 传输车库 -->
+				 <input hidden="hidden" name="garage" th:value="${garaged}!=null ? ${garaged} : 1" />
+				 
+				  <!-- 传输num_id 车牌号 -->
+				  <input hidden="hidden" name="id"  v-model="id"/>
+					<div style="margin-left:130px;font-weight:bold">     
+					车牌号：<input name="num_id" th:value=${session.logined.plate_num}  style="width: 200px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入车牌号"/>	</div>
+			<!--  -->>
+			<!-- <div style="margin-left: 102px;font-weight:bold">
+					停车人姓名：<input name="name"  style="width: 200px;height: 30px;border-radius: 10px;border: solid 2px;" type="text" placeholder="停车人姓名"/></div>
+					<div style="margin-left: 75px;font-weight:bold">
+					停车人手机号码：<input  name="phone"  style="width: 200px;height: 30px;border-radius: 10px;border: solid 2px;" type="text" placeholder="停车人手机号码"/></div>
+		           
+			 -->
+					
+		               	<div style="margin-top: 30px;margin-left: 190px">
+		 			<button type="submit" class="tingche" >停车</button>
+				        </div>
+				</form>
+				
+				
+			</div>
+		</div>
+
+	<!-- 遮罩层 -->
+	<div id="cover" style="background: #000; position: absolute; left: 0px; top: 0px; width: 100%;  filter: alpha(opacity=30); opacity: 0.3; display: none; z-index: 1">
+
+	</div>
+</div>
+
+		<script>
+
+			var vue=new Vue({
+				el:"#app",
+				data:{
+					openflag:false,
+					id : null
+					
+				},
+				methods:{
+
+					showRuku:function( value){
+						// 弹窗
+						if(value==true){
+							$('#cover').css('display', 'block'); //显示遮罩层
+							$('#cover').css('height', document.body.clientHeight + 'px'); //设置遮罩层的高度为当前页面高度
+						}
+						if(value==false){
+							$('#cover').css('display', 'none'); //显示遮罩层
+						}
+						this.openflag=value;
+					},
+					onec:function(value){
+					this.showRuku(true); 
+						this.id=value;
+						console.info(value);
+						
+					},
+				}
+
+			});
+		</script>
+
+
+	<footer>
+
+		<p>
+			<span style="text-align:center; margin-left: 40%">Copyright &copy; 2020.09.25 雷停停车技术有限公司</span>			
+		</p>
+
+	</footer>
+	
+	<!-- start: JavaScript-->
+        <script src="admin/js/jquery-1.9.1.min.js"></script>
+	    <script src="admin/js/jquery-migrate-1.0.0.min.js"></script>
+	
+		<script src="admin/js/jquery-ui-1.10.0.custom.min.js"></script>
+	
+		<script src="admin/js/jquery.ui.touch-punch.js"></script>
+	
+		<script src="admin/js/modernizr.js"></script>
+	
+		<script src="admin/js/bootstrap.min.js"></script>
+	
+		<script src="admin/js/jquery.cookie.js"></script>
+	
+		<script src='admin/js/fullcalendar.min.js'></script>
+	
+		<script src='admin/js/jquery.dataTables.min.js'></script>
+
+		<script src="admin/js/excanvas.js"></script>
+        <script src="admin/js/jquery.flot.js"></script>
+        <script src="admin/js/jquery.flot.pie.js"></script>
+        <script src="admin/js/jquery.flot.stack.js"></script>
+        <script src="admin/js/jquery.flot.resize.min.js"></script>
+
+		<script src="admin/js/jquery.chosen.min.js"></script>
+	
+		<script src="admin/js/jquery.uniform.min.js"></script>
+		
+		<script src="admin/js/jquery.cleditor.min.js"></script>
+	
+		<script src="admin/js/jquery.noty.js"></script>
+	
+		<script src="admin/js/jquery.elfinder.min.js"></script>
+	
+		<script src="admin/js/jquery.raty.min.js"></script>
+	
+		<script src="admin/js/jquery.iphone.toggle.js"></script>
+	
+		<script src="admin/js/jquery.uploadify-3.1.min.js"></script>
+	
+		<script src="admin/js/jquery.gritter.min.js"></script>
+	
+		<script src="admin/js/jquery.imagesloaded.js"></script>
+	
+		<script src="admin/js/jquery.masonry.min.js"></script>
+	
+		<script src="admin/js/jquery.knob.modified.js"></script>
+	
+		<script src="admin/js/jquery.sparkline.min.js"></script>
+	
+		<script src="admin/js/counter.js"></script>
+	
+		<script src="admin/js/retina.js"></script>
+
+		<script src="admin/js/custom.js"></script>
+	<!-- end: JavaScript-->
+	
+</body>
+</html>

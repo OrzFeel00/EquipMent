@@ -1,0 +1,64 @@
+
+*,p,h1,ul,li,input,img,figure,h3,h1,h2,dl,dd,dt{
+    margin:0;
+    padding:0;
+}
+ul, ol, li, dl, dt, dd {
+    list-style:none;
+}
+.service a {
+    text-decoration: none;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+/*-*/
+.service {
+	position:fixed;
+	right:30px;
+	bottom:90px;
+	z-index: 11111111111111111111;
+	display: none;
+}
+.service-ul li {
+	position:relative;
+	height:54px;
+	margin-bottom:1px;
+	cursor:pointer;
+}
+.service-ul li p {
+	position:absolute;
+	right:0;
+	top:0;
+	width:50px;
+	height:50px;
+	overflow: hidden;
+}
+.service-ul li span {
+	padding-right:10px;
+	font-size:14px;
+	line-height:54px;
+	color:#fff;
+}
+.service-ul li img {
+	float:left;
+	display:block;
+}
+.service-ul li .service-ul-li-2-img {
+	position:absolute;
+	left: -191px;
+    top: -29px;
+    display: none;
+	width:110px;
+	height:110px;
+}
+.go-into-Huitong-ul-s {
+	max-width:1000px;
+}
+.go-into-Huitong-ul-s li {
+	width:16.66%;
+}
