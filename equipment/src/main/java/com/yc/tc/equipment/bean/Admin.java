@@ -17,10 +17,13 @@ public class Admin implements java.io.Serializable{
 	private String pwd;
 	
 	
-	@Override
-	public String toString() {
-		return "Admin [id=" + id + ", adm=" + adm + ", pwd=" + pwd + "]";
+	
+	public Admin() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+
+
 	
 
 	public Admin(Integer id, @NotEmpty(message = "用户名不能为空") String adm, @NotEmpty(message = "密码不能为空") String pwd) {
@@ -32,10 +35,12 @@ public class Admin implements java.io.Serializable{
 
 
 
-	public Admin() {
-		super();
-		// TODO Auto-generated constructor stub
+
+	@Override
+	public String toString() {
+		return "Admin [id=" + id + ", adm=" + adm + ", pwd=" + pwd + "]";
 	}
+
 
 
 
@@ -43,25 +48,36 @@ public class Admin implements java.io.Serializable{
 		return id;
 	}
 
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 
 	public String getAdm() {
 		return adm;
 	}
 
+
+
 	public void setAdm(String adm) {
 		this.adm = adm;
 	}
+
+
 
 	public String getPwd() {
 		return pwd;
 	}
 
+
+
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+	
 	
 	
 	

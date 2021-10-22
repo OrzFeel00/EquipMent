@@ -11,7 +11,7 @@ public class PointPosition implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	//点位标识代码id
+	//点位标识代码id   自增主键
 	private Integer  pointId;
 	//点位名称
 	@NotEmpty(message = "不能为空")

@@ -39,6 +39,7 @@ public class AdminAction {
 			return "ulogin.html";
 			
 		}try {
+			
 			Admin admed= aBiz.Alogin(adm);
 		    session.setAttribute("adlogined", admed);
 	     	m.addAttribute("adlduser",admed);
@@ -49,6 +50,8 @@ public class AdminAction {
 		e.printStackTrace();
 			//三个参数  1 错误的字段名（属性名称）  2 错误代号 不指定就是全部 3错误的信息
 		    errors.rejectValue("adm", "adm",e.getMessage());
+		    
+		    
 			m.addAttribute("errors",Utils.asMap(errors));
 			m.addAttribute("adm",adm);
 	
