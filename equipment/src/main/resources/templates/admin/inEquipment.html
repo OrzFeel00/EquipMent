@@ -42,7 +42,13 @@
   	<!-- start: Favicon --
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<!-- end: Favicon -->
- -->
+   
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
 
 
   
@@ -143,13 +149,14 @@
 			
 			<!--设备表单-->
 		<div style="width:100%;margin-top: 90px;">
-			<form  style="margin-left: 40%;" class="layui-form " action="" >
-												<!--设备编号-->
+			<form  style="margin-left: 40%;" class="layui-form " action="inEquipment.do" method="post" >
+				<!--设备编号-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">设备编号</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="equipmentCode" di="equipmentCode" class="layui-input" placeholder="设备编号"  required lay-verify="required"/>
+					 <input type="text" name="equipmentCode" id="equipmentCode" class="layui-input" placeholder="设备编号"
+					 th:value="${eqt}!=null ? ${eqt.equipmentCode} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--设备名称-->
@@ -157,8 +164,9 @@
 					<label class="layui-form-label">设备名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="equipmentName" di="equipmentName" class="layui-input" placeholder="设备名称" 
-					  th:value="${user}!=null ? ${user.name} : ''"  required lay-verify="required"/>
+					 <input type="text" name="equipmentName" id="equipmentName" class="layui-input" placeholder="设备名称" 
+					  th:value="${eqt}!=null ? ${eqt.equipmentName} : ''"  required lay-verify="required"/>
+					  	<span class="e" th:if="${errors}!=null" th:text="${errors.get('equipmentName')}"></span>
 					</div>				
 				</div>
 				<!--设备用户名-->
@@ -166,7 +174,8 @@
 					<label class="layui-form-label">设备用户名</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="equipmentUser" di="equipmentUser" class="layui-input" placeholder="设备用户名"  required lay-verify="required"/>
+					 <input type="text" name="equipmentUser" id="equipmentUser" class="layui-input" placeholder="设备用户名" 
+					 th:value="${eqt}!=null ? ${eqt.equipmentUser} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--设备密码-->
@@ -174,7 +183,8 @@
 					<label class="layui-form-label">设备密码</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="password" name="equipmentPwd" di="equipmentPwd" class="layui-input" placeholder="设备密码"  required lay-verify="required"/>
+					 <input type="password" name="equipmentPwd" id="equipmentPwd" class="layui-input" placeholder="设备密码" 
+					 th:value="${eqt}!=null ? ${eqt.equipmentPwd} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--设备类型-->
@@ -182,14 +192,15 @@
 					<label class="layui-form-label">设备类型</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="equipmentType" di="equipmentType" class="layui-input" placeholder="设备类型"  required lay-verify="required"/>
+					 <input type="text" name="equipmentType" id="equipmentType" class="layui-input" placeholder="设备类型" 
+					 th:value="${eqt}!=null ? ${eqt.equipmentType} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 									
 				 <!--按钮-->
 				  <div class="layui-form-item">
 				    <div class="layui-input-inline">
-				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
+				      <button class="layui-btn" type="submit" >立即提交</button>
 				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				    </div>
 				  </div>

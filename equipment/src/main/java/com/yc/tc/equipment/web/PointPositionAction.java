@@ -14,9 +14,12 @@ public class PointPositionAction {
 	private  PointPositionBiz Pop;
 	
 	
-
-	//去首登录页面
-			@GetMapping("inPoint.html")
+   
+	 //管理员端
+	
+	
+	//去点位输入页面
+			@GetMapping("inPoint")
 			public String touindex() {
 				return "admin/inPoint";
 			}
