@@ -15,6 +15,9 @@
 	<!-- end: Mobile Specific -->
 
 	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="layui/css/layui.css">
+	
 	<link id="bootstrap-style" href="admin/css/bootstrap.min.css" rel="stylesheet">
 	<link href="admin/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link id="base-style" href="admin/css/style.css" rel="stylesheet">
@@ -37,13 +40,16 @@
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<!-- end: Favicon -->
 
-    <style>
+  
+
+<!-- 被我修改10.28
+  <style>
        table th{
             width: 14%;
         }
     </style>
 
-
+ -->
 
 </head>
 
@@ -117,59 +123,84 @@
 			</div>
 		</noscript>
 
-		<!-- start: Content -->
+		<!-- start: Content  中心页显示 -->
 		<div id="content" class="span10">
 
-
+          <!-- 页头 -->
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="index.html">主页</a>
+					<a href="admin/index.html">主页</a>
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">订单管理</a></li>
 			</ul>
+			
+			<!--设备表单-->
+		<div style="width:100%;margin-top: 90px;">
+			<form  style="margin-left: 40%;" class="layui-form " action="" >
+												<!--设备编号-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备编号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="equipmentCode" di="equipmentCode" class="layui-input" placeholder="设备编号"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--设备名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="equipmentName" di="equipmentName" class="layui-input" placeholder="设备名称"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--设备用户名-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备用户名</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="equipmentUser" di="equipmentUser" class="layui-input" placeholder="设备用户名"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--设备密码-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备密码</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="password" name="equipmentPwd" di="equipmentPwd" class="layui-input" placeholder="设备密码"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--设备类型-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备类型</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="equipmentType" di="equipmentType" class="layui-input" placeholder="设备类型"  required lay-verify="required"/>
+					</div>				
+				</div>
+									
+				 <!--按钮-->
+				  <div class="layui-form-item">
+				    <div class="layui-input-inline">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
+				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				    </div>
+				  </div>
+				   
+			</form>   
+		</div>
+			<!--end设备表单-->
 
-            <form  action="order.do" method="post">
-                <div style="margin-left:30px;font-weight:bold;float: left">
-                                                        订单编号：<input name="id" style="width: 200px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入订单编号"/>	</div>
-                <div style="margin-left:30px;font-weight:bold;float: left">
-                                                          车牌号：<input name="plate_num" style="width: 200px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入车牌号"/>	</div>
-                <div style="margin-left:30px;font-weight:bold;float: left">
-                                                          车主：<input name="user_id" style="width: 200px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入车主"/>	</div>
-                <div style="margin-left:30px;font-weight:bold;float: left">
-                 <button type="submit" class="btn btn-success">搜索</button></div>
-            </form>
+           
+           
+           
 
-            <div style="margin-top: 50px;">
-                <table class="table table-hover table-bordered" >
-                    <caption>订单管理表格</caption>
-                    <thead>
-                    <tr>
-                        <th>编号</th>
-                        <th>订单编号</th>
-                        <th>车牌号</th>
-                        <th>车主名称</th>
-                        <th>结束时间</th>
-                        <th>时长（小时）</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="o : ${olist}">
-                        <td th:text="${o.id}">1</td>
-                        <td th:text="${o.orderCreateDate}">202009222156234</td>
-                        <td th:text="${o.plate_num}">琼A6666</td>
-                        <td th:text="${o.user_id}">小乔</td>
-                        <td th:text="${o.unloadDisDate}">2</td>
-                        <td th:text="${o.total}">20</td>
-
-                    </tr>
-                    
-                    </tbody>
-                </table>
-            </div>
+            
 	    </div>
+	    <!-- end: Content  中心页显示 -->
+	    
+	    
 
 </div>
 </div>
@@ -184,6 +215,11 @@
 </footer>
 
 <!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+			  <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+
+
+<!-- JavaScript-->
         <script src="admin/js/jquery-1.9.1.min.js"></script>
 	    <script src="admin/js/jquery-migrate-1.0.0.min.js"></script>
 	
