@@ -3,6 +3,7 @@ package com.yc.tc.equipment.bean;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class BaseEquipment implements Serializable{
 
@@ -36,13 +37,13 @@ public class BaseEquipment implements Serializable{
 	@NotEmpty(message = "不能为空")
 	private String versionNumber;
 	//主机通道数    可以为0
-	@NotEmpty(message = "不能为空")
-	private int hostchannelsNumber;
+	@NotNull(message = "不能为空")
+	private Integer hostchannelsNumber;
 	//设备高度
-	@NotEmpty(message = "不能为空")
+	@NotNull(message = "不能为空")
 	private double height;
 	//设备长度
-	@NotEmpty(message = "不能为空")
+	@NotNull(message = "不能为空")
 	private double length;
 	
 	
