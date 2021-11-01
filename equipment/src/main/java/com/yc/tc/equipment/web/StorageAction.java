@@ -10,50 +10,53 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.yc.tc.equipment.bean.Equipment;
+import com.yc.tc.equipment.bean.Storage;
 import com.yc.tc.equipment.biz.BizException;
 import com.yc.tc.equipment.biz.EquipmentBiz;
 import com.yc.tc.equipment.util.Utils;
 import com.yc.tc.equipment.biz.PointPositionBiz;
+import com.yc.tc.equipment.biz.StorageBiz;
 
 
 @Controller
-public class EquipmentAction {
+public class StorageAction {
 	//依赖注入
 	@Resource
-	private  EquipmentBiz  eBiz;
+	private  StorageBiz  sBiz;
 	
 	
    
 	 //管理员端
 	
 	
-	//去设备输入页面
-			@GetMapping("inEquipment")
+	//去存储信息录入页面
+			@GetMapping("toStorage")
 			public String touindex() {
-				return "admin/inEquipment";
+				return "admin/inStorage";
 			}
 			
-			//设备录入
-			@PostMapping("inEquipment.do")
-			public String register(@Valid Equipment eqt,Errors errors,Model m) {
+			//存储信息录入
+			@PostMapping("Storage.do")
+			public String register(@Valid Storage sto,Errors errors,Model m) {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
-					m.addAttribute("eqt",eqt);
+					m.addAttribute("sto",sto);
 					return "admin/inEquipment";
 				}
 				
 				try {
-					eBiz.addEquip(eqt);
+					System.out.println(sto.toString());
+					sBiz.addSto(sto);
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
-					errors.rejectValue("equipmentName", "equipmentName",e.getMessage());
+					//errors.rejectValue("nonull", "null",e.getMessage()); 
 					m.addAttribute("errors",Utils.asMap(errors));
-					m.addAttribute("eqt",eqt);
-					return "admin/inEquipment";
+					m.addAttribute("sto",sto);
+					return "admin/inStorage";
 				}
-				//响应重定向  redirect:index   跳转到存储信息
+				//响应重定向  redirect:index
 				return "admin/inStorage";
 			}
 
