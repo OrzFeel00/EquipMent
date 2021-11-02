@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -24,11 +25,16 @@ public interface BaseEquipmentMapper {
 				+ ",#{sn},#{modelNumber},#{diskNumber}"
 				+ ",#{frameRate},#{brand},#{resolvingPower}"
 				+ ",#{functionType},#{versionNumber},#{hostchannelsNumber},#{height},#{length})")
+        @Options(useGeneratedKeys = true, keyProperty = "baseEquipmentId", keyColumn = "base_equipment_id")
 	   public  int insertBaseEquipment(BaseEquipment b);
         
       //根据sn 验证是否重名
 	    @Select("select count(*) from base_equipment where sn=#{sn}")
 	   public int  countByeSN(String sn);
+	    
+	  //根据sn 验证是否重名
+	    @Select("select count(*) from base_equipment where sn=#{sn}")
+	   public int selectIdByName(String sn);
 		
 	 
 		

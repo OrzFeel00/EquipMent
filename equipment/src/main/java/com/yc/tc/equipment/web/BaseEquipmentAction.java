@@ -49,6 +49,8 @@ public class BaseEquipmentAction {
 				try {
 					System.out.println(bet.toString());
 					bBiz.addSto(bet);
+					//把对应id存入当前设备表中
+					bBiz.addBEbyid(bet.getBaseEquipmentId());
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -59,7 +61,7 @@ public class BaseEquipmentAction {
 					return "admin/inBaseEquipment";
 				}
 				//响应重定向  redirect:index  
-				return "admin/inBaseEquipment";
+				return "admin/inStorage";
 			}
 
 

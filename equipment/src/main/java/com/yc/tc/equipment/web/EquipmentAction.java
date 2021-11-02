@@ -13,6 +13,7 @@ import com.yc.tc.equipment.bean.Equipment;
 import com.yc.tc.equipment.biz.BizException;
 import com.yc.tc.equipment.biz.EquipmentBiz;
 import com.yc.tc.equipment.util.Utils;
+import com.yc.tc.equipment.util.instUtils;
 import com.yc.tc.equipment.biz.PointPositionBiz;
 
 
@@ -28,7 +29,7 @@ public class EquipmentAction {
 	
 	
 	//去设备输入页面
-			@GetMapping("inEquipment")
+			@GetMapping("toEquipment")
 			public String touindex() {
 				return "admin/inEquipment";
 			}
@@ -44,6 +45,13 @@ public class EquipmentAction {
 				
 				try {
 					eBiz.addEquip(eqt);
+					//这里用mybatis返回了主键id给对应的bean
+					System.out.println(eqt.getEquipmentId());
+			    //写入设备id
+				  instUtils.limt.put("Equipmentid", eqt.getEquipmentId());
+				  
+				  Integer eqtid= instUtils.limt.get("Equipmentid");
+					System.out.println(eqtid);
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -53,8 +61,8 @@ public class EquipmentAction {
 					m.addAttribute("eqt",eqt);
 					return "admin/inEquipment";
 				}
-				//响应重定向  redirect:index   跳转到存储信息
-				return "admin/inStorage";
+				//响应重定向  redirect:index   跳转到基础设备信息
+				return "admin/inBaseEquipment";
 			}
 
 

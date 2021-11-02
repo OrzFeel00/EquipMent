@@ -3,6 +3,7 @@ package com.yc.tc.equipment.bean;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class PointPosition implements Serializable{
 
@@ -32,24 +33,31 @@ public class PointPosition implements Serializable{
 	@NotEmpty(message = "不能为空")
 	private String shape;
 	//车道数   可以为0不为空
-	@NotEmpty(message = "不能为空")
-	private int LaneNumber;
+	@NotNull(message = "不能为空")
+	private Integer LaneNumber;
 	//点位类型
 	@NotEmpty(message = "不能为空")
 	private String pointType;
 	//指向道路标识id
-	private Integer  road_id;
+	private Integer  roadId;
 	
 	public PointPosition() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PointPosition(Integer pointId, @NotEmpty(message = "不能为空") String pointName,
+	@Override
+	public String toString() {
+		return "PointPosition [pointId=" + pointId + ", pointName=" + pointName + ", sectionCode=" + sectionCode
+				+ ", longitude=" + longitude + ", latitude=" + latitude + ", pointCode=" + pointCode + ", shape="
+				+ shape + ", LaneNumber=" + LaneNumber + ", pointType=" + pointType + ", roadId=" + roadId + "]";
+	}
+
+	private PointPosition(Integer pointId, @NotEmpty(message = "不能为空") String pointName,
 			@NotEmpty(message = "不能为空") String sectionCode, @NotEmpty(message = "不能为空") String longitude,
 			@NotEmpty(message = "不能为空") String latitude, @NotEmpty(message = "不能为空") String pointCode,
-			@NotEmpty(message = "不能为空") String shape, @NotEmpty(message = "不能为空") int laneNumber,
-			@NotEmpty(message = "不能为空") String pointType, Integer road_id) {
+			@NotEmpty(message = "不能为空") String shape, @NotNull(message = "不能为空") Integer laneNumber,
+			@NotEmpty(message = "不能为空") String pointType, Integer roadId) {
 		super();
 		this.pointId = pointId;
 		this.pointName = pointName;
@@ -60,14 +68,7 @@ public class PointPosition implements Serializable{
 		this.shape = shape;
 		LaneNumber = laneNumber;
 		this.pointType = pointType;
-		this.road_id = road_id;
-	}
-
-	@Override
-	public String toString() {
-		return "PointPosition [pointId=" + pointId + ", pointName=" + pointName + ", sectionCode=" + sectionCode
-				+ ", longitude=" + longitude + ", latitude=" + latitude + ", pointCode=" + pointCode + ", shape="
-				+ shape + ", LaneNumber=" + LaneNumber + ", pointType=" + pointType + ", road_id=" + road_id + "]";
+		this.roadId = roadId;
 	}
 
 	public Integer getPointId() {
@@ -126,11 +127,11 @@ public class PointPosition implements Serializable{
 		this.shape = shape;
 	}
 
-	public int getLaneNumber() {
+	public Integer getLaneNumber() {
 		return LaneNumber;
 	}
 
-	public void setLaneNumber(int laneNumber) {
+	public void setLaneNumber(Integer laneNumber) {
 		LaneNumber = laneNumber;
 	}
 
@@ -142,13 +143,16 @@ public class PointPosition implements Serializable{
 		this.pointType = pointType;
 	}
 
-	public Integer getRoad_id() {
-		return road_id;
+	public Integer getRoadId() {
+		return roadId;
 	}
 
-	public void setRoad_id(Integer road_id) {
-		this.road_id = road_id;
+	public void setRoadId(Integer roadId) {
+		this.roadId = roadId;
 	}
+
+	
+
 	
 	
 	

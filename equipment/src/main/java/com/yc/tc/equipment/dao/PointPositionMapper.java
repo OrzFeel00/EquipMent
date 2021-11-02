@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -23,7 +24,15 @@ public interface PointPositionMapper {
 				+ ",#{pointName},#{sectionCode},#{longitude}"
 				+ ",#{latitude},#{pointCode},#{shape},#{LaneNumber}"
 				+ ",#{pointType},#{roadId})")
+		@Options(useGeneratedKeys = true, keyProperty = "pointId", keyColumn = "point_id")
 	   public  int insertPoint(PointPosition pop);
+		
+		 //根据PointCode 验证是否重名
+	    @Select("select count(*) from point_position where point_code=#{code}")
+	   public int  countByCode(String code );
+		 //根据equipmentName 验证是否重名
+	    @Select("select count(*) from point_position where point_name=#{code}")
+	   public int  countByPname (String pname );
 		
 	//根据id删除设备
 		@Delete("delete from point_position where point_id=#{pointId}")
@@ -62,4 +71,8 @@ public interface PointPositionMapper {
 				+"  where point_id=#{point_id};"
 				+"</script>"})
 		public void updatePointById(PointPosition pop);
+
+		  //根据点位id放入roadid
+	    @Update("update point_position set road_id=#{roadId} where point_id=#{ponintid}")
+		public void insertRoidByPid(Integer roadId, Integer ponintid);
 }

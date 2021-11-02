@@ -23,6 +23,9 @@ public class EquipmentBiz {
 				throw new BizException("设备已存在");
 			}
 			empper.insertEquipment(eq);
+	
 		}
+		
+		
 
 }

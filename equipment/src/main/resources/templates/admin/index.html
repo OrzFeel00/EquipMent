@@ -52,7 +52,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"><span>雷停停车</span></a>
+				<a class="brand" href="index.html"><span>设备管理</span></a>
 								
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
@@ -65,10 +65,11 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-menu-title">
- 									<span>用户名</span>
+ 									<span>用户管理</span>
 								</li>
-								<li><a href="adperson.html"><i class="halflings-icon user"></i> 个人中心</a></li>
-								<li><a href="touIndex.html"><i class="halflings-icon off"></i> 退出</a></li>
+								<li><a href="adperson.html"><i class="halflings-icon user"></i> 用户新增</a></li>
+								<li><a href="touIndex.html"><i class="halflings-icon user"></i> 用户修改</a></li>
+								<li><a href="touIndex.html"><i class="halflings-icon off"></i> 退出本系统</a></li>
 							</ul>
 						</li>
 						<!-- end: User Dropdown -->
@@ -88,35 +89,56 @@
 			<div id="sidebar-left" class="span2">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li><a href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> 首页</span></a></li>
+						<li><a href="Index"><i class="icon-home"></i><span class="hidden-tablet"> 首页</span></a></li>
 					
-						<li>
-							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 用户管理</span> <span class="label label-important"> 2 </span></a>
-							<ul>
-								<li><a class="submenu" href="inpart.html"><i class="icon-signin"></i><span class="hidden-tablet"> 新增用户</span></a></li>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 用户修改</span></a></li>
-							</ul>
-						</li>
+						
 						
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 设备输入管理</span> <span class="label label-important"> 2 </span></a>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet">基本信息录入管理</span> <span class="label label-important"> 3 </span></a>
 							<ul>
-								<li><a class="submenu" href="inpart.html"><i class="icon-signin"></i><span class="hidden-tablet"> 项目录入</span></a></li>
-								<li><a class="submenu" href="inPoint.html"><i class="icon-signout"></i><span class="hidden-tablet"> 点位录入</span></a></li>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 设备录入</span></a></li>
+								<li><a class="submenu" href="toEquipment"><i class="icon-signout"></i><span class="hidden-tablet"> 点位录入</span></a></li>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 街道录入</span></a></li>
+								<li><a class="submenu" href="toEquipment"><i class="icon-signout"></i><span class="hidden-tablet"> 设备录入</span></a></li>
 							</ul>
 						</li>
 						
 							<li>
-							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 设备修改管理</span> <span class="label label-important"> 2 </span></a>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 基本信息修改管理</span> <span class="label label-important"> 3 </span></a>
 							<ul>
-								<li><a class="submenu" href="inpart.html"><i class="icon-signin"></i><span class="hidden-tablet"> 项目录入</span></a></li>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 设备录入</span></a></li>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 点位修改</span></a></li>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 街道修改</span></a></li>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 设备修改</span></a></li>
 							</ul>
 						</li>
-
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 项目管理</span> <span class="label label-important"> 2 </span></a>
+							<ul>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息录入</span></a></li>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息修改</span></a></li>
+							</ul>
+						</li>
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 安装信息管理</span> <span class="label label-important"> 2 </span></a>
+							<ul>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 安装信息录入</span></a></li>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 安装信息修改</span></a></li>
+								
+							</ul>
+						</li>
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 执法信息管理</span> <span class="label label-important"> 2 </span></a>
+							<ul>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 点位修改</span></a></li>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 街道修改</span></a></li>
+							</ul>		
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 运维信息管理</span> <span class="label label-important"> 2 </span></a>
+							<ul>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet">运维信修改</span></a></li>
+								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet">运维信息查看</span></a></li>
+							</ul>
+						</li>
 						
-						<li><a href="toadlogin"><i class="icon-lock"></i><span class="hidden-tablet"> 重新登录</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -134,7 +156,7 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home"></i>
-                        <a href="index.html">主页</a>
+                        <a href="Index">主页</a>
                         <i class="icon-angle-right"></i>
                     </li>
                     <li><a href="#">首页</a></li>
@@ -145,237 +167,14 @@
 
 				<!--欢迎界面-->
 				<div class="bg_hy">
-					<div style="color: #0B90C4;font-size: 35px;font-weight: bold;padding: 30px 30px">小乔，欢迎您使用停车管理系统！</div>
-					<div style="color: #0B90C4;font-weight: bold;padding: 30px 30px">美好的一天，从上班开始！</div>
+					<div style="color: #0B90C4;font-size: 55px;font-weight: bold;padding: 50px 100px">欢迎您使用本管理系统！</div>
+					<div style="color: #0B90C4;font-weight: bold;padding: 1px 30px">美好的一天，从上班开始！</div>
 				</div>
 
-				<!-- 统计显示-->
-                <div class="data_info">
-                    <div class="info_1">
-                    <div class="text_1">
-                        <div class="fl">
-                            <img src="img/info_1.png" alt="" class="fl">
-                            <div class="fl">
-                                <p style="color: white">现有车位(个)</p>
-                                <p style="color: yellow;font-weight: 600;font-size: 28px;color: #ffff43;}">15802</p>
-                            </div>
-                        </div>
-                        <div class="fl">
-                            <img src="img/info_2.png" alt="" class="fl">
-                            <div class="fl">
-                                <p style="color: white">用户总数(人)</p>
-                                <p style="font-weight: 600;font-size: 28px;color: #ffff43;}">15802</p>
-                            </div>
-                        </div>
-                        <div class="fl">
-                            <img src="img/info_3.png" alt="" class="fl">
-                            <div class="fl">
-                                <p style="color: white">订单总数(笔)</p>
-                                <p style="font-weight: 600;font-size: 28px;color: #ffff43;}">15802</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <div class="info_2">
-                        <div class="text_2">
-                            <div class="fl">
-                                <img src="img/info_4.png" alt="" class="fl">
-                                <div class="fl">
-                                    <p style="color: white">空余车位(个)</p>
-                                    <p style="color: #25f3e6;font-weight: 600;font-size: 28px;}">15802</p>
-                                </div>
-                            </div>
-                            <div class="fl">
-                                <img src="img/info_5.png" alt="" class="fl">
-                                <div class="fl">
-                                    <p style="color: white">共有车库(个)</p>
-                                    <p style="color: #25f3e6;font-weight: 600;font-size: 28px;}">15802</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="info_3 f1">
-                        <div class="text_3">
-                            <div class="fl">
-                                <img src="img/info_6.png" alt="" class="fl">
-                                <div class="fl">
-                                    <p style="color: white">订单总额(元)</p>
-                                    <p style="color: #ff4e4e;font-weight: 600;font-size: 28px;}">15802</p>
-                                </div>
-                            </div>
-                            <div class="fl">
-                                <img src="img/info_7.png" alt="" class="fl">
-                                <div class="fl">
-                                    <p style="color: white">现停车数(位)</p>
-                                    <p style="color: #ff4e4e;font-weight: 600;font-size: 28px;}">15802</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-				<!-- 最新入库车辆-->
-				<div class="bottom_1 fl">
-					<div class="main_title">
-						<img src="img/title_5.png" alt="">
-						  实时动态
-					</div>
-					<div class="main_table">
-						<table>
-							<thead>
-							<tr>
-								<th>序号</th>
-								<th>入库时间</th>
-								<th>车牌号</th>
-								<th>车位号</th>
-								<th>车主</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<td>1</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<!-- 最新入库车辆-->
-				<div class="bottom_2 fl">
-					<div class="main_title">
-						<img src="img/title_5.png" alt="">
-						会员排行
-					</div>
-					<div class="main_table">
-						<table>
-							<thead>
-							<tr>
-								<th>序号</th>
-								<th>入库时间</th>
-								<th>车牌号</th>
-								<th>车位号</th>
-								<th>车主</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<td>1</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>2020.09.22 22:22:24</td>
-								<td>京A12345</td>
-								<td>A1</td>
-								<td>小乔</td>
-							</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+				
 
 
-            </div><!--/#content.span10-->
+				
 
 
 
@@ -385,7 +184,7 @@
 	<footer>
 
 		<p>
-			<span style="text-align:center; margin-left: 50%">TC @ 新时达视讯</span>
+			<span style="text-align:center; margin-left: 50%">TC &copy; 新时达视讯</span>
 			
 		</p>
 

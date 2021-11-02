@@ -20,10 +20,16 @@ import com.github.pagehelper.PageHelper;
 public class IndexAction {
 	
 
-	//去首登录页面
-			@GetMapping("touIndex.html")
+	//去前台首页页面
+			@GetMapping("touIndex")
 			public String touindex() {
 				return "uindex";
+			}
+			
+			//去前台首页页面
+			@GetMapping("Index")
+			public String toindex() {
+				return "admin/index";
 			}
 
 
