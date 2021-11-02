@@ -17,6 +17,7 @@ import com.yc.tc.equipment.bean.road;
 
 
 
+
 public interface roadMapper {
 	
 	
@@ -32,8 +33,9 @@ public interface roadMapper {
       //根据roadCode 验证是否重名
 	    @Select("select count(*) from road where road_code=#{roadCode}")
 	   public int  countByeCode(String roadCode);
-
-		
+       // 查找所有的街道名称信息
+	    @Select("select road_name from road  order by road_id asc")
+		public List<String> selectAllRdNames();
 	    
 
 		

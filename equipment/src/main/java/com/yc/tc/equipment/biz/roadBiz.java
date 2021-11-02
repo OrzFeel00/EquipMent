@@ -1,5 +1,7 @@
 package com.yc.tc.equipment.biz;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 
@@ -32,7 +34,7 @@ public class roadBiz {
 			}
 			rmpper.insertroad(roa);
 		}
-//把道路标识填入点位
+        //把道路标识填入点位
 		public void addRoadbyid(Integer roadId) {
 			// TODO Auto-generated method stub
 			//读取当前点位id
@@ -40,6 +42,11 @@ public class roadBiz {
 			///根据点位id放入roadid
 			 pmpper.insertRoidByPid(roadId,ponintid);
 		}
+	//找到所有的街道名称
+	public List<String> selectAllRdNames(){
+		List<String> nlist=rmpper.selectAllRdNames();  
+		return nlist;
+	}
 
 		
 

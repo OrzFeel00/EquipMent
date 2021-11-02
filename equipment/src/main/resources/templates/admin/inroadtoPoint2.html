@@ -42,13 +42,14 @@
   	<!-- start: Favicon --
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<!-- end: Favicon -->
-   
+	
    
    <style type="text/css">
 .e{
    color:red
 }
 </style>
+
 
 
   
@@ -146,36 +147,46 @@
 				</li>
 				<li><a href="#">订单管理</a></li>
 			</ul>
+				<form class="layui-form  " action="">
 			
-			<!--  -->
+			<div class="layui-form-item">
+				<label class="layui-form-label">选择框</label>
+			 <div class="layui-input-inline">
+				 <!--通过设定属性 lay-search 来开启搜索匹配功能-->		 			   
+			   <select name="city" lay-verify="required" lay-search>
+				 <option value="">请选择城市</option>
+				 <option value="0">北京</option>
+				 <option value="1">上海</option>
+				 <option value="2" selected>广州</option><!--你可以通过设定 selected 来设定默认选中项：属性disabled开启禁用，select和option标签都支持 disabled禁用-->
+				 <option value="3">深圳</option>
+				 <option value="3">深sss</option>
+				 <option value="3">圳深</option>
+				 <option value="3">sss圳深</option>
+				 <option value="4"disabled>杭州</option>
+			   </select>
+ 
+			 </div>
+			</div>
+			 <!--复选框--> 
+			 <!--
+			 属性title可自定义文本（温馨提示：如果只想显示复选框，可以不用设置title）
+			 属性checked可设定默认选中 disabled不能选择
+			 属性lay-skin可设置复选框的风格
+			 设置value="1"可自定义值，否则选中时返回的就是默认的on
+		
+			 
 			
-		 <div>
-		      <div style="text-align: center;margin-top: 90px;">
-		          <i class="layui-icon layui-circle" 
-				   style="color: white;font-size:30px;font-weight:bold;background: #52C41A;padding: 20px;line-height: 80px;">&#xe605;</i>
-		          <div style="font-size: 24px;color: #333;font-weight: 500;margin-top: 30px;">
-		              添加成功
-		          </div>
-		      </div>
-		      <div style="text-align: center;margin-top: 50px;">
-		      <form  action="toPoint" method="get">
-		      
-		      
-		      <button class="layui-btn next" type="submit" >重新录入输入，稍后给点位指定街道</button>
-		      
-		      </form>
-		          
-		      </div>
-		        <div style="text-align: center;margin-top: 100px;">
-		      <form  action="torodtopoint" method="get">
-		      
-		      
-		      <button class="layui-btn next" type="submit" >给点位指定街道</button>
-		      
-		      </form>
-		          
-		      </div>
-		  </div>
+			
+			
+			 <!--按钮--> 
+			  <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+			      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			    </div>
+			  </div>
+			  
+		</form>
 			<!--end设备表单-->
 
            

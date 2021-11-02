@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.yc.tc.equipment.bean.PointPosition;
 import com.yc.tc.equipment.bean.Storage;
+import com.yc.tc.equipment.bean.road;
 import com.yc.tc.equipment.biz.BizException;
 import com.yc.tc.equipment.biz.PointPositionBiz;
+import com.yc.tc.equipment.biz.roadBiz;
 import com.yc.tc.equipment.util.Utils;
 import com.yc.tc.equipment.util.instUtils;
 
@@ -21,6 +23,8 @@ public class PointPositionAction {
 	//依赖注入
 	@Resource
 	private  PointPositionBiz pBiz;
+	@Resource
+	private  roadBiz rBiz;
 	
 	
    
@@ -49,6 +53,7 @@ public class PointPositionAction {
 					pBiz.addPop(pop);
 		            //点位id传入map中
 				     instUtils.limt.put("point_id", pop.getPointId());
+				     
 				     Integer eqtid= instUtils.limt.get("point_id");
 						System.out.println("刘浪"+eqtid);
 				} catch (BizException e) {
@@ -65,6 +70,22 @@ public class PointPositionAction {
 				}
 				//响应重定向  redirect:index
 				return "admin/succeseinPoint";
+			}
+			//去点位录入道路标识
+			@GetMapping("torodtopoint")
+			public String torodtoponit(Model m) {
+				System.out.println(rBiz.selectAllRdNames());
+				 m.addAttribute("roads", rBiz.selectAllRdNames());
+				return "admin/inroadtoPoint";
+			}
+			
+			//给点位录入道路标识
+			@PostMapping("rodtopoint.do")
+			public String rodtoponit(road roa,Model m) {				
+				 m.addAttribute("roads", rBiz.selectAllRdNames());
+				 
+				rBiz.addRoadbyid(roa.getRoadId());
+				return "admin/inPoint";
 			}
 			
 

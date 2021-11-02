@@ -42,13 +42,14 @@
   	<!-- start: Favicon --
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<!-- end: Favicon -->
-   
+	
    
    <style type="text/css">
 .e{
    color:red
 }
 </style>
+
 
 
   
@@ -147,35 +148,38 @@
 				<li><a href="#">订单管理</a></li>
 			</ul>
 			
-			<!--  -->
+			<!--输入街道名称-->
+		<div style="width:100%;margin-top: 90px;">
+			<form  style="margin-left: 40%;" class="layui-form " action="rodtopoint.do" method="post">
+					<!--点位名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">道路名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	 <select name="roadName" id="roadName" lay-verify="required" lay-search>
+				 <option value="" >请选择城市</option>
+				 <option th:each="r: ${roads}" 
+				         th:value="${r}"
+				         th:text="${r}" >
+				 北京</option>
+		     	</select>
+					</div>				
+				</div>
+				
+			 
 			
-		 <div>
-		      <div style="text-align: center;margin-top: 90px;">
-		          <i class="layui-icon layui-circle" 
-				   style="color: white;font-size:30px;font-weight:bold;background: #52C41A;padding: 20px;line-height: 80px;">&#xe605;</i>
-		          <div style="font-size: 24px;color: #333;font-weight: 500;margin-top: 30px;">
-		              添加成功
-		          </div>
-		      </div>
-		      <div style="text-align: center;margin-top: 50px;">
-		      <form  action="toPoint" method="get">
-		      
-		      
-		      <button class="layui-btn next" type="submit" >重新录入输入，稍后给点位指定街道</button>
-		      
-		      </form>
-		          
-		      </div>
-		        <div style="text-align: center;margin-top: 100px;">
-		      <form  action="torodtopoint" method="get">
-		      
-		      
-		      <button class="layui-btn next" type="submit" >给点位指定街道</button>
-		      
-		      </form>
-		          
-		      </div>
-		  </div>
+	
+									
+				 <!--按钮-->
+				  <div class="layui-form-item">
+				    <div class="layui-input-inline">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
+				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				    </div>
+				  </div>
+				   
+			</form>   
+		</div>
 			<!--end设备表单-->
 
            
@@ -204,6 +208,11 @@
 <!-- layui模块化js核心文件-->
 			  <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 
+<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		});
+		</script>
 
 <!-- JavaScript-->
         <script src="admin/js/jquery-1.9.1.min.js"></script>
