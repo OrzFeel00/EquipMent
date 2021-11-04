@@ -75,4 +75,12 @@ public interface PointPositionMapper {
 		  //根据点位id放入roadid
 	    @Update("update point_position set road_id=#{roadId} where point_id=#{ponintid}")
 		public void insertRoidByPid(Integer roadId, Integer ponintid);
+	    
+	    //根据pointName 返回id
+	    @Select("select point_id from point_position  where  point_name=#{pointName}")
+		public int selectpoidByPname(String pointName);
+	    
+	    // 查找所有的点位名称信息
+	    @Select("select point_name from point_position  order by point_id asc")
+		public List<String> selectAllPointNames();
 }

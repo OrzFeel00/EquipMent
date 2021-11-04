@@ -47,6 +47,15 @@ public class roadBiz {
 		List<String> nlist=rmpper.selectAllRdNames();  
 		return nlist;
 	}
+	 //根据roadname 插入到point,
+	  public void insetRidByname(String name) {
+		//  根据roadname 返回rid,
+		int rs=rmpper.selectRidByname(name);
+		//读取当前点位id
+		 Integer ponintid= instUtils.limt.get("point_id");
+		///根据点位id放入roadid
+		 pmpper.insertRoidByPid(rs,ponintid);
+	}
 
 		
 

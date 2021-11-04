@@ -1,9 +1,15 @@
 package com.yc.tc.equipment.bean;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+
+import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 public class Project implements Serializable{
 
@@ -13,14 +19,18 @@ public class Project implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	// 项目标识id
-	private Integer projectId;
+	// 项目名称
+	@NotEmpty (message = "不能为空")
+	private String projectName;
 	//采购日期
-	@NotEmpty (message = "不能为空")
-	private Timestamp purchaseDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+	private Date purchaseDate;
 	//安装日期          !!!!
-	@NotEmpty (message = "不能为空")
-	private Timestamp installDate;
+	//@NotNull (message = "不能为空")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+	private Date installDate;
 	//承建单位
 	@NotEmpty (message = "不能为空")
 	private String contractor;
@@ -57,38 +67,14 @@ public class Project implements Serializable{
 	}
 
 
-	public Project(Integer id, Integer projectId, @NotEmpty(message = "不能为空") Timestamp purchaseDate,
-			@NotEmpty(message = "不能为空") Timestamp installDate, @NotEmpty(message = "不能为空") String contractor,
-			@NotEmpty(message = "不能为空") String constructionPeriod, @NotEmpty(message = "不能为空") String buildUnit,
-			@NotEmpty(message = "不能为空") String constructionType, @NotEmpty(message = "不能为空") String contractNumber,
-			@NotEmpty(message = "不能为空") String constructionStatus, @NotEmpty(message = "不能为空") String constructionUnit,
-			@NotEmpty(message = "不能为空") String constructionProject, Integer pointId, Integer equipmentId) {
-		super();
-		this.id = id;
-		this.projectId = projectId;
-		this.purchaseDate = purchaseDate;
-		this.installDate = installDate;
-		this.contractor = contractor;
-		this.constructionPeriod = constructionPeriod;
-		this.buildUnit = buildUnit;
-		this.constructionType = constructionType;
-		this.contractNumber = contractNumber;
-		this.constructionStatus = constructionStatus;
-		this.constructionUnit = constructionUnit;
-		this.constructionProject = constructionProject;
-		this.pointId = pointId;
-		this.equipmentId = equipmentId;
-	}
-
-
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", projectId=" + projectId + ", purchaseDate=" + purchaseDate + ", installDate="
-				+ installDate + ", contractor=" + contractor + ", constructionPeriod=" + constructionPeriod
-				+ ", buildUnit=" + buildUnit + ", constructionType=" + constructionType + ", contractNumber="
-				+ contractNumber + ", constructionStatus=" + constructionStatus + ", constructionUnit="
-				+ constructionUnit + ", constructionProject=" + constructionProject + ", pointId=" + pointId
-				+ ", equipmentId=" + equipmentId + "]";
+		return "Project [id=" + id + ", projectName=" + projectName + ", purchaseDate=" + purchaseDate
+				+ ", installDate=" + installDate + ", contractor=" + contractor + ", constructionPeriod="
+				+ constructionPeriod + ", buildUnit=" + buildUnit + ", constructionType=" + constructionType
+				+ ", contractNumber=" + contractNumber + ", constructionStatus=" + constructionStatus
+				+ ", constructionUnit=" + constructionUnit + ", constructionProject=" + constructionProject
+				+ ", pointId=" + pointId + ", equipmentId=" + equipmentId + "]";
 	}
 
 
@@ -102,32 +88,32 @@ public class Project implements Serializable{
 	}
 
 
-	public Integer getProjectId() {
-		return projectId;
+	public String getProjectName() {
+		return projectName;
 	}
 
 
-	public void setProjectId(Integer projectId) {
-		this.projectId = projectId;
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 
 
-	public Timestamp getPurchaseDate() {
+	public Date getPurchaseDate() {
 		return purchaseDate;
 	}
 
 
-	public void setPurchaseDate(Timestamp purchaseDate) {
+	public void setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 
 
-	public Timestamp getInstallDate() {
+	public Date getInstallDate() {
 		return installDate;
 	}
 
 
-	public void setInstallDate(Timestamp installDate) {
+	public void setInstallDate(Date installDate) {
 		this.installDate = installDate;
 	}
 
@@ -230,6 +216,32 @@ public class Project implements Serializable{
 	public void setEquipmentId(Integer equipmentId) {
 		this.equipmentId = equipmentId;
 	}
+
+
+	private Project(Integer id, @NotEmpty(message = "不能为空") String projectName, Date purchaseDate, Date installDate,
+			@NotEmpty(message = "不能为空") String contractor, @NotEmpty(message = "不能为空") String constructionPeriod,
+			@NotEmpty(message = "不能为空") String buildUnit, @NotEmpty(message = "不能为空") String constructionType,
+			@NotEmpty(message = "不能为空") String contractNumber, @NotEmpty(message = "不能为空") String constructionStatus,
+			@NotEmpty(message = "不能为空") String constructionUnit, @NotEmpty(message = "不能为空") String constructionProject,
+			Integer pointId, Integer equipmentId) {
+		super();
+		this.id = id;
+		this.projectName = projectName;
+		this.purchaseDate = purchaseDate;
+		this.installDate = installDate;
+		this.contractor = contractor;
+		this.constructionPeriod = constructionPeriod;
+		this.buildUnit = buildUnit;
+		this.constructionType = constructionType;
+		this.contractNumber = contractNumber;
+		this.constructionStatus = constructionStatus;
+		this.constructionUnit = constructionUnit;
+		this.constructionProject = constructionProject;
+		this.pointId = pointId;
+		this.equipmentId = equipmentId;
+	}
+
+
 	
 	
 	

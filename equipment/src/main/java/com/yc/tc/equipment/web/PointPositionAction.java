@@ -41,14 +41,14 @@ public class PointPositionAction {
 			@PostMapping("Point.do")
 			public String register(@Valid PointPosition pop,Errors errors,Model m) {
 				if(errors.hasErrors()) {
-					
+					System.out.println("12222222"+pop.toString());
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("pop",pop);
 					return "admin/inPoint";
 				}
 				
 				try {
-					System.out.println(pop.toString());
+					System.out.println("22222222"+pop.toString());
 					//插入点位信息
 					pBiz.addPop(pop);
 		            //点位id传入map中
@@ -62,7 +62,7 @@ public class PointPositionAction {
 					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
 					//errors.rejectValue("nonull", "null",e.getMessage()); 
 					
-					
+					System.out.println("32222222"+pop.toString());
 					errors.rejectValue("pointName", "pointName",e.getMessage());
 					m.addAttribute("errors",Utils.asMap(errors));
 					m.addAttribute("pop",pop);
@@ -71,6 +71,13 @@ public class PointPositionAction {
 				//响应重定向  redirect:index
 				return "admin/succeseinPoint";
 			}
+			
+			   //去点位输入页面
+						@GetMapping("tosucceseinPoint")
+						public String tousucceseinPoint() {
+							return "admin/succeseinPoint";
+						}
+			
 			//去点位录入道路标识
 			@GetMapping("torodtopoint")
 			public String torodtoponit(Model m) {
@@ -82,9 +89,9 @@ public class PointPositionAction {
 			//给点位录入道路标识
 			@PostMapping("rodtopoint.do")
 			public String rodtoponit(road roa,Model m) {				
-				 m.addAttribute("roads", rBiz.selectAllRdNames());
-				 
-				rBiz.addRoadbyid(roa.getRoadId());
+			     //根据name写入roaid到point
+				 rBiz.insetRidByname(roa.getRoadName());
+				
 				return "admin/inPoint";
 			}
 			

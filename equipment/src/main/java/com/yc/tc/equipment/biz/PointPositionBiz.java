@@ -1,5 +1,7 @@
 package com.yc.tc.equipment.biz;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -33,9 +35,11 @@ public class PointPositionBiz {
 		
 			}
 
-	public void addStByid(Integer pointId) {
-		// TODO Auto-generated method stub
-		
-	}
+	            	//找到所有的点位名称
+				public List<String> selectAllPointNames() {
+					List<String> pionlist=pmpper.selectAllPointNames();  
+					return pionlist;
+				}
+				
 
 }

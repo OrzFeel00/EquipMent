@@ -36,7 +36,9 @@ public interface roadMapper {
        // 查找所有的街道名称信息
 	    @Select("select road_name from road  order by road_id asc")
 		public List<String> selectAllRdNames();
-	    
+	    //根据roadname 返回id
+	    @Select("select road_id from road  where  road_name=#{roadName}")
+	  		public int selectRidByname(String roadName);
 
 		
 		

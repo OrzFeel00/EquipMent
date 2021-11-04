@@ -251,9 +251,13 @@
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
-			  <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+	   <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 
-
+       <script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		});
+		</script>
 <!-- JavaScript-->
         <script src="admin/js/jquery-1.9.1.min.js"></script>
 	    <script src="admin/js/jquery-migrate-1.0.0.min.js"></script>

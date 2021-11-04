@@ -174,8 +174,7 @@
 					<label class="layui-form-label">硬盘数量</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="diskNumber" id="diskNumber" class="layui-input" placeholder="硬盘数量"  
-					 required lay-verify="required|number"/>
+					 <input type="text" name="diskNumber" id="diskNumber" class="layui-input" placeholder="硬盘数量" required lay-verify="required|number"/>
 					</div>				
 				</div>
 				<!--图像帧率-->
@@ -286,7 +285,13 @@
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
-			  <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+	    <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+			  
+		<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		});
+		</script>
 
 
 <!-- JavaScript-->

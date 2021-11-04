@@ -147,46 +147,35 @@
 				</li>
 				<li><a href="#">订单管理</a></li>
 			</ul>
-				<form class="layui-form  " action="">
 			
-			<div class="layui-form-item">
-				<label class="layui-form-label">选择框</label>
-			 <div class="layui-input-inline">
-				 <!--通过设定属性 lay-search 来开启搜索匹配功能-->		 			   
-			   <select name="city" lay-verify="required" lay-search>
-				 <option value="">请选择城市</option>
-				 <option value="0">北京</option>
-				 <option value="1">上海</option>
-				 <option value="2" selected>广州</option><!--你可以通过设定 selected 来设定默认选中项：属性disabled开启禁用，select和option标签都支持 disabled禁用-->
-				 <option value="3">深圳</option>
-				 <option value="3">深sss</option>
-				 <option value="3">圳深</option>
-				 <option value="3">sss圳深</option>
-				 <option value="4"disabled>杭州</option>
-			   </select>
- 
-			 </div>
-			</div>
-			 <!--复选框--> 
-			 <!--
-			 属性title可自定义文本（温馨提示：如果只想显示复选框，可以不用设置title）
-			 属性checked可设定默认选中 disabled不能选择
-			 属性lay-skin可设置复选框的风格
-			 设置value="1"可自定义值，否则选中时返回的就是默认的on
-		
-			 
-			
-			
-			
-			 <!--按钮--> 
-			  <div class="layui-form-item">
-			    <div class="layui-input-block">
-			      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-			      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-			    </div>
-			  </div>
-			  
-		</form>
+			<!--输入点位名称-->
+		<div style="width:100%;margin-top: 90px;">
+			<form  style="margin-left: 40%;" class="layui-form " action="pointtoProject.do" method="post">
+					<!--点位名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">点位名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	     <select name="pointName" id="pointName" lay-verify="required" lay-search>
+				           <option value="" >请选择点位</option>
+						   <option th:each="p: ${points}" 
+						           th:value="${p}"
+						           th:text="${p}" >北京
+						   </option>
+		     	     </select>
+					</div>				
+				</div>
+				
+									
+				 <!--按钮-->
+				  <div class="layui-form-item">
+				    <div class="layui-input-inline">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
+				    </div>
+				  </div>
+				   
+			</form>   
+		</div>
 			<!--end设备表单-->
 
            
@@ -213,8 +202,13 @@
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
-			  <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+	    <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 
+        <script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		});
+		</script>
 
 <!-- JavaScript-->
         <script src="admin/js/jquery-1.9.1.min.js"></script>

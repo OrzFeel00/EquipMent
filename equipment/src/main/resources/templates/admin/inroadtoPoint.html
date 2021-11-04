@@ -156,25 +156,21 @@
 					<label class="layui-form-label">道路名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-		    	 <select name="roadName" id="roadName" lay-verify="required" lay-search>
-				 <option value="" >请选择城市</option>
-				 <option th:each="r: ${roads}" 
-				         th:value="${r}"
-				         th:text="${r}" >
-				 北京</option>
-		     	</select>
+		    	     <select name="roadName" id="roadName" lay-verify="required" lay-search>
+				           <option value="" >请选择道路</option>
+						   <option th:each="r: ${roads}" 
+						           th:value="${r}"
+						           th:text="${r}" >北京
+						   </option>
+		     	     </select>
 					</div>				
 				</div>
 				
-			 
-			
-	
 									
 				 <!--按钮-->
 				  <div class="layui-form-item">
 				    <div class="layui-input-inline">
 				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
-				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				    </div>
 				  </div>
 				   
@@ -206,11 +202,19 @@
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
-			  <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+	    <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 
-<script type="text/javascript">
-		layui.use('form', function(){
+        <script type="text/javascript">
+		layui.use(['layer','form'], function(){
 		  var form = layui.form;
+		  var layer = layui.layer;
+		  
+		  form.on('submit(formDemo)', function(data){
+		 
+		     layer.msg('添加成功返回点位录入页面',{time: 10000});
+			
+			});
+		  
 		});
 		</script>
 

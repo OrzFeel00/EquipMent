@@ -1,5 +1,7 @@
 package com.yc.tc.equipment.biz;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -27,5 +29,10 @@ public class EquipmentBiz {
 		}
 		
 		
+    	//找到所有的设备名称
+				public List<String> selectAllPointNames() {
+					List<String> eqlist=empper.selectAllEquNames();
+					return eqlist;
+				}
 
 }

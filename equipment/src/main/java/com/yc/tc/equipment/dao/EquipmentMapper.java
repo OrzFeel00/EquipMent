@@ -42,8 +42,14 @@ public interface EquipmentMapper {
 	  ///根据设备id放入associatedId
 	    @Update("update equipment set associated_id=#{asid} where equipment_id=#{equetid}")
 		public void insertAsidByEid(Integer equetid, Integer asid);
+
+	  //根据equipmentName 返回id
+	    @Select("select equipment_id from equipment  where  equipment_name=#{equipmentName}")
+		public int selecteqidByname(String equipmentName);
 	    
-	    
+	    // 查找所有的设备名称信息
+	    @Select("select equipment_name from equipment  order by equipment_id asc")
+		public List<String> selectAllEquNames();
 	    
 	
 	
