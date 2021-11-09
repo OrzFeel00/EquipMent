@@ -41,6 +41,32 @@ public interface PointPositionMapper {
 		@Select("select * from point_position where point_id=#{pointId}")
 		public PointPosition selectPointById(Integer pointId);
 		
+		
+		//根据不同条件查询设备信息  if版 动态sql     concat('%',#{linkName},'%')   concat('%',#{string},'%')
+		        @Select({"<script> "
+					    + "select * from point_position "
+		        		+"<where>"
+						+ "<if test = 'pointName != null and pointName !=&apos;&apos;   '> "
+						+" and point_name like concat('%',#{pointName},'%') "
+						+"</if>"
+						+ "<if test = 'sectionCode != null  and sectionCode !=&apos;&apos;  '> "
+						+"  and section_code like concat('%',#{sectionCode},'%') "
+						+"</if>"	
+						+ "<if test = 'pointCode != null  and pointCode !=&apos;&apos;  '> "
+						+" and  point_code like concat('%',#{pointCode},'%') "
+						+"</if>"			
+						+ "<if test = 'pointType != null  and pointType !=&apos;&apos;  '> "
+						+"  and point_type like concat('%',#{pointType},'%') "
+						+"</if>"
+						+ "<if test = 'roadName != null  and roadName !=&apos;&apos;  '> "
+						+" and  road_name like concat('%',#{roadName},'%') "
+						+"</if>"
+						+"</where>"
+						+"  order by point_id asc;"
+						+"</script>"})
+				public List<PointPosition> selectpointBymore(PointPosition pop);
+		
+		
 	//根据id修改设备信息  if版 动态sql
 		@Update({"<script> "
 			    + "update point_position set "

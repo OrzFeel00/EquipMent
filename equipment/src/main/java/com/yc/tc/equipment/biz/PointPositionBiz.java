@@ -59,6 +59,12 @@ public class PointPositionBiz {
 					 PointPosition pop=pmpper.selectPointById(pid);
 					return pop;
 				}
+				//根据条件模糊查询
+				public List<PointPosition> selectpointBymore(PointPosition pop) {
+					System.out.println("9999o999+"+pop.toString());
+					List<PointPosition> pop1=pmpper.selectpointBymore(pop);
+					return pop1;
+				}
 				
 
 }

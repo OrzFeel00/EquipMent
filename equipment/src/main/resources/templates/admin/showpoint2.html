@@ -177,32 +177,26 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showpoint.do" method="post">
+				<form  action="part.do" method="post">
 		      
-				<div id="pointName"  style="margin-left:10px;font-weight:bold;float: left">
-			  	  点位名称：<input name="pointName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入名称"/>   </div>
-			  
-				<div id="sectionCode"   style="margin-left:10px;font-weight:bold;float: left">
-				  断面编号：<input  name="sectionCode" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
-				  
-				<div id="pointCode"   style="margin-left:10px;font-weight:bold;float: left">
-			     监测点编码：<input name="pointCode"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
-			     
-				<div id="pointType"  style="margin-left:10px;font-weight:bold;float: left">
-				  点位类型：<input name="pointType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入类型"/>	</div>
-				  
-				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
-				 道路类型：<input name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入道路"/>	</div>
-			
-			
-				<div style="margin-left:10px;font-weight:bold;float: left">
+				<div id="garage"  style="margin-left:30px;font-weight:bold;float: left">
+			  	  点位名称：<input name="garage" style="width: 150px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入车库"/>   </div>
+				<div id="num_id"   style="margin-left:30px;font-weight:bold;float: left">
+				  断面编号：<input  name="num_id" style="width: 150px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入车位号"/>	</div>
+				<div id="price"   style="margin-left:30px;font-weight:bold;float: left">
+			     监测点编码：<input name="price"  style="width: 150px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入价格"/>	</div>
+				<div style="margin-left:30px;font-weight:bold;float: left">
+				  点位类型：<input name="price"  style="width: 150px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入价格"/>	</div>
+				<div style="margin-left:30px;font-weight:bold;float: left">
+				
 					 <!--按钮--> 					      
-			      	<button id="btn-sor" class="layui-btn" type="submit" >搜索</button></div>		      
-			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="reset" >重置</button>
-			     			  						
+			      	<button class="layui-btn" type="submit" >搜索</button></div>		      
+			       <button class="layui-btn layui-btn-primary"  type="reset" >重置</button>
+			     	<button class="layui-btn" lay-submit lay-filter="resf">刷新</button>
+			  						
 		      	</form>
 	    	</div>
-						         
+						          <a class="layui-btn layui-btn-xs" lay-event="add">新增</a>
 							<hr>
 			
 						  <table id="t" lay-filter="demo" lay-data="{id: 'idTest'}" >
@@ -217,7 +211,6 @@
 						      <th lay-data="{field:'shape', Width: 100}">路口形状</th>
 						      <th lay-data="{field:'LaneNumber', Width: 100}">车道数 </th>
 						      <th lay-data="{field:'pointType', Width: 100}">点位类型</th>
-						       <th lay-data="{field:'roadName', Width: 100}">所属道路</th>
 						      <th lay-data="{fixed: 'right', width:110, align:'center', toolbar: '#barDemo'}"></th>
 						    </tr>
 						  </thead>
@@ -232,26 +225,14 @@
 						      <td th:text="${p.pointCode}">贤心5</td>
 						      <td th:text="${p.shape}">贤心6</td>
 						      <td th:text="${p.LaneNumber}">贤心7</td>
-						      <td th:text="${p.pointType}">贤心8</td>	
-						       <td th:text="${p.roadName}">贤心8</td>	     		      
+						      <td th:text="${p.pointType}">贤心8</td>	     		      
 						    </tr>		    
 					   
 						  </tbody>
 						</table>
 						
-						<!--  -->
-						
-							<!--表格工具栏-->
-	<script type="text/html" id="tool">
-	<div class="layui-btn-container">
-	<!--lay-event 给元素绑定事件名称-->
-	  <button class="layui-btn" lay-event="add">新增点位</button>
-
-	</div>
-	</script>
-						
-						<!--  -->
 					<script type="text/html" id="barDemo">
+  
   <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
@@ -283,15 +264,6 @@
 	
 	
 	<script>
-	
-	function reftabbel(){
-		$("#btn-re").click();
-		$("#btn-sor").click();
-	}
-	
-	
-	
-	
 layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var layer = layui.layer
       ,form = layui.form
@@ -301,13 +273,13 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var dataList;
       //转换静态表格
      table.init('demo', {
-        height: '710' //设置高度
+        height: '701' //设置高度
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'点位信息'
         ,loading:true 
         ,toolbar:true
         ,page: true
-        ,toolbar:"#tool"
+      
         //支持所有基础参数
       });
       
@@ -336,26 +308,6 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     }
   });
 
-    
-  table.on('toolbar(demo)',function(obj){
-		 //console.log(obj);
-		   //在obj.config对象中可以获取id属性值 ，即表示当前容器的id属性值，也就是text
-		   
-		   //获取当前表格被选中记录对象，返回数据
-		   
-		   var eventName=obj.event;//获取事件名称
-		  if(eventName =="add"){
-			  layer.open({
-	    		  type: 2, 
-	    		  title: ['点位新增', 'font-size:20px;'],
-	    		  area: ['500px', '700px'],
-	    		  content: 'toaddpoint' //这里content是一个普通url
-	    		});
-			  
-		  }   
-		   
-	   });
-    
       
     
       

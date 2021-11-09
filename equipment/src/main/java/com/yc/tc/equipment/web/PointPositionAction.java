@@ -44,7 +44,57 @@ public class PointPositionAction {
 				return "admin/inPoint";
 			}
 			
-			//点位信息录入
+			 //去点位输入页面
+			@GetMapping("toaddpoint")
+			public String toaddpoint(Model m) {
+				 m.addAttribute("roads", rBiz.selectAllRdNames());
+				return "admin/point/addpoint";
+			}
+			
+			
+			//do点位信息录入
+			@PostMapping("addPoint.do")
+			public String doaddpoint(@Valid PointPosition pop,Errors errors,Model m) {
+				if(errors.hasErrors()) {
+					System.out.println("12222222"+pop.toString());
+					m.addAttribute("errors", Utils.asMap(errors));
+					m.addAttribute("pop",pop);
+					 m.addAttribute("roads", rBiz.selectAllRdNames());
+					return "admin/point/addpoint";
+				}
+				
+				try {
+					
+					System.out.println("22222222"+pop.toString());
+					//插入点位信息
+					pBiz.addPop(pop);
+		            //点位id传入map中
+				     instUtils.limt.put("point_id", pop.getPointId());
+				     
+				    
+				} catch (BizException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
+					//errors.rejectValue("nonull", "null",e.getMessage()); 
+					
+					System.out.println("32222222"+pop.toString());
+					errors.rejectValue("pointName", "pointName",e.getMessage());
+				    m.addAttribute("roads", rBiz.selectAllRdNames());
+					m.addAttribute("errors",Utils.asMap(errors));
+					m.addAttribute("pop",pop);
+					return "admin/point/addpoint";
+				}
+				//响应重定向  redirect:index
+				return "admin/point/addsucceseinPoint";
+			}
+			
+			
+			
+			
+			
+			
+			//do点位信息录入
 			@PostMapping("Point.do")
 			public String register(@Valid PointPosition pop,Errors errors,Model m) {
 				if(errors.hasErrors()) {
@@ -95,7 +145,7 @@ public class PointPositionAction {
 				return "admin/showpoint";
 			}
 			
-			//点位查询
+			//do点位查询
 			@RequestMapping("showpoint.do")
 			public String showpoint( PointPosition pop,Model m,Errors errors) {
 				if(errors.hasErrors()) {
@@ -107,9 +157,12 @@ public class PointPositionAction {
 				
 				try {
 					System.out.println("22222222"+pop.toString());
+					//根据pop查询
+					List<PointPosition> pointlistmore =pBiz.selectpointBymore(pop);
+					
 					//查询当前的所有点位					
 					List<PointPosition> pointlist=pBiz.selectAllPoint();
-					m.addAttribute("pointlist",pointlist);
+					m.addAttribute("pointlist",pointlistmore);
 					
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
@@ -135,7 +188,7 @@ public class PointPositionAction {
 				return "admin/point/dellpoint";
 			}
 			
-			//点位删除
+			//do点位删除
 			@RequestMapping("dellpoint.do")
 			public String dellpoint(PointPosition pop,Model m) throws BizException {
 				
@@ -147,17 +200,17 @@ public class PointPositionAction {
 				return "admin/showpoint";
 			}
 			
-			//点位编辑
+			//去点位编辑
 			@GetMapping("toshowedt/{id}")
 			public String edt(@PathVariable("id") Integer pid,Model m ) throws BizException {
 		         //根据pid查到point
 				 PointPosition pop=pBiz.selectPointById(pid);
 				//写入m
 				 m.addAttribute("edtpoint",pop);	
-				return "admin/point/edtshow";
+				return "admin/point/edtpoint";
 			}
 			
-			//点位编辑
+			//do点位编辑
 			@RequestMapping("edtpoint.do")
 			public String edtpoint(PointPosition pop,Model m) throws BizException {
 				//执行点位修改
