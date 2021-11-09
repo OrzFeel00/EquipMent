@@ -23,7 +23,7 @@ public interface PointPositionMapper {
 		@Insert("insert into point_position values (null"
 				+ ",#{pointName},#{sectionCode},#{longitude}"
 				+ ",#{latitude},#{pointCode},#{shape},#{LaneNumber}"
-				+ ",#{pointType},#{roadId})")
+				+ ",#{pointType},#{roadName})")
 		@Options(useGeneratedKeys = true, keyProperty = "pointId", keyColumn = "point_id")
 	   public  int insertPoint(PointPosition pop);
 		
@@ -34,9 +34,12 @@ public interface PointPositionMapper {
 	    @Select("select count(*) from point_position where point_name=#{code}")
 	   public int  countByPname (String pname );
 		
-	//根据id删除设备
+	    //根据id删除点位
 		@Delete("delete from point_position where point_id=#{pointId}")
 		public void delectPointById(PointPosition pop);
+		//根据id查询点位
+		@Select("select * from point_position where point_id=#{pointId}")
+		public PointPosition selectPointById(Integer pointId);
 		
 	//根据id修改设备信息  if版 动态sql
 		@Update({"<script> "
@@ -83,4 +86,23 @@ public interface PointPositionMapper {
 	    // 查找所有的点位名称信息
 	    @Select("select point_name from point_position  order by point_id asc")
 		public List<String> selectAllPointNames();
+	    
+	    // 查找所有的点位所有信息
+	    @Select("select * from point_position  order by point_id asc")
+		public List<PointPosition> selectAllPoint();
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 }

@@ -179,75 +179,10 @@
 				</div>
 			</div><!--end span10-->
 		</div>
-		</div>
-
-		<!--弹框入库操作-->
-		<div class="openruku" v-if="openflag" style="background-color:white;width: 600px;height: 300px;position:fixed;top:20%;left:33%;border-radius:15px;text-align:center;z-index: 1000 ">
-			<span id="unshow" @click="showRuku(false)" style="font-weight: bold;">X</span>
-			<div class="rkdialog">
-				
-				<form action="ting.do" method="post" style="margin-top: 60px;margin-left: 20px;text-align: left">
-				 <!-- 输入车库 -->
-				  <input hidden="hidden" name="garage" th:value="${garaged}!=null ? ${garaged} : 1"/>
-				 
-				<!--  输入车牌号，但是管理员自己输入其他用户的-->
-				 <input hidden="hidden" name="id"  v-model="id"/>
-				 
-					<div style="margin-left:130px;font-weight:bold">     
-					车牌号：<input name="num_id" style="width: 200px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入车牌号"/>	</div>
-				<!--
-					<div style="margin-left: 102px;font-weight:bold">
-					停车人姓名：<input name="name"  style="width: 200px;height: 30px;border-radius: 10px;border: solid 2px;" type="text" placeholder="停车人姓名"/></div>
-					<div style="margin-left: 75px;font-weight:bold">
-					停车人手机号码：<input  name="phone"  style="width: 200px;height: 30px;border-radius: 10px;border: solid 2px;" type="text" placeholder="停车人手机号码"/></div>
-		             -->
-				
-		               	<div style="margin-top: 30px;margin-left: 190px">
-		 			<button type="submit" class="tingche" >停车</button>
-				        </div>
-				</form>
-				
-				
-			</div>
-		</div>
-
-	<!-- 遮罩层 -->
-	<div id="cover" style="background: #000; position: absolute; left: 0px; top: 0px; width: 100%;  filter: alpha(opacity=30); opacity: 0.3; display: none; z-index: 1">
-
-	</div>
+	</div>	
 </div>
 
-		<script>
-
-			var vue=new Vue({
-				el:"#app",
-				data:{
-					openflag:false,
-					id : null
-				},
-				methods:{
-
-					showRuku:function( value){
-						// 弹窗
-						if(value==true){
-							$('#cover').css('display', 'block'); //显示遮罩层
-							$('#cover').css('height', document.body.clientHeight + 'px'); //设置遮罩层的高度为当前页面高度
-						}
-						if(value==false){
-							$('#cover').css('display', 'none'); //显示遮罩层
-						}
-						this.openflag=value;
-					},
-					onec:function(value){
-					this.showRuku(true); 
-						this.id=value;
-						console.info(value);
-						
-					},
-				}
-
-			});
-		</script>
+		
 
 
 	<footer>

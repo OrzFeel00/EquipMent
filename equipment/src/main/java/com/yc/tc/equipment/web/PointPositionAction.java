@@ -1,5 +1,7 @@
 package com.yc.tc.equipment.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -7,8 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.pagehelper.PageHelper;
 import com.yc.tc.equipment.bean.PointPosition;
 import com.yc.tc.equipment.bean.Storage;
 import com.yc.tc.equipment.bean.road;
@@ -33,7 +39,8 @@ public class PointPositionAction {
 	
 	        //去点位输入页面
 			@GetMapping("toPoint")
-			public String touindex() {
+			public String touindex(Model m) {
+				 m.addAttribute("roads", rBiz.selectAllRdNames());
 				return "admin/inPoint";
 			}
 			
@@ -44,18 +51,19 @@ public class PointPositionAction {
 					System.out.println("12222222"+pop.toString());
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("pop",pop);
+					 m.addAttribute("roads", rBiz.selectAllRdNames());
 					return "admin/inPoint";
 				}
 				
 				try {
+					
 					System.out.println("22222222"+pop.toString());
 					//插入点位信息
 					pBiz.addPop(pop);
 		            //点位id传入map中
 				     instUtils.limt.put("point_id", pop.getPointId());
 				     
-				     Integer eqtid= instUtils.limt.get("point_id");
-						System.out.println("刘浪"+eqtid);
+				    
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -64,36 +72,104 @@ public class PointPositionAction {
 					
 					System.out.println("32222222"+pop.toString());
 					errors.rejectValue("pointName", "pointName",e.getMessage());
+				    m.addAttribute("roads", rBiz.selectAllRdNames());
 					m.addAttribute("errors",Utils.asMap(errors));
 					m.addAttribute("pop",pop);
 					return "admin/inPoint";
 				}
 				//响应重定向  redirect:index
-				return "admin/succeseinPoint";
+				return "admin/point/succeseinPoint";
 			}
 			
-			   //去点位输入页面
-						@GetMapping("tosucceseinPoint")
-						public String tousucceseinPoint() {
-							return "admin/succeseinPoint";
-						}
+			   
 			
-			//去点位录入道路标识
-			@GetMapping("torodtopoint")
-			public String torodtoponit(Model m) {
-				System.out.println(rBiz.selectAllRdNames());
-				 m.addAttribute("roads", rBiz.selectAllRdNames());
-				return "admin/inroadtoPoint";
+			
+			
+			//去点位show
+			@GetMapping("toshowpoint")
+			public String toshowpoint(Model m ) throws BizException {
+		
+				//查询当前的所有点位					
+				List<PointPosition> pointlist=pBiz.selectAllPoint();
+				m.addAttribute("pointlist",pointlist);
+				return "admin/showpoint";
 			}
 			
-			//给点位录入道路标识
-			@PostMapping("rodtopoint.do")
-			public String rodtoponit(road roa,Model m) {				
-			     //根据name写入roaid到point
-				 rBiz.insetRidByname(roa.getRoadName());
+			//点位查询
+			@RequestMapping("showpoint.do")
+			public String showpoint( PointPosition pop,Model m,Errors errors) {
+				if(errors.hasErrors()) {
+					System.out.println("12222222"+pop.toString());
+					m.addAttribute("errors", Utils.asMap(errors));
+					m.addAttribute("pop",pop);
+					return "admin/showpoint";
+				}
 				
-				return "admin/inPoint";
+				try {
+					System.out.println("22222222"+pop.toString());
+					//查询当前的所有点位					
+					List<PointPosition> pointlist=pBiz.selectAllPoint();
+					m.addAttribute("pointlist",pointlist);
+					
+				} catch (BizException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
+					//errors.rejectValue("nonull", "null",e.getMessage()); 
+					
+					System.out.println("32222222"+pop.toString());
+					errors.rejectValue("pointName", "pointName",e.getMessage());
+					errors.reject("pointnull",e.getMessage());
+					m.addAttribute("errors",Utils.asMap(errors));
+					m.addAttribute("pop",pop);
+					return "admin/showpoint";
+				}
+				
+				return "admin/showpoint";
 			}
+			//去点位删除
+			@RequestMapping("todellpoint/{id}")
+			public String todellpoint(@PathVariable("id") Integer pid ,Model m ) throws BizException {
+				//m.addAttribute("dellId",pop.getPointId());
+				
+				return "admin/point/dellpoint";
+			}
+			
+			//点位删除
+			@RequestMapping("dellpoint.do")
+			public String dellpoint(PointPosition pop,Model m) throws BizException {
+				
+				pBiz.dellpoint(pop);
+				//查询当前的所有点位					
+				List<PointPosition> pointlist=pBiz.selectAllPoint();
+				m.addAttribute("pointlist",pointlist);
+				
+				return "admin/showpoint";
+			}
+			
+			//点位编辑
+			@GetMapping("toshowedt/{id}")
+			public String edt(@PathVariable("id") Integer pid,Model m ) throws BizException {
+		         //根据pid查到point
+				 PointPosition pop=pBiz.selectPointById(pid);
+				//写入m
+				 m.addAttribute("edtpoint",pop);	
+				return "admin/point/edtshow";
+			}
+			
+			//点位编辑
+			@RequestMapping("edtpoint.do")
+			public String edtpoint(PointPosition pop,Model m) throws BizException {
+				//执行点位修改
+				pBiz.dellpoint(pop);
+				
+				//查询当前的所有点位					
+				List<PointPosition> pointlist=pBiz.selectAllPoint();
+				m.addAttribute("pointlist",pointlist);
+				
+				return "admin/showpoint";
+			}
+			
 			
 
 

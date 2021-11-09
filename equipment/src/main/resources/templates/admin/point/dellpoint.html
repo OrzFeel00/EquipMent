@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="..//layui/css/layui.css">
+	
+
+
+	
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+<!--设备表单-->
+		<div style="width:100%;margin-top: 0px;">
+			<form  style="margin-left:10%;" class="layui-form " action="dellpoint.do" method="post">
+					<!--点位名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">点位名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+						<span class="e" th:if="${errors}!=null" th:text="${errors.get('pointName')}"></span>
+					 <input type="text" name="pointId" id="pointId" class="layui-input" placeholder="点位id"  
+					 th:value="${dellId}"	required lay-verify="required"/>
+					 	
+					</div>				
+				</div>
+			
+									
+				 <!--按钮-->
+				  <div class="layui-form-item" style="width:100%;margin-top: 100px;">
+				    <div class="layui-input-inline">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">确认删除</button>
+				    </div>
+				  </div>
+				   
+			</form>   
+		</div>
+			<!--end设备表单-->
+
+
+
+
+
+
+
+
+
+<footer>
+
+	<p>
+		<span style="text-align:center; margin-left: 20%">Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	    <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		});
+		</script>
+
+
+
+</body>
+</html>

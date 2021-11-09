@@ -38,8 +38,8 @@ public class PointPosition implements Serializable{
 	//点位类型
 	@NotEmpty(message = "不能为空")
 	private String pointType;
-	//指向道路标识id
-	private Integer  roadId;
+	//指向道路name
+	private Integer  roadName;
 	
 	public PointPosition() {
 		super();
@@ -50,14 +50,14 @@ public class PointPosition implements Serializable{
 	public String toString() {
 		return "PointPosition [pointId=" + pointId + ", pointName=" + pointName + ", sectionCode=" + sectionCode
 				+ ", longitude=" + longitude + ", latitude=" + latitude + ", pointCode=" + pointCode + ", shape="
-				+ shape + ", LaneNumber=" + LaneNumber + ", pointType=" + pointType + ", roadId=" + roadId + "]";
+				+ shape + ", LaneNumber=" + LaneNumber + ", pointType=" + pointType + ", roadName=" + roadName + "]";
 	}
 
 	private PointPosition(Integer pointId, @NotEmpty(message = "不能为空") String pointName,
 			@NotEmpty(message = "不能为空") String sectionCode, @NotEmpty(message = "不能为空") String longitude,
 			@NotEmpty(message = "不能为空") String latitude, @NotEmpty(message = "不能为空") String pointCode,
 			@NotEmpty(message = "不能为空") String shape, @NotNull(message = "不能为空") Integer laneNumber,
-			@NotEmpty(message = "不能为空") String pointType, Integer roadId) {
+			@NotEmpty(message = "不能为空") String pointType, Integer roadName) {
 		super();
 		this.pointId = pointId;
 		this.pointName = pointName;
@@ -68,7 +68,7 @@ public class PointPosition implements Serializable{
 		this.shape = shape;
 		LaneNumber = laneNumber;
 		this.pointType = pointType;
-		this.roadId = roadId;
+		this.roadName = roadName;
 	}
 
 	public Integer getPointId() {
@@ -143,14 +143,15 @@ public class PointPosition implements Serializable{
 		this.pointType = pointType;
 	}
 
-	public Integer getRoadId() {
-		return roadId;
+	public Integer getRoadName() {
+		return roadName;
 	}
 
-	public void setRoadId(Integer roadId) {
-		this.roadId = roadId;
+	public void setRoadName(Integer roadName) {
+		this.roadName = roadName;
 	}
 
+	
 	
 
 	

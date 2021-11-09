@@ -226,6 +226,24 @@
 					  required lay-verify="required"/>
 					</div>				
 				</div>
+				
+				
+				<!--输入对应街道名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">道路名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	     <select name="roadName" id="roadName"  lay-search>
+				           <option value="" >可以先不指定道路</option>
+						   <option th:each="r: ${roads}" 
+						           th:value="${r}"
+						           th:text="${r}" >北京
+						   </option>
+		     	     </select>
+					</div>				
+				</div>
+				
+				
 									
 				 <!--按钮-->
 				  <div class="layui-form-item">
@@ -266,8 +284,16 @@
 	    <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 		
 		<script type="text/javascript">
-		layui.use('form', function(){
+		layui.use(['form','layer'], function(){
 		  var form = layui.form;
+		  var layer = layui.layer;
+		  
+		  form.on('submit(formDemo)', function(data){
+			  layer.load(2);
+			});
+		  
+		  
+		  
 		});
 		</script>
 
