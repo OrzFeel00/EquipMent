@@ -215,7 +215,7 @@
 						      <th lay-data="{field:'latitude', Width: 100}">点位纬度</th>
 						      <th lay-data="{field:'pointCode', Width: 100}">监测点编码</th>
 						      <th lay-data="{field:'shape', Width: 100}">路口形状</th>
-						      <th lay-data="{field:'LaneNumber', Width: 100}">车道数 </th>
+						      <th lay-data="{field:'LaneNumber', sort: true, Width: 100}">车道数 </th>
 						      <th lay-data="{field:'pointType', Width: 100}">点位类型</th>
 						       <th lay-data="{field:'roadName', Width: 100}">所属道路</th>
 						      <th lay-data="{fixed: 'right', width:110, align:'center', toolbar: '#barDemo'}"></th>
@@ -320,7 +320,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     	layer.open({
   		  type: 2, 
   		  title: ['删除', 'font-size:20px;'],
-  		  area: ['500px', '600px'],
+  		  area: ['500px', '400px'],
   		  content: 'todellpoint', //这里content是一url
   		  success:function(layero, index){
 			  var body = layer.getChildFrame('body', index);
@@ -336,8 +336,9 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     	
     	layer.open({
     		  type: 2, 
+    		  scrollbar:false,
     		  title: ['点位修改', 'font-size:20px;'],
-    		  area: ['800px', '800px'],   	
+    		  area: ['600px', '800px'],   	
     		  content: 'toshowedt',//这里content是一url
     		  success:function(layero, index){
     			  var body = layer.getChildFrame('body', index);
@@ -370,7 +371,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 			  layer.open({
 	    		  type: 2, 
 	    		  title: ['点位新增', 'font-size:20px;'],
-	    		  area: ['500px', '700px'],
+	    		  area: ['600px', '800px'],
 	    		  content: 'toaddpoint' //这里content是一个普通url
 	    		});
 			  

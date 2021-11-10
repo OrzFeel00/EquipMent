@@ -72,5 +72,12 @@ public class PointPositionBiz {
 					return pop1;
 				}
 				
+				public void updatePointById(PointPosition pop)throws BizException {
+					if(pmpper.countByPname(pop.getPointName())>0) {
+						throw new BizException("点位名称已存在");
+					}
+					pmpper.updatePointById(pop);
+				}
+				
 
 }

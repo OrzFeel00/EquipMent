@@ -177,7 +177,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="longitude" id="longitude" class="layui-input" placeholder="点位经度" 
-					  th:value="${pop}!=null ? ${pop.longitude} : ''"    required lay-verify="required|number"/>
+					  th:value="${pop}!=null ? ${pop.longitude} : ''"    required lay-verify="required|number|longitude"/>
 					</div>				
 				</div>
 				<!--点位纬度-->
@@ -186,7 +186,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="latitude" id="latitude" class="layui-input" placeholder="点位纬度" 
-					  th:value="${pop}!=null ? ${pop.latitude} : ''"     required lay-verify="required|number"/>
+					  th:value="${pop}!=null ? ${pop.latitude} : ''"     required lay-verify="required|number|latitude"/>
 					</div>				
 				</div>
 				<!--监测点编码-->
@@ -289,6 +289,18 @@
 		layui.use(['form','layer'], function(){
 		  var form = layui.form;
 		  var layer = layui.layer;
+		  
+		  form.verify({		    
+			  longitude: [
+			    	/^[\-\+]?(0(\.\d{1,8})?|([1-9](\d)?)(\.\d{1,8})?|1[0-7]\d{1}(\.\d{1,8})?|180(([.][0]{1,8})?))$/
+			        ,'经度格式错误，最长到小数点后8位'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
 		  
 		  form.on('submit(formDemo)', function(data){
 			  layer.load(2);
