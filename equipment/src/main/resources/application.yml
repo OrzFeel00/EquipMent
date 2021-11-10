@@ -1,7 +1,7 @@
 #yml  文件不能使用制表空格tab    
 #设置值只能使用 :(空格)值
 server:
- port: 8080
+ port: 8098
  
  
 spring:

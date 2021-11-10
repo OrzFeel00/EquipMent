@@ -192,7 +192,7 @@
 				  点位类型：<input name="pointType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入类型"/>	</div>
 				  
 				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
-				 道路类型：<input name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入道路"/>	</div>
+				 道路：<input name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入道路"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
@@ -215,7 +215,7 @@
 						      <th lay-data="{field:'latitude', Width: 100}">点位纬度</th>
 						      <th lay-data="{field:'pointCode', Width: 100}">监测点编码</th>
 						      <th lay-data="{field:'shape', Width: 100}">路口形状</th>
-						      <th lay-data="{field:'LaneNumber', Width: 100}">车道数 </th>
+						      <th lay-data="{field:'LaneNumber', sort: true, Width: 100}">车道数 </th>
 						      <th lay-data="{field:'pointType', Width: 100}">点位类型</th>
 						       <th lay-data="{field:'roadName', Width: 100}">所属道路</th>
 						      <th lay-data="{fixed: 'right', width:110, align:'center', toolbar: '#barDemo'}"></th>
@@ -233,8 +233,7 @@
 						      <td th:text="${p.shape}">贤心6</td>
 						      <td th:text="${p.LaneNumber}">贤心7</td>
 						      <td th:text="${p.pointType}">贤心8</td>	
-						       <td th:text="${p.roadName}">贤心8</td>	     
-						       		      
+						       <td th:text="${p.roadName}">贤心8</td>	     		      
 						    </tr>		    
 					   
 						  </tbody>
@@ -321,8 +320,15 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     	layer.open({
   		  type: 2, 
   		  title: ['删除', 'font-size:20px;'],
-  		  area: ['500px', '600px'],
-  		  content: 'todellpoint/'+data.pointId //这里content是一个普通的String
+  		  area: ['500px', '400px'],
+  		  content: 'todellpoint', //这里content是一url
+  		  success:function(layero, index){
+			  var body = layer.getChildFrame('body', index);
+			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+			    console.log(body.html()) //得到iframe页的body内容
+			    body.find('#pointId').val(data.pointId)
+			    body.find('#pointName').val(data.pointName)		 
+			  }
   		});
     	
     } else if(obj.event === 'edit'){
@@ -330,9 +336,25 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     	
     	layer.open({
     		  type: 2, 
+    		  scrollbar:false,
     		  title: ['点位修改', 'font-size:20px;'],
-    		  area: ['800px', '800px'],
-    		  content: 'to1showedt'//这里content是一个普通的String
+    		  area: ['600px', '800px'],   	
+    		  content: 'toshowedt',//这里content是一url
+    		  success:function(layero, index){
+    			  var body = layer.getChildFrame('body', index);
+    			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+    			    console.log(body.html()) //得到iframe页的body内容
+    			    body.find('#pointId').val(data.pointId)
+    			    body.find('#pointName').val(data.pointName)
+    			    body.find('#sectionCode').val(data.sectionCode)
+    			    body.find('#longitude').val(data.longitude)
+    			    body.find('#latitude').val(data.latitude)
+    			    body.find('#pointCode').val(data.pointCode)
+    			    body.find('#shape').val(data.shape)
+    			    body.find('#LaneNumber').val(data.LaneNumber)
+    			    body.find('#pointType').val(data.pointType)
+    			    body.find('#roadName').val(data.roadName)
+    			  }
     		});
     }
   });
@@ -349,7 +371,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 			  layer.open({
 	    		  type: 2, 
 	    		  title: ['点位新增', 'font-size:20px;'],
-	    		  area: ['500px', '700px'],
+	    		  area: ['600px', '800px'],
 	    		  content: 'toaddpoint' //这里content是一个普通url
 	    		});
 			  

@@ -83,11 +83,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				
-				
+			
 				<!-- 打包处理 -->
 				<configuration>
-				<mainclass>com.yc.tc.tingche.TingcheApplication</mainclass>
+				<mainclass>com.yc.tc.equipment.TCApplication</mainclass>
 				 </configuration>
 				 <!-- 打包处理 -->
 			</plugin>

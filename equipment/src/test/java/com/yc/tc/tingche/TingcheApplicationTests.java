@@ -6,7 +6,6 @@ import javax.validation.Validator;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.yc.tc.equipment.bean.Ip;
 
 
 
@@ -15,17 +14,7 @@ import com.yc.tc.equipment.bean.Ip;
 @SpringBootTest
 class TingcheApplicationTests {
 	
-	@Resource
-    private Validator validator;
 	
-	@Test
-	void contextLoads() {
-		
-		Ip  ip= new Ip();
-		
-		ip.setIp("1.2.33.123");
-		System.out.println(ip+"*****");
-	}
 	
 	
 	
