@@ -35,7 +35,7 @@ public interface PointPositionMapper {
 	   public int  countByPname (String pname );
 		
 	    //根据id删除点位
-		@Delete("delete from point_position where point_id=#{pointId}")
+		@Delete("delete from point_position where point_name=#{pointName}")
 		public void delectPointById(PointPosition pop);
 		//根据id查询点位
 		@Select("select * from point_position where point_id=#{pointId}")
@@ -108,6 +108,10 @@ public interface PointPositionMapper {
 	    //根据pointName 返回id
 	    @Select("select point_id from point_position  where  point_name=#{pointName}")
 		public int selectpoidByPname(String pointName);
+	    
+	    //根据id 返回pointName
+	    @Select("select  point_name from point_position  where  point_id=#{id}")
+		public String selectnameByid(int id);
 	    
 	    // 查找所有的点位名称信息
 	    @Select("select point_name from point_position  order by point_id asc")

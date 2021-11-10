@@ -56,6 +56,13 @@
 				</exclusion>
 			</exclusions>
      </dependency>
+     
+     
+     
+     
+     
+     
+     
      <!-- 分页查询插件启动器 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>

@@ -233,7 +233,8 @@
 						      <td th:text="${p.shape}">贤心6</td>
 						      <td th:text="${p.LaneNumber}">贤心7</td>
 						      <td th:text="${p.pointType}">贤心8</td>	
-						       <td th:text="${p.roadName}">贤心8</td>	     		      
+						       <td th:text="${p.roadName}">贤心8</td>	     
+						       		      
 						    </tr>		    
 					   
 						  </tbody>
@@ -321,14 +322,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
   		  type: 2, 
   		  title: ['删除', 'font-size:20px;'],
   		  area: ['500px', '600px'],
-  		  content: 'todellpoint', //这里content是一url
-  		  success:function(layero, index){
-			  var body = layer.getChildFrame('body', index);
-			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
-			    console.log(body.html()) //得到iframe页的body内容
-			    body.find('#pointId').val(data.pointId)
-			    body.find('#pointName').val(data.pointName)		 
-			  }
+  		  content: 'todellpoint/'+data.pointId //这里content是一个普通的String
   		});
     	
     } else if(obj.event === 'edit'){
@@ -337,23 +331,8 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     	layer.open({
     		  type: 2, 
     		  title: ['点位修改', 'font-size:20px;'],
-    		  area: ['800px', '800px'],   	
-    		  content: 'toshowedt',//这里content是一url
-    		  success:function(layero, index){
-    			  var body = layer.getChildFrame('body', index);
-    			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
-    			    console.log(body.html()) //得到iframe页的body内容
-    			    body.find('#pointId').val(data.pointId)
-    			    body.find('#pointName').val(data.pointName)
-    			    body.find('#sectionCode').val(data.sectionCode)
-    			    body.find('#longitude').val(data.longitude)
-    			    body.find('#latitude').val(data.latitude)
-    			    body.find('#pointCode').val(data.pointCode)
-    			    body.find('#shape').val(data.shape)
-    			    body.find('#LaneNumber').val(data.LaneNumber)
-    			    body.find('#pointType').val(data.pointType)
-    			    body.find('#roadName').val(data.roadName)
-    			  }
+    		  area: ['800px', '800px'],
+    		  content: 'to1showedt'//这里content是一个普通的String
     		});
     }
   });

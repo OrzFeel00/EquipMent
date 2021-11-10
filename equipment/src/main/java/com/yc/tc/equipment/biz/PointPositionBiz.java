@@ -50,6 +50,12 @@ public class PointPositionBiz {
 					return plist;
 				}
 				
+				//根据id擦寻名称
+				public String selectpointnameByid(int pid) {
+					 
+					return  pmpper.selectnameByid(pid);
+				}
+				
 				//删除点位
 				public void dellpoint(PointPosition pop) {
 					pmpper.delectPointById(pop);

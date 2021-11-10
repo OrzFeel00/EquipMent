@@ -8,7 +8,7 @@
 	
 	<!-- start: CSS -->
 	<!--layui 核心css文件-->
-    <link rel="stylesheet" href="..//layui/css/layui.css">
+    <link rel="stylesheet" href="../layui/css/layui.css">
 	
 
 
@@ -31,16 +31,27 @@
 
 
 <!--设备表单-->
-		<div style="width:100%;margin-top: 90px;">
-			<form  style="margin-left: 40%;" class="layui-form " action="Point.do" method="post">
+		<div style="width:100%;margin-top: 20px;">
+			<form  style="margin-left: 20%;" class="layui-form " action="edtpoint.do" method="post">
+			<!--点位id-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">点位id</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+						
+					 <input type="text" name="pointId" id="pointId" class="layui-input" placeholder="点位id"  
+					     required lay-verify="required"/>
+					 	
+					</div>				
+				</div>
 					<!--点位名称-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">点位名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-						<span class="e" th:if="${errors}!=null" th:text="${errors.get('pointName')}"></span>
+						
 					 <input type="text" name="pointName" id="pointName" class="layui-input" placeholder="点位名称"  
-					 required lay-verify="required"/>
+					     required lay-verify="required"/>
 					 	
 					</div>				
 				</div>
@@ -50,7 +61,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="sectionCode" id="sectionCode" class="layui-input" placeholder="断面编号" 
-					  th:value="${user}!=null ? ${user.name} : ''"  required lay-verify="required"/>
+					  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--点位经度-->
@@ -59,7 +70,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="longitude" id="longitude" class="layui-input" placeholder="点位经度" 
-					  required lay-verify="required|number"/>
+					    required lay-verify="required|number"/>
 					</div>				
 				</div>
 				<!--点位纬度-->
@@ -68,7 +79,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="latitude" id="latitude" class="layui-input" placeholder="点位纬度" 
-					  required lay-verify="required|number"/>
+					      required lay-verify="required|number"/>
 					</div>				
 				</div>
 				<!--监测点编码-->
@@ -87,7 +98,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="shape" id="shape" class="layui-input" placeholder="路口形状" 
-					  required lay-verify="required"/>
+					    required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--车道数-->
@@ -96,7 +107,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="LaneNumber" id="LaneNumber" class="layui-input" placeholder="车道数" 
-					  required lay-verify="required|number"/>
+					    required lay-verify="required|number"/>
 					</div>				
 				</div>
 				<!--点位类型-->
@@ -105,7 +116,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="pointType" id="pointType" class="layui-input" placeholder="点位类型" 
-					  required lay-verify="required"/>
+					      required lay-verify="required"/>
 					</div>				
 				</div>
 				
@@ -115,9 +126,13 @@
 					<label class="layui-form-label">道路名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-		    	     <select name="roadName" id="roadName"  lay-search>
+		    	     <select name="roadName" id="roadName" lay-verify="required"  lay-search>
 				           <option value="" >可以先不指定道路</option>
-						   <option th:each="r: ${roads}" 
+				           <option value="0" >无道路</option>
+				           <option th:value="${edtpoint}!=null ? ${edtpoint.roadName} : ''" 
+				                   th:text="${edtpoint}!=null ? ${edtpoint.roadName} : ''"  
+				                   selected> 1</option>
+						   <option th:each="r: ${edtroads}" 
 						           th:value="${r}"
 						           th:text="${r}" >北京
 						   </option>
