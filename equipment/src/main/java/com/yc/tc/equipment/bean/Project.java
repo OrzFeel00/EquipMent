@@ -23,8 +23,8 @@ public class Project implements Serializable{
 	@NotEmpty (message = "不能为空")
 	private String projectName;
 	//采购日期
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")//出
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")//入
 	private Date purchaseDate;
 	//安装日期          !!!!
 	//@NotNull (message = "不能为空")
@@ -56,15 +56,43 @@ public class Project implements Serializable{
 	@NotEmpty (message = "不能为空")
 	private String constructionProject;
 	//指向点位标识id 
-	private Integer pointId;
+	private String pointName;
 	// 指向设备标识id 
-	private Integer equipmentId;
+	private String equipmentName;
 	
 	
 	public Project() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	
+
+	private Project(Integer id, @NotEmpty(message = "不能为空") String projectName, Date purchaseDate, Date installDate,
+			@NotEmpty(message = "不能为空") String contractor, @NotEmpty(message = "不能为空") String constructionPeriod,
+			@NotEmpty(message = "不能为空") String buildUnit, @NotEmpty(message = "不能为空") String constructionType,
+			@NotEmpty(message = "不能为空") String contractNumber, @NotEmpty(message = "不能为空") String constructionStatus,
+			@NotEmpty(message = "不能为空") String constructionUnit, @NotEmpty(message = "不能为空") String constructionProject,
+			String pointName, String equipmentName) {
+		super();
+		this.id = id;
+		this.projectName = projectName;
+		this.purchaseDate = purchaseDate;
+		this.installDate = installDate;
+		this.contractor = contractor;
+		this.constructionPeriod = constructionPeriod;
+		this.buildUnit = buildUnit;
+		this.constructionType = constructionType;
+		this.contractNumber = contractNumber;
+		this.constructionStatus = constructionStatus;
+		this.constructionUnit = constructionUnit;
+		this.constructionProject = constructionProject;
+		this.pointName = pointName;
+		this.equipmentName = equipmentName;
+	}
+
+
 
 
 	@Override
@@ -74,8 +102,10 @@ public class Project implements Serializable{
 				+ constructionPeriod + ", buildUnit=" + buildUnit + ", constructionType=" + constructionType
 				+ ", contractNumber=" + contractNumber + ", constructionStatus=" + constructionStatus
 				+ ", constructionUnit=" + constructionUnit + ", constructionProject=" + constructionProject
-				+ ", pointId=" + pointId + ", equipmentId=" + equipmentId + "]";
+				+ ", pointName=" + pointName + ", equipmentName=" + equipmentName + "]";
 	}
+
+
 
 
 	public Integer getId() {
@@ -198,48 +228,27 @@ public class Project implements Serializable{
 	}
 
 
-	public Integer getPointId() {
-		return pointId;
+	public String getPointName() {
+		return pointName;
 	}
 
 
-	public void setPointId(Integer pointId) {
-		this.pointId = pointId;
+	public void setPointName(String pointName) {
+		this.pointName = pointName;
 	}
 
 
-	public Integer getEquipmentId() {
-		return equipmentId;
+	public String getEquipmentName() {
+		return equipmentName;
 	}
 
 
-	public void setEquipmentId(Integer equipmentId) {
-		this.equipmentId = equipmentId;
+	public void setEquipmentName(String equipmentName) {
+		this.equipmentName = equipmentName;
 	}
 
 
-	private Project(Integer id, @NotEmpty(message = "不能为空") String projectName, Date purchaseDate, Date installDate,
-			@NotEmpty(message = "不能为空") String contractor, @NotEmpty(message = "不能为空") String constructionPeriod,
-			@NotEmpty(message = "不能为空") String buildUnit, @NotEmpty(message = "不能为空") String constructionType,
-			@NotEmpty(message = "不能为空") String contractNumber, @NotEmpty(message = "不能为空") String constructionStatus,
-			@NotEmpty(message = "不能为空") String constructionUnit, @NotEmpty(message = "不能为空") String constructionProject,
-			Integer pointId, Integer equipmentId) {
-		super();
-		this.id = id;
-		this.projectName = projectName;
-		this.purchaseDate = purchaseDate;
-		this.installDate = installDate;
-		this.contractor = contractor;
-		this.constructionPeriod = constructionPeriod;
-		this.buildUnit = buildUnit;
-		this.constructionType = constructionType;
-		this.contractNumber = contractNumber;
-		this.constructionStatus = constructionStatus;
-		this.constructionUnit = constructionUnit;
-		this.constructionProject = constructionProject;
-		this.pointId = pointId;
-		this.equipmentId = equipmentId;
-	}
+	
 
 
 	

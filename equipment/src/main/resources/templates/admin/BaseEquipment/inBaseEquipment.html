@@ -16,7 +16,7 @@
 
 	<!-- start: CSS -->
 	<!--layui 核心css文件-->
-    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="../layui/css/layui.css">
 	
 	<link id="bootstrap-style" href="admin/css/bootstrap.min.css" rel="stylesheet">
 	<link href="admin/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -50,7 +50,12 @@
 }
 </style>
 
+<style type="text/css">
 
+.layui-form-label {
+    width: 100px;
+}
+</style>
   
 
 <!-- 被我修改10.28
@@ -65,74 +70,97 @@
 </head>
 
 <body>
-<!-- start: Header -->
-<div class="navbar">
-	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<a class="brand" href="index.html"><span>雷停停车</span></a>
-
-			<!-- start: Header Menu -->
-			<div class="nav-no-collapse header-nav">
-				<ul class="nav pull-right">
-					<!-- start: User Dropdown -->
-					<li class="dropdown">
-						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-							<i class="halflings-icon white user"></i>
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown-menu-title">
-								<span>用户名</span>
-							</li>
-							<li><a href="adperson.html"><i class="halflings-icon user"></i> 个人中心</a></li>
-							<li><a href="touIndex.html"><i class="halflings-icon off"></i> 退出</a></li>
-						</ul>
-					</li>
-					<!-- end: User Dropdown -->
-				</ul>
+	<!-- start: Header -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="Index"><span>设备管理系统</span></a>
+								
+				<!-- start: Header Menu -->
+				<div class="nav-no-collapse header-nav">
+					<ul class="nav pull-right">
+						<!-- start: User Dropdown -->
+						<li class="dropdown">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="halflings-icon white user"></i> 
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-menu-title">
+ 									<span>基本管理</span>
+								</li>
+								
+								<li><a href="toadlogin"><i class="halflings-icon off"></i> 退出本系统</a></li>
+							</ul>
+						</li>
+						<!-- end: User Dropdown -->
+					</ul>
+				</div>
+				<!-- end: Header Menu -->
+				
 			</div>
-			<!-- end: Header Menu -->
-
 		</div>
 	</div>
-</div>
-<!-- start: Header -->
-
-<div class="container-fluid-full">
-	<div class="row-fluid">
-
-		<!-- start: Main Menu -->
-		<div id="sidebar-left" class="span2">
-			<div class="nav-collapse sidebar-nav">
-				<ul class="nav nav-tabs nav-stacked main-menu">
-					<li><a href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> 首页</span></a></li>
-					<li>
-						<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 车辆出入库管理</span> <span class="label label-important"> 2 </span></a>
-						<ul>
-							<li><a class="submenu" href="inpart.html"><i class="icon-signin"></i><span class="hidden-tablet"> 车辆入库</span></a></li>
-							<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 车辆出库</span></a></li>
-						</ul>
-					</li>
-					<li><a href="part.html"><i class="icon-road"></i><span class="hidden-tablet"> 车位管理</span></a></li>
-					<li><a href="user.html"><i class="icon-user"></i><span class="hidden-tablet"> 用户管理</span></a></li>
-					<li><a href="order.html"><i class="icon-edit"></i><span class="hidden-tablet"> 订单管理</span></a></li>
-					<li><a href="toadlogin"><i class="icon-lock"></i><span class="hidden-tablet"> 重新登录</span></a></li>
-				</ul>
+	<!-- start: Header -->
+	
+		<div class="container-fluid-full">
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				<div class="nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li><a href="Index"><i class="icon-home"></i><span class="hidden-tablet"> 首页</span></a></li>
+					
+						
+						
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet">基本信息录入管理</span> <span class="label label-important"> 3 </span></a>
+							<ul>
+								<li><a class="submenu" href="toPoint"><i class="icon-signout"></i><span class="hidden-tablet"> 点位录入</span></a></li>
+								<li><a class="submenu" href="toroad"><i class="icon-signout"></i><span class="hidden-tablet"> 街道录入</span></a></li>
+								<li><a class="submenu" href="toEquipment"><i class="icon-signout"></i><span class="hidden-tablet"> 设备录入</span></a></li>
+							</ul>
+						</li>
+						
+							<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 基本信息修改管理</span> <span class="label label-important"> 3 </span></a>
+							<ul>
+								<li><a class="submenu" href="toshowpoint"><i class="icon-signout"></i><span class="hidden-tablet"> 点位修改</span></a></li>
+								<li><a class="submenu" href="toshowroad"><i class="icon-signout"></i><span class="hidden-tablet"> 街道修改</span></a></li>
+								<li><a class="submenu" href="toshowept"><i class="icon-signout"></i><span class="hidden-tablet"> 设备修改</span></a></li>
+							</ul>
+						</li>
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 项目管理</span> <span class="label label-important"> 2 </span></a>
+							<ul>
+								<li><a class="submenu" href="toproject"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息录入</span></a></li>
+								<li><a class="submenu" href="toshowproject"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息修改</span></a></li>
+							</ul>
+						</li>
+					
+							
+							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 安装信息管理</span></a></li>
+						<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 执法信息管理</span></a></li>
+							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 运维信息管理</span></a></li>
+						
+					</ul>
+				</div>
 			</div>
-		</div>
-		<!-- end: Main Menu -->
-
-		<noscript>
-			<div class="alert alert-block span10">
-				<h4 class="alert-heading">Warning!</h4>
-				<p>You need to have <a href="" target="_blank">JavaScript</a> enabled to use this site.</p>
-			</div>
-		</noscript>
+			<!-- end: Main Menu -->
+			
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>You need to have <a href="" target="_blank">JavaScript</a> enabled to use this site.</p>
+				</div>
+			</noscript>
+			<!-- end: Main Menu -->
 
 		<!-- start: Content  中心页显示 -->
 		<div id="content" class="span10">
@@ -148,15 +176,15 @@
 			</ul>
 			
 		  <!--设备基础信息表单-->
-		  <div style="text-align: center;margin-top: 90px;">
-			 <form class="layui-form " action="BaseEquipment.do" method="post" >				 		 
+		  <div style="text-align: center;margin-top: 30px">
+			 <form style="margin-left: 40%"  class="layui-form " action="BaseEquipment.do" method="post" >				 		 
 				<!--出厂序列号-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">出厂序列号</label>
 					<div  class="layui-input-inline">
-						<!--原始表单区域-->
+						<!--原始表单区域--><span class="e" th:if="${errors}!=null" th:text="${errors.get('sn')}"></span>
 					 <input type="text" name="sn" di="sn" class="layui-input" placeholder="出厂序列号"  
-					 required lay-verify="required"/>
+				  th:value="${bet}!=null ? ${bet.sn} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--型号-->
@@ -165,8 +193,8 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="modelNumber" id="modelNumber" class="layui-input" placeholder="型号"  
-					 required lay-verify="required"/>
-					 	<span class="e" th:if="${errors}!=null" th:text="${errors.get('sn')}"></span>
+					th:value="${bet}!=null ? ${bet.modelNumber} : ''"   required lay-verify="required"/>
+					 	
 					</div>				
 				</div>
 				<!--硬盘数量-->
@@ -174,7 +202,8 @@
 					<label class="layui-form-label">硬盘数量</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="diskNumber" id="diskNumber" class="layui-input" placeholder="硬盘数量" required lay-verify="required|number"/>
+					 <input type="text" name="diskNumber" id="diskNumber" class="layui-input" placeholder="硬盘数量"
+					 th:value="${bet}!=null ? ${bet.diskNumber} : ''"   required lay-verify="required|number"/>
 					</div>				
 				</div>
 				<!--图像帧率-->
@@ -183,7 +212,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="frameRate" id="frameRate" class="layui-input" placeholder="图像帧率" 
-					  required lay-verify="required"/>
+					  th:value="${bet}!=null ? ${bet.frameRate} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--设备品牌-->
@@ -192,7 +221,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="brand" id="brand" class="layui-input" placeholder="设备品牌" 
-					  required lay-verify="required"/>
+					 th:value="${bet}!=null ? ${bet.brand} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--图像分辨率-->
@@ -201,7 +230,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="resolvingPower" id="resolvingPower" class="layui-input" placeholder="图像分辨率" 
-					  required lay-verify="required"/>
+					 th:value="${bet}!=null ? ${bet.resolvingPower} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--设备功能类型-->
@@ -210,7 +239,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="functionType" id="functionType" class="layui-input" placeholder="设备功能类型" 
-					  required lay-verify="required"/>
+				 th:value="${bet}!=null ? ${bet.functionType} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--版本号-->
@@ -219,7 +248,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="versionNumber" id="versionNumber" class="layui-input" placeholder="版本号" 
-					  required lay-verify="required"/>
+					   th:value="${bet}!=null ? ${bet.versionNumber} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--主机通道数  -->
@@ -228,30 +257,32 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="hostchannelsNumber" id="hostchannelsNumber" class="layui-input" placeholder="主机通道数" 
-					  required lay-verify="required"/>
+					  th:value="${bet}!=null ? ${bet.hostchannelsNumber} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--设备高度-->
 				<div class="layui-form-item">
-					<label class="layui-form-label">设备高度</label>
+					<label class="layui-form-label">设备高度(cm)</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="height" id="height" class="layui-input" placeholder="设备高度"  required lay-verify="required"/>
+					 <input type="text" name="height" id="height" class="layui-input" placeholder="设备高度"
+					  th:value="${bet}!=null ? ${bet.height} : ''"    required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--设备长度-->
 				<div class="layui-form-item">
-					<label class="layui-form-label">设备长度</label>
+					<label class="layui-form-label">设备长度(cm)</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="length" id="length" class="layui-input" placeholder="设备长度"  required lay-verify="required"/>
+					 <input type="text" name="length" id="length" class="layui-input" placeholder="设备长度" 
+					 th:value="${bet}!=null ? ${bet.length} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>
 				 <!--按钮-->
 				 <div class="layui-form-item">
-					 <div class="layui-input-block">
-						 <button type="button" class="layui-btn layui-btn-primary pre">上一步</button>
-						 <button class="layui-btn" type="submit" lay-submit lay-filter="formStep2">
+					 <div class="layui-input-inline">
+						 <button type="reset" class="layui-btn layui-btn-primary pre">重置</button>
+						 <button class="layui-btn" type="submit"  lay-submit lay-filter="formStep2"  >
 							 &emsp;下一项&emsp;
 						 </button>
 					 </div>
@@ -285,7 +316,7 @@
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
-	    <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 			  
 		<script type="text/javascript">
 		layui.use('form', function(){

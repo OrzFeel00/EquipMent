@@ -16,7 +16,7 @@
 
 	<!-- start: CSS -->
 	<!--layui 核心css文件-->
-    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="../layui/css/layui.css">
 	
 	<link id="bootstrap-style" href="admin/css/bootstrap.min.css" rel="stylesheet">
 	<link href="admin/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -66,74 +66,97 @@
 </head>
 
 <body>
-<!-- start: Header -->
-<div class="navbar">
-	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<a class="brand" href="index.html"><span>雷停停车</span></a>
-
-			<!-- start: Header Menu -->
-			<div class="nav-no-collapse header-nav">
-				<ul class="nav pull-right">
-					<!-- start: User Dropdown -->
-					<li class="dropdown">
-						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-							<i class="halflings-icon white user"></i>
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li class="dropdown-menu-title">
-								<span>用户名</span>
-							</li>
-							<li><a href="adperson.html"><i class="halflings-icon user"></i> 个人中心</a></li>
-							<li><a href="touIndex.html"><i class="halflings-icon off"></i> 退出</a></li>
-						</ul>
-					</li>
-					<!-- end: User Dropdown -->
-				</ul>
+	<!-- start: Header -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="Index"><span>设备管理系统</span></a>
+								
+				<!-- start: Header Menu -->
+				<div class="nav-no-collapse header-nav">
+					<ul class="nav pull-right">
+						<!-- start: User Dropdown -->
+						<li class="dropdown">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="halflings-icon white user"></i> 
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-menu-title">
+ 									<span>基本管理</span>
+								</li>
+								
+								<li><a href="toadlogin"><i class="halflings-icon off"></i> 退出本系统</a></li>
+							</ul>
+						</li>
+						<!-- end: User Dropdown -->
+					</ul>
+				</div>
+				<!-- end: Header Menu -->
+				
 			</div>
-			<!-- end: Header Menu -->
-
 		</div>
 	</div>
-</div>
-<!-- start: Header -->
-
-<div class="container-fluid-full">
-	<div class="row-fluid">
-
-		<!-- start: Main Menu -->
-		<div id="sidebar-left" class="span2">
-			<div class="nav-collapse sidebar-nav">
-				<ul class="nav nav-tabs nav-stacked main-menu">
-					<li><a href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> 首页</span></a></li>
-					<li>
-						<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 车辆出入库管理</span> <span class="label label-important"> 2 </span></a>
-						<ul>
-							<li><a class="submenu" href="inpart.html"><i class="icon-signin"></i><span class="hidden-tablet"> 车辆入库</span></a></li>
-							<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 车辆出库</span></a></li>
-						</ul>
-					</li>
-					<li><a href="part.html"><i class="icon-road"></i><span class="hidden-tablet"> 车位管理</span></a></li>
-					<li><a href="user.html"><i class="icon-user"></i><span class="hidden-tablet"> 用户管理</span></a></li>
-					<li><a href="order.html"><i class="icon-edit"></i><span class="hidden-tablet"> 订单管理</span></a></li>
-					<li><a href="toadlogin"><i class="icon-lock"></i><span class="hidden-tablet"> 重新登录</span></a></li>
-				</ul>
+	<!-- start: Header -->
+	
+		<div class="container-fluid-full">
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				<div class="nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li><a href="Index"><i class="icon-home"></i><span class="hidden-tablet"> 首页</span></a></li>
+					
+						
+						
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet">基本信息录入管理</span> <span class="label label-important"> 3 </span></a>
+							<ul>
+								<li><a class="submenu" href="toPoint"><i class="icon-signout"></i><span class="hidden-tablet"> 点位录入</span></a></li>
+								<li><a class="submenu" href="toroad"><i class="icon-signout"></i><span class="hidden-tablet"> 街道录入</span></a></li>
+								<li><a class="submenu" href="toEquipment"><i class="icon-signout"></i><span class="hidden-tablet"> 设备录入</span></a></li>
+							</ul>
+						</li>
+						
+							<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 基本信息修改管理</span> <span class="label label-important"> 3 </span></a>
+							<ul>
+								<li><a class="submenu" href="toshowpoint"><i class="icon-signout"></i><span class="hidden-tablet"> 点位修改</span></a></li>
+								<li><a class="submenu" href="toshowroad"><i class="icon-signout"></i><span class="hidden-tablet"> 街道修改</span></a></li>
+								<li><a class="submenu" href="toshowept"><i class="icon-signout"></i><span class="hidden-tablet"> 设备修改</span></a></li>
+							</ul>
+						</li>
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 项目管理</span> <span class="label label-important"> 2 </span></a>
+							<ul>
+								<li><a class="submenu" href="toproject"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息录入</span></a></li>
+								<li><a class="submenu" href="toshowproject"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息修改</span></a></li>
+							</ul>
+						</li>
+					
+							
+							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 安装信息管理</span></a></li>
+						<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 执法信息管理</span></a></li>
+							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 运维信息管理</span></a></li>
+						
+					</ul>
+				</div>
 			</div>
-		</div>
-		<!-- end: Main Menu -->
-
-		<noscript>
-			<div class="alert alert-block span10">
-				<h4 class="alert-heading">Warning!</h4>
-				<p>You need to have <a href="" target="_blank">JavaScript</a> enabled to use this site.</p>
-			</div>
-		</noscript>
+			<!-- end: Main Menu -->
+			
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>You need to have <a href="" target="_blank">JavaScript</a> enabled to use this site.</p>
+				</div>
+			</noscript>
+			<!-- end: Main Menu -->
 
 		<!-- start: Content  中心页显示 -->
 		<div id="content" class="span10">
@@ -149,15 +172,16 @@
 			</ul>
 			
 			<!--设备表单-->
-		<div style="width:100%;margin-top: 90px;">
+		<div style="width:100%;margin-top: 20px;">
 			<form  style="margin-left: 40%;" class="layui-form " action="Project.do" method="post">
 					<!-- 项目名称-->
 				<div class="layui-form-item">
 					<label class="layui-form-label"> 项目名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
+							<span class="e" th:if="${errors}!=null" th:text="${errors.get('projectName')}"></span>
 					 <input type="text" name="projectName" id="projectName" class="layui-input" placeholder=" 项目名称"  
-					 required lay-verify="required"/>
+					  th:value="${prt}!=null ? ${prt.projectName} : ''"  required lay-verify="required"/>
 					 	
 					</div>				
 				</div>
@@ -166,17 +190,20 @@
 					<label class="layui-form-label">采购日期</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
+						<span class="e" th:if="${errors}!=null" th:text="请重新输入日期"></span>
 					 <input type="text" name="purchaseDate" id="purchaseDate" class="layui-input" placeholder="采购日期" 
-					    required lay-verify="required"/>
+					 th:value="${prt}!=null ? ${prt.purchaseDate} : ''"    required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--安装日期 -->
 				<div class="layui-form-item">
 					<label class="layui-form-label">安装日期 </label>
+					
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="date" name="installDate" id="installDate" class="layui-input" placeholder="安装日期 " 
-					  required lay-verify="required"/>
+						<span class="e" th:if="${errors}!=null" th:text="请重新输入日期"></span>
+					 <input type="text" name="installDate" id="installDate" class="layui-input" placeholder="安装日期 " 
+					 th:value="${prt}!=null ? ${prt.installDate} : ''"     required lay-verify="required"/>
 
 					</div>				
 				</div>
@@ -186,7 +213,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="contractor" id="contractor" class="layui-input" placeholder="承建单位" 
-					  required lay-verify="required"/>
+					th:value="${prt}!=null ? ${prt.contractor} : ''"     required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--承建期别-->
@@ -195,8 +222,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="constructionPeriod" id="constructionPeriod" class="layui-input" placeholder="承建期别" 
-					  required lay-verify="required"/>
-					
+					th:value="${prt}!=null ? ${prt.constructionPeriod} : ''"    required lay-verify="required"/>				
 					</div>				
 				</div>
 				<!--建设单位-->
@@ -205,7 +231,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="buildUnit" id="buildUnit" class="layui-input" placeholder="建设单位" 
-					  required lay-verify="required"/>
+					 	th:value="${prt}!=null ? ${prt.buildUnit} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--建设类型-->
@@ -214,7 +240,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="constructionType" id="constructionType" class="layui-input" placeholder="建设类型" 
-					  required lay-verify="required|number"/>
+					 th:value="${prt}!=null ? ${prt.constructionType} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--合同编号-->
@@ -223,7 +249,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="contractNumber" id="contractNumber" class="layui-input" placeholder="合同编号" 
-					  required lay-verify="required"/>
+					 th:value="${prt}!=null ? ${prt.contractNumber} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--建设状态-->
@@ -232,7 +258,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="constructionStatus" id="constructionStatus" class="layui-input" placeholder="建设状态" 
-					  required lay-verify="required|number"/>
+					 th:value="${prt}!=null ? ${prt.constructionStatus} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--施工单位-->
@@ -241,7 +267,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="constructionUnit" id="constructionUnit" class="layui-input" placeholder="施工单位" 
-					  required lay-verify="required|number"/>
+					 th:value="${prt}!=null ? ${prt.constructionUnit} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>
 					<!--建设项目-->
@@ -250,7 +276,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="constructionProject" id="constructionProject" class="layui-input" placeholder="建设项目" 
-					  required lay-verify="required"/>
+					 th:value="${prt}!=null ? ${prt.constructionProject} : ''"    required lay-verify="required"/>
 					</div>				
 				</div>
 									
@@ -290,7 +316,7 @@
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
-	    <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 		
 		<script type="text/javascript">
 		layui.use(['laydate','form'], function(){
@@ -300,7 +326,7 @@
 		  laydate.render({
 			    elem: '#installDate' ,//指定元素
 				format: 'yyyy-MM-dd',
-				value: '2021-08-18' ,
+				value:'2018-11-18',
 				type: 'date',
 				min: '2000-1-1',
 				max: '2117-12-1'
@@ -308,7 +334,7 @@
 		  laydate.render({
 			    elem: '#purchaseDate' ,//指定元素
 				format: 'yyyy-MM-dd',
-				value: '2021-08-18' ,
+				value:'2018-11-18',
 				type: 'date',
 				min: '2000-1-1',
 				max: '2117-12-1'

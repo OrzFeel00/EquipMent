@@ -42,14 +42,13 @@
   	<!-- start: Favicon --
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<!-- end: Favicon -->
-	
+   
    
    <style type="text/css">
 .e{
    color:red
 }
 </style>
-
 
 
   
@@ -171,34 +170,46 @@
 				<li><a href="#">订单管理</a></li>
 			</ul>
 			
-			<!--输入街道名称-->
-		<div style="width:100%;margin-top: 90px;">
-			<form  style="margin-left: 40%;" class="layui-form " action="rodtopoint.do" method="post">
-					<!--点位名称-->
-				<div class="layui-form-item">
-					<label class="layui-form-label">道路名称</label>
-					<div  class="layui-input-inline">
-						<!--原始表单区域-->
-		    	     <select name="roadName" id="roadName" lay-verify="required" lay-search>
-				           <option value="" >请选择道路</option>
-						   <option th:each="r: ${roads}" 
-						           th:value="${r}"
-						           th:text="${r}" >北京
-						   </option>
-		     	     </select>
-					</div>				
-				</div>
-				
-									
-				 <!--按钮-->
-				  <div class="layui-form-item">
-				    <div class="layui-input-inline">
-				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
-				    </div>
-				  </div>
-				   
-			</form>   
-		</div>
+			<!--  -->
+			
+		 <div>
+		      <div style="text-align: center;margin-top: 90px;">
+		          <i class="layui-icon layui-circle" 
+				   style="color: white;font-size:30px;font-weight:bold;background: #52C41A;padding: 20px;line-height: 80px;">&#xe605;</i>
+		          <div style="font-size: 24px;color: #333;font-weight: 500;margin-top: 30px;">
+		              该项目点位成功添加设备
+		          </div>
+		      </div>
+		      <div style="text-align: center;margin-top: 50px;">
+		      <form  action="toEquipmenttoProject" method="get">
+		      
+		      
+		      <button class="layui-btn next" type="submit" >继续为当前点位添加设备</button>
+		      
+		      </form>
+		          
+		      </div>
+		      
+		        <div style="text-align: center;margin-top: 50px;">
+		      <form  action="topointtoProject" method="get">
+		      
+		      
+		      <button class="layui-btn next" type="submit" >返回项目点位录入</button>
+		      
+		      </form>
+		          
+		      </div>
+		      
+		       <div style="text-align: center;margin-top: 50px;">
+		      <form  action="toProject" method="get">
+		      
+		      
+		      <button class="layui-btn next layui-bg-red" type="submit" >重新录入新项目</button>
+		      
+		      </form>
+		          
+		      </div>
+		  </div>
 			<!--end设备表单-->
 
            
@@ -225,21 +236,8 @@
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
-	    <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+			  <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 
-        <script type="text/javascript">
-		layui.use(['layer','form'], function(){
-		  var form = layui.form;
-		  var layer = layui.layer;
-		  
-		  form.on('submit(formDemo)', function(data){
-		 
-		     layer.msg('添加成功返回点位录入页面',{time: 10000});
-			
-			});
-		  
-		});
-		</script>
 
 <!-- JavaScript-->
         <script src="admin/js/jquery-1.9.1.min.js"></script>

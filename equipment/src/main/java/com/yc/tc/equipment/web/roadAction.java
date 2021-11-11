@@ -35,7 +35,7 @@ public class roadAction {
 	        //去道路录入页面
 			@GetMapping("toroad")
 			public String touindex() {
-				return "admin/inroad";
+				return "admin/road/inroad";
 			}
 			
 			//道路信息录入
@@ -44,7 +44,7 @@ public class roadAction {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("roa",roa);
-					return "admin/inroad";
+					return "admin/road/inroad";
 				}
 				
 				try {
@@ -60,10 +60,10 @@ public class roadAction {
 					errors.rejectValue("roadCode", "roadCode",e.getMessage()); 
 					m.addAttribute("errors",Utils.asMap(errors));
 					m.addAttribute("roa",roa);
-					return "admin/inroad";
+					return "admin/road/inroad";
 				}
 				//响应重定向  redirect:index  
-				return "admin/succeseinRoad";
+				return "admin/road/succeseinRoad";
 			}
 
 

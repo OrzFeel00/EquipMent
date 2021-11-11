@@ -35,7 +35,7 @@ public class AssociatedAction {
 	//去关联信息录入页面
 			@GetMapping("toAssociated")
 			public String touindex() {
-				return "admin/inAssociated";
+				return "admin/associated/inAssociated";
 			}
 			
 			//关联信息录入
@@ -44,7 +44,7 @@ public class AssociatedAction {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("asd",asd);
-					return "admin/inAssociated";
+					return "admin/associated/inAssociated";
 				}
 				
 				try {
@@ -60,10 +60,10 @@ public class AssociatedAction {
 					//errors.rejectValue("nonull", "null",e.getMessage()); 
 					m.addAttribute("errors",Utils.asMap(errors));
 					m.addAttribute("asd",asd);
-					return "admin/inAssociated";
+					return "admin/associated/inAssociated";
 				}
 				//响应重定向  redirect:index
-				return "admin/succeseinEpt";
+				return "admin/equipment/succeseinEpt";
 			}
 
 

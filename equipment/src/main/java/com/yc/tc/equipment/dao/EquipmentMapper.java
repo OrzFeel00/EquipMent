@@ -30,6 +30,10 @@ public interface EquipmentMapper {
 	   //根据equipmentName 验证是否重名
 	    @Select("select count(*) from equipment where equipment_name=#{ename}")
 	   public int  countByeName(String ename );
+	    
+	    //根据equipmentName 验证是否重名
+	    @Select("select count(*) from equipment where equipment_code=#{equipmentCode}")
+	   public int  countByecode(String equipmentCode );
 
 	  ///根据设备id放入BaseEquipmentid
 	    @Update("update equipment set base_equipment_id=#{beid} where equipment_id=#{equetid}")

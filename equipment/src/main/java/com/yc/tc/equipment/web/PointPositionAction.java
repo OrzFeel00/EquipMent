@@ -77,7 +77,7 @@ public class PointPositionAction {
 					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
 					//errors.rejectValue("nonull", "null",e.getMessage()); 
 					
-					System.out.println("32222222"+pop.toString());
+					
 					errors.rejectValue("pointName", "pointName",e.getMessage());
 				    m.addAttribute("roads", rBiz.selectAllRdNames());
 					m.addAttribute("errors",Utils.asMap(errors));

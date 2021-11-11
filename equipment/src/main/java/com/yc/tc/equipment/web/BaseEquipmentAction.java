@@ -34,7 +34,7 @@ public class BaseEquipmentAction {
 	//去存储信息录入页面
 			@GetMapping("toBaseEquipment")
 			public String touindex() {
-				return "admin/inBaseEquipment";
+				return "admin/BaseEquipment/inBaseEquipment";
 			}
 			
 			//存储信息录入
@@ -43,7 +43,7 @@ public class BaseEquipmentAction {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("bet",bet);
-					return "admin/inBaseEquipment";
+					return "admin/BaseEquipment/inBaseEquipment";
 				}
 				
 				try {
@@ -58,10 +58,10 @@ public class BaseEquipmentAction {
 					errors.rejectValue("sn", "sn",e.getMessage()); 
 					m.addAttribute("errors",Utils.asMap(errors));
 					m.addAttribute("bet",bet);
-					return "admin/inBaseEquipment";
+					return "admin/BaseEquipment/inBaseEquipment";
 				}
 				//响应重定向  redirect:index  
-				return "admin/inStorage";
+				return "admin/Storage/inStorage";
 			}
 
 

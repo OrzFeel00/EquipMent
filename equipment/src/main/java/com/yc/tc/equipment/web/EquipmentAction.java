@@ -31,7 +31,7 @@ public class EquipmentAction {
 	//去设备输入页面
 			@GetMapping("toEquipment")
 			public String touindex() {
-				return "admin/inEquipment";
+				return "admin/equipment/inEquipment";
 			}
 			
 			//设备录入
@@ -40,7 +40,7 @@ public class EquipmentAction {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("eqt",eqt);
-					return "admin/inEquipment";
+					return "admin/equipment/inEquipment";
 				}
 				
 				try {
@@ -59,10 +59,10 @@ public class EquipmentAction {
 					errors.rejectValue("equipmentName", "equipmentName",e.getMessage());
 					m.addAttribute("errors",Utils.asMap(errors));
 					m.addAttribute("eqt",eqt);
-					return "admin/inEquipment";
+					return "admin/equipment/inEquipment";
 				}
 				//响应重定向  redirect:index   跳转到基础设备信息
-				return "admin/inBaseEquipment";
+				return "admin/BaseEquipment/inBaseEquipment";
 			}
 
 

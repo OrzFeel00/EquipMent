@@ -32,7 +32,7 @@ public class StorageAction {
 	//去存储信息录入页面
 			@GetMapping("toStorage")
 			public String touindex() {
-				return "admin/inStorage";
+				return "admin/Storage/inStorage";
 			}
 			
 			//存储信息录入
@@ -41,7 +41,7 @@ public class StorageAction {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("sto",sto);
-					return "admin/inStorage";
+					return "admin/Storage/inStorage";
 				}
 				
 				try {
@@ -56,10 +56,10 @@ public class StorageAction {
 					//errors.rejectValue("nonull", "null",e.getMessage()); 
 					m.addAttribute("errors",Utils.asMap(errors));
 					m.addAttribute("sto",sto);
-					return "admin/inStorage";
+					return "admin/Storage/inStorage";
 				}
 				//响应重定向  redirect:index
-				return "admin/inAssociated";
+				return "admin/associated/inAssociated";
 			}
 
 
