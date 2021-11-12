@@ -87,20 +87,22 @@ public class ProjerctAction {
 			//去项目录入点位
 			@GetMapping("topointtoProject")
 			public String topointtoProject(Model m) {
-				
+			   	 m.addAttribute("isprojectName", instUtils2.limt2.get("ProjectName"));
 				 m.addAttribute("points", prBiz.selectAllPointNames());				 
 				return "admin/Projerct/inpointtoProject";
 			}
 								
-			//给项目录入点位
+			//do给项目录入 点位
 			@PostMapping("pointtoProject.do")
 			public String pointtoProjec(PointPosition point,Model m) {				
 			     //根据name写入roaid到point
 				 // rBiz.insetRidByname(roa.getRoadName());
 				 //根据name写入point到Projec
-					
+				   
 				    pBiz.insertPioByprName(point.getPointName());
 				    instUtils2.limt2.put("PRpointname", point.getPointName());	
+				    m.addAttribute("isprojectName", instUtils2.limt2.get("ProjectName"));
+				    m.addAttribute("ispointName", instUtils2.limt2.get("PRpointname"));
 				    
 				    m.addAttribute("equipments", eBiz.selectAllEquptNames());
 				return "admin/Projerct/inEquipmenttoProject";
@@ -110,7 +112,11 @@ public class ProjerctAction {
 			//去给项目中点位录入设备
 			@GetMapping("toEquipmenttoProject")
 			public String toEquipmenttoProject(Model m) {
+				System.out.println( "0000"+instUtils2.limt2.get("ProjectName"));
 				
+				 m.addAttribute("isprojectName", instUtils2.limt2.get("ProjectName"));
+				 m.addAttribute("ispointName", instUtils2.limt2.get("PRpointname"));
+				 
 				 m.addAttribute("equipments", eBiz.selectAllEquptNames());
 				return "admin/Projerct/inEquipmenttoProject";
 			}
@@ -123,11 +129,13 @@ public class ProjerctAction {
 					m.addAttribute("equipments", eBiz.selectAllEquptNames());
 					m.addAttribute("errors", Utils.asMap(errors));
 			     	m.addAttribute("eqt",eqt);
+			   
 					return "admin/Projerct/inEquipmenttoProject";
 				}
 				
 				try {
-					
+				
+				    
 				    pBiz.insertEqtByprName(eqt.getEquipmentName());
 				    
 				} catch (BizException e) {
@@ -135,7 +143,8 @@ public class ProjerctAction {
 					e.printStackTrace();
 					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
 					//errors.rejectValue("nonull", "null",e.getMessage()); 
-				
+					m.addAttribute("isprojectName", instUtils2.limt2.get("ProjectName"));
+					m.addAttribute("ispointName", instUtils2.limt2.get("PRpointname"));
 					errors.rejectValue("equipmentId", "equipmentId",e.getMessage());
 					m.addAttribute("errors",Utils.asMap(errors));
 					m.addAttribute("eqt",eqt);
@@ -150,7 +159,7 @@ public class ProjerctAction {
 			public String tosucceseinProjectend() {
 				
 				 
-				return "admin/Projerct/succeseinProjectend";
+				return "admin/Projerct/succeseToOut";
 			}
 
 }

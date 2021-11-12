@@ -179,7 +179,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="administrativeRegion" id="administrativeRegion" class="layui-input" placeholder="出行政区域"  
-					 required lay-verify="required"/>
+					  th:value="${roa}!=null ? ${roa.administrativeRegion} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--部门区域-->
@@ -188,8 +188,8 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="departmentRegion" id="departmentRegion" class="layui-input" placeholder="部门区域"  
-					 required lay-verify="required"/>
-					 	<span class="e" th:if="${errors}!=null" th:text="${errors.get('sn')}"></span>
+					 th:value="${roa}!=null ? ${roa.departmentRegion} : ''"  required lay-verify="required"/>
+					 	
 					</div>				
 				</div>
 				<!--街道名称-->
@@ -197,8 +197,9 @@
 					<label class="layui-form-label">街道名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
+						 
 					 <input type="text" name="streetName" id="streetName" class="layui-input" placeholder="街道名称"  
-					 required lay-verify="required|number"/>
+					 th:value="${roa}!=null ? ${roa.streetName} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--道路名称-->
@@ -206,8 +207,9 @@
 					<label class="layui-form-label">道路名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
+						<span class="e" th:if="${errors}!=null" th:text="${errors.get('roadName')}"></span>
 					 <input type="text" name="roadName" id="roadName" class="layui-input" placeholder="道路名称" 
-					  required lay-verify="required"/>
+					  th:value="${roa}!=null ? ${roa.roadName} : ''"    required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--道路等级  -->
@@ -216,7 +218,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="roadGrade" id="roadGrade" class="layui-input" placeholder="道路等级" 
-					  required lay-verify="required"/>
+				 th:value="${roa}!=null ? ${roa.roadGrade} : ''" 	  required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--道路编码-->
@@ -225,8 +227,8 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="roadCode" id="roadCode" class="layui-input" placeholder="道路编码" 
-					  required lay-verify="required"/>
-					  <span class="e" th:if="${errors}!=null" th:text="${errors.get('roadCode')}"></span>
+					 th:value="${roa}!=null ? ${roa.roadCode} : ''"   required lay-verify="required"/>
+					 
 					</div>				
 				</div>
 				<!--道路限速-->
@@ -234,16 +236,16 @@
 					<label class="layui-form-label">道路限速&emsp;</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="roadSpeed" id="roadSpeed" class="layui-input" placeholder="道路限速" 
-					  required lay-verify="required"/>
+					 <input type="text" name="roadSpeed" id="roadSpeed" class="layui-input" placeholder="道路限速 km/h" 
+					 th:value="${roa}!=null ? ${roa.roadSpeed} : ''"   required lay-verify="required|number"/>
 					</div>				
 				</div>
 				
 				 <!--按钮-->
 				 <div class="layui-form-item">
 					 <div class="layui-input-inline">
-						 <button type="button" class="layui-btn layui-btn-primary pre">上一步</button>&emsp;
-						 <button class="layui-btn" type="submit" >下一项 </button>
+						 <button type="reset" class="layui-btn layui-btn-primary pre">重置</button>&emsp;
+						 <button class="layui-btn" type="submit"  lay-submit>确定提交 </button>
 					 </div>
 				 </div>
 				 

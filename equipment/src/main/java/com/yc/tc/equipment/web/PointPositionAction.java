@@ -23,6 +23,7 @@ import com.yc.tc.equipment.biz.PointPositionBiz;
 import com.yc.tc.equipment.biz.roadBiz;
 import com.yc.tc.equipment.util.Utils;
 import com.yc.tc.equipment.util.instUtils;
+import com.yc.tc.equipment.util.instUtils2;
 
 
 
@@ -89,7 +90,7 @@ public class PointPositionAction {
 			}
 			
 			   
-			
+			//----------------------//
 			
 			
 			//去点位show
@@ -118,7 +119,7 @@ public class PointPositionAction {
 					List<PointPosition> pointlistmore =pBiz.selectpointBymore(pop);
 					
 					//查询当前的所有点位					
-					List<PointPosition> pointlist=pBiz.selectAllPoint();
+					//List<PointPosition> pointlist=pBiz.selectAllPoint();
 					m.addAttribute("pointlist",pointlistmore);
 					
 				} catch (BizException e) {
@@ -211,19 +212,25 @@ public class PointPositionAction {
 				return "admin/point/dellsucceseinPoint2";
 			}
 			
-//			//去点位编辑
-//			@GetMapping("toshowedt/{id}")
-//			public String edt(@PathVariable("id") Integer pid,Model m ) throws BizException {
-//		         //把id传入list
-//				 instUtils.limt.put("edtpid", pid);
-//				return "redirect:to1showedt";
-//			}
+
 			
-			//去点位编辑
-			@GetMapping("toshowedt")
+			//去点位编辑(先去确认)
+			@GetMapping("toedtpoint")
 			public String edt(Model m ) throws BizException {
 		       
 				 
+				 m.addAttribute("edtroads", rBiz.selectAllRdNames());
+				return "admin/point/insedtpoint";
+			}
+			
+
+			//do确认去去点位编辑
+			@RequestMapping("insedtpoint.do")
+			public String isnedt(PointPosition pop,Model m ) throws BizException {
+				//把pointname保存下来
+				 instUtils2.limt2.put("inspointname", pop.getPointName());	
+				 
+				 m.addAttribute("pop", pop);
 				 m.addAttribute("edtroads", rBiz.selectAllRdNames());
 				return "admin/point/edtpoint";
 			}
@@ -243,7 +250,7 @@ public class PointPositionAction {
 				}
 				
 				try {
-				
+		
 				//System.out.println(pop.toString());
 				pBiz.updatePointById(pop);
 				
@@ -263,8 +270,10 @@ public class PointPositionAction {
 			        m.addAttribute("edtroads", rBiz.selectAllRdNames());
 					return "admin/point/edtpoint";
 				}
-				return "admin/point/addsucceseinPoint";
+				return "admin/point/succesetdt";
 			}
+			
+			
 			
 			
 

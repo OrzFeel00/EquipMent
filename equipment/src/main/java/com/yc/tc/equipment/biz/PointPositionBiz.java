@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.yc.tc.equipment.bean.Equipment;
 import com.yc.tc.equipment.bean.PointPosition;
 import com.yc.tc.equipment.dao.PointPositionMapper;
+import com.yc.tc.equipment.util.instUtils2;
 
 @Service
 public class PointPositionBiz {
@@ -41,6 +42,7 @@ public class PointPositionBiz {
 					return pionlist;
 				}
 				
+				//查询所有点位
 				public List<PointPosition> selectAllPoint()throws BizException {
 					if(pmpper.selectAllPoint()==null) {
 						throw new BizException("暂时没有记录点位");
@@ -66,14 +68,15 @@ public class PointPositionBiz {
 					return pop;
 				}
 				//根据条件模糊查询
-				public List<PointPosition> selectpointBymore(PointPosition pop) {
-					System.out.println("9999o999+"+pop.toString());
+				public List<PointPosition> selectpointBymore(PointPosition pop)throws BizException {
 					List<PointPosition> pop1=pmpper.selectpointBymore(pop);
 					return pop1;
 				}
-				
+				//修改点位
 				public void updatePointById(PointPosition pop)throws BizException {
-					if(pmpper.countByPname(pop.getPointName())>0) {
+					 String inspointname=instUtils2.limt2.get("inspointname");
+				
+					if((pmpper.countByPname(pop.getPointName())>0) && (!(pop.getPointName().equals(inspointname)))) {
 						throw new BizException("点位名称已存在");
 					}
 					pmpper.updatePointById(pop);

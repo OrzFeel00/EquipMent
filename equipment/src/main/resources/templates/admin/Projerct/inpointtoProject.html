@@ -50,7 +50,12 @@
 }
 </style>
 
+<style type="text/css">
 
+.layui-form-label {
+    width: 100px;
+}
+</style>
 
   
 
@@ -172,12 +177,14 @@
 			</ul>
 			<p style=" text-align:center ; font-size: 29px">先填入点位，再给每个点位填入设备信息</p>
 			<!--输入点位名称-->
+			<hr>
+			<p  class="e"  style=" text-align:center ; font-size: 18px" th:text="'当前项目：'+${isprojectName}">1</p>
 		<div style="width:100%;margin-top: 90px;">
 			<form  style="margin-left: 40%;" class="layui-form " action="pointtoProject.do" method="post">
 					<!--点位名称-->
 				
 				<div class="layui-form-item">
-					<label class="layui-form-label">项目点位</label>
+					<label class="layui-form-label">添加项目点位</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 		    	     <select name="pointName" id="pointName" lay-verify="required" lay-search>

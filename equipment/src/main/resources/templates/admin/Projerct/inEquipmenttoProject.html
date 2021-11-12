@@ -172,6 +172,9 @@
 			</ul>
 			
 			<p style=" text-align:center ; font-size: 29px">给当前选中的项目点位，填入设备信息</p>
+			
+			<p  class="e"  style=" text-align:center ; font-size: 18px" th:text="'当前项目：'+${isprojectName}">1</p>
+			<p  class="e"  style=" text-align:center ; font-size: 18px" th:text="'当前点位：'+${ispointName}">1</p>
 			<!--输入设备名称-->
 		<div style="width:100%;margin-top: 90px;">
 			<form  style="margin-left: 40%;" class="layui-form " action="EquipmenttoProject.do" method="post">

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+<!--设备表单-->
+			<!--  -->
+			
+		 <div>
+		      <div style="text-align: center;margin-top: 90px;">
+		          <i class="layui-icon layui-circle" 
+				   style="color: white;font-size:30px;font-weight:bold;background: #52C41A;padding: 20px;line-height: 80px;">&#xe605;</i>
+		          <div style="font-size: 24px;color: #333;font-weight: 500;margin-top: 30px;">
+		              添加成功
+		          </div>
+		      </div>
+		      <div style="text-align: center;margin-top: 100px;">
+		      <form  action="toaddroad" method="get">
+		      
+		      
+		      <button class="layui-btn next" type="submit" >继续录入道路</button>
+		      
+		      </form>
+		      
+		        
+		      
+		      
+		  <div  style="margin-top: 20px;">
+		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="1formDemo">完成输入安全退出</button>
+		      
+		      </div>
+		          
+		      </div>
+		       
+		  </div>
+			<!--end设备表单-->
+			
+
+
+
+
+
+
+
+
+
+<footer style="margin-top: 30px;" >
+
+	<p>
+		<span style="text-align:center; margin-left: 20%">Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		  
+		  
+		  form.on('submit(1formDemo)', function(data){
+			  parent.reftabbel();
+	    	  
+	    	   parent.layer.close(index); //再执行关闭 
+			    
+				
+			    
+			     
+			     return false;
+				});
+		  
+		});
+		</script>
+
+
+
+</body>
+</html>

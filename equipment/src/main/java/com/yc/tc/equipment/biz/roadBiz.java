@@ -7,14 +7,14 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-
-
+import com.yc.tc.equipment.bean.PointPosition;
 import com.yc.tc.equipment.bean.road;
 
 import com.yc.tc.equipment.dao.PointPositionMapper;
 
 import com.yc.tc.equipment.dao.roadMapper;
 import com.yc.tc.equipment.util.instUtils;
+import com.yc.tc.equipment.util.instUtils2;
 
 
 
@@ -29,8 +29,8 @@ public class roadBiz {
 	//添加设备基础信息
 		public void addRod(road roa)throws BizException {
 			//可以忽略字段的验证
-			if(rmpper.countByeCode(roa.getRoadCode())>0) {
-				throw new BizException("道路已存在");
+			if(rmpper.countByrName(roa.getRoadName())>0) {
+				throw new BizException("道路名称已存在");
 			}
 			rmpper.insertroad(roa);
 		}
@@ -57,7 +57,38 @@ public class roadBiz {
 		 pmpper.insertRoidByPid(rs,ponintid);
 	}
 
+	  
+	// 查找所有的道路所有信息
+	  public List<road> selectAllRoad()throws BizException {
+			if(rmpper.selectAllRoad()==null) {
+				throw new BizException("暂时没有记录点位");
+			}
+			List<road> rlist=rmpper.selectAllRoad();
+			
+			return rlist;
+		}
+	  //删除道路
+	public void dellroad(road road) {
+		rmpper.delectRoadById(road);
 		
+	}
+	
+	//根据条件模糊查询road
+	public List<road> selectroadBymore(road road)throws BizException  {
+		List<road> roads=rmpper.selectroadBymore(road);
+		
+		return roads;
+	}
+		
+	//修改街道
+	public void updatePointById(road road)throws BizException {
+		 String insroadname=instUtils2.limt2.get("insroadname");
+	  //验证是否重复名 且不包括自己本身的名字
+		if((rmpper.countByrName(road.getRoadName())>0) && (!(road.getRoadName().equals(insroadname)))) {
+			throw new BizException("道路名称已存在!");
+		}
+		rmpper.updateRoadById(road);
+	}
 
 		
 

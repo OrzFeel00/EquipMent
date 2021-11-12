@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<!--安全关闭-->
+         <div  style="margin-left:80% ; margin-top: 5px;">
+
+	     </div>
+
+
+  <!--设备基础信息表单-->
+		  <div style="text-align: center; margin-top:5%;">
+			 <form style="margin-left: 20%" class="layui-form " action="insedtroad.do" method="post" >				 		 
+				<!--行政区域-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">行政区域</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="administrativeRegion" id="administrativeRegion" class="layui-input" placeholder="出行政区域"  
+					  th:value="${roa}!=null ? ${roa.administrativeRegion} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--部门区域-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">部门区域</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input  readonly="true" style="background:#CCCCCC" type="text" name="departmentRegion" id="departmentRegion" class="layui-input" placeholder="部门区域"  
+					 th:value="${roa}!=null ? ${roa.departmentRegion} : ''"  required lay-verify="required"/>
+					 	
+					</div>				
+				</div>
+				<!--街道名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">街道名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+						 
+					 <input  readonly="true" style="background:#CCCCCC" type="text" name="streetName" id="streetName" class="layui-input" placeholder="街道名称"  
+					 th:value="${roa}!=null ? ${roa.streetName} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--道路名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">道路名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					
+					 <input  readonly="true" style="background:#CCCCCC" type="text" name="roadName" id="roadName" class="layui-input" placeholder="道路名称" 
+					   th:value="${roa}!=null ? ${roa.roadName} : ''"    required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--道路等级  -->
+				<div class="layui-form-item">
+					<label class="layui-form-label">道路等级  </label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC" type="text" name="roadGrade" id="roadGrade" class="layui-input" placeholder="道路等级" 
+				 th:value="${roa}!=null ? ${roa.roadGrade} : ''" 	  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--道路编码-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">道路编码</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC" type="text" name="roadCode" id="roadCode" class="layui-input" placeholder="道路编码" 
+					 th:value="${roa}!=null ? ${roa.roadCode} : ''"   required lay-verify="required"/>
+					 
+					</div>				
+				</div>
+				<!--道路限速-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">道路限速&emsp;</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input  readonly="true" style="background:#CCCCCC" type="text" name="roadSpeed" id="roadSpeed" class="layui-input" placeholder="道路限速 km/h" 
+					 th:value="${roa}!=null ? ${roa.roadSpeed} : ''"   required lay-verify="required|number"/>
+					</div>				
+				</div>
+				
+				 <!--按钮-->
+				 <div class="layui-form-item">
+					 <div class="layui-input-block" style="margin-left: 1px">
+					 	 <button class="layui-btn" type="submit"  lay-submit>确定提交 </button>&nbsp;
+		                <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+						
+					
+					 </div>
+				 </div>
+				 
+			 </form>		 
+		  </div>
+			<!--end设备存储表单-->
+
+
+
+
+
+
+
+
+
+<footer style="text-align:center; margin-top: 10%">
+
+	<p>
+		<span >Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		  
+		  
+		  form.on('submit(outemo)', function(data){
+			  parent.reftabbel();   	  
+	    	   parent.layer.close(index); //再执行关闭 	     
+			     return false;
+				});
+		  
+		  
+		  form.verify({		    
+			  longitude: [
+			    	/^[\-\+]?(0(\.\d{1,8})?|([1-9](\d)?)(\.\d{1,8})?|1[0-7]\d{1}(\.\d{1,8})?|180(([.][0]{1,8})?))$/
+			        ,'经度格式错误，最长到小数点后8位'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
+		});
+		</script>
+
+
+
+</body>
+</html>

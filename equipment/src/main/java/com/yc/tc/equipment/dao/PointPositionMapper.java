@@ -35,7 +35,7 @@ public interface PointPositionMapper {
 	   public int  countByPname (String pname );
 		
 	    //根据id删除点位
-		@Delete("delete from point_position where point_name=#{pointName}")
+		@Delete("delete from point_position where point_id=#{pointId}")
 		public void delectPointById(PointPosition pop);
 		//根据id查询点位
 		@Select("select * from point_position where point_id=#{pointId}")

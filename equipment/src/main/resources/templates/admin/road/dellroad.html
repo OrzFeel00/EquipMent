@@ -27,33 +27,46 @@
 
 
 
-
-
-         <div  style="margin-left:70% ; margin-top: 5px;">
+<!--安全关闭-->
+         <div  style="margin-left:75% ; margin-top: 5px;">
 		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
 	     </div>
 
+
+
+
 <!--设备表单-->
-		<div style="width:100%;margin-top: 0px;">
-			<form  style="margin-left:10%;" class="layui-form " action="dellpoint.do" method="post">
+		<div style="width:100%">
+			<form  style="margin-left:10%;" class="layui-form " action="dellroad.do" method="post">
 				
-				<!--点位id号-->
-				<div class="layui-form-item" style="margin-top:  10%;">
+				<!--街道id号-->
+				<div class="layui-form-item" style="margin-top:2%;">
 					<label class="layui-form-label">点位id号</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="pointId" id="pointId" class="layui-input" placeholder="点位id" 
-					  th:value="${pop}!=null ? ${pop.pointId} : ''"  required lay-verify="required"/>
+					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="roadId" id="roadId" class="layui-input" placeholder="点位id" 
+					   required lay-verify="required"/>
 					</div>				
 				</div>
-	<!--点位名称-->
+	<!--街道名称-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">点位名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
+						
+					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="streetName" id="streetName" class="layui-input" placeholder="点位名称"  
+					  required lay-verify="required"/>
+					 	
+					</div>		
+					<!--道路名称-->		
+				</div>
+					<div class="layui-form-item">
+					<label class="layui-form-label">点位名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
 						<span class="e" th:if="${errors}!=null" th:text="${errors.get('pointName')}"></span>
-					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="pointName" id="pointName" class="layui-input" placeholder="点位名称"  
-					  th:value="${pop}!=null ? ${pop.pointName} : ''"  required lay-verify="required"/>
+					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="roadName" id="roadName" class="layui-input" placeholder="点位名称"  
+					  required lay-verify="required"/>
 					 	
 					</div>				
 				</div>
@@ -94,12 +107,12 @@
 		layui.use('form', function(){
 		  var form = layui.form;
 		  
-		  
 		  form.on('submit(outemo)', function(data){
 			  parent.reftabbel();   	  
 	    	   parent.layer.close(index); //再执行关闭 	     
 			     return false;
 				});
+		  
 		
 		});
 		</script>
