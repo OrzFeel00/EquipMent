@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.yc.tc.equipment.bean.Equipment;
 import com.yc.tc.equipment.bean.PointPosition;
+import com.yc.tc.equipment.bean.euiopmentall;
 
 
 
@@ -54,6 +55,14 @@ public interface EquipmentMapper {
 	    // 查找所有的设备名称信息
 	    @Select("select equipment_name from equipment  order by equipment_id asc")
 		public List<String> selectAllEquNames();
+	    
+	    // 查找所有的设备所有信息
+	    @Select("select * from equipment  order by equipment_id asc")
+		public List<Equipment> selectAllEqt();
+
+	    
+	    
+	  
 	    
 	
 	

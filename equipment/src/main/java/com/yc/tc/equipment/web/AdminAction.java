@@ -59,7 +59,7 @@ public class AdminAction {
 		}
          
 		
-         return "admin/Index";
+         return "admin/index";
 		
 	}
 	

@@ -161,22 +161,22 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showpoint.do" method="post">
+				<form  action="showequipment.do" method="post">
 		      
-				<div id="pointName"  style="margin-left:10px;font-weight:bold;float: left">
-			  	  点位名称：<input name="pointName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入名称"/>   </div>
+				<div id="equipmentName"  style="margin-left:10px;font-weight:bold;float: left">
+			      设备名称：<input name="equipmentName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备名称"/>   </div>
 			  
-				<div id="sectionCode"   style="margin-left:10px;font-weight:bold;float: left">
-				  断面编号：<input  name="sectionCode" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
+				<div id="equipmentType"   style="margin-left:10px;font-weight:bold;float: left">
+				  设备类型：<input  name="equipmentType" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备类型"/>	</div>
 				  
-				<div id="pointCode"   style="margin-left:10px;font-weight:bold;float: left">
-			     监测点编码：<input name="pointCode"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
+				<div id="afunctionType"   style="margin-left:10px;font-weight:bold;float: left">
+			     摄像机功能类型：<input name="afunctionType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="摄像机功能类型"/>	</div>
 			     
-				<div id="pointType"  style="margin-left:10px;font-weight:bold;float: left">
-				  点位类型：<input name="pointType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入类型"/>	</div>
+				<div id="brand"  style="margin-left:10px;font-weight:bold;float: left">
+				 设备品牌：<input name="brand"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="品牌"/>	</div>
 				  
-				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
-				 道路：<input name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入道路"/>	</div>
+				<div   id="functionType" style="margin-left:10px;font-weight:bold;float: left">
+				设备功能类型：<input name="functionType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备功能类型"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
@@ -186,41 +186,106 @@
 			     			  						
 		      	</form>
 	    	</div>
-						        <!--   fixed: 'right'   style="table-layout:fixed"--> 
+						        <!-- fixed: 'right'  --> 
 							<hr>
 			<div >
-						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
+						  <table class="layui-table"  id="t" lay-filter="demo" lay-data="{id: 'idTest'}"   >
 						  <thead>
-						    <tr>
-						      <th lay-data="{field: 'pointId' ,sort: true, width:100 }">ID</th>
-						      <th lay-data="{field:'pointName', width:200}">点位名称</th>
-						      <th lay-data="{field:'sectionCode', width: 150}">断面编号</th>
-						      <th lay-data="{field:'longitude', width: 150}">点位经度</th>
-						      <th lay-data="{field:'latitude', width: 150}">点位纬度</th>
-						      <th lay-data="{field:'pointCode', width: 150}">监测点编码</th>
-						      <th lay-data="{field:'shape', width: 150}">路口形状</th>
-						      <th lay-data="{field:'LaneNumber', sort: true, width: 130}">车道数</th>
-						      <th lay-data="{field:'pointType', width:150}">点位类型</th>
-						      <th lay-data="{field:'roadName',width: 200}">所属道路</th>
-						 
-						      <th lay-data="{fixed: 'right',width:130, align:'center', toolbar: '#barDemo'}">操作</th>
-						      <th lay-data="{width: 520}"></th>
+						    <tr >
+						      <th lay-data="{field:'equipmentId' ,sort: true, width:60  }" rowspan="2">ID</th>
+						      <th lay-data="{field:'equipmentCode', width:100}"rowspan="2">设备编号</th>
+						      <th lay-data="{field:'equipmentName', width: 200}"rowspan="2">设备名称</th>
+						      <th lay-data="{field:'equipmentUser', width: 120}"rowspan="2">设备用户名</th>
+						      <th lay-data="{field:'equipmentPwd', width: 120}"rowspan="2">设备密码</th>
+						      <th lay-data="{field:'equipmentType', width: 100}"rowspan="2">设备类型</th>
+						      
+						      <th lay-data="{align:'center'  }" colspan="8">设备关联信息</th>
+						      <th lay-data="{align:'center'}" colspan="7">设备存储信息</th>
+						      <th lay-data="{align:'center'}" colspan="11">设备基础信息</th>
+										  <!-- fixed: 'right', --> 
+						      <th lay-data="{fixed: 'right',width:130, toolbar: '#barDemo'}" rowspan="2">操作</th>
+						      <th lay-data="{ width: 520}"rowspan="2"></th>
 						    </tr>
+						   
+						    <tr>
+						     <!--设备关联信息  -->						  
+						     <th lay-data="{field:'fillProperties', width: 100,style:'color:#009688'}">摄像机补光属性</th>
+						     <th lay-data="{field:'afunctionType', width: 100,style:'color:#009688'}">摄像机功能类型</th>
+						     <th lay-data="{field:'orientation', width: 100,style:'color:#009688'}">摄像机监控方位</th>
+						     <th lay-data="{field:'positionType', width: 100,style:'color:#009688'}">摄像机位置类型</th>
+						     <th lay-data="{field:'pickup', width: 100,style:'color:#009688'}">拾音器</th>
+						     <th lay-data="{field:'securityMode', width: 100,style:'color:#009688'}">信令安全模式</th>
+						     <th lay-data="{field:'regMethod', width: 100,style:'color:#009688'}">注册方式</th>
+						     <th lay-data="{field:'confiAttribute', width: 100,style:'color:#009688'}">保密属性</th>	    
+						       <!--设备存储信息  -->						     
+						     <th lay-data="{field:'storageDay', width: 100,style:'color:#2F4056'}">录像保存天数</th>
+						     <th lay-data="{field:'videoAddress', width: 100,style:'color:#2F4056'}">录像地址</th>
+						     <th lay-data="{field:'bitstreamType', width: 100,style:'color:#2F4056'}">码流类型</th>
+						     <th lay-data="{field:'codingFormat', width: 100,style:'color:#2F4056'}">视频编码格式</th>
+						     <th lay-data="{field:'bitrateSize', width: 100,style:'color:#2F4056'}">视频码率大小</th>
+						     <th lay-data="{field:'rateType', width: 100,style:'color:#2F4056'}">视频码率类型</th>
+						     <th lay-data="{field:'pictureFormat', width: 100,style:'color:#2F4056'}">/图片格式</th>		     
+						      <!--设备基础信息  -->						
+						     <th lay-data="{field:'sn', width: 100,style:'color: #01AAED'}">出厂序列号  </th>
+						     <th lay-data="{field:'modelNumber', width: 100,style:'color: #01AAED'}">型号</th>
+						     <th lay-data="{field:'diskNumber', width: 100,style:'color: #01AAED'}">硬盘数量</th>
+						     <th lay-data="{field:'frameRate', width: 100,style:'color: #01AAED'}">图像帧率</th>
+						     <th lay-data="{field:'brand', width: 100,style:'color: #01AAED'}">设备品牌</th>
+						     <th lay-data="{field:'resolvingPower', width: 100,style:'color: #01AAED'}">图像分辨率</th>
+						     <th lay-data="{field:'functionType', width: 100,style:'color: #01AAED'}">设备功能类型</th>
+						     <th lay-data="{field:'versionNumber', width: 100,style:'color: #01AAED'}">版本号</th>	 
+						     <th lay-data="{field:'hostchannelsNumber', width: 100,style:'color: #01AAED'}">主机通道数 </th>
+						     <th lay-data="{field:'height', width: 100,style:'color: #01AAED'}">设备高度</th>	
+						     <th lay-data="{field:'length', width: 100,style:'color: #01AAED'}">设备长度</th>
+						    </tr>		    				    	  
+						    
 						  </thead>
 						  <tbody>
-						  
-						     <tr th:each="p : ${pointlist} " >
-						      <td th:text="${p.pointId}">11</td>
-						      <td th:text="${p.pointName}">11</td>
-						      <td th:text="${p.sectionCode}">贤心2</td>
-						      <td th:text="${p.longitude}">贤心3</td>
-						      <td th:text="${p.latitude}">贤心4</td>
-						      <td th:text="${p.pointCode}">贤心5</td>
-						      <td th:text="${p.shape}">贤心6</td>
-						      <td th:text="${p.LaneNumber}">贤心7</td>
-						      <td th:text="${p.pointType}">贤心8</td>	
-						       <td th:text="${p.roadName}">贤心8</td>	     		      
-						    </tr>		    
+						  	     
+						      <tr th:each="e :${e}">
+						      				      
+						      <td th:text="${e.equipmentId}">11</td>
+						      <td th:text="${e.equipmentCode}">12</td>
+						      <td th:text="${e.equipmentName}">贤心3</td>
+						      <td th:text="${e.equipmentUser}">贤心4</td>
+						      <td th:text="${e.equipmentPwd}">贤心5</td>
+						      <td th:text="${e.equipmentType}">贤心6</td>	   					      
+						       <!--设备关联信息  -->  	
+						          <td >完善</td>			
+						          <td >完善</td>				     
+						      <td th:text="${e.fillProperties}">11</td>
+						      <td th:text="${e.afunctionType}">12</td>
+						      <td th:text="${e.orientation}">贤心3</td>
+						      <td th:text="${e.positionType}">贤心4</td>
+						      <td th:text="${e.pickup}">贤心5</td>
+						      <td th:text="${e.securityMode}">贤心6</td>					      
+						      <td th:text="${e.regMethod}">贤心8</td>
+						      <td th:text="${e.confiAttribute}">贤心9</td>	
+						       
+						      <td th:text="${e.storageDay}">录像保存天数</td>		
+						      <td th:text="${e.videoAddress}">录像地址</td>
+						      <td th:text="${e.bitstreamType}">码流类型</td>
+						      <td th:text="${e.codingFormat}">视频编码格式</td>
+						      <td th:text="${e.bitrateSize}">视频码率大小</td>
+						      <td th:text="${e.rateType}">视频码率类型</td>
+						      <td th:text="${e.pictureFormat}">图片格式</td>					      
+						        <!--设备关联信息  -->  
+						         
+						      <td th:text="${e.sn}">出厂序列号 </td>		
+						      <td th:text="${e.modelNumber}">型号</td>
+						      <td th:text="${e.diskNumber}">硬盘数量</td>
+						      <td th:text="${e.frameRate}">图像帧率</td>
+						      <td th:text="${e.brand}">设备品牌</td>
+						      <td th:text="${e.resolvingPower}">图像分辨率</td>
+						      <td th:text="${e.functionType}">设备功能类型</td>					      
+						      <td th:text="${e.versionNumber}">版本号</td>
+						      <td th:text="${e.hostchannelsNumber}">主机通道数</td>	
+						      <td th:text="${e.height}">设备高度</td>	
+						      <td th:text="${e.length}">设备长度</td>				   
+						      </tr>
+						      
+
+			    
 					   
 						  </tbody>
 						</table>
@@ -287,12 +352,12 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var dataList;
       //转换静态表格
      table.init('demo', {
-        height: '710' //设置高度
+        height: '710' //设置高度 
         ,width :'1945'
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'点位信息'
         ,loading:true 
-        ,toolbar:true  
+        ,toolbar:true
         ,page: true
         , defaultToolbar: ['filter', 'print', 'exports',{icon: 'layui-icon-prev'},1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ,toolbar:"#tool"
@@ -310,13 +375,13 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
   		  closeBtn: 0,
   		  title: ['删除', 'font-size:20px;'],
   		  area: ['500px', '400px'],
-  		  content: 'todellpoint', //这里content是一url
+  		  content: 'todellequipment', //这里content是一url
   		  success:function(layero, index){
 			  var body = layer.getChildFrame('body', index);
 			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
 			    console.log(body.html()) //得到iframe页的body内容
-			    body.find('#pointId').val(data.pointId)
-			    body.find('#pointName').val(data.pointName)		 
+			    body.find('#equipmentId').val(data.equipmentId)
+			    body.find('#equipmentName').val(data.equipmentName)		 
 			  }
   		});
     	
@@ -329,21 +394,17 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     		  closeBtn: 0,
     		  title: ['点位修改', 'font-size:20px;'],
     		  area: ['600px', '800px'],   	
-    		  content: ['toedtpoint','no'],//这里content是一url
+    		  content: ['toedtequipment','no'],//这里content是一url
     		  success:function(layero, index){
     			  var body = layer.getChildFrame('body', index);
     			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
     			    console.log(body.html()) //得到iframe页的body内容
-    			    body.find('#pointId').val(data.pointId)
-    			    body.find('#pointName').val(data.pointName)
-    			    body.find('#sectionCode').val(data.sectionCode)
-    			    body.find('#longitude').val(data.longitude)
-    			    body.find('#latitude').val(data.latitude)
-    			    body.find('#pointCode').val(data.pointCode)
-    			    body.find('#shape').val(data.shape)
-    			    body.find('#LaneNumber').val(data.LaneNumber)
-    			    body.find('#pointType').val(data.pointType)
-    			    body.find('#roadName').val(data.roadName)
+    			    body.find('#equipmentId').val(data.equipmentId)
+    			    body.find('#equipmentCode').val(data.equipmentCode)
+    			    body.find('#equipmentName').val(data.equipmentName)
+    			    body.find('#equipmentUser').val(data.equipmentUser)
+    			    body.find('#equipmentPwd').val(data.equipmentPwd)
+    			    body.find('#equipmentType').val(data.equipmentType)
     			  }
     		});
     }
@@ -361,9 +422,9 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 			  layer.open({
 	    		  type: 2, 
 	    		  closeBtn: 0,
-	    		  title: ['点位新增', 'font-size:20px;'],
+	    		  title: ['新增设备', 'font-size:20px;'],
 	    		  area: ['600px', '800px'],
-	    		  content: 'toaddpoint' //这里content是一个普通url
+	    		  content: 'toaddequipmentmor' //这里content是一个普通url
 	    		});
 			  
 		  }   

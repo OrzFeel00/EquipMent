@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	<style>
+    .layui-form-select dl { max-height:220px; }
+</style>
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+		
+			
+			
+		 <!--设备基础信息表单-->
+		  <div style="text-align: center;margin-top: 20px">
+			 <form style="margin-left: 20%"  class="layui-form " action="edtBaseEquipment.do" method="post" >				 		 
+				<!--出厂序列号-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">出厂序列号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域--><span class="e" th:if="${errors}!=null" th:text="${errors.get('Sn')}"></span>
+					 <input type="text" name="sn" di="sn" class="layui-input" placeholder="出厂序列号"  
+				  th:value="${eptr}!=null ? ${eptr.sn} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--型号-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">型号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="modelNumber" id="modelNumber" class="layui-input" placeholder="型号"  
+					th:value="${eptr}!=null ? ${eptr.modelNumber} : ''"   required lay-verify="required"/>
+					 	
+					</div>				
+				</div>
+				<!--硬盘数量-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">硬盘数量</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="diskNumber" id="diskNumber" class="layui-input" placeholder="硬盘数量"
+					 th:value="${eptr}!=null ? ${eptr.diskNumber} : ''"   required lay-verify="required|number"/>
+					</div>				
+				</div>
+				<!--图像帧率-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">图像帧率</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="frameRate" id="frameRate" class="layui-input" placeholder="图像帧率" 
+					  th:value="${eptr}!=null ? ${eptr.frameRate} : ''"   required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--设备品牌-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备品牌</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="brand" id="brand" class="layui-input" placeholder="设备品牌" 
+					 th:value="${eptr}!=null ? ${eptr.brand} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--图像分辨率-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">图像分辨率</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="resolvingPower" id="resolvingPower" class="layui-input" placeholder="图像分辨率" 
+					 th:value="${eptr}!=null ? ${eptr.resolvingPower} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--设备功能类型-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备功能类型</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="functionType" id="functionType" class="layui-input" placeholder="设备功能类型" 
+				 th:value="${eptr}!=null ? ${eptr.functionType} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--版本号-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">版本号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="versionNumber" id="versionNumber" class="layui-input" placeholder="版本号" 
+					   th:value="${eptr}!=null ? ${eptr.versionNumber} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--主机通道数  -->
+				<div class="layui-form-item">
+					<label class="layui-form-label">主机通道数  </label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="hostchannelsNumber" id="hostchannelsNumber" class="layui-input" placeholder="主机通道数" 
+					  th:value="${eptr}!=null ? ${eptr.hostchannelsNumber} : ''"   required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--设备高度-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备高度(cm)</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="height" id="height" class="layui-input" placeholder="设备高度"
+					  th:value="${eptr}!=null ? ${eptr.height} : ''"    required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--设备长度-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备长度(cm)</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="length" id="length" class="layui-input" placeholder="设备长度" 
+					 th:value="${eptr}!=null ? ${eptr.length} : ''"   required lay-verify="required"/>
+					</div>				
+				</div>
+				 <!--按钮-->
+				 <div class="layui-form-item">
+				<div class="layui-input-block">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>&nbsp;
+				      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+						
+				    </div>
+				 </div>
+				 
+			 </form>		 
+		  </div>
+			<!--end设备存储表单-->
+
+
+
+
+
+<footer style="text-align:center;margin-top: 10%;">
+
+	<p>
+		<span >Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		  
+		  
+		  form.on('submit(outemo)', function(data){
+			  parent.reftabbel();   	  
+	    	   parent.layer.close(index); //再执行关闭 	     
+			     return false;
+				});
+		  
+		 
+		  form.verify({		    
+			  longitude: [
+			    	/^[\-\+]?(0(\.\d{1,8})?|([1-9](\d)?)(\.\d{1,8})?|1[0-7]\d{1}(\.\d{1,8})?|180(([.][0]{1,8})?))$/
+			        ,'经度格式错误，最长到小数点后8位'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
+		});
+		</script>
+
+
+
+</body>
+</html>

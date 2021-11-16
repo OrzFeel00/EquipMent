@@ -17,7 +17,7 @@ public class Associated implements Serializable {
     private String fillProperties;
     //摄像机功能类型
     @NotEmpty(message = "不能为空")
-    private String functionType;
+    private String afunctionType;
     //摄像机监控方位
     @NotEmpty(message = "不能为空")
     private String orientation;
@@ -45,14 +45,14 @@ public class Associated implements Serializable {
 	
 
 	public Associated(@NotEmpty(message = "不能为空") Integer associatedId,
-			@NotEmpty(message = "不能为空") String fillProperties, @NotEmpty(message = "不能为空") String functionType,
+			@NotEmpty(message = "不能为空") String fillProperties, @NotEmpty(message = "不能为空") String afunctionType,
 			@NotEmpty(message = "不能为空") String orientation, @NotEmpty(message = "不能为空") String positionType,
 			@NotEmpty(message = "不能为空") String pickup, @NotEmpty(message = "不能为空") String securityMode,
 			@NotEmpty(message = "不能为空") String regMethod, @NotEmpty(message = "不能为空") String confiAttribute) {
 		super();
 		this.associatedId = associatedId;
 		this.fillProperties = fillProperties;
-		this.functionType = functionType;
+		this.afunctionType = afunctionType;
 		this.orientation = orientation;
 		this.positionType = positionType;
 		this.pickup = pickup;
@@ -67,7 +67,7 @@ public class Associated implements Serializable {
 	@Override
 	public String toString() {
 		return "Associated [associatedId=" + associatedId + ", fillProperties=" + fillProperties + ", functionType="
-				+ functionType + ", orientation=" + orientation + ", positionType=" + positionType + ", pickup="
+				+ afunctionType + ", orientation=" + orientation + ", positionType=" + positionType + ", pickup="
 				+ pickup + ", securityMode=" + securityMode + ", regMethod=" + regMethod + ", confiAttribute="
 				+ confiAttribute + "]";
 	}
@@ -85,11 +85,11 @@ public class Associated implements Serializable {
 	public void setFillProperties(String fillProperties) {
 		this.fillProperties = fillProperties;
 	}
-	public String getFunctionType() {
-		return functionType;
+	public String getAfunctionType() {
+		return afunctionType;
 	}
-	public void setFunctionType(String functionType) {
-		this.functionType = functionType;
+	public void setAfunctionType(String afunctionType) {
+		this.afunctionType = afunctionType;
 	}
 	public String getOrientation() {
 		return orientation;

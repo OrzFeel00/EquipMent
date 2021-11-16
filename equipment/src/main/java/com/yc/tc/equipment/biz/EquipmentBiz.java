@@ -1,13 +1,19 @@
 package com.yc.tc.equipment.biz;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.yc.tc.equipment.bean.Associated;
 import com.yc.tc.equipment.bean.Equipment;
+import com.yc.tc.equipment.bean.PointPosition;
+
 import com.yc.tc.equipment.dao.EquipmentMapper;
+
 
 
 
@@ -40,5 +46,26 @@ public class EquipmentBiz {
 					List<String> eqlist=empper.selectAllEquNames();
 					return eqlist;
 				}
+				
+				//查找所有的设备所有信息
+				public List<Equipment> selectAllEpt()throws BizException {
+					if(empper.selectAllEqt()==null) {
+						throw new BizException("暂时没有记录点位");
+					}					
+					return empper.selectAllEqt();
+				}
+				
+				
+
+
+		
+				
+				
+				
+			
+				
+				
+				
+				
 
 }

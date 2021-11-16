@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	<style>
+    .layui-form-select dl { max-height:200px; }
+</style>
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+		<div  style="margin-left:80% ; margin-top: 5px;">
+		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+	     </div>
+			
+			
+		 <!--设备存储表单-->
+		  <div style="text-align: center;margin-top: 30px;">
+		 	 <form  style="margin-left: 40%"   class="layui-form " action="addStorage.do" method="post">				 		 
+		 		<!--录像保存天数-->
+		 		<div class="layui-form-item">
+		 			<label class="layui-form-label">录像保存天数</label>
+		 			<div  class="layui-input-inline">
+		 				<!--原始表单区域-->
+		 			 <input type="text" name="storageDay" di="storageDay" class="layui-input" placeholder="录像保存天数"  
+		 			   required lay-verify="required|number"/>
+		 			</div>				
+		 		</div>
+				<!--录像地址-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">录像地址</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="videoAddress" di="videoAddress" class="layui-input" placeholder="录像地址" 
+					  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--码流类型-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">码流类型</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="bitstreamType" di="bitstreamType" class="layui-input" placeholder="码流类型"  
+					 required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--视频编码格式-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">视频编码格式</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="codingFormat" di="codingFormat" class="layui-input" placeholder="视频编码格式" 
+					  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--视频码率大小-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">视频码率大小</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="bitrateSize" di="bitrateSize" class="layui-input" placeholder="视频码率大小" 
+					  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--视频码率类型-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">视频码率类型</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="rateType" di="rateType" class="layui-input" placeholder="视频码率类型"  
+					 required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--图片格式-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">图片格式</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="pictureFormat" di="pictureFormat" class="layui-input" placeholder="图片格式" 
+					  required lay-verify="required"/>
+					</div>				
+				</div>
+				
+				
+				
+				
+		 		 <!--按钮-->
+		 		 <div style="margin-left: 5%" class="layui-form-item">
+		 			 <div class="layui-input-inline">
+		 				 <button type="reset" class="layui-btn layui-btn-primary pre">重置</button>
+		 				 <button class="layui-btn" type="submit"  lay-submit lay-filter="formStep2" >
+		 					 &emsp;下一项&emsp;
+		 				 </button>
+		 			 </div>
+		 		 </div>
+		 		 
+		 	 </form>		 
+		  </div>
+			<!--end设备存储表单-->
+
+
+
+
+
+
+<footer style="text-align:center;margin-top: 10%;">
+
+	<p>
+		<span >Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		  
+		  
+		  form.on('submit(outemo)', function(data){
+			  parent.reftabbel();   	  
+	    	   parent.layer.close(index); //再执行关闭 	     
+			     return false;
+				});
+		  
+		 
+		  form.verify({		    
+			  longitude: [
+			    	/^[\-\+]?(0(\.\d{1,8})?|([1-9](\d)?)(\.\d{1,8})?|1[0-7]\d{1}(\.\d{1,8})?|180(([.][0]{1,8})?))$/
+			        ,'经度格式错误，最长到小数点后8位'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
+		});
+		</script>
+
+
+
+</body>
+</html>

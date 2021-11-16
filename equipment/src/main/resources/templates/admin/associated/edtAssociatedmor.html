@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	<style>
+    .layui-form-select dl { max-height:200px; }
+</style>
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+ 	<button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+			
+	     
+		<!--设备关联信息表单-->
+		  <div style="text-align: center;margin-top: 20px;">
+		  	<form   style="margin-left: 20%" class="layui-form "  action="edtAssociated.do" method="post" >
+		  		<!--摄像机补光属性-->
+		  		<div class="layui-form-item">
+		  			<label class="layui-form-label">摄像机补光属性</label>
+		  			<div  class="layui-input-inline">
+		  				<!--原始表单区域-->
+		  				
+		  			 <input type="text" name="fillProperties" di="fillProperties" class="layui-input" placeholder="摄像机补光属性" 
+		  			 th:value="${eptr}!=null ? ${eptr.fillProperties} : ''"   required lay-verify="required"/>
+		  			</div>				
+		  		</div>
+		  		<!--摄像机功能类型-->
+		  		<div class="layui-form-item">
+		  			<label class="layui-form-label">摄像机功能类型</label>
+		  			<div  class="layui-input-inline">
+		  				<!--原始表单区域-->
+		  			 <input type="text" name="afunctionType" di="afunctionType" class="layui-input" placeholder="摄像机功能类型"  
+		  		 th:value="${eptr}!=null ? ${eptr.afunctionType} : ''" 	 required lay-verify="required"/>
+		  			</div>				
+		  		</div>
+		  		<!--摄像机监控方位-->
+		  		<div class="layui-form-item">
+		  			<label class="layui-form-label">摄像机监控方位</label>
+		  			<div  class="layui-input-inline">
+		  				<!--原始表单区域-->
+		  			 <input type="text" name="orientation" di="orientation" class="layui-input" placeholder="摄像机监控方位" 
+		  			 th:value="${eptr}!=null ? ${eptr.orientation} : ''"   required lay-verify="required"/>
+		  			</div>				
+		  		</div>
+		  		<!--摄像机位置类型-->
+		  		<div class="layui-form-item">
+		  			<label class="layui-form-label">摄像机位置类型</label>
+		  			<div  class="layui-input-inline">
+		  				<!--原始表单区域-->
+		  			 <input type="text" name="positionType" di="positionType" class="layui-input" placeholder="摄像机位置类型"  
+		  			 th:value="${eptr}!=null ? ${eptr.positionType} : ''"  required lay-verify="required"/>
+		  			</div>				
+		  		</div>
+		  		<!--拾音器-->
+		  		<div class="layui-form-item">
+		  			<label class="layui-form-label">拾音器</label>
+		  			<div  class="layui-input-inline">
+		  				<!--原始表单区域-->
+		  			 <input type="text" name="pickup" di="pickup" class="layui-input" placeholder="拾音器" 
+		  			 th:value="${eptr}!=null ? ${eptr.pickup} : ''"   required lay-verify="required"/>
+		  			</div>				
+		  		</div>
+				<!--信令安全模式-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">信令安全模式</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="securityMode" di="securityMode" class="layui-input" placeholder="信令安全模式"  
+				 th:value="${eptr}!=null ? ${eptr.securityMode} : ''" 	 required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--注册方式-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">注册方式</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="regMethod" di="regMethod" class="layui-input" placeholder="注册方式" 
+					 th:value="${eptr}!=null ? ${eptr.regMethod} : ''"   required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--保密属性-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">保密属性</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="confiAttribute" di="confiAttribute" class="layui-input" placeholder="保密属性" 
+					 th:value="${eptr}!=null ? ${eptr.confiAttribute} : ''"   required lay-verify="required"/>
+					</div>				
+				</div>
+		  							
+		  	 <!--按钮-->
+		 		 <div class="layui-form-item">
+		 			<div class="layui-input-inline">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>&nbsp;
+				      
+				    </div>
+		 		 </div>   
+		  	</form>   
+		 			
+		  </div>
+			<!--end设备存储表单-->
+
+
+
+
+
+
+
+
+<footer style="text-align:center;margin-top: 10%;">
+
+	<p>
+		<span >Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		  
+		  
+		  form.on('submit(outemo)', function(data){
+			  parent.reftabbel();   	  
+	    	   parent.layer.close(index); //再执行关闭 	     
+			     return false;
+				});
+		  
+		 
+		  form.verify({		    
+			  longitude: [
+			    	/^[\-\+]?(0(\.\d{1,8})?|([1-9](\d)?)(\.\d{1,8})?|1[0-7]\d{1}(\.\d{1,8})?|180(([.][0]{1,8})?))$/
+			        ,'经度格式错误，最长到小数点后8位'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
+		});
+		</script>
+
+
+
+</body>
+</html>

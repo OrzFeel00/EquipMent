@@ -46,10 +46,8 @@ public class PointPositionBiz {
 				public List<PointPosition> selectAllPoint()throws BizException {
 					if(pmpper.selectAllPoint()==null) {
 						throw new BizException("暂时没有记录点位");
-					}
-					List<PointPosition> plist=pmpper.selectAllPoint();
-					
-					return plist;
+					}					
+					return pmpper.selectAllPoint();
 				}
 				
 				//根据id擦寻名称
