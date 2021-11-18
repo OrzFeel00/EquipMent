@@ -2,8 +2,13 @@ package com.yc.tc.equipment.bean;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Law implements Serializable{
 
@@ -13,7 +18,7 @@ public class Law implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	//监控设备标识id   设备包含监控设备
+	//监控设备标识name 设备包含监控设备
 	private String equipmentName;
 	//六合一编码
 	@NotEmpty(message = "不能为空")
@@ -25,10 +30,13 @@ public class Law implements Serializable{
 	@NotEmpty(message = "不能为空")
 	private String filingCode;
 	//公示时间
-	@NotEmpty(message = "不能为空")
-	private Timestamp publicityDate;
+	 @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")//出
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")//入
+	private Date publictyDate;
 	//停机时间  可以为空
-	private Timestamp downTime;
+	 @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+	private Date downTime;
 	//停机原因    可以为空
 	@NotEmpty(message = "不能为空")
 	private String shutdownReason;
@@ -36,7 +44,9 @@ public class Law implements Serializable{
 	@NotEmpty(message = "不能为空")
 	private String speedLimit;
 	//启用时间   可以为空
-	private Timestamp enableDate;
+   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")//出
+   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")//入
+	private Date enableDate;
 	//执法地址编码
 	@NotEmpty(message = "不能为空")
 	private String addressCode;
@@ -72,34 +82,22 @@ public class Law implements Serializable{
 	}
 
 
-	@Override
-	public String toString() {
-		return "Law [id=" + id + ", equipmentName=" + equipmentName + ", coding=" + coding + ", platformCode="
-				+ platformCode + ", filingCode=" + filingCode + ", publicityDate=" + publicityDate + ", downTime="
-				+ downTime + ", shutdownReason=" + shutdownReason + ", speedLimit=" + speedLimit + ", enableDate="
-				+ enableDate + ", addressCode=" + addressCode + ", monitoringOrientation=" + monitoringOrientation
-				+ ", intervalCoding=" + intervalCoding + ", measurementPoint=" + measurementPoint + ", functionEnabled="
-				+ functionEnabled + ", lawAddress=" + lawAddress + ", bayonetPurpose=" + bayonetPurpose
-				+ ", llegalCode=" + llegalCode + ", directionCoding=" + directionCoding + "]";
-	}
-
-
 	private Law(Integer id, String equipmentName, @NotEmpty(message = "不能为空") String coding,
 			@NotEmpty(message = "不能为空") String platformCode, @NotEmpty(message = "不能为空") String filingCode,
-			@NotEmpty(message = "不能为空") Timestamp publicityDate, Timestamp downTime,
-			@NotEmpty(message = "不能为空") String shutdownReason, @NotEmpty(message = "不能为空") String speedLimit,
-			Timestamp enableDate, @NotEmpty(message = "不能为空") String addressCode,
-			@NotEmpty(message = "不能为空") String monitoringOrientation, @NotEmpty(message = "不能为空") String intervalCoding,
-			@NotEmpty(message = "不能为空") String measurementPoint, @NotEmpty(message = "不能为空") String functionEnabled,
-			@NotEmpty(message = "不能为空") String lawAddress, @NotEmpty(message = "不能为空") String bayonetPurpose,
-			@NotEmpty(message = "不能为空") String llegalCode, @NotEmpty(message = "不能为空") String directionCoding) {
+			Date publictyDate, Date downTime, @NotEmpty(message = "不能为空") String shutdownReason,
+			@NotEmpty(message = "不能为空") String speedLimit, Date enableDate,
+			@NotEmpty(message = "不能为空") String addressCode, @NotEmpty(message = "不能为空") String monitoringOrientation,
+			@NotEmpty(message = "不能为空") String intervalCoding, @NotEmpty(message = "不能为空") String measurementPoint,
+			@NotEmpty(message = "不能为空") String functionEnabled, @NotEmpty(message = "不能为空") String lawAddress,
+			@NotEmpty(message = "不能为空") String bayonetPurpose, @NotEmpty(message = "不能为空") String llegalCode,
+			@NotEmpty(message = "不能为空") String directionCoding) {
 		super();
 		this.id = id;
 		this.equipmentName = equipmentName;
 		this.coding = coding;
 		this.platformCode = platformCode;
 		this.filingCode = filingCode;
-		this.publicityDate = publicityDate;
+		this.publictyDate = publictyDate;
 		this.downTime = downTime;
 		this.shutdownReason = shutdownReason;
 		this.speedLimit = speedLimit;
@@ -166,22 +164,22 @@ public class Law implements Serializable{
 	}
 
 
-	public Timestamp getPublicityDate() {
-		return publicityDate;
+	public Date getPublictyDate() {
+		return publictyDate;
 	}
 
 
-	public void setPublicityDate(Timestamp publicityDate) {
-		this.publicityDate = publicityDate;
+	public void setPublictyDate(Date publictyDate) {
+		this.publictyDate = publictyDate;
 	}
 
 
-	public Timestamp getDownTime() {
+	public Date getDownTime() {
 		return downTime;
 	}
 
 
-	public void setDownTime(Timestamp downTime) {
+	public void setDownTime(Date downTime) {
 		this.downTime = downTime;
 	}
 
@@ -206,12 +204,12 @@ public class Law implements Serializable{
 	}
 
 
-	public Timestamp getEnableDate() {
+	public Date getEnableDate() {
 		return enableDate;
 	}
 
 
-	public void setEnableDate(Timestamp enableDate) {
+	public void setEnableDate(Date enableDate) {
 		this.enableDate = enableDate;
 	}
 
@@ -306,6 +304,24 @@ public class Law implements Serializable{
 	}
 
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Law [id=" + id + ", equipmentName=" + equipmentName + ", coding=" + coding + ", platformCode="
+				+ platformCode + ", filingCode=" + filingCode + ", publictyDate=" + publictyDate + ", downTime="
+				+ downTime + ", shutdownReason=" + shutdownReason + ", speedLimit=" + speedLimit + ", enableDate="
+				+ enableDate + ", addressCode=" + addressCode + ", monitoringOrientation=" + monitoringOrientation
+				+ ", intervalCoding=" + intervalCoding + ", measurementPoint=" + measurementPoint + ", functionEnabled="
+				+ functionEnabled + ", lawAddress=" + lawAddress + ", bayonetPurpose=" + bayonetPurpose
+				+ ", llegalCode=" + llegalCode + ", directionCoding=" + directionCoding + "]";
+	}
+
+
+	
 	
 	
 	

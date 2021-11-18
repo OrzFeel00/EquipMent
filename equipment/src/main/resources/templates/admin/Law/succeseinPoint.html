@@ -50,12 +50,7 @@
 }
 </style>
 
-<style type="text/css">
 
-.layui-form-label {
-    width: 100px;
-}
-</style>
   
 
 <!-- 被我修改10.28
@@ -145,8 +140,8 @@
 						</li>
 					
 							
-							<li><a href="toshowLaw"><i class="icon-edit"></i><span class="hidden-tablet"> 安装信息管理</span></a></li>
-						<li><a href="toshowLaw"><i class="icon-edit"></i><span class="hidden-tablet"> 执法信息管理</span></a></li>
+							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 安装信息管理</span></a></li>
+						<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 执法信息管理</span></a></li>
 							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 运维信息管理</span></a></li>
 						
 					</ul>
@@ -175,89 +170,28 @@
 				<li><a href="#">订单管理</a></li>
 			</ul>
 			
-			 <!--设备存储表单-->
-		  <div style="text-align: center;margin-top: 30px;">
-		 	 <form  style="margin-left: 40%"   class="layui-form " action="Storage.do" method="post">				 		 
-		 		<!--录像保存天数-->
-		 		<div class="layui-form-item">
-		 			<label class="layui-form-label">录像保存天数</label>
-		 			<div  class="layui-input-inline">
-		 				<!--原始表单区域-->
-		 			 <input type="text" name="storageDay" di="storageDay" class="layui-input" placeholder="录像保存天数"  
-		 			   required lay-verify="required|number"/>
-		 			</div>				
-		 		</div>
-				<!--录像地址-->
-				<div class="layui-form-item">
-					<label class="layui-form-label">录像地址</label>
-					<div  class="layui-input-inline">
-						<!--原始表单区域-->
-					 <input type="text" name="videoAddress" di="videoAddress" class="layui-input" placeholder="录像地址" 
-					  required lay-verify="required"/>
-					</div>				
-				</div>
-				<!--码流类型-->
-				<div class="layui-form-item">
-					<label class="layui-form-label">码流类型</label>
-					<div  class="layui-input-inline">
-						<!--原始表单区域-->
-					 <input type="text" name="bitstreamType" di="bitstreamType" class="layui-input" placeholder="码流类型"  
-					 required lay-verify="required"/>
-					</div>				
-				</div>
-				<!--视频编码格式-->
-				<div class="layui-form-item">
-					<label class="layui-form-label">视频编码格式</label>
-					<div  class="layui-input-inline">
-						<!--原始表单区域-->
-					 <input type="text" name="codingFormat" di="codingFormat" class="layui-input" placeholder="视频编码格式" 
-					  required lay-verify="required"/>
-					</div>				
-				</div>
-				<!--视频码率大小-->
-				<div class="layui-form-item">
-					<label class="layui-form-label">视频码率大小</label>
-					<div  class="layui-input-inline">
-						<!--原始表单区域-->
-					 <input type="text" name="bitrateSize" di="bitrateSize" class="layui-input" placeholder="视频码率大小" 
-					  required lay-verify="required"/>
-					</div>				
-				</div>
-				<!--视频码率类型-->
-				<div class="layui-form-item">
-					<label class="layui-form-label">视频码率类型</label>
-					<div  class="layui-input-inline">
-						<!--原始表单区域-->
-					 <input type="text" name="rateType" di="rateType" class="layui-input" placeholder="视频码率类型"  
-					 required lay-verify="required"/>
-					</div>				
-				</div>
-				<!--图片格式-->
-				<div class="layui-form-item">
-					<label class="layui-form-label">图片格式</label>
-					<div  class="layui-input-inline">
-						<!--原始表单区域-->
-					 <input type="text" name="pictureFormat" di="pictureFormat" class="layui-input" placeholder="图片格式" 
-					  required lay-verify="required"/>
-					</div>				
-				</div>
-				
-				
-				
-				
-		 		 <!--按钮-->
-		 		 <div style="margin-left: 5%" class="layui-form-item">
-		 			 <div class="layui-input-inline">
-		 				 <button type="reset" class="layui-btn layui-btn-primary pre">重置</button>
-		 				 <button class="layui-btn" type="submit"  lay-submit lay-filter="formStep2" >
-		 					 &emsp;下一项&emsp;
-		 				 </button>
-		 			 </div>
-		 		 </div>
-		 		 
-		 	 </form>		 
+			<!--  -->
+			
+		 <div>
+		      <div style="text-align: center;margin-top: 90px;">
+		          <i class="layui-icon layui-circle" 
+				   style="color: white;font-size:30px;font-weight:bold;background: #52C41A;padding: 20px;line-height: 80px;">&#xe605;</i>
+		          <div style="font-size: 24px;color: #333;font-weight: 500;margin-top: 30px;">
+		              添加成功
+		          </div>
+		      </div>
+		      <div style="text-align: center;margin-top: 50px;">
+		      <form  action="toPoint" method="get">
+		      
+		      
+		      <button class="layui-btn next" type="submit" >重新录入点位，</button>
+		      
+		      </form>
+		          
+		      </div>
+		       
 		  </div>
-			<!--end设备存储表单-->
+			<!--end设备表单-->
 
            
            
@@ -283,13 +217,9 @@
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
-	   <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+			  <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 
-       <script type="text/javascript">
-		layui.use('form', function(){
-		  var form = layui.form;
-		});
-		</script>
+
 <!-- JavaScript-->
         <script src="admin/js/jquery-1.9.1.min.js"></script>
 	    <script src="admin/js/jquery-migrate-1.0.0.min.js"></script>

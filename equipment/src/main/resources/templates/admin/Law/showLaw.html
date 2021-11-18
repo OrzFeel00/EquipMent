@@ -4,7 +4,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>车辆入库</title>
+	<title>点位展示</title>
 	<meta name="description" content="Bootstrap Metro Dashboard">
 	<meta name="author" content="">
 	<meta name="keyword" content="">
@@ -53,7 +53,7 @@
 
 <body>
 <div id="app">
-		<!-- start: Header -->
+			<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -62,7 +62,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"><span>设备管理</span></a>
+				<a class="brand" href="Index"><span>设备管理系统</span></a>
 								
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
@@ -75,11 +75,10 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-menu-title">
- 									<span>用户管理</span>
+ 									<span>基本管理</span>
 								</li>
-								<li><a href="adperson.html"><i class="halflings-icon user"></i> 用户新增</a></li>
-								<li><a href="touIndex.html"><i class="halflings-icon user"></i> 用户修改</a></li>
-								<li><a href="touIndex.html"><i class="halflings-icon off"></i> 退出本系统</a></li>
+								
+								<li><a href="toadlogin"><i class="halflings-icon off"></i> 退出本系统</a></li>
 							</ul>
 						</li>
 						<!-- end: User Dropdown -->
@@ -115,39 +114,23 @@
 							<li>
 							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 基本信息修改管理</span> <span class="label label-important"> 3 </span></a>
 							<ul>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 点位修改</span></a></li>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 街道修改</span></a></li>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 设备修改</span></a></li>
+								<li><a class="submenu" href="toshowpoint"><i class="icon-signout"></i><span class="hidden-tablet"> 点位修改</span></a></li>
+								<li><a class="submenu" href="toshowroad"><i class="icon-signout"></i><span class="hidden-tablet"> 街道修改</span></a></li>
+								<li><a class="submenu" href="toshowept"><i class="icon-signout"></i><span class="hidden-tablet"> 设备修改</span></a></li>
 							</ul>
 						</li>
 						<li>
 							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 项目管理</span> <span class="label label-important"> 2 </span></a>
 							<ul>
-								<li><a class="submenu" href="toProject"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息录入</span></a></li>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息修改</span></a></li>
+								<li><a class="submenu" href="toproject"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息录入</span></a></li>
+								<li><a class="submenu" href="toshowproject"><i class="icon-signout"></i><span class="hidden-tablet"> 项目信息修改</span></a></li>
 							</ul>
 						</li>
-						<li>
-							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 安装信息管理</span> <span class="label label-important"> 2 </span></a>
-							<ul>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 安装信息录入</span></a></li>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 安装信息修改</span></a></li>
-								
-							</ul>
-						</li>
-						<li>
-							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 执法信息管理</span> <span class="label label-important"> 2 </span></a>
-							<ul>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 执法信息录入</span></a></li>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet"> 执法信息修改</span></a></li>
-							</ul>		
-						<li>
-							<a class="dropmenu" href="#"><i class="icon-truck"></i><span class="hidden-tablet"> 运维信息管理</span> <span class="label label-important"> 2 </span></a>
-							<ul>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet">运维信息录入</span></a></li>
-								<li><a class="submenu" href="outpart.html"><i class="icon-signout"></i><span class="hidden-tablet">运维信息修改</span></a></li>
-							</ul>
-						</li>
+					
+							
+							<li><a href="toshowLaw"><i class="icon-edit"></i><span class="hidden-tablet"> 安装信息管理</span></a></li>
+						<li><a href="toshowLaw"><i class="icon-edit"></i><span class="hidden-tablet"> 执法信息管理</span></a></li>
+							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 运维信息管理</span></a></li>
 						
 					</ul>
 				</div>
@@ -160,6 +143,7 @@
 					<p>You need to have <a href="" target="_blank">JavaScript</a> enabled to use this site.</p>
 				</div>
 			</noscript>
+			<!-- end: Main Menu -->
 
 		<!-- start: Content  中心页显示 -->
 		<div id="content" class="span10">
@@ -177,22 +161,22 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showpoint.do" method="post">
+				<form  action="showLaw.do" method="post">
 		      
-				<div id="pointName"  style="margin-left:10px;font-weight:bold;float: left">
-			  	  点位名称：<input name="pointName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入名称"/>   </div>
+				<div id="equipmentName"  style="margin-left:10px;font-weight:bold;float: left">
+			  	  设备名称：<input name="equipmentName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入名称"/>   </div>
 			  
-				<div id="sectionCode"   style="margin-left:10px;font-weight:bold;float: left">
-				  断面编号：<input  name="sectionCode" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
+				<div id="coding"   style="margin-left:10px;font-weight:bold;float: left">
+				  六合一编码：<input  name="coding" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
 				  
-				<div id="pointCode"   style="margin-left:10px;font-weight:bold;float: left">
-			     监测点编码：<input name="pointCode"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
+				<div id="bayonetPurpose"   style="margin-left:10px;font-weight:bold;float: left">
+			      卡口用途：<input name="bayonetPurpose"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入用途"/>	</div>
 			     
-				<div id="pointType"  style="margin-left:10px;font-weight:bold;float: left">
-				  点位类型：<input name="pointType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入类型"/>	</div>
+				<div id="lawAddress"  style="margin-left:10px;font-weight:bold;float: left">
+				  执法地址：<input name="lawAddress"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入地址"/>	</div>
 				  
-				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
-				 道路类型：<input name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入道路"/>	</div>
+				<div   id="llegalCode" style="margin-left:10px;font-weight:bold;float: left">
+				 违法地点代码：<input name="llegalCode"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="违法地点代码"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
@@ -202,50 +186,71 @@
 			     			  						
 		      	</form>
 	    	</div>
-						         
+						        <!--   fixed: 'right'   style="table-layout:fixed"--> 
 							<hr>
-			
-						  <table id="t" lay-filter="demo" lay-data="{id: 'idTest'}" >
+			<div >
+						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
-						    <tr>
-						      <th lay-data="{field: 'pointId' ,sort: true, width:80}">ID</th>
-						      <th lay-data="{field:'pointName', Width:100}">点位名称</th>
-						      <th lay-data="{field:'sectionCode', Width: 100}">断面编号</th>
-						      <th lay-data="{field:'longitude', Width: 100}">点位经度</th>
-						      <th lay-data="{field:'latitude', Width: 100}">点位纬度</th>
-						      <th lay-data="{field:'pointCode', Width: 100}">监测点编码</th>
-						      <th lay-data="{field:'shape', Width: 100}">路口形状</th>
-						      <th lay-data="{field:'LaneNumber', sort: true, Width: 100}">车道数 </th>
-						      <th lay-data="{field:'pointType', Width: 100}">点位类型</th>
-						       <th lay-data="{field:'roadName', Width: 100}">所属道路</th>
-						      <th lay-data="{fixed: 'right', width:110, align:'center', toolbar: '#barDemo'}"></th>
-						    </tr>
+								<tr>
+								  <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
+								  <th lay-data="{field:'equipmentName', width:200,style:'color:#009688'}">监控设备名称</th>
+								  <th lay-data="{field:'coding', width: 150}">六合一编码</th>
+								  <th lay-data="{field:'platformCode', width: 150}">高清平台代码</th>
+								  <th lay-data="{field:'filingCode', width: 150}">集指设备备案编码</th>
+								  <th lay-data="{field:'publictyDate', width: 180}">公示时间</th>
+								  <th lay-data="{field:'downTime', width: 180}">停机时间</th>
+								  <th lay-data="{field:'shutdownReason', width: 200}">停机原因</th>
+								  <th lay-data="{field:'speedLimit', width: 150}">限速值</th>
+								  <th lay-data="{field:'enableDate', width: 180}">启用时间</th>
+								  <th lay-data="{field:'addressCode', width: 150}">执法地址编码</th>
+								  <th lay-data="{field:'monitoringOrientation', width: 150}">监控方向</th>
+								  <th lay-data="{field:'intervalCoding', width: 150}">区间六合一编码</th>
+								  <th lay-data="{field:'measurementPoint', width: 150}">区间测速终点</th>
+								  <th lay-data="{field:'functionEnabled', width: 150}">设备功能启用</th>
+								  <th lay-data="{field:'lawAddress', width: 200}">执法地址</th>
+								  <th lay-data="{field:'bayonetPurpose', width: 150}">卡口用途</th>
+								  <th lay-data="{field:'llegalCode', width: 150}">违法地点代码</th>
+								  <th lay-data="{field:'directionCoding', width: 200}">方向编码</th>
+							
+								
+								  <th lay-data="{ fixed: 'right',width:130, align:'center', toolbar: '#barDemo'}">操作</th>
+								  	  <th lay-data="{ width: 520}"></th>
+								</tr>
 						  </thead>
 						  <tbody>
-						  
-						     <tr th:each="p : ${pointlist} " >
-						      <td th:text="${p.pointId}">11</td>
-						      <td th:text="${p.pointName}">11</td>
-						      <td th:text="${p.sectionCode}">贤心2</td>
-						      <td th:text="${p.longitude}">贤心3</td>
-						      <td th:text="${p.latitude}">贤心4</td>
-						      <td th:text="${p.pointCode}">贤心5</td>
-						      <td th:text="${p.shape}">贤心6</td>
-						      <td th:text="${p.LaneNumber}">贤心7</td>
-						      <td th:text="${p.pointType}">贤心8</td>	
-						       <td th:text="${p.roadName}">贤心8</td>	     		      
+						   
+						     <tr th:each="p : ${lawlist} " >
+						      <td th:text="${p.id}">ID</td>
+						      <td th:text="${p.equipmentName}">监控设备名称</td>
+						      <td th:text="${p.coding}">六合一编码</td>
+						      <td th:text="${p.platformCode}">高清平台代码</td>
+						      <td th:text="${p.filingCode}">集指设备备案编码</td>
+						      <td th:text="${#dates.format(p.publictyDate,'yyyy-MM-dd HH:mm:ss')}">公示时间</td>
+						      <td th:text="${#dates.format(p.downTime,'yyyy-MM-dd HH:mm:ss')}">停机时间</td>
+						      <td th:text="${p.shutdownReason}">停机原因</td>
+						      <td th:text="${p.speedLimit}">限速值</td>	
+						      <td th:text="${#dates.format(p.enableDate,'yyyy-MM-dd HH:mm:ss')}">启用时间</td>	 
+						      <td th:text="${p.addressCode}">执法地址编码</td>	    
+						      <td th:text="${p.monitoringOrientation}">监控方向</td>	    
+						      <td th:text="${p.intervalCoding}">区间六合一编码</td>	    
+						      <td th:text="${p.measurementPoint}">区间测速终点</td>	    
+						      <td th:text="${p.functionEnabled}">设备功能启用</td>	  
+						      <td th:text="${p.lawAddress}">执法地址</td>	 
+						      <td th:text="${p.bayonetPurpose}">卡口用途</td>	 
+						      <td th:text="${p.llegalCode}">违法地点代码</td>	 
+						      <td th:text="${p.directionCoding}">方向编码</td>	 		          	       		      
 						    </tr>		    
 					   
 						  </tbody>
 						</table>
 						
 						<!--  -->
-						
+						</div>
 							<!--表格工具栏-->
 	<script type="text/html" id="tool">
 	<div class="layui-btn-container">
 	<!--lay-event 给元素绑定事件名称-->
-	  <button class="layui-btn" lay-event="add">新增点位</button>
+	  <button class="layui-btn" lay-event="add">新增执法信息</button>
 
 	</div>
 	</script>
@@ -302,11 +307,13 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       //转换静态表格
      table.init('demo', {
         height: '710' //设置高度
+        ,width :'1945'
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'点位信息'
         ,loading:true 
-        ,toolbar:true
+        ,toolbar:true  
         ,page: true
+        , defaultToolbar: ['filter', 'print', 'exports',{icon: 'layui-icon-prev'},1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ,toolbar:"#tool"
         //支持所有基础参数
       });
@@ -319,15 +326,16 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     if(obj.event === 'del'){
     	layer.open({
   		  type: 2, 
-  		  title: ['删除', 'font-size:20px;'],
+  		  closeBtn: 0,
+  		  title: ['删除这个设备的执法信息', 'font-size:20px;'],
   		  area: ['500px', '400px'],
-  		  content: 'todellpoint', //这里content是一url
+  		  content: 'todellLaw', //这里content是一url
   		  success:function(layero, index){
 			  var body = layer.getChildFrame('body', index);
 			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
 			    console.log(body.html()) //得到iframe页的body内容
-			    body.find('#pointId').val(data.pointId)
-			    body.find('#pointName').val(data.pointName)		 
+			    body.find('#id').val(data.id)
+			    body.find('#equipmentName').val(data.equipmentName)		 
 			  }
   		});
     	
@@ -337,23 +345,35 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     	layer.open({
     		  type: 2, 
     		  scrollbar:false,
-    		  title: ['点位修改', 'font-size:20px;'],
+    		  closeBtn: 0,
+    		  title: ['修改信息', 'font-size:20px;'],
     		  area: ['600px', '800px'],   	
-    		  content: 'toshowedt',//这里content是一url
+    		  content: ['toedtLaw'],//这里content是一url
     		  success:function(layero, index){
     			  var body = layer.getChildFrame('body', index);
     			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
     			    console.log(body.html()) //得到iframe页的body内容
-    			    body.find('#pointId').val(data.pointId)
-    			    body.find('#pointName').val(data.pointName)
-    			    body.find('#sectionCode').val(data.sectionCode)
-    			    body.find('#longitude').val(data.longitude)
-    			    body.find('#latitude').val(data.latitude)
-    			    body.find('#pointCode').val(data.pointCode)
-    			    body.find('#shape').val(data.shape)
-    			    body.find('#LaneNumber').val(data.LaneNumber)
-    			    body.find('#pointType').val(data.pointType)
-    			    body.find('#roadName').val(data.roadName)
+    			    body.find('#id').val(data.id)
+    			    body.find('#equipmentName').val(data.equipmentName)
+    			    body.find('#coding').val(data.coding)
+    			    body.find('#platformCode').val(data.platformCode)
+    			    body.find('#filingCode').val(data.filingCode)
+    			    body.find('#publictyDate').val(data.publictyDate)
+    			    body.find('#downTime').val(data.downTime)
+    			    body.find('#shutdownReason').val(data.shutdownReason)
+    			    body.find('#speedLimit').val(data.speedLimit)
+    			    body.find('#enableDate').val(data.enableDate)
+    			    body.find('#addressCode').val(data.addressCode)
+    			    body.find('#monitoringOrientation').val(data.monitoringOrientation)
+    			    body.find('#intervalCoding').val(data.intervalCoding)
+    			    body.find('#measurementPoint').val(data.measurementPoint)
+    			    body.find('#functionEnabled').val(data.functionEnabled)
+    			    body.find('#lawAddress').val(data.lawAddress)
+    			    body.find('#bayonetPurpose').val(data.bayonetPurpose)
+    			    body.find('#llegalCode').val(data.llegalCode)
+    			    body.find('#directionCoding').val(data.directionCoding)
+    			     
+    			                
     			  }
     		});
     }
@@ -370,9 +390,10 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 		  if(eventName =="add"){
 			  layer.open({
 	    		  type: 2, 
-	    		  title: ['点位新增', 'font-size:20px;'],
+	    		  closeBtn: 0,
+	    		  title: ['新增执法信息', 'font-size:20px;'],
 	    		  area: ['600px', '800px'],
-	    		  content: 'toaddpoint' //这里content是一个普通url
+	    		  content: 'toaddLaw' //这里content是一个普通url
 	    		});
 			  
 		  }   

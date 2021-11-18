@@ -47,9 +47,6 @@ public class PointPositionAction {
 				return "admin/point/inPoint";
 			}
 			
-		
-			
-			
 			
 			
 			//do点位信息录入

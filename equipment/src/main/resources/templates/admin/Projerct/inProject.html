@@ -141,8 +141,8 @@
 						</li>
 					
 							
-							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 安装信息管理</span></a></li>
-						<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 执法信息管理</span></a></li>
+							<li><a href="toshowLaw"><i class="icon-edit"></i><span class="hidden-tablet"> 安装信息管理</span></a></li>
+						<li><a href="toshowLaw"><i class="icon-edit"></i><span class="hidden-tablet"> 执法信息管理</span></a></li>
 							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 运维信息管理</span></a></li>
 						
 					</ul>
@@ -192,10 +192,10 @@
 						<!--原始表单区域-->
 						<span class="e" th:if="${errors}!=null" th:text="请重新输入日期"></span>
 					 <input type="text" name="purchaseDate" id="purchaseDate" class="layui-input" placeholder="采购日期" 
-					 th:value="${prt}!=null ? ${prt.purchaseDate} : ''"    required lay-verify="required"/>
+					 th:value="${prt}!=null ? ${#dates.format(prt.purchaseDate,'yyyy-MM-dd')} : ''"    required lay-verify="required"/>
 					</div>				
 				</div>
-				<!--安装日期 -->
+				<!--安装日期 ${#dates.format(prt.purchaseDate,'yyyy-MM-dd')}   -->
 				<div class="layui-form-item">
 					<label class="layui-form-label">安装日期 </label>
 					
@@ -203,7 +203,7 @@
 						<!--原始表单区域-->
 						<span class="e" th:if="${errors}!=null" th:text="请重新输入日期"></span>
 					 <input type="text" name="installDate" id="installDate" class="layui-input" placeholder="安装日期 " 
-					 th:value="${prt}!=null ? ${prt.installDate} : ''"     required lay-verify="required"/>
+					 th:value="${prt}!=null ? ${#dates.format(prt.installDate,'yyyy-MM-dd')} : ''"     required lay-verify="required"/>
 
 					</div>				
 				</div>

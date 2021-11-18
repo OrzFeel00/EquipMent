@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+	<!--设备表单-->
+		<div style="width:100%">
+			<form  style="margin-left: 20%;" class="layui-form " action="edtLaw.do" method="post">
+					<!--输入对应设备名称-->
+					<div class="layui-form-item">
+						<label class="layui-form-label">设备名称</label>
+						<div  class="layui-input-inline">
+							<!--原始表单区域-->
+					     <select name="equipmentName" id="equipmentName" lay-verify="required"  lay-search>
+					           <option value="" >请选择设备</option>				       
+					           <option th:value="${law}!=null ? ${law.equipmentName} : ''" 
+					                   th:text="${law}!=null ? ${law.equipmentName} : ''"  
+					                   selected> 1</option>
+							   <option th:each="r: ${eptss}" 
+							           th:value="${r}"
+							           th:text="${r}" >北京
+							   </option>
+				 	     </select>
+						</div>				
+					</div>
+
+				<!--六合一编码-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">六合一编码</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="coding" id="coding" class="layui-input" placeholder="六合一编码" 
+					   th:value="${law}!=null ? ${law.coding} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--高清平台代码-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">高清平台代码</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="platformCode" id="platformCode" class="layui-input" placeholder="高清平台代码" 
+					   th:value="${law}!=null ? ${law.platformCode} : ''"    required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--集指设备备案编码-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">集指设备备案编码</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="filingCode" id="filingCode" class="layui-input" placeholder="集指设备备案编码" 
+					   th:value="${law}!=null ? ${law.filingCode} : ''"      required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--公示时间-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">公示时间</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="publictyDate" id="publictyDate" class="layui-input" placeholder="公示时间" 
+					   th:value="${law}!=null ? #{#dates.format(p.publictyDate,'yyyy-MM-dd HH:mm:ss')} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--停机时间-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">停机时间</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="downTime" id="downTime" class="layui-input" placeholder="停机时间" 
+					   th:value="${law}!=null ? #{#dates.format(p.downTime,'yyyy-MM-dd HH:mm:ss')} : ''"      required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--停机原因-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">停机原因</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="shutdownReason" id="shutdownReason" class="layui-input" placeholder="停机原因" 
+					   th:value="${law}!=null ? ${law.shutdownReason} : ''"       required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--限速值-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">限速值</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="speedLimit" id="speedLimit" class="layui-input" placeholder="限速值" 
+					  th:value="${law}!=null ? ${law.speedLimit} : ''"   required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--启用时间-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">启用时间</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域  #{#dates.format(p.downTime,'yyyy-MM-dd HH:mm:ss')}-->
+					 <input type="text" name="enableDate" id="enableDate" class="layui-input" placeholder="启用时间" 
+					   th:value="${law}!=null ? #{#dates.format(p.enableDate,'yyyy-MM-dd HH:mm:ss')} : ''"       required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--执法地址编码-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">执法地址编码</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="addressCode" id="addressCode" class="layui-input" placeholder="执法地址编码" 
+					   th:value="${law}!=null ? ${law.addressCode} : ''"       required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--监控方向-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">监控方向</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="monitoringOrientation" id="monitoringOrientation" class="layui-input" placeholder="监控方向" 
+					   th:value="${law}!=null ? ${law.monitoringOrientation} : ''"       required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--区间六合一编码-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">区间六合一编码</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="intervalCoding" id="intervalCoding" class="layui-input" placeholder="区间六合一编码" 
+					   th:value="${law}!=null ? ${law.intervalCoding} : ''"       required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--区间测速终点-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">区间测速终点</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="measurementPoint" id="measurementPoint" class="layui-input" placeholder="区间测速终点" 
+					   th:value="${law}!=null ? ${law.measurementPoint} : ''"       required lay-verify="required"/>
+					</div>				
+				</div>
+						<!--设备功能启用-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备功能启用</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="functionEnabled" id="functionEnabled" class="layui-input" placeholder="设备功能启用" 
+					   th:value="${law}!=null ? ${law.functionEnabled} : ''"       required lay-verify="required"/>
+					</div>				
+				</div>
+						<!--执法地址-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">执法地址</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="lawAddress" id="lawAddress" class="layui-input" placeholder="执法地址" 
+					   th:value="${law}!=null ? ${law.lawAddress} : ''"       required lay-verify="required"/>
+					</div>				
+				</div>
+						<!--卡口用途-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">卡口用途</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="bayonetPurpose" id="bayonetPurpose" class="layui-input" placeholder="卡口用途" 
+					   th:value="${law}!=null ? ${law.bayonetPurpose} : ''"       required lay-verify="required"/>
+					</div>				
+				</div>
+						<!--违法地点代码-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">违法地点代码</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="llegalCode" id="llegalCode" class="layui-input" placeholder="违法地点代码" 
+					   th:value="${law}!=null ? ${law.llegalCode} : ''"      required lay-verify="required"/>
+					</div>				
+				</div>
+							<!--方向编码-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">方向编码</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="directionCoding" id="directionCoding" class="layui-input" placeholder="方向编码" 
+					   th:value="${law}!=null ? ${law.directionCoding} : ''"      required lay-verify="required"/>
+					</div>				
+				</div>
+													
+				 <!--按钮-->
+				  <div class="layui-form-item">
+				   <div class="layui-input-block">
+				      <button class="layui-btn" type="submit"  lay-submit lay-filter="formStep2" >立即提交</button>&nbsp;
+				        <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+						
+				    </div>
+				  </div>
+				   
+			</form>   
+		</div>
+			<!--end设备表单-->
+
+
+
+
+
+
+
+
+
+<footer style="text-align:center; margin-top: 10%">
+
+	<p>
+		<span >Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+<script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use(['laydate','form'], function(){
+		  var form = layui.form;
+		  var laydate = layui.laydate;
+		  
+		  
+		  laydate.render({
+			    elem: '#publictyDate' ,//指定元素
+				format: 'yyyy-MM-dd HH:mm:ss',
+				//value:'2018-11-18',
+				type: 'datetime',
+				min: '2000-1-1',
+				max: '2117-12-1'
+			  });
+		  laydate.render({
+			    elem: '#downTime' ,//指定元素
+				format: 'yyyy-MM-dd HH:mm:ss',
+				//:'2018-11-18',
+				type: 'datetime',
+				min: '2000-1-1',
+				max: '2117-12-1'
+			  });
+		  laydate.render({
+			    elem: '#enableDate' ,//指定元素
+				format: 'yyyy-MM-dd HH:mm:ss',
+				//value:'2018-11-18',
+				type: 'datetime',
+				min: '2000-1-1',
+				max: '2117-12-1'
+			  });
+		  
+		
+		  
+		  
+		  
+		  
+		  form.on('submit(outemo)', function(data){
+			  parent.reftabbel();   	  
+	    	   parent.layer.close(index); //再执行关闭 	     
+			     return false;
+				});
+		  
+		 
+		  form.verify({		    
+			  longitude: [
+			    	/^[\-\+]?(0(\.\d{1,8})?|([1-9](\d)?)(\.\d{1,8})?|1[0-7]\d{1}(\.\d{1,8})?|180(([.][0]{1,8})?))$/
+			        ,'经度格式错误，最长到小数点后8位'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
+		});
+		</script>
+
+
+
+
+</body>
+</html>
