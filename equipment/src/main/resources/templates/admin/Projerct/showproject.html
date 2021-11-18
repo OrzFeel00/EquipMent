@@ -4,7 +4,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>街道展示</title>
+	<title>点位展示</title>
 	<meta name="description" content="Bootstrap Metro Dashboard">
 	<meta name="author" content="">
 	<meta name="keyword" content="">
@@ -161,25 +161,28 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showroad.do" method="post">
+				<form  action="showproject.do" method="post">
 		      
-				<div id="administrativeRegion" style="margin-left:10px;font-weight:bold;float: left">
-			  	 行政区域：<input   name="administrativeRegion" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder=" 行政区域"/>   </div>
+				<div id="pointName"  style="margin-left:5px;font-weight:bold;float: left">
+			  	  项目名称：<input name="projectName" style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="项目名称"/>   </div>
 			  
-				<div  id="departmentRegion"  style="margin-left:10px;font-weight:bold;float: left">
-				 部门区域：<input   name="departmentRegion" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder=" 部门区域"/>	</div>
+				<div id="sectionCode"   style="margin-left:10px;font-weight:bold;float: left">
+				  承建单位：<input  name="contractor" style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="承建单位"/>	</div>
 				  
-				<div id="streetName"   style="margin-left:10px;font-weight:bold;float: left">
-			     街道名称：<input  name="streetName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="街道名称"/>	</div>
+				<div id="pointCode"   style="margin-left:10px;font-weight:bold;float: left">
+			     建设单位：<input name="buildUnit"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="建设单位"/>	</div>
 			     
-				<div id="roadName"  style="margin-left:10px;font-weight:bold;float: left">
-				道路名称：<input  name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="道路名称"/>	</div>
+				<div id="pointType"  style="margin-left:10px;font-weight:bold;float: left">
+				  施工单位：<input name="constructionUnit"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="施工单位"/>	</div>
 				  
-				<div id="roadGrade"   style="margin-left:10px;font-weight:bold;float: left">
-				 道路等级：<input  name="roadGrade"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="道路等级"/>	</div>
-			    
-			    <div  id="roadSpeed" style="margin-left:10px;font-weight:bold;float: left">
-				 道路限速：<input   name="roadSpeed"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="number" min="0.0" step="0.01" placeholder=" 道路限速 km/h"/>	</div>
+				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
+				 建设项目：<input name="constructionProject"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="建设项目"/>	</div>
+				
+				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
+				 点位：<input name="pointName"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="点位"/>	</div>
+			
+				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
+				 设备：<input name="equipmentName"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
@@ -189,37 +192,50 @@
 			     			  						
 		      	</form>
 	    	</div>
-						        <!-- fixed: 'right'  --> 
+						        <!--   fixed: 'right'   style="table-layout:fixed"--> 
 							<hr>
 			<div >
-						  <table id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
+						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
 						    <tr>
-						      <th lay-data="{field: 'roadId' ,sort: true, width:120 }">ID</th>
-						      <th lay-data="{field:'administrativeRegion', width:150}">行政区域</th>
-						      <th lay-data="{field:'departmentRegion', width: 150}">部门区域</th>
-						      <th lay-data="{field:'streetName', width: 200}">街道名称</th>
-						      <th lay-data="{field:'roadName', width: 220}">道路名称</th>
-						      <th lay-data="{field:'roadGrade', width: 150}">道路等级 </th>
-						      <th lay-data="{field:'roadCode', width: 150}">道路编码</th>
-						      <th lay-data="{field:'roadSpeed', sort: true,width: 150}">道路限速</th>						      
-						   
-						      <th lay-data="{fixed: 'right' ,width:130, align:'center', toolbar: '#barDemo'}">操作</th>
-						      <th lay-data="{width: 525}"></th>
+						      <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
+						      <th lay-data="{field:'projectName', width:200}">项目名称</th>
+						      <th lay-data="{field:'pointName',width: 200}">点位</th>
+						      <th lay-data="{field:'equipmentName',width: 200}">设备</th>
+						      <th lay-data="{field:'purchaseDate',sort: true, width: 150}">采购日期</th>
+						      <th lay-data="{field:'installDate',sort: true, width: 150}">安装日期</th>
+						      <th lay-data="{field:'contractor', width: 150}">承建单位</th>
+						      <th lay-data="{field:'constructionPeriod', width: 150}">承建期别</th>
+						      <th lay-data="{field:'buildUnit', width: 200}">建设单位</th>
+						      <th lay-data="{field:'constructionType', width: 130}">建设类型</th>
+						      <th lay-data="{field:'contractNumber', width:150}">合同编号</th>
+						      <th lay-data="{field:'constructionStatus',width: 200}">建设状态</th>
+						      <th lay-data="{field:'constructionUnit',width: 200}">施工单位</th>
+						      <th lay-data="{field:'constructionProject',width: 200}">建设项目</th>
+						 
+						 
+						      <th lay-data="{fixed: 'right',width:190, toolbar: '#barDemo'}">操作</th>
+						      <th lay-data="{width: 760}"></th>
 						    </tr>
 						  </thead>
 						  <tbody>
-						  
-						     <tr th:each="r : ${roadlist} " >
-						      <td th:text="${r.roadId}">11</td>
-						      <td th:text="${r.administrativeRegion}">11</td>
-						      <td th:text="${r.departmentRegion}">贤心2</td>
-						      <td th:text="${r.streetName}">贤心3</td>
-						      <td th:text="${r.roadName}">贤心4</td>
-						      <td th:text="${r.roadGrade}">贤心5</td>
-						      <td th:text="${r.roadCode}">贤心6</td>
-						      <td th:text="${r.roadSpeed}">贤心7</td>
-						          		      
+						  <!--    ${#dates.format(p.installDate,'yyyy-MM-dd')} -->				 
+						     <tr th:each="p : ${projectlist} " >
+						      <td th:text="${p.id}">11</td>
+						      <td th:text="${p.projectName}">11</td>
+						      <td th:text="${p.pointName}">贤心8</td>	   
+                              <td th:text="${p.equipmentName}">贤心8</td>	   
+						      <td th:text="${#dates.format(p.purchaseDate,'yyyy-MM-dd')}">贤心2</td>
+						      <td th:text="${#dates.format(p.installDate,'yyyy-MM-dd')}">贤心3</td>
+						      <td th:text="${p.contractor}">贤心4</td>
+						      <td th:text="${p.constructionPeriod}">贤心5</td>
+						      <td th:text="${p.buildUnit}">贤心6</td>
+						      <td th:text="${p.constructionType}">贤心7</td>
+						      <td th:text="${p.contractNumber}">贤心8</td>	
+						      <td th:text="${p.constructionStatus}">贤心8</td>	
+						      <td th:text="${p.constructionUnit}">贤心8</td>	
+						      <td th:text="${p.constructionProject}">贤心8</td>	
+						     		      
 						    </tr>		    
 					   
 						  </tbody>
@@ -227,18 +243,19 @@
 						
 						<!--  -->
 						</div>
-							<!--表格工具栏-->
+							<!--表格工具栏
 	<script type="text/html" id="tool">
 	<div class="layui-btn-container">
-	<!--lay-event 给元素绑定事件名称-->
-	  <button class="layui-btn" lay-event="add">新增街道</button>
+	<!--lay-event 给元素绑定事件名称
+	  <button class="layui-btn" lay-event="add">新增点位</button>
 
 	</div>
 	</script>
-						
+			-->			
 						<!--  -->
 					<script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-xs layui-bg-cyan" lay-event="addpoint">新增点位</a>
   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 		  <!-- 表头 -->	
@@ -287,14 +304,14 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var dataList;
       //转换静态表格
      table.init('demo', {
-        height: '710' //设置高度
-        ,width :'1955'
+        height: '718' //设置高度
+        ,width :'2180'
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'点位信息'
         ,loading:true 
-        ,toolbar:true
+        ,toolbar:true  
         ,page: true
-        , defaultToolbar: ['filter', 'print', 'exports',{icon: 'layui-icon-prev'},1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        , defaultToolbar: ['filter', 'print', 'exports',{icon: 'layui-icon-prev'},1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ,toolbar:"#tool"
         //支持所有基础参数
       });
@@ -308,16 +325,17 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     	layer.open({
   		  type: 2, 
   		  closeBtn: 0,
-  		  title: ['删除', 'font-size:20px;'],
+  		  title: ['删除该项目点位的设备', 'font-size:20px;'],
   		  area: ['500px', '400px'],
-  		  content: 'todellroad', //这里content是一url
+  		  content: 'todellproject', //这里content是一url
   		  success:function(layero, index){
 			  var body = layer.getChildFrame('body', index);
 			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
 			    console.log(body.html()) //得到iframe页的body内容
-			    body.find('#roadId').val(data.roadId)
-			    body.find('#streetName').val(data.streetName)	
-			    body.find('#roadName').val(data.roadName)	
+			    body.find('#id').val(data.id)
+			    body.find('#projectName').val(data.projectName)	
+			    body.find('#pointName').val(data.pointName)	
+			    body.find('#equipmentName').val(data.equipmentName)	
 			  }
   		});
     	
@@ -328,22 +346,46 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     		  type: 2, 
     		  scrollbar:false,
     		  closeBtn: 0,
-    		  title: ['点位修改', 'font-size:20px;'],
-    		  area: ['600px', '700px'],   	
-    		  content: 'toedtroad',//这里content是一url
+    		  title: ['项目设备修改', 'font-size:20px;'],
+    		  area: ['650px', '850px'],   	
+    		  content: ['toedtproject','no'],//这里content是一url
     		  success:function(layero, index){
     			  var body = layer.getChildFrame('body', index);
     			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
     			    console.log(body.html()) //得到iframe页的body内容
-    			    body.find('#roadId').val(data.roadId)
-    			    body.find('#administrativeRegion').val(data.administrativeRegion)
-    			    body.find('#departmentRegion').val(data.departmentRegion)
-    			    body.find('#streetName').val(data.streetName)
-    			    body.find('#roadName').val(data.roadName)
-    			    body.find('#roadGrade').val(data.roadGrade)
-    			    body.find('#roadCode').val(data.roadCode)
-    			    body.find('#roadSpeed').val(data.roadSpeed)
-    			
+    			    body.find('#id').val(data.id)
+    			    body.find('#projectName').val(data.projectName)
+    			    body.find('#purchaseDate').val(data.purchaseDate)
+    			    body.find('#installDate').val(data.installDate)
+    			    body.find('#contractor').val(data.contractor)
+    			    body.find('#constructionPeriod').val(data.constructionPeriod)
+    			    body.find('#buildUnit').val(data.buildUnit)
+    			    body.find('#constructionType').val(data.constructionType)
+    			    body.find('#contractNumber').val(data.contractNumber)
+    			    body.find('#constructionStatus').val(data.constructionStatus)
+    			    body.find('#constructionUnit').val(data.constructionUnit)
+    			    body.find('#constructionProject').val(data.constructionProject)
+    			    body.find('#pointName').val(data.pointName)
+    			    body.find('#equipmentName').val(data.equipmentName)
+    			  }
+    		});
+    }else if(obj.event === 'addpoint'){
+    	
+    	
+    	layer.open({
+    		  type: 2, 
+    		  scrollbar:false,
+    		  closeBtn: 0,
+    		  title: ['点位设备新增', 'font-size:20px;'],
+    		  area: ['600px', '600px'],   	
+    		  content: ['instoaddproject','no'],//这里content是一url
+    		  success:function(layero, index){
+    			  var body = layer.getChildFrame('body', index);
+    			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+    			    console.log(body.html()) //得到iframe页的body内容
+    			    body.find('#id').val(data.id)
+    			    body.find('#projectName').val(data.projectName)
+    			 
     			  }
     		});
     }
@@ -362,8 +404,8 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 	    		  type: 2, 
 	    		  closeBtn: 0,
 	    		  title: ['点位新增', 'font-size:20px;'],
-	    		  area: ['550px', '700px'],
-	    		  content: 'toaddroad' //这里content是一个普通url
+	    		  area: ['600px', '800px'],
+	    		  content: 'toaddpoint' //这里content是一个普通url
 	    		});
 			  
 		  }   

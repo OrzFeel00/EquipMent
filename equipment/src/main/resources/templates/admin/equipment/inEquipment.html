@@ -185,7 +185,7 @@
 						<!--原始表单区域-->
 						<span class="e" th:if="${errors}!=null" th:text="${errors.get('equipmentName')}"></span>
 					 <input type="text" name="equipmentCode" id="equipmentCode" class="layui-input" placeholder="设备编号"
-					 th:value="${eqt}!=null ? ${eqt.equipmentCode} : ''"   required lay-verify="required"/>
+					 th:value="${eptr}!=null ? ${eptr.equipmentCode} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--设备名称-->
@@ -195,7 +195,7 @@
 						<!--原始表单区域-->
 						
 					 <input type="text" name="equipmentName" id="equipmentName" class="layui-input" placeholder="设备名称" 
-					  th:value="${eqt}!=null ? ${eqt.equipmentName} : ''"  required lay-verify="required"/>
+					  th:value="${eptr}!=null ? ${eptr.equipmentName} : ''"  required lay-verify="required"/>
 					  	
 					</div>				
 				</div>
@@ -205,7 +205,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="equipmentUser" id="equipmentUser" class="layui-input" placeholder="设备用户名" 
-					 th:value="${eqt}!=null ? ${eqt.equipmentUser} : ''"  required lay-verify="required"  />
+					 th:value="${eptr}!=null ? ${eptr.equipmentUser} : ''"  required lay-verify="required"  />
 					</div>				
 				</div>
 				<!--设备密码-->
@@ -214,7 +214,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="password" name="equipmentPwd" id="equipmentPwd" class="layui-input" placeholder="设备密码" 
-					 th:value="${eqt}!=null ? ${eqt.equipmentPwd} : ''"  required lay-verify="required"/>
+					 th:value="${eptr}!=null ? ${eptr.equipmentPwd} : ''" required lay-verify="required"/>
 					</div>				
 				</div>
 				<!--设备类型-->
@@ -223,7 +223,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="equipmentType" id="equipmentType" class="layui-input" placeholder="设备类型" 
-					 th:value="${eqt}!=null ? ${eqt.equipmentType} : ''"  required lay-verify="required"/>
+					 th:value="${eptr}!=null ? ${eptr.equipmentType} : ''"  required lay-verify="required"/>
 					</div>				
 				</div>
 				

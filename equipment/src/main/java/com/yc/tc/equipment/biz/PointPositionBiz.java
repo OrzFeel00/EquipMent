@@ -67,8 +67,8 @@ public class PointPositionBiz {
 				}
 				//根据条件模糊查询
 				public List<PointPosition> selectpointBymore(PointPosition pop)throws BizException {
-					List<PointPosition> pop1=pmpper.selectpointBymore(pop);
-					return pop1;
+					
+					return pmpper.selectpointBymore(pop);
 				}
 				//修改点位
 				public void updatePointById(PointPosition pop)throws BizException {

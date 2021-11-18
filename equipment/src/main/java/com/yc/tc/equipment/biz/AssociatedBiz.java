@@ -30,28 +30,19 @@ public class AssociatedBiz {
 	private equiopmentallMapper eqmpper;
 	
 	//添加关联信息
-		public void addAsd(Associated asd)throws BizException {
-			//可以忽略字段的验证
-			ampper.insertAssociated(asd);
+		public void inaddAsd(euiopmentall eptr)throws BizException {
+			//读取当前设备idmr
+			 Integer inEquipmentid= instUtils.limt.get("inEquipmentid");
+			 eptr.setEquipmentId(inEquipmentid);
+			 eqmpper.insertAstomrByEid(eptr);
 		
 		}
 		
 		
-		public void addAsByid(Integer asid) {
-			// TODO Auto-generated method stub
-			//读取当前设备id
-			 Integer equetid= instUtils.limt.get("Equipmentid");
-			///根据设备id放入Associated
-			 empper.insertAsidByEid(equetid,asid);
-		}
 		
-        public List<Associated> selectallAssociated(){
-        	    
-        	return ampper.selectallassocted();
-        }
 
         
-        //更新ass 到 eptr
+        //aad ass 到 eptr
 		public void addAsdtr( euiopmentall eptr)throws BizException {
 			// TODO Auto-generated method stub
         	
@@ -62,7 +53,7 @@ public class AssociatedBiz {
 			
 		}
 
-
+      //edt
 		public void updatAssocById(euiopmentall eptr)throws BizException {
 		
 			eqmpper.insertAstomrByEid(eptr);

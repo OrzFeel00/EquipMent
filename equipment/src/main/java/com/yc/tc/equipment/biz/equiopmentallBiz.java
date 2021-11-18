@@ -27,23 +27,7 @@ public class equiopmentallBiz {
 	private equiopmentallMapper eqmpper;
 
 	
-	//注册验证
-			public void addEquip(euiopmentall eq)throws BizException {
-				//可以忽略字段的验证
-				//经行同名验证
-				if((eqmpper.countByecode(eq.getEquipmentCode())>0) && (eqmpper.countByeName(eq.getEquipmentName())>0)) {
-					throw new BizException("设备编号已经名称已存在");
-				}
-				if(eqmpper.countByecode(eq.getEquipmentCode())>0) {
-					throw new BizException("设备编号已存在");
-				}
-				if(eqmpper.countByeName(eq.getEquipmentName())>0) {
-					throw new BizException("设备已存在");
-				}
-				
-				
-				eqmpper.insertEquipmentmor(eq);	
-			}
+
 			
 			
 			//查找所有的设备所有信息
@@ -54,7 +38,7 @@ public class equiopmentallBiz {
 				return eqmpper.selectAllEqtmor();
 			}
 
-
+            //设备新增
 			public void addeptmor( euiopmentall eq)throws BizException  {
 				// TODO Auto-generated method stub
 				
@@ -119,6 +103,12 @@ public class equiopmentallBiz {
 				
 			}
 			
+			
+			//找到所有的设备名称
+			public List<String> selectAllEquplltNames() {
+				List<String> eqlist=eqmpper.selectAllEquNames();
+				return eqlist;
+			}
 			
 
 			

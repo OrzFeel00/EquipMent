@@ -14,7 +14,7 @@ public class Law implements Serializable{
 	
 	private Integer id;
 	//监控设备标识id   设备包含监控设备
-	private Integer equipmentId;
+	private String equipmentName;
 	//六合一编码
 	@NotEmpty(message = "不能为空")
 	private String coding;
@@ -72,7 +72,19 @@ public class Law implements Serializable{
 	}
 
 
-	public Law(Integer id, Integer equipmentId, @NotEmpty(message = "不能为空") String coding,
+	@Override
+	public String toString() {
+		return "Law [id=" + id + ", equipmentName=" + equipmentName + ", coding=" + coding + ", platformCode="
+				+ platformCode + ", filingCode=" + filingCode + ", publicityDate=" + publicityDate + ", downTime="
+				+ downTime + ", shutdownReason=" + shutdownReason + ", speedLimit=" + speedLimit + ", enableDate="
+				+ enableDate + ", addressCode=" + addressCode + ", monitoringOrientation=" + monitoringOrientation
+				+ ", intervalCoding=" + intervalCoding + ", measurementPoint=" + measurementPoint + ", functionEnabled="
+				+ functionEnabled + ", lawAddress=" + lawAddress + ", bayonetPurpose=" + bayonetPurpose
+				+ ", llegalCode=" + llegalCode + ", directionCoding=" + directionCoding + "]";
+	}
+
+
+	private Law(Integer id, String equipmentName, @NotEmpty(message = "不能为空") String coding,
 			@NotEmpty(message = "不能为空") String platformCode, @NotEmpty(message = "不能为空") String filingCode,
 			@NotEmpty(message = "不能为空") Timestamp publicityDate, Timestamp downTime,
 			@NotEmpty(message = "不能为空") String shutdownReason, @NotEmpty(message = "不能为空") String speedLimit,
@@ -83,7 +95,7 @@ public class Law implements Serializable{
 			@NotEmpty(message = "不能为空") String llegalCode, @NotEmpty(message = "不能为空") String directionCoding) {
 		super();
 		this.id = id;
-		this.equipmentId = equipmentId;
+		this.equipmentName = equipmentName;
 		this.coding = coding;
 		this.platformCode = platformCode;
 		this.filingCode = filingCode;
@@ -104,18 +116,6 @@ public class Law implements Serializable{
 	}
 
 
-	@Override
-	public String toString() {
-		return "Law [id=" + id + ", equipmentId=" + equipmentId + ", coding=" + coding + ", platformCode="
-				+ platformCode + ", filingCode=" + filingCode + ", publicityDate=" + publicityDate + ", downTime="
-				+ downTime + ", shutdownReason=" + shutdownReason + ", speedLimit=" + speedLimit + ", enableDate="
-				+ enableDate + ", addressCode=" + addressCode + ", monitoringOrientation=" + monitoringOrientation
-				+ ", intervalCoding=" + intervalCoding + ", measurementPoint=" + measurementPoint + ", functionEnabled="
-				+ functionEnabled + ", lawAddress=" + lawAddress + ", bayonetPurpose=" + bayonetPurpose
-				+ ", llegalCode=" + llegalCode + ", directionCoding=" + directionCoding + "]";
-	}
-
-
 	public Integer getId() {
 		return id;
 	}
@@ -126,13 +126,13 @@ public class Law implements Serializable{
 	}
 
 
-	public Integer getEquipmentId() {
-		return equipmentId;
+	public String getEquipmentName() {
+		return equipmentName;
 	}
 
 
-	public void setEquipmentId(Integer equipmentId) {
-		this.equipmentId = equipmentId;
+	public void setEquipmentName(String equipmentName) {
+		this.equipmentName = equipmentName;
 	}
 
 
@@ -304,6 +304,8 @@ public class Law implements Serializable{
 	public void setDirectionCoding(String directionCoding) {
 		this.directionCoding = directionCoding;
 	}
+
+
 	
 	
 	

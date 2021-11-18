@@ -114,7 +114,7 @@ public class PointPositionAction {
 				}
 				
 				try {
-					System.out.println("22222222"+pop.toString());
+					
 					//根据pop查询
 					List<PointPosition> pointlistmore =pBiz.selectpointBymore(pop);
 					

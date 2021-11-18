@@ -26,20 +26,16 @@ public class StorageBiz {
 	private equiopmentallMapper eqmpper;
 	
 	//添加存储信息
-		public void addSto(Storage sto)throws BizException {
-			//可以忽略字段的验证
-			smpper.insertStorage(sto);
+		public void inaddSto(euiopmentall eptr)throws BizException {
+			Integer inEquipmentid= instUtils.limt.get("inEquipmentid");
+			
+			 eptr.setEquipmentId(inEquipmentid);
+			 eqmpper.insertStromrByEid(eptr);
 		}
 		
-		public void addStByid(Integer stid) {
-			// TODO Auto-generated method stub
-			//读取当前设备id
-			 Integer equetid= instUtils.limt.get("Equipmentid");
-			///根据设备id放入Storage
-			 empper.insertStidByEid(equetid,stid);
-		}
+	
 
-		public void addStor(@Valid euiopmentall eptr)throws BizException {
+		public void addStor( euiopmentall eptr)throws BizException {
 			// TODO Auto-generated method stub
 			Integer eptrrid= instUtils.limt.get("eptrrid");
 			

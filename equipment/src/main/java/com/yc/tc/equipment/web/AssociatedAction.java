@@ -43,18 +43,17 @@ public class AssociatedAction {
 			
 			//关联信息录入
 			@PostMapping("Associated.do")
-			public String register(@Valid Associated asd,Errors errors,Model m) {
+			public String inregister( euiopmentall eptr,Errors errors,Model m) {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
-					m.addAttribute("asd",asd);
+					m.addAttribute("eptr",eptr);
 					return "admin/associated/inAssociated";
 				}
 				
 				try {
-					System.out.println(asd.toString());	
-					aBiz.addAsd(asd);
-					//根据设备id传入关联id
-					aBiz.addAsByid(asd.getAssociatedId());
+				
+					
+					aBiz.inaddAsd(eptr);
 					
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
@@ -62,11 +61,11 @@ public class AssociatedAction {
 					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
 					//errors.rejectValue("nonull", "null",e.getMessage()); 
 					m.addAttribute("errors",Utils.asMap(errors));
-					m.addAttribute("asd",asd);
+					m.addAttribute("eptr",eptr);
 					return "admin/associated/inAssociated";
 				}
-				//响应重定向  redirect:index
-				return "admin/equipment/succeseinEpt";
+				//响应重定向  redirect:index  
+				return "admin/Storage/inStorage";
 			}
 			
 			

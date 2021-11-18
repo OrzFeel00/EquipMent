@@ -29,22 +29,17 @@ public class BaseEquipmentBiz {
 	private EquipmentMapper empper;
 	
 	//添加设备基础信息
-		public void addSto(BaseEquipment bet)throws BizException {
-			//可以忽略字段的验证
-			if(bmpper.countByeSN(bet.getSn())>0) {
+		public void inaddBqtr(euiopmentall eptr)throws BizException {
+			
+			if(eqmpper.countByeSN(eptr.getSn())>0) {
 				throw new BizException("序列号已存在");
 			}
-			bmpper.insertBaseEquipment(bet);
+			Integer inEquipmentid= instUtils.limt.get("inEquipmentid");
+			 eptr.setEquipmentId(inEquipmentid);
+			 eqmpper.insertBaeemrByEid(eptr);
 		}
 
-		public void addBEbyid(Integer beid) {
-			// TODO Auto-generated method stub
-			//读取当前设备id
-			 Integer equetid= instUtils.limt.get("Equipmentid");
-			///根据设备id放入BaseEquipmentid
-			 empper.insertBeidByEid(equetid,beid);
-		}
-
+	
 		public void addBqtr(@Valid euiopmentall eptr)throws BizException {
 			// TODO Auto-generated method stub
 			//可以忽略字段的验证

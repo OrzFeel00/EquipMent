@@ -57,19 +57,19 @@ public class EquipmentAction {
 			
 			//设备录入
 			@PostMapping("inEquipment.do")
-			public String register(@Valid Equipment eqt,Errors errors,Model m) {
+			public String register( euiopmentall eptr,Errors errors,Model m) {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
-					m.addAttribute("eqt",eqt);
+					m.addAttribute("eptr",eptr);
 					return "admin/equipment/inEquipment";
 				}
 				
 				try {
-					eBiz.addEquip(eqt);
-					//这里用mybatis返回了主键id给对应的bean
-					System.out.println(eqt.getEquipmentId());
+					//插入设备信息
+					eqBiz.addeptmor(eptr);
+					
 			    //写入设备id
-				  instUtils.limt.put("Equipmentid", eqt.getEquipmentId());
+				  instUtils.limt.put("inEquipmentid", eptr.getEquipmentId());
 				  
 				  Integer eqtid= instUtils.limt.get("Equipmentid");
 					System.out.println(eqtid);
@@ -79,11 +79,11 @@ public class EquipmentAction {
 					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
 					errors.rejectValue("equipmentName", "equipmentName",e.getMessage());
 					m.addAttribute("errors",Utils.asMap(errors));
-					m.addAttribute("eqt",eqt);
+					m.addAttribute("eptr",eptr);
 					return "admin/equipment/inEquipment";
 				}
 				//响应重定向  redirect:index   跳转到基础设备信息
-				return "admin/BaseEquipment/inBaseEquipment";
+				return "admin/associated/inAssociated";  
 			}
 			
 			   
@@ -148,7 +148,7 @@ public class EquipmentAction {
 				try {
 					
 					System.out.println("22222222"+eptr.toString());
-					//插入点位信息
+					//插入设备信息
 					eqBiz.addeptmor(eptr);
 		            //点位id传入map中
 				     instUtils.limt.put("eptrrid", eptr.getEquipmentId());

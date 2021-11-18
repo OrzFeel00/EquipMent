@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	<style>
+    .layui-form-select dl { max-height:200px; }
+</style>
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+		<div  style="margin-left:80% ; margin-top: 5px;">
+		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+	     </div>
+			
+			
+			<!--设备表单-->
+		<div style="width:100%">
+			<form  style="margin-left: 20%;" class="layui-form " action="addpointtopro.do" method="post">
+					<!--点位名称-->
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">添加项目点位</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	     <select name="pointName" id="pointName" lay-verify="required" lay-search>
+				           <option value="" >请选择点位</option>
+				           <option value="unon" >无点位</option>
+						   <option th:each="p: ${points}" 
+						           th:value="${p}"
+						           th:text="${p}" >北京
+						   </option>
+		     	     </select>
+					</div>				
+				</div>
+				
+									
+				 <!--按钮-->
+				  <div class="layui-form-item">
+				    <div class="layui-input-inline">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
+				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				    </div>
+				  </div>
+				   
+			</form>   
+		</div>
+			<!--end设备表单-->
+
+
+
+
+
+
+
+<footer style="text-align:center;margin-top: 10%;">
+
+	<p>
+		<span >Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		  
+		  
+		  form.on('submit(outemo)', function(data){
+			  parent.reftabbel();   	  
+	    	   parent.layer.close(index); //再执行关闭 	     
+			     return false;
+				});
+		  
+		 
+		  form.verify({		    
+			  longitude: [
+			    	/^[\-\+]?(0(\.\d{1,8})?|([1-9](\d)?)(\.\d{1,8})?|1[0-7]\d{1}(\.\d{1,8})?|180(([.][0]{1,8})?))$/
+			        ,'经度格式错误，最长到小数点后8位'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
+		});
+		</script>
+
+
+
+</body>
+</html>

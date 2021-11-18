@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
+import com.yc.tc.equipment.bean.Project;
+
 
 public class instUtils3 {
 
@@ -16,7 +18,7 @@ public class instUtils3 {
 	 * @param 
 	 * @returnconcurrenthashmap
 	 */
-	public static Map<String, Integer> limtint = new ConcurrentHashMap<>();
+	public static Map<String, Project> limtpr = new ConcurrentHashMap<>();
 	
 	
 }

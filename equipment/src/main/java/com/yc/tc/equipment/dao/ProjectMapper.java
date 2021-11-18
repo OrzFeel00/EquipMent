@@ -24,7 +24,7 @@ public interface ProjectMapper {
 				+ ",#{contractor},#{constructionPeriod},#{buildUnit},#{constructionType}"
 				+ ",#{contractNumber},#{constructionStatus},#{constructionUnit},#{constructionProject},#{pointName},#{equipmentName})")
 		@Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-		public void insertProject(Project prt);
+		public int insertProject(Project prt);
 		
 
 		
@@ -50,6 +50,9 @@ public interface ProjectMapper {
 		//根据项目id插入Eqid
 		@Update("update project set equipment_name=#{Eqname} where id=#{projectId}")
 		public void insertEqnameById(String Eqname, int projectId );
+		
+		
+	
 
 
 		 //根据projectName 验证是否重名
@@ -67,6 +70,78 @@ public interface ProjectMapper {
 	    //根据projectName 验证是否重名
 	    @Select("select count(*) from project where project_name=#{ProjectName} and point_name=#{pointName} and equipment_name=#{equipmentName}")
 	    public int  countByIdPidPpoit (String ProjectName,String pointName,String equipmentName );
+	    
+	    
+	    // 查找所有的项目所有信息
+	    @Select("select * from project order by project_name ,point_name")
+		public List<Project> selectAllProject();
+	    
+	    
+	    
+	  //根据不同条件查询项目信息  if版 动态sql     concat('%',#{linkName},'%')   concat('%',#{string},'%')
+        @Select({"<script> "
+			    + "select * from project "
+        		+"<where>"
+				+ "<if test = 'projectName != null and projectName !=&apos;&apos;   '> "
+				+" and project_name like concat('%',#{projectName},'%') "
+				+"</if>"
+				+ "<if test = 'contractor != null  and contractor !=&apos;&apos;  '> "
+				+"  and contractor like concat('%',#{contractor},'%') "
+				+"</if>"	
+				+ "<if test = 'buildUnit != null  and buildUnit !=&apos;&apos;  '> "
+				+" and  build_unit like concat('%',#{buildUnit},'%') "
+				+"</if>"			
+				+ "<if test = 'constructionUnit != null  and constructionUnit !=&apos;&apos;  '> "
+				+"  and construction_unit like concat('%',#{constructionUnit},'%') "
+				+"</if>"
+				+ "<if test = 'constructionProject != null  and constructionProject !=&apos;&apos;  '> "
+				+" and  construction_project like concat('%',#{constructionProject},'%') "
+				+"</if>"
+				+ "<if test = 'pointName != null  and pointName !=&apos;&apos;  '> "
+				+" and  point_name like concat('%',#{pointName},'%') "
+				+"</if>"
+				+ "<if test = 'equipmentName != null  and equipmentName !=&apos;&apos;  '> "
+				+" and  equipment_name like concat('%',#{equipmentName},'%') "
+				+"</if>"
+				+"</where>"
+				+"  order by project_name asc;"
+				+"</script>"})
+		public List<Project> selectProjectBymore(Project prt);
+
+
+
+         //根据 prt的prname  poinname   eqname 锁定对象
+        @Select("select * from project where project_name=#{projectName} and point_name=#{pointName} and equipment_name=#{equipmentName} ")
+		public Project selectprojectbyrpe(Project prt);
+        
+        
+      //根据id删除项目
+      		@Delete("delete from project where id=#{id}")
+      		public void delectPointById(Project pop);
+
+
+
+
+      	//根据id修改设备信息  if版 动态sql
+    		@Update({"<script> "
+    			    + "update project set "
+    				+" project_name=#{projectName},"
+    				+" purchase_date=#{purchaseDate},"
+    				+" install_date=#{installDate},"
+    				+" contractor=#{contractor},"
+    				+" construction_period=#{constructionPeriod},"
+    				+" build_unit=#{buildUnit},"
+    				+" construction_type=#{constructionType},"
+    				+" contract_number=#{contractNumber},"
+    				+" construction_status=#{constructionStatus}, "
+    				+" construction_unit=#{constructionUnit}, "
+    				+" construction_project=#{constructionProject}, "
+    				+" point_name=#{pointName}, "
+    				+" equipment_name=#{equipmentName}"
+    				+"  where id=#{id};"
+    				+"</script>"})
+			public void updatePrtById(Project pop);
+	    
 
       
 }

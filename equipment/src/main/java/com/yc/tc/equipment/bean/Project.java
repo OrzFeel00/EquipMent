@@ -55,9 +55,9 @@ public class Project implements Serializable{
 	//建设项目
 	@NotEmpty (message = "不能为空")
 	private String constructionProject;
-	//指向点位标识id 
+	//指向点位标识name
 	private String pointName;
-	// 指向设备标识id 
+	// 指向设备标识name
 	private String equipmentName;
 	
 	
