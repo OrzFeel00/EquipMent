@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+		<div  style="margin-left:80% ; margin-top: 5px;">
+		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+	     </div>
+
+
+
+
+	<!--设备表单-->
+		<div style="width:100%">
+			<form  style="margin-left: 20%;" class="layui-form " action="edtinstall.do" method="post">
+					<!--安装位置-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">安装位置</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					
+					 <input type="text" name="installationPosition" id="installationPosition" class="layui-input" placeholder="安装位置"  
+					  th:value="${install}!=null ? ${install.installationPosition} : ''"  required lay-verify="required"/>
+					 	
+					</div>				
+				</div>
+				<!--方向-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">方向</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="direction" id="direction" class="layui-input" placeholder="方向" 
+					 th:value="${install}!=null ? ${install.direction} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--车道数-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">车道数</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="lanes" id="lanes" class="layui-input" placeholder="车道数" 
+					  th:value="${install}!=null ? ${install.installationPosition} : ''"   required lay-verify="required|number"/>
+					</div>				
+				</div>
+				
+				
+				<!--输入对应供电点位名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">供电点位名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	     <select name="powerPoint" id="powerPoint" lay-verify="required"  lay-search>
+				           <option value="" >指定供电点位</option>
+				           <option th:value="${install}!=null ? ${install.powerPoint} : ''" 
+				                   th:text="${install}!=null ? ${install.powerPoint} : ''"  
+				                   selected> 1</option>
+						   <option th:each="p: ${points}" 
+						           th:value="${p}"
+						           th:text="${p}" >北京
+						   </option>
+		     	     </select>
+					</div>				
+				</div>
+				
+					<!--输入对应点位名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">点位名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	     <select name="pointName" id="pointName" lay-verify="required"  lay-search>
+				           <option value="" >指定点位</option>
+				           <option th:value="${install}!=null ? ${install.pointName} : ''" 
+				                   th:text="${install}!=null ? ${install.pointName} : ''"  
+				                   selected> 1</option>
+						   <option th:each="p: ${points}" 
+						           th:value="${p}"
+						           th:text="${p}" >北京
+						   </option>
+		     	     </select>
+					</div>				
+				</div>
+				
+					<!--输入对应设备名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	     <select name="equipmentName" id="equipmentName" lay-verify="required"  lay-search>
+				           <option value="" >指定点位</option>
+				           <option th:value="${install}!=null ? ${install.equipmentName} : ''" 
+				                   th:text="${install}!=null ? ${install.equipmentName} : ''"  
+				                   selected> 1</option>
+						   <option th:each="p: ${eptss}" 
+						           th:value="${p}"
+						           th:text="${p}" >北京
+						   </option>
+		     	     </select>
+					</div>				
+				</div>
+				
+				
+				<!--传输类型-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">传输类型</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="transmissionType" id="transmissionType" class="layui-input" placeholder="传输类型" 
+					  th:value="${install}!=null ? ${install.transmissionType} : ''"    required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--接入机房-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">接入机房</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="computerRoom" id="computerRoom" class="layui-input" placeholder="接入机房" 
+					  th:value="${install}!=null ? ${install.computerRoom} : ''"    required lay-verify="required"/>
+					
+					</div>				
+				</div>
+				<!--联网属性-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">联网属性</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="networkAttribute" id="networkAttribute" class="layui-input" placeholder="联网属性" 
+					  th:value="${install}!=null ? ${install.networkAttribute} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--通讯卡号-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">通讯卡号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="idcard" id="idcard" class="layui-input" placeholder="通讯卡号" 
+					  th:value="${install}!=null ? ${install.idcard} : ''"    required lay-verify="required|number"/>
+					</div>				
+				</div>
+				<!--接入网络-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">接入网络</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="accessNetwork" id="accessNetwork" class="layui-input" placeholder="接入网络" 
+					 th:value="${install}!=null ? ${install.accessNetwork} : ''"   required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--路由-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">路由</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="router" id="router" class="layui-input" placeholder="路由" 
+					  th:value="${install}!=null ? ${install.router} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--联网校时功能-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">联网校时功能</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="networkTiming" id="networkTiming" class="layui-input" placeholder="联网校时功能" 
+					  th:value="${install}!=null ? ${install.networkTiming} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--校时情况预警功能-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">校时情况预警功能</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="timingWarning" id="timingWarning" class="layui-input" placeholder="校时情况预警功能" 
+					  th:value="${install}!=null ? ${install.timingWarning} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--检定有效截止时间-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">检定有效截止时间</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域  #{#dates.format(install.verificationDeadline,'yyyy-MM-dd HH:mm:ss')}-->
+					 <input type="text" name="verificationDeadline" id="verificationDeadline" class="layui-input" placeholder="检定有效截止时间" 
+					  th:value="${install}!=null ? #{#dates.format(install.verificationDeadline,'yyyy-MM-dd HH:mm:ss')} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--ip地址-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">ip地址</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="ip" id="ip" class="layui-input" placeholder="ip地址" 
+					  th:value="${install}!=null ? ${install.ip} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--mac地址-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">mac地址</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="mac" id="mac" class="layui-input" placeholder="mac地址" 
+					  th:value="${install}!=null ? ${install.mac} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+						<!--端口号-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">端口号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="prot" id="prot" class="layui-input" placeholder="端口号" 
+					  th:value="${install}!=null ? ${install.mac} : ''"     required lay-verify="required|number"/>
+					</div>				
+				</div>
+
+									
+				 <!--按钮-->
+				  <div class="layui-form-item">
+				    <div class="layui-input-inline">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
+				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				    </div>
+				  </div>
+				   
+			</form>   
+		</div>
+			<!--end设备表单-->
+
+
+
+
+
+
+
+
+
+<footer style="text-align:center; margin-top: 10%">
+
+	<p>
+		<span >Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	   <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use(['laydate','form'], function(){
+		  var form = layui.form;
+		  var laydate = layui.laydate;
+		  
+		  
+		  laydate.render({
+			    elem: '#verificationDeadline' ,//指定元素
+				format: 'yyyy-MM-dd HH:mm:ss',
+				//value:'2018-11-18',
+				type: 'datetime',
+				min: '2000-1-1',
+				max: '2117-12-1'
+			  });
+		  
+		  
+		  form.on('submit(outemo)', function(data){
+			  parent.reftabbel();   	  
+	    	   parent.layer.close(index); //再执行关闭 	     
+			     return false;
+				});
+		  
+		 
+		  form.verify({		    
+			  longitude: [
+			    	/^[\-\+]?(0(\.\d{1,8})?|([1-9](\d)?)(\.\d{1,8})?|1[0-7]\d{1}(\.\d{1,8})?|180(([.][0]{1,8})?))$/
+			        ,'经度格式错误，最长到小数点后8位'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
+		});
+		</script>
+
+
+
+</body>
+</html>

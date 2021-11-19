@@ -161,22 +161,22 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showpoint.do" method="post">
+				<form  action="showinstall.do" method="post">
 		      
 				<div id="pointName"  style="margin-left:10px;font-weight:bold;float: left">
-			  	  点位名称：<input name="pointName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入名称"/>   </div>
+			  	  点位名称：<input name="pointName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="点位名称"/>   </div>
 			  
-				<div id="sectionCode"   style="margin-left:10px;font-weight:bold;float: left">
-				  断面编号：<input  name="sectionCode" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
+				<div id="equipmentName"   style="margin-left:10px;font-weight:bold;float: left">
+				 设备名称：<input  name="equipmentName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备名称"/>	</div>
 				  
-				<div id="pointCode"   style="margin-left:10px;font-weight:bold;float: left">
-			     监测点编码：<input name="pointCode"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
+				<div id="transmissionType"   style="margin-left:10px;font-weight:bold;float: left">
+			    传输类型<input name="transmissionType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="传输类型"/>	</div>
 			     
-				<div id="pointType"  style="margin-left:10px;font-weight:bold;float: left">
-				  点位类型：<input name="pointType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入类型"/>	</div>
+				<div id="computerRoom"  style="margin-left:10px;font-weight:bold;float: left">
+				  接入机房：<input name="computerRoom"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="接入机房"/>	</div>
 				  
-				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
-				 道路：<input name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入道路"/>	</div>
+				<div   id="ip" style="margin-left:10px;font-weight:bold;float: left">
+				  ip地址：<input name="ip"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="ip地址"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
@@ -191,35 +191,53 @@
 			<div >
 						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
-						    <tr>
-						      <th lay-data="{field: 'pointId' ,sort: true, width:100 }">ID</th>
-						      <th lay-data="{field:'pointName', width:200}">点位名称</th>
-						      <th lay-data="{field:'sectionCode', width: 150}">断面编号</th>
-						      <th lay-data="{field:'longitude', width: 150}">点位经度</th>
-						      <th lay-data="{field:'latitude', width: 150}">点位纬度</th>
-						      <th lay-data="{field:'pointCode', width: 150}">监测点编码</th>
-						      <th lay-data="{field:'shape', width: 150}">路口形状</th>
-						      <th lay-data="{field:'LaneNumber', sort: true, width: 130}">车道数</th>
-						      <th lay-data="{field:'pointType', width:150}">点位类型</th>
-						      <th lay-data="{field:'roadName',width: 200}">所属道路</th>
-						 
-						      <th lay-data="{fixed: 'right',width:130, align:'center', toolbar: '#barDemo'}">操作</th>
-						      <th lay-data="{width: 520}"></th>
-						    </tr>
+						 <tr>
+						   <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
+						   <th lay-data="{field:'installationPosition', width:200}">安装位置</th>
+						   <th lay-data="{field:'direction', width: 150}">方向</th>
+						   <th lay-data="{field:'lanes', width: 150, sort: true}">车道数</th>
+						   <th lay-data="{field:'powerPoint', width: 150}">供电的点位</th>
+						   <th lay-data="{field:'pointName', width: 150}">点位名称</th>
+						   <th lay-data="{field:'equipmentName', width: 150}">设备名称</th>
+						   <th lay-data="{field:'transmissionType', width: 130}">传输类型</th>
+						   <th lay-data="{field:'computerRoom', width:150}">接入机房</th>
+						   <th lay-data="{field:'networkAttribute',width: 200}">联网属性</th>
+						   <th lay-data="{field:'idcard', width:150}">通讯卡号</th>
+						   <th lay-data="{field:'accessNetwork', width:150}">接入网络</th>
+						   <th lay-data="{field:'router', width:150}">路由</th>
+						   <th lay-data="{field:'networkTiming', width:150}">联网校时功能</th>
+						   <th lay-data="{field:'timingWarning', width:150}">校时情况预警功能</th>
+						   <th lay-data="{field:'verificationDeadline', width:180}">检定有效截止时间</th>
+						   <th lay-data="{field:'ip', width:150}">ip地址</th>
+						   <th lay-data="{field:'mac', width:150}">mac地址</th>
+						   <th lay-data="{field:'prot', width:150}">端口号</th>
+						
+						   <th lay-data="{fixed: 'right',width:190, align:'center', toolbar: '#barDemo'}">操作</th>
+						   <th lay-data="{width: 760}"></th>
+						 </tr>
 						  </thead>
 						  <tbody>
 						  
-						     <tr th:each="p : ${pointlist} " >
-						      <td th:text="${p.pointId}">11</td>
-						      <td th:text="${p.pointName}">11</td>
-						      <td th:text="${p.sectionCode}">贤心2</td>
-						      <td th:text="${p.longitude}">贤心3</td>
-						      <td th:text="${p.latitude}">贤心4</td>
-						      <td th:text="${p.pointCode}">贤心5</td>
-						      <td th:text="${p.shape}">贤心6</td>
-						      <td th:text="${p.LaneNumber}">贤心7</td>
-						      <td th:text="${p.pointType}">贤心8</td>	
-						       <td th:text="${p.roadName}">贤心8</td>	     		      
+						     <tr th:each="p : ${installlist} " >
+						      <td th:text="${p.id}">ID</td>
+						      <td th:text="${p.installationPosition}">安装位置</td>
+						      <td th:text="${p.direction}">方向</td>
+						      <td th:text="${p.lanes}">车道数</td>
+						      <td th:text="${p.powerPoint}">供电的点位</td>
+						      <td th:text="${p.pointName}">点位名称</td>
+						      <td th:text="${p.equipmentName}">设备名称</td>
+						      <td th:text="${p.transmissionType}">传输类型</td>
+						      <td th:text="${p.computerRoom}">接入机房</td>	
+						      <td th:text="${p.networkAttribute}">联网属性</td>	
+						      <td th:text="${p.idcard}">通讯卡号</td>	
+						      <td th:text="${p.accessNetwork}">接入网络</td>	
+						      <td th:text="${p.router}">路由</td>	
+						      <td th:text="${p.networkTiming}">联网校时功能</td>	
+						      <td th:text="${p.timingWarning}">校时情况预警功能</td>	
+						      <td th:text="${#dates.format(p.verificationDeadline,'yyyy-MM-dd HH:mm:ss')}">检定有效截止时间</td>	
+						      <td th:text="${p.ip}">ip地址</td>	
+						      <td th:text="${p.mac}">mac地址</td>	
+						      <td th:text="${p.prot}">端口号</td>		     		      
 						    </tr>		    
 					   
 						  </tbody>
@@ -240,6 +258,7 @@
 					<script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+  <a class="layui-btn  layui-btn-xs" lay-event="del">历史端口</a>
 </script>
 		  <!-- 表头 -->	
 			
@@ -288,13 +307,13 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       //转换静态表格
      table.init('demo', {
         height: '710' //设置高度
-        ,width :'1945'
+        ,width :'2180'
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'点位信息'
         ,loading:true 
         ,toolbar:true  
         ,page: true
-        , defaultToolbar: ['filter', 'print', 'exports',{icon: 'layui-icon-prev'},1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        , defaultToolbar: ['filter', 'print', 'exports',{icon: 'layui-icon-prev'},1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ,toolbar:"#tool"
         //支持所有基础参数
       });
@@ -310,17 +329,53 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
   		  closeBtn: 0,
   		  title: ['删除', 'font-size:20px;'],
   		  area: ['500px', '400px'],
-  		  content: 'todellpoint', //这里content是一url
+  		  content: 'todellinstall', //这里content是一url
   		  success:function(layero, index){
 			  var body = layer.getChildFrame('body', index);
 			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
 			    console.log(body.html()) //得到iframe页的body内容
-			    body.find('#pointId').val(data.pointId)
-			    body.find('#pointName').val(data.pointName)		 
+			    body.find('#id').val(data.id)	 
+			    body.find('#equipmentName').val(data.equipmentName)	
+			    body.find('#pointName').val(data.pointName)	
 			  }
   		});
     	
     } else if(obj.event === 'edit'){
+    	
+    	
+    	layer.open({
+    		  type: 2, 
+    		  scrollbar:false,
+    		  closeBtn: 0,
+    		  title: ['安装信息修改', 'font-size:20px;'],
+    		  area: ['600px', '800px'],   	
+    		  content: ['toedtinstall'],//这里content是一url
+    		  success:function(layero, index){
+    			  var body = layer.getChildFrame('body', index);
+    			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+    			    console.log(body.html()) //得到iframe页的body内容
+    			    body.find('#id').val(data.id)
+    			    body.find('#installationPosition').val(data.installationPosition)
+    			    body.find('#direction').val(data.direction)
+    			    body.find('#lanes').val(data.lanes)
+    			    body.find('#powerPoint').val(data.powerPoint)
+    			    body.find('#pointName').val(data.pointName)
+    			    body.find('#equipmentName').val(data.equipmentName)
+    			    body.find('#transmissionType').val(data.transmissionType)
+    			    body.find('#computerRoom').val(data.computerRoom)
+    			    body.find('#networkAttribute').val(data.networkAttribute)
+    			    body.find('#idcard').val(data.idcard)
+    			    body.find('#accessNetwork').val(data.accessNetwork)
+    			    body.find('#router').val(data.router)
+    			    body.find('#networkTiming').val(data.networkTiming)
+    			    body.find('#timingWarning').val(data.timingWarning)
+    			    body.find('#verificationDeadline').val(data.verificationDeadline)
+    			    body.find('#ip').val(data.ip)
+    			    body.find('#mac').val(data.mac)
+    			    body.find('#prot').val(data.prot)
+    			  }
+    		});
+    }else if(obj.event === 'isn'){
     	
     	
     	layer.open({
@@ -334,19 +389,14 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     			  var body = layer.getChildFrame('body', index);
     			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
     			    console.log(body.html()) //得到iframe页的body内容
-    			    body.find('#pointId').val(data.pointId)
+    			    body.find('#id').val(data.id)		  
     			    body.find('#pointName').val(data.pointName)
-    			    body.find('#sectionCode').val(data.sectionCode)
-    			    body.find('#longitude').val(data.longitude)
-    			    body.find('#latitude').val(data.latitude)
-    			    body.find('#pointCode').val(data.pointCode)
-    			    body.find('#shape').val(data.shape)
-    			    body.find('#LaneNumber').val(data.LaneNumber)
-    			    body.find('#pointType').val(data.pointType)
-    			    body.find('#roadName').val(data.roadName)
+    			    body.find('#equipmentName').val(data.equipmentName)
+    			 
     			  }
     		});
     }
+    
   });
 
     
@@ -361,9 +411,9 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 			  layer.open({
 	    		  type: 2, 
 	    		  closeBtn: 0,
-	    		  title: ['点位新增', 'font-size:20px;'],
+	    		  title: ['录入安装信息', 'font-size:20px;'],
 	    		  area: ['600px', '800px'],
-	    		  content: 'toaddpoint' //这里content是一个普通url
+	    		  content: 'toaddinstall' //这里content是一个普通url
 	    		});
 			  
 		  }   

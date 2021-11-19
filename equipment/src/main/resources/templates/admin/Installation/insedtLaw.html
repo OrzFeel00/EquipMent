@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+<!--设备表单-->
+		<div style="width:100%">
+			<form  style="margin-left: 20%;" class="layui-form " action="insedtinstall.do" method="post">
+					<!--id-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">id号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC"   type="text" name="id" id="id" class="layui-input" placeholder="id"  
+					   required lay-verify="required"/>					 	
+					</div>				
+				</div>
+					<!--安装位置-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">安装位置</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC"   type="text" name="installationPosition" id="installationPosition" class="layui-input" placeholder="安装位置"  
+					   required lay-verify="required"/>					 	
+					</div>				
+				</div>
+	
+				<!--供电点位名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">供电点位名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC"   type="text" name="powerPoint" id="powerPoint" class="layui-input" placeholder="供电点位名称" 
+					     required lay-verify="required"/>
+					</div>				
+				</div>
+				
+				<!--点位名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">点位名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC"   type="text" name="pointName" id="pointName" class="layui-input" placeholder="点位名称" 
+					     required lay-verify="required"/>
+					</div>				
+				</div>
+					
+				<!--设备名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input  readonly="true" style="background:#CCCCCC"   type="text" name="equipmentName" id="equipmentName" class="layui-input" placeholder="设备名称" 
+					     required lay-verify="required"/>
+					</div>				
+				</div>
+				
+				<!--通讯卡号-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">通讯卡号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC"   type="text" name="idcard" id="idcard" class="layui-input" placeholder="通讯卡号" 
+					    required lay-verify="required|number"/>
+					</div>				
+				</div>
+				
+					<!--ip地址-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">ip地址</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC"    type="text" name="ip" id="ip" class="layui-input" placeholder="ip地址" 
+					  required lay-verify="required"/>
+					</div>				
+				</div>
+					<!--mac地址-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">mac地址</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC"    type="text" name="mac" id="mac" class="layui-input" placeholder="mac地址" 
+					   required lay-verify="required"/>
+					</div>				
+				</div>
+						<!--端口号-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">端口号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC"    type="text" name="prot" id="prot" class="layui-input" placeholder="端口号" 
+					  required lay-verify="required|number"/>
+					</div>				
+				</div>
+
+									
+				 <!--按钮-->
+				  <div class="layui-form-item">
+				   <div class="layui-input-block">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">确认修改</button>&nbsp;
+				        <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+						
+				    </div>
+				  </div>
+				   
+			</form>   
+		</div>
+			<!--end设备表单-->
+
+
+
+
+
+
+
+
+
+<footer style="text-align:center; margin-top: 10%">
+
+	<p>
+		<span >Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use('form', function(){
+		  var form = layui.form;
+		  
+		  form.on('submit(outemo)', function(data){
+			  parent.reftabbel();    	  
+	    	   parent.layer.close(index); //再执行关闭 
+  
+			     return false;
+				});
+		  
+		  
+		  form.verify({		    
+			  longitude: [
+			    	/^[\-\+]?(0(\.\d{1,8})?|([1-9](\d)?)(\.\d{1,8})?|1[0-7]\d{1}(\.\d{1,8})?|180(([.][0]{1,8})?))$/
+			        ,'经度格式错误，最长到小数点后8位'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
+		});
+		</script>
+
+
+
+</body>
+</html>
