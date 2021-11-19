@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+
+	
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+
+         <div  style="margin-left:70% ; margin-top: 5px;">
+		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+	     </div>
+	     
+
+	                  <div style="margin-left:8% ; margin-top: 5px;" > 
+						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
+						  <thead>
+						 <tr>
+						   <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
+						   <th lay-data="{field:'ip', width:150}">ip地址</th>
+						   <th lay-data="{field:'mac', width:150}">mac地址</th>
+						   <th lay-data="{field:'prot', width:150}">端口号</th>					 
+						 </tr>
+						  </thead>
+						  <tbody>
+						  
+						     <tr th:each="p : ${ips} " >
+						      <td th:text="${p.id}">ID</td>					     
+						      <td th:text="${p.ip}">ip地址</td>	
+						      <td th:text="${p.mac}">mac地址</td>	
+						      <td th:text="${p.prot}">端口号</td>		     		      
+						    </tr>		    
+					   
+						  </tbody>
+						</table>
+						
+						<!--  -->
+						</div>
+
+
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+		<!-- layui模块化js核心文件-->
+	    <script src="layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+	
+	
+	<script>
+	
+	function reftabbel(){
+		$("#btn-re").click();
+		$("#btn-sor").click();
+	}
+	
+	
+	
+	
+layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
+      var layer = layui.layer
+      ,form = layui.form
+      ,element = layui.element
+      ,$= layui.$
+      ,table=layui.table;
+      var dataList;
+      //转换静态表格
+     table.init('demo', {
+        height: '480' //设置高度
+        ,width :'700'
+        ,limit: 10 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
+        ,title:'安装信息'
+        ,loading:true 
+        ,toolbar:true  
+        ,page: true
+        ,toolbar:"#tool"
+        //支持所有基础参数
+      });
+      
+       
+    //监听工具条
+  table.on('tool(demo)', function(obj){
+    var data = obj.data;
+    console.log(data.pointId);
+    if(obj.event === 'del'){
+    	layer.open({
+  		  type: 2, 
+  		  closeBtn: 0,
+  		  title: ['删除', 'font-size:20px;'],
+  		  area: ['500px', '400px'],
+  		  content: 'todellinstall', //这里content是一url
+  		  success:function(layero, index){
+			  var body = layer.getChildFrame('body', index);
+			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+			    console.log(body.html()) //得到iframe页的body内容
+			    body.find('#id').val(data.id)	 
+			    body.find('#equipmentName').val(data.equipmentName)	
+			    body.find('#pointName').val(data.pointName)	
+			  }
+  		});
+    	
+    } 
+    
+  });
+
+    
+
+  form.on('submit(outemo)', function(data){
+	  parent.reftabbel();   	  
+	   parent.layer.close(index); //再执行关闭 	     
+	     return false;
+		});
+
+
+     
+  
+  $('.demoTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+</script>
+ 
+
+
+
+</body>
+</html>

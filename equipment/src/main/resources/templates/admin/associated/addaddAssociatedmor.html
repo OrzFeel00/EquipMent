@@ -4,13 +4,18 @@
 
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>订单管理</title>
+	<title>设备关联信息新增</title>
 	
 	<!-- start: CSS -->
 	<!--layui 核心css文件-->
     <link rel="stylesheet" href="../layui/css/layui.css">
 	
+<style type="text/css">
 
+.layui-form-label {
+    width: 100px;
+}
+</style>
 
 	<style>
     .layui-form-select dl { max-height:200px; }
@@ -31,14 +36,14 @@
 
 
 
-
-		<div  style="margin-left:80% ; margin-top: 5px;">
+	    <p style="text-align: center ;font-size: 18px"  > 关联设备信息</p>
+		<div  style="margin-left:80% ">
 		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
 	     </div>
 	     
 		<!--设备关联信息表单-->
 		  <div style="text-align: center;margin-top: 30px;">
-		  	<form   style="margin-left: 40%" class="layui-form "  action="addAssociated.do" method="post" >
+		  	<form   style="margin-left: 20%" class="layui-form "  action="addAssociated.do" method="post" >
 		  		<!--摄像机补光属性-->
 		  		<div class="layui-form-item">
 		  			<label class="layui-form-label">摄像机补光属性</label>
@@ -134,13 +139,7 @@
 
 
 
-<footer style="text-align:center;margin-top: 10%;">
 
-	<p>
-		<span >Copyright &copy;新视达视讯工程有限公司</span>
-	</p>
-
-</footer>
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->

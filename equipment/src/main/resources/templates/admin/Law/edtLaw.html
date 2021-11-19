@@ -12,6 +12,12 @@
 	
 
 
+<style type="text/css">
+
+.layui-form-label {
+    width: 120px;
+}
+</style>
 	
    
    <style type="text/css">
@@ -28,7 +34,9 @@
 
 
 
-
+<div  style="margin-left:80% ; margin-top: 5px;">
+		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+	     </div>
 
 	<!--设备表单-->
 		<div style="width:100%">
@@ -207,10 +215,9 @@
 													
 				 <!--按钮-->
 				  <div class="layui-form-item">
-				   <div class="layui-input-block">
-				      <button class="layui-btn" type="submit"  lay-submit lay-filter="formStep2" >立即提交</button>&nbsp;
-				        <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
-						
+				   <div class="layui-input-inline">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
+				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				    </div>
 				  </div>
 				   
@@ -226,13 +233,7 @@
 
 
 
-<footer style="text-align:center; margin-top: 10%">
 
-	<p>
-		<span >Copyright &copy;新视达视讯工程有限公司</span>
-	</p>
-
-</footer>
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->

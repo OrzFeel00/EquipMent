@@ -4,7 +4,7 @@
 
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>订单管理</title>
+	<title>设备基础信息新增</title>
 	<meta name="description" content="Bootstrap Metro Dashboard">
 	<meta name="author" content="">
 	<meta name="keyword" content="">
@@ -176,6 +176,7 @@
 			</ul>
 			
 		  <!--设备基础信息表单-->
+		  <p style="text-align: center ;font-size: 18px"  > 基础设备信息</p>
 		  <div style="text-align: center;margin-top: 30px">
 			 <form style="margin-left: 40%"  class="layui-form " action="BaseEquipment.do" method="post" >				 		 
 				<!--出厂序列号-->
@@ -257,7 +258,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="hostchannelsNumber" id="hostchannelsNumber" class="layui-input" placeholder="主机通道数" 
-					  th:value="${eptr}!=null ? ${eptr.hostchannelsNumber} : ''"   required lay-verify="required"/>
+					  th:value="${eptr}!=null ? ${eptr.hostchannelsNumber} : ''"   required lay-verify="required|number"/>
 					</div>				
 				</div>
 				<!--设备高度-->
@@ -307,13 +308,10 @@
 <div class="clearfix"></div>
 
 <footer>
-
 	<p>
-		<span style="text-align:center; margin-left: 40%">Copyright &copy; 2020.09.25 雷停停车技术有限公司</span>
+		<span style="text-align:center; margin-left: 50%">Copyright &copy;新视达视讯工程有限公司</span>
 	</p>
-
 </footer>
-
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
 	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>

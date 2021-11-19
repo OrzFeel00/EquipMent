@@ -4,7 +4,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>街道展示</title>
+	<title>点位展示</title>
 	<meta name="description" content="Bootstrap Metro Dashboard">
 	<meta name="author" content="">
 	<meta name="keyword" content="">
@@ -148,78 +148,26 @@
 		<!-- start: Content  中心页显示 -->
 		<div id="content" class="span10">
 
-          <!-- 页头 
-			<ul class="breadcrumb">
-				<li>
-					<i class="icon-home"></i>
-					<a href="admin/index.html">主页</a>
-					<i class="icon-angle-right"></i>
-				</li>
-				<li><a href="#">订单管理</a></li>
-			</ul>
-			-->
+      
+		
 			
-			  <!-- 表头 -->
-			<div>		
-				<form  action="showroad.do" method="post">
-		      
-				<div id="administrativeRegion" style="margin-left:10px;font-weight:bold;float: left">
-			  	 行政区域：<input   name="administrativeRegion" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder=" 行政区域"/>   </div>
-			  
-				<div  id="departmentRegion"  style="margin-left:10px;font-weight:bold;float: left">
-				 部门区域：<input   name="departmentRegion" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder=" 部门区域"/>	</div>
-				  
-				<div id="streetName"   style="margin-left:10px;font-weight:bold;float: left">
-			     街道名称：<input  name="streetName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="街道名称"/>	</div>
-			     
-				<div id="roadName"  style="margin-left:10px;font-weight:bold;float: left">
-				道路名称：<input  name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="道路名称"/>	</div>
-				  
-				<div id="roadGrade"   style="margin-left:10px;font-weight:bold;float: left">
-				 道路等级：<input  name="roadGrade"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="道路等级"/>	</div>
-			    
-			    <div  id="roadSpeed" style="margin-left:10px;font-weight:bold;float: left">
-				 道路限速：<input   name="roadSpeed"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="number" min="0.0" step="0.01" placeholder=" 道路限速 km/h"/>	</div>
-			
-			
-				<div style="margin-left:10px;font-weight:bold;float: left">
-					 <!--按钮--> 					      
-			      	<button id="btn-sor" class="layui-btn" type="submit" >搜索</button></div>		      
-			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="reset" >重置</button>
-			     			  						
-		      	</form>
-	    	</div>
-						        <!-- fixed: 'right'  --> 
-							<hr>
-			<div >
-						  <table id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
+		         	<div > 
+						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
-						    <tr>
-						      <th lay-data="{field: 'roadId' ,sort: true, width:120 }">ID</th>
-						      <th lay-data="{field:'administrativeRegion', width:150}">行政区域</th>
-						      <th lay-data="{field:'departmentRegion', width: 150}">部门区域</th>
-						      <th lay-data="{field:'streetName', width: 200}">街道名称</th>
-						      <th lay-data="{field:'roadName', width: 220}">道路名称</th>
-						      <th lay-data="{field:'roadGrade', width: 150}">道路等级 </th>
-						      <th lay-data="{field:'roadCode', width: 150}">道路编码</th>
-						      <th lay-data="{field:'roadSpeed', sort: true,width: 150}">道路限速</th>						      
-						   
-						      <th lay-data="{fixed: 'right' ,width:130, align:'center', toolbar: '#barDemo'}">操作</th>
-						      <th lay-data="{width: 525}"></th>
-						    </tr>
+						 <tr>
+						   <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
+						   <th lay-data="{field:'ip', width:150}">ip地址</th>
+						   <th lay-data="{field:'mac', width:150}">mac地址</th>
+						   <th lay-data="{field:'prot', width:150}">端口号</th>					 
+						 </tr>
 						  </thead>
 						  <tbody>
 						  
-						     <tr th:each="r : ${roadlist} " >
-						      <td th:text="${r.roadId}">11</td>
-						      <td th:text="${r.administrativeRegion}">11</td>
-						      <td th:text="${r.departmentRegion}">贤心2</td>
-						      <td th:text="${r.streetName}">贤心3</td>
-						      <td th:text="${r.roadName}">贤心4</td>
-						      <td th:text="${r.roadGrade}">贤心5</td>
-						      <td th:text="${r.roadCode}">贤心6</td>
-						      <td th:text="${r.roadSpeed}">贤心7</td>
-						          		      
+						     <tr th:each="p : ${ips} " >
+						      <td th:text="${p.id}">ID</td>					     
+						      <td th:text="${p.ip}">ip地址</td>	
+						      <td th:text="${p.mac}">mac地址</td>	
+						      <td th:text="${p.prot}">端口号</td>		     		      
 						    </tr>		    
 					   
 						  </tbody>
@@ -231,7 +179,7 @@
 	<script type="text/html" id="tool">
 	<div class="layui-btn-container">
 	<!--lay-event 给元素绑定事件名称-->
-	  <button class="layui-btn" lay-event="add">新增街道</button>
+	  <button class="layui-btn" lay-event="add">添加安装信息</button>
 
 	</div>
 	</script>
@@ -240,6 +188,7 @@
 					<script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+  <a class="layui-btn  layui-btn-xs" lay-event="isn">历史端口</a>
 </script>
 		  <!-- 表头 -->	
 			
@@ -255,11 +204,7 @@
 </div>
 		
 
-<footer>
-	<p>
-		<span style="text-align:center; margin-left: 50%">Copyright &copy;新视达视讯工程有限公司</span>
-	</p>
-</footer>
+
 	
 	
 	<!-- layui模块化js核心文件-->
@@ -285,14 +230,13 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var dataList;
       //转换静态表格
      table.init('demo', {
-        height: '710' //设置高度
-        ,width :'1955'
+        height: '500' //设置高度
+        ,width :'700'
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
-        ,title:'点位信息'
+        ,title:'安装信息'
         ,loading:true 
-        ,toolbar:true
+        ,toolbar:true  
         ,page: true
-        , defaultToolbar: ['filter', 'print', 'exports',{icon: 'layui-icon-prev'},1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ,toolbar:"#tool"
         //支持所有基础参数
       });
@@ -308,14 +252,14 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
   		  closeBtn: 0,
   		  title: ['删除', 'font-size:20px;'],
   		  area: ['500px', '400px'],
-  		  content: 'todellroad', //这里content是一url
+  		  content: 'todellinstall', //这里content是一url
   		  success:function(layero, index){
 			  var body = layer.getChildFrame('body', index);
 			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
 			    console.log(body.html()) //得到iframe页的body内容
-			    body.find('#roadId').val(data.roadId)
-			    body.find('#streetName').val(data.streetName)	
-			    body.find('#roadName').val(data.roadName)	
+			    body.find('#id').val(data.id)	 
+			    body.find('#equipmentName').val(data.equipmentName)	
+			    body.find('#pointName').val(data.pointName)	
 			  }
   		});
     	
@@ -326,25 +270,56 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     		  type: 2, 
     		  scrollbar:false,
     		  closeBtn: 0,
-    		  title: ['点位修改', 'font-size:20px;'],
-    		  area: ['600px', '700px'],   	
-    		  content: 'toedtroad',//这里content是一url
+    		  title: ['安装信息修改', 'font-size:20px;'],
+    		  area: ['600px', '800px'],   	
+    		  content: ['toedtinstall'],//这里content是一url
     		  success:function(layero, index){
     			  var body = layer.getChildFrame('body', index);
     			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
     			    console.log(body.html()) //得到iframe页的body内容
-    			    body.find('#roadId').val(data.roadId)
-    			    body.find('#administrativeRegion').val(data.administrativeRegion)
-    			    body.find('#departmentRegion').val(data.departmentRegion)
-    			    body.find('#streetName').val(data.streetName)
-    			    body.find('#roadName').val(data.roadName)
-    			    body.find('#roadGrade').val(data.roadGrade)
-    			    body.find('#roadCode').val(data.roadCode)
-    			    body.find('#roadSpeed').val(data.roadSpeed)
-    			
+    			    body.find('#id').val(data.id)
+    			    body.find('#installationPosition').val(data.installationPosition)
+    			    body.find('#direction').val(data.direction)
+    			    body.find('#lanes').val(data.lanes)
+    			    body.find('#powerPoint').val(data.powerPoint)
+    			    body.find('#pointName').val(data.pointName)
+    			    body.find('#equipmentName').val(data.equipmentName)
+    			    body.find('#transmissionType').val(data.transmissionType)
+    			    body.find('#computerRoom').val(data.computerRoom)
+    			    body.find('#networkAttribute').val(data.networkAttribute)
+    			    body.find('#idcard').val(data.idcard)
+    			    body.find('#accessNetwork').val(data.accessNetwork)
+    			    body.find('#router').val(data.router)
+    			    body.find('#networkTiming').val(data.networkTiming)
+    			    body.find('#timingWarning').val(data.timingWarning)
+    			    body.find('#verificationDeadline').val(data.verificationDeadline)
+    			    body.find('#ip').val(data.ip)
+    			    body.find('#mac').val(data.mac)
+    			    body.find('#prot').val(data.prot)
+    			  }
+    		});
+    }else if(obj.event === 'isn'){
+    	
+    	
+    	layer.open({
+    		  type: 2, 
+    		  scrollbar:false,
+    		  closeBtn: 0,
+    		  title: ['点位修改', 'font-size:20px;'],
+    		  area: ['600px', '800px'],   	
+    		  content: ['toedtpoint','no'],//这里content是一url
+    		  success:function(layero, index){
+    			  var body = layer.getChildFrame('body', index);
+    			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+    			    console.log(body.html()) //得到iframe页的body内容
+    			    body.find('#id').val(data.id)		  
+    			    body.find('#pointName').val(data.pointName)
+    			    body.find('#equipmentName').val(data.equipmentName)
+    			 
     			  }
     		});
     }
+    
   });
 
     
@@ -359,9 +334,9 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 			  layer.open({
 	    		  type: 2, 
 	    		  closeBtn: 0,
-	    		  title: ['点位新增', 'font-size:20px;'],
-	    		  area: ['550px', '700px'],
-	    		  content: 'toaddroad' //这里content是一个普通url
+	    		  title: ['录入安装信息', 'font-size:20px;'],
+	    		  area: ['600px', '800px'],
+	    		  content: 'toaddinstall' //这里content是一个普通url
 	    		});
 			  
 		  }   

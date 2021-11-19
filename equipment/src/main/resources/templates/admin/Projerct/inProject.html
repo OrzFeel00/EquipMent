@@ -189,8 +189,8 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">采购日期</label>
 					<div  class="layui-input-inline">
-						<!--原始表单区域-->
-						<span class="e" th:if="${errors}!=null" th:text="请重新输入日期"></span>
+						<!--原始表单区域 th:value="${law}!=null ? #{#dates.format(p.publictyDate,'yyyy-MM-dd HH:mm:ss')} : ''"  -->
+						
 					 <input type="text" name="purchaseDate" id="purchaseDate" class="layui-input" placeholder="采购日期" 
 					 th:value="${prt}!=null ? ${#dates.format(prt.purchaseDate,'yyyy-MM-dd')} : ''"    required lay-verify="required"/>
 					</div>				
@@ -201,7 +201,7 @@
 					
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-						<span class="e" th:if="${errors}!=null" th:text="请重新输入日期"></span>
+						
 					 <input type="text" name="installDate" id="installDate" class="layui-input" placeholder="安装日期 " 
 					 th:value="${prt}!=null ? ${#dates.format(prt.installDate,'yyyy-MM-dd')} : ''"     required lay-verify="required"/>
 
@@ -307,11 +307,9 @@
 <div class="clearfix"></div>
 
 <footer>
-
 	<p>
-		<span style="text-align:center; margin-left: 40%">Copyright &copy; 2020.09.25 雷停停车技术有限公司</span>
+		<span style="text-align:center; margin-left: 50%">Copyright &copy;新视达视讯工程有限公司</span>
 	</p>
-
 </footer>
 
 <!-- start: JavaScript-->
@@ -326,7 +324,7 @@
 		  laydate.render({
 			    elem: '#installDate' ,//指定元素
 				format: 'yyyy-MM-dd',
-				value:'2018-11-18',
+				//value:'2018-11-18',
 				type: 'date',
 				min: '2000-1-1',
 				max: '2117-12-1'
@@ -334,7 +332,7 @@
 		  laydate.render({
 			    elem: '#purchaseDate' ,//指定元素
 				format: 'yyyy-MM-dd',
-				value:'2018-11-18',
+				//:'2018-11-18',
 				type: 'date',
 				min: '2000-1-1',
 				max: '2117-12-1'

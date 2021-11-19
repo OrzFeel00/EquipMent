@@ -33,27 +33,30 @@
 		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
 	     </div>
 
-               <!--设备表单-->
+<!--设备表单-->
 		<div style="width:100%;margin-top: 0px;">
-			<form  style="margin-left:10%;" class="layui-form " action="dellLaw.do" method="post">
+			<form  style="margin-left:10%;" class="layui-form " action="insprot.do" method="post">
 				
-				<!--id号-->
-				<div class="layui-form-item" style="margin-top:  10%;">
-					<label class="layui-form-label">id号</label>
+				
+				<!--点位名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">点位名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="id" id="id" class="layui-input" placeholder="id" 
-					    required lay-verify="required"/>
+						
+					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="pointName" id="pointName" class="layui-input" placeholder="点位名称"  
+					  required lay-verify="required"/>
+					 	
 					</div>				
 				</div>
-	           <!--设备名称-->
+	        <!--设备名称-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">设备名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-						<span class="e" th:if="${errors}!=null" th:text="${errors.get('pointName')}"></span>
+						
 					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="equipmentName" id="equipmentName" class="layui-input" placeholder="设备名称"  
-					    required lay-verify="required"/>
+					   required lay-verify="required"/>
 					 	
 					</div>				
 				</div>
@@ -62,13 +65,14 @@
 				 <!--按钮-->
 				  <div class="layui-form-item" style="margin-left: 23%;margin-top:50px;">
 				    <div class="layui-input-inline">
-				      <button class="layui-btn layui-bg-red" type="submit"lay-submit lay-filter="1formDemo" > <i class="layui-icon layui-icon-close-fill"></i>   确认删除</button>
+				      <button class="layui-btn " type="submit"lay-submit lay-filter="1formDemo" >确认查看</button>
 				    </div>
 				  </div>
 				   
 			</form>   
 		</div>
 			<!--end设备表单-->
+
 
 
 

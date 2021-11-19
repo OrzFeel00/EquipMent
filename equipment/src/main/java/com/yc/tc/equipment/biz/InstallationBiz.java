@@ -74,7 +74,7 @@ public class InstallationBiz {
 					
 					impper.updateinstallById(install);
 				}
-
+                 //添加旧端口
 				public void addip(Installation install) {
 					ip ip=new ip();
 				  ip.setPointName(install.getPointName()); 
@@ -89,6 +89,12 @@ public class InstallationBiz {
 				  }
 				  ipmpper.insertip(ip);
 				  
+				}
+				
+				//根据设备和点位得到历史端口
+				public List<ip> selectipbyname(ip p){
+					
+					return ipmpper.selectipbyname(p);
 				}
 				
 

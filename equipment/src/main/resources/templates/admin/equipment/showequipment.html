@@ -321,13 +321,11 @@
 </div>
 		
 
-	<footer>
-
-		<p>
-			<span style="text-align:center; margin-left: 40%">Copyright &copy; 2020.09.25 雷停停车技术有限公司</span>			
-		</p>
-
-	</footer>
+<footer>
+	<p>
+		<span style="text-align:center; margin-left: 50%">Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+</footer>
 	
 	
 	<!-- layui模块化js核心文件-->
@@ -356,7 +354,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
         height: '710' //设置高度 
         ,width :'1945'
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
-        ,title:'点位信息'
+        ,title:'设备信息'
         ,loading:true 
         ,toolbar:true
         ,page: true
@@ -374,7 +372,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     	layer.open({
   		  type: 2, 
   		  closeBtn: 0,
-  		  title: ['删除', 'font-size:20px;'],
+  		  title: ['设备删除', 'font-size:20px;'],
   		  area: ['500px', '400px'],
   		  content: 'todellequipment', //这里content是一url
   		  success:function(layero, index){
@@ -393,7 +391,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     		  type: 2, 
     		  scrollbar:false,
     		  closeBtn: 0,
-    		  title: ['点位修改', 'font-size:20px;'],
+    		  title: ['设备修改', 'font-size:20px;'],
     		  area: ['600px', '800px'],   	
     		  content: ['toedtequipment','no'],//这里content是一url
     		  success:function(layero, index){

@@ -19,6 +19,7 @@ import com.github.pagehelper.PageHelper;
 import com.yc.tc.equipment.bean.Installation;
 import com.yc.tc.equipment.bean.PointPosition;
 import com.yc.tc.equipment.bean.Storage;
+import com.yc.tc.equipment.bean.ip;
 import com.yc.tc.equipment.bean.road;
 import com.yc.tc.equipment.biz.BizException;
 import com.yc.tc.equipment.biz.InstallationBiz;
@@ -224,6 +225,28 @@ public class InstallationAction {
 				return "admin/Installation/succesetdt";
 			}
 			
+			
+			
+			//去ins 历史端口  确认
+			@GetMapping("toinsprot")
+			public String toinsprot(Model m ) throws BizException {
+		       
+				return "admin/Installation/insprot";
+			}
+			
+
+			//do去ins 历史端口  确认
+			@RequestMapping("insprot.do")
+			public String insprotdo(ip ip,Model m ) throws BizException {
+					
+				 
+				 //根据ip得到完整的ips
+				
+				  
+				 m.addAttribute("ips", iBiz.selectipbyname(ip));
+			
+				return "admin/Installation/showprot2";
+			}
 			
 			
 			

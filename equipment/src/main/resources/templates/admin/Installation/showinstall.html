@@ -4,7 +4,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>点位展示</title>
+	<title>安装信息展示</title>
 	<meta name="description" content="Bootstrap Metro Dashboard">
 	<meta name="author" content="">
 	<meta name="keyword" content="">
@@ -249,7 +249,7 @@
 	<script type="text/html" id="tool">
 	<div class="layui-btn-container">
 	<!--lay-event 给元素绑定事件名称-->
-	  <button class="layui-btn" lay-event="add">新增点位</button>
+	  <button class="layui-btn" lay-event="add">添加安装信息</button>
 
 	</div>
 	</script>
@@ -258,7 +258,7 @@
 					<script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-  <a class="layui-btn  layui-btn-xs" lay-event="del">历史端口</a>
+  <a class="layui-btn  layui-btn-xs" lay-event="isn">历史端口</a>
 </script>
 		  <!-- 表头 -->	
 			
@@ -277,7 +277,7 @@
 	<footer>
 
 		<p>
-			<span style="text-align:center; margin-left: 40%">Copyright &copy; 2020.09.25 雷停停车技术有限公司</span>			
+			<span style="text-align:center; margin-left: 40%">Copyright &copy;新视达视讯工程有限公司</span>			
 		</p>
 
 	</footer>
@@ -309,7 +309,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
         height: '710' //设置高度
         ,width :'2180'
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
-        ,title:'点位信息'
+        ,title:'安装信息'
         ,loading:true 
         ,toolbar:true  
         ,page: true
@@ -382,14 +382,13 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     		  type: 2, 
     		  scrollbar:false,
     		  closeBtn: 0,
-    		  title: ['点位修改', 'font-size:20px;'],
-    		  area: ['600px', '800px'],   	
-    		  content: ['toedtpoint','no'],//这里content是一url
+    		  title: ['查看该点位上的设备历史端口', 'font-size:20px;'],
+    		  area: ['800px', '600px'],   	
+    		  content: ['toinsprot','no'],//这里content是一url
     		  success:function(layero, index){
     			  var body = layer.getChildFrame('body', index);
     			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
-    			    console.log(body.html()) //得到iframe页的body内容
-    			    body.find('#id').val(data.id)		  
+    			    console.log(body.html()) //得到iframe页的body内容	  
     			    body.find('#pointName').val(data.pointName)
     			    body.find('#equipmentName').val(data.equipmentName)
     			 

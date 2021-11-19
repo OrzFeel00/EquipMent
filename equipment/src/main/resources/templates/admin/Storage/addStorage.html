@@ -10,7 +10,12 @@
 	<!--layui 核心css文件-->
     <link rel="stylesheet" href="../layui/css/layui.css">
 	
+<style type="text/css">
 
+.layui-form-label {
+    width: 100px;
+}
+</style>
 
 	<style>
     .layui-form-select dl { max-height:200px; }
@@ -31,15 +36,15 @@
 
 
 
-
+ <p style="text-align: center ;font-size: 18px"  > 基础设备信息</p>
 		<div  style="margin-left:80% ; margin-top: 5px;">
 		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
 	     </div>
 			
 			
 		 <!--设备存储表单-->
-		  <div style="text-align: center;margin-top: 30px;">
-		 	 <form  style="margin-left: 40%"   class="layui-form " action="addStorage.do" method="post">				 		 
+		  <div style="text-align: center;margin-top: 20px;">
+		 	 <form  style="margin-left: 20%"   class="layui-form " action="addStorage.do" method="post">				 		 
 		 		<!--录像保存天数-->
 		 		<div class="layui-form-item">
 		 			<label class="layui-form-label">录像保存天数</label>
@@ -126,13 +131,7 @@
 
 
 
-<footer style="text-align:center;margin-top: 10%;">
 
-	<p>
-		<span >Copyright &copy;新视达视讯工程有限公司</span>
-	</p>
-
-</footer>
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
