@@ -193,7 +193,7 @@
 						  <thead>
 						    <tr>
 						      <th lay-data="{field: 'pointId' ,sort: true, width:100 }">ID</th>
-						      <th lay-data="{field:'pointName', width:200}">点位名称</th>
+						      <th lay-data="{field:'pointName', width:230}">点位名称</th>
 						      <th lay-data="{field:'sectionCode', width: 150}">断面编号</th>
 						      <th lay-data="{field:'longitude', width: 150}">点位经度</th>
 						      <th lay-data="{field:'latitude', width: 150}">点位纬度</th>
@@ -201,7 +201,7 @@
 						      <th lay-data="{field:'shape', width: 150}">路口形状</th>
 						      <th lay-data="{field:'LaneNumber', sort: true, width: 130}">车道数</th>
 						      <th lay-data="{field:'pointType', width:150}">点位类型</th>
-						      <th lay-data="{field:'roadName',width: 200}">所属道路</th>
+						      <th lay-data="{field:'roadName',width: 230}">所属道路</th>
 						 
 						      <th lay-data="{fixed: 'right',width:130, align:'center', toolbar: '#barDemo'}">操作</th>
 						      <th lay-data="{width: 520}"></th>
@@ -286,8 +286,8 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       //转换静态表格
      table.init('demo', {
         height: '710' //设置高度
-        ,width :'1945'
-        ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
+        ,width :'2140'
+        ,limit: 14 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'点位信息'
         ,loading:true 
         ,toolbar:true  

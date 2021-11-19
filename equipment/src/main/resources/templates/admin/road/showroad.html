@@ -195,17 +195,16 @@
 						  <table id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
 						    <tr>
-						      <th lay-data="{field: 'roadId' ,sort: true, width:120 }">ID</th>
-						      <th lay-data="{field:'administrativeRegion', width:150}">行政区域</th>
-						      <th lay-data="{field:'departmentRegion', width: 150}">部门区域</th>
-						      <th lay-data="{field:'streetName', width: 200}">街道名称</th>
-						      <th lay-data="{field:'roadName', width: 220}">道路名称</th>
-						      <th lay-data="{field:'roadGrade', width: 150}">道路等级 </th>
+						      <th lay-data="{field: 'roadId' ,sort: true, width:140 }">ID</th>
+						      <th lay-data="{field:'administrativeRegion', width:170}">行政区域</th>
+						      <th lay-data="{field:'departmentRegion', width: 170}">部门区域</th>
+						      <th lay-data="{field:'streetName', width: 240}">街道名称</th>
+						      <th lay-data="{field:'roadName', width: 240}">道路名称</th>
+						      <th lay-data="{field:'roadGrade', width: 160}">道路等级 </th>
 						      <th lay-data="{field:'roadCode', width: 150}">道路编码</th>
-						      <th lay-data="{field:'roadSpeed', sort: true,width: 150}">道路限速</th>						      
-						   
+						      <th lay-data="{field:'roadSpeed', sort: true,width: 200}">道路限速</th>						      
 						      <th lay-data="{fixed: 'right' ,width:130, align:'center', toolbar: '#barDemo'}">操作</th>
-						      <th lay-data="{width: 525}"></th>
+						       <th lay-data="{width: 525}"></th>
 						    </tr>
 						  </thead>
 						  <tbody>
@@ -285,10 +284,10 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var dataList;
       //转换静态表格
      table.init('demo', {
-        height: '710' //设置高度
-        ,width :'1955'
-        ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
-        ,title:'点位信息'
+        height: '688' //设置高度
+        ,width :'2138'
+        ,limit: 14 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
+        ,title:'街道信息'
         ,loading:true 
         ,toolbar:true
         ,page: true
@@ -326,7 +325,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     		  type: 2, 
     		  scrollbar:false,
     		  closeBtn: 0,
-    		  title: ['点位修改', 'font-size:20px;'],
+    		  title: ['街道修改', 'font-size:20px;'],
     		  area: ['600px', '700px'],   	
     		  content: 'toedtroad',//这里content是一url
     		  success:function(layero, index){
@@ -359,7 +358,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 			  layer.open({
 	    		  type: 2, 
 	    		  closeBtn: 0,
-	    		  title: ['点位新增', 'font-size:20px;'],
+	    		  title: ['街道新增', 'font-size:20px;'],
 	    		  area: ['550px', '700px'],
 	    		  content: 'toaddroad' //这里content是一个普通url
 	    		});
