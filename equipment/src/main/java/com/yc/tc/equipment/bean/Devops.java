@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,7 +35,7 @@ public class Devops implements Serializable{
 	@NotEmpty(message = "不能为空")
 	private String onlineTimingStatus;
 	//是否质保期    0为否 1为是
-	@NotEmpty(message = "不能为空")
+	@NotNull(message = "不能为空")
 	private int warrantyPeriod;
 	//相机更换时间
 	 @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")//出

@@ -79,15 +79,22 @@ public class ProjectBiz {
 		}
 		
 		
-		//查询所有点位
+		//查询所有项目
 		public List<Project> selectAllProject()throws BizException {
 			if(pmpper.selectAllProject()==null) {
-				throw new BizException("暂时没有记录点位");
+				throw new BizException("暂时没有记录项目");
 			}					
 			return pmpper.selectAllProject();
 		}
 		
+		//查询所有项目名称（去重复）
+		public List<String> selectAllProjectNames(){				
+			return pmpper.selectAllProjectNames();
+		}
 		
+		
+		
+		//查询条件项目
 		public List<Project>selectProjectBymore(Project prt)throws BizException{
 			
 			return pmpper.selectProjectBymore(prt);

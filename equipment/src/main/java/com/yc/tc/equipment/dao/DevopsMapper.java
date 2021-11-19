@@ -21,12 +21,12 @@ public interface DevopsMapper {
 		public List<PointPosition> selectPointByName(PointPosition pop);
 		
     //添加点位
-		@Insert("insert into point_position values (null"
-				+ ",#{pointName},#{sectionCode},#{longitude}"
-				+ ",#{latitude},#{pointCode},#{shape},#{LaneNumber}"
-				+ ",#{pointType},#{roadName})")
-		@Options(useGeneratedKeys = true, keyProperty = "pointId", keyColumn = "point_id")
-	   public  int insertPoint(PointPosition pop);
+		@Insert("insert into devops values (null"
+				+ ",#{ownership},#{devopsNature},#{devopsUnit}"
+				+ ",#{devopsStatus},#{onlineTimingStatus},#{warrantyPeriod},#{cameraReplacementTime}"
+				+ ",#{devopsLiable},#{devopsPhone},#{projectName},#{equipmentName},#{pointName})")
+		@Options(useGeneratedKeys = true, keyProperty = "devopsId", keyColumn = "devops_id")
+	   public  int insertDevop(Devops dep);
 		
 		 //根据PointCode 验证是否重名
 	    @Select("select count(*) from point_position where point_code=#{code}")
@@ -36,8 +36,8 @@ public interface DevopsMapper {
 	   public int  countByPname (String pname );
 		
 	    //根据id删除点位
-		@Delete("delete from point_position where point_id=#{pointId}")
-		public void delectPointById(PointPosition pop);
+		@Delete("delete from devops where devops_id=#{devopsId}")
+		public void delectdepById(int devopsId);
 		//根据id查询点位
 		@Select("select * from point_position where point_id=#{pointId}")
 		public PointPosition selectPointById(Integer pointId);
@@ -45,44 +45,50 @@ public interface DevopsMapper {
 		
 		//根据不同条件查询设备信息  if版 动态sql     concat('%',#{linkName},'%')   concat('%',#{string},'%')
 		        @Select({"<script> "
-					    + "select * from point_position "
+					    + "select * from devops "
 		        		+"<where>"
-						+ "<if test = 'pointName != null and pointName !=&apos;&apos;   '> "
-						+" and point_name like concat('%',#{pointName},'%') "
+						+ "<if test = 'ownership != null and ownership !=&apos;&apos;   '> "
+						+" and ownership like concat('%',#{ownership},'%') "
 						+"</if>"
-						+ "<if test = 'sectionCode != null  and sectionCode !=&apos;&apos;  '> "
-						+"  and section_code like concat('%',#{sectionCode},'%') "
+						+ "<if test = 'devopsUnit != null  and devopsUnit !=&apos;&apos;  '> "
+						+"  and devops_unit like concat('%',#{devopsUnit},'%') "
 						+"</if>"	
-						+ "<if test = 'pointCode != null  and pointCode !=&apos;&apos;  '> "
-						+" and  point_code like concat('%',#{pointCode},'%') "
+						+ "<if test = 'devopsLiable != null  and devopsLiable !=&apos;&apos;  '> "
+						+" and  devops_liable like concat('%',#{devopsLiable},'%') "
 						+"</if>"			
-						+ "<if test = 'pointType != null  and pointType !=&apos;&apos;  '> "
-						+"  and point_type like concat('%',#{pointType},'%') "
+						+ "<if test = 'projectName != null  and projectName !=&apos;&apos;  '> "
+						+"  and project_name like concat('%',#{projectName},'%') "
 						+"</if>"
-						+ "<if test = 'roadName != null  and roadName !=&apos;&apos;  '> "
-						+" and  road_name like concat('%',#{roadName},'%') "
+						+ "<if test = 'equipmentName != null  and equipmentName !=&apos;&apos;  '> "
+						+" and  equipment_name like concat('%',#{equipmentName},'%') "
+						+"</if>"
+						+ "<if test = 'pointName != null  and pointName !=&apos;&apos;  '> "
+						+" and  point_name like concat('%',#{pointName},'%') "
 						+"</if>"
 						+"</where>"
-						+"  order by point_id asc;"
+						+"  order by devops_id asc;"
 						+"</script>"})
-				public List<PointPosition> selectpointBymore(PointPosition pop);
+				public List<Devops> selectDevopBymore(Devops dep);
 		
 		
 	//根据id修改设备信息  if版 动态sql
 		@Update({"<script> "
-			    + "update point_position set "
-				+" point_name=#{pointName},"
-				+" section_code=#{sectionCode},"
-				+" longitude=#{longitude},"
-				+" latitude=#{latitude},"
-				+" point_code=#{pointCode},"
-				+" shape=#{shape},"
-				+" Lane_number=#{LaneNumber},"
-				+" point_type=#{pointType},"
-				+" road_name=#{roadName} "
-				+"  where point_id=#{pointId};"
+			    + "update devops set "
+				+" ownership=#{ownership},"
+				+" devops_nature=#{devopsNature},"
+				+" devops_unit=#{devopsUnit},"
+				+" devops_status=#{devopsStatus},"
+				+" online_timing_status=#{onlineTimingStatus},"
+				+" warranty_period=#{warrantyPeriod},"
+				+" camera_replacement_time=#{cameraReplacementTime},"
+				+" devops_liable=#{devopsLiable},"
+				+" devops_phone=#{devopsPhone},"
+				+" project_name=#{projectName},"
+				+" equipment_name=#{equipmentName},"
+				+" point_name=#{pointName}"
+				+"  where devops_id=#{devopsId};"
 				+"</script>"})
-		public void updatePointById(PointPosition pop);
+		public void updateDevopsById(Devops dep);
 
 		  //根据点位id放入roadid
 	    @Update("update point_position set road_id=#{roadId} where point_id=#{ponintid}")

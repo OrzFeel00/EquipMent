@@ -35,15 +35,26 @@
 
 <!--设备表单-->
 		<div style="width:100%;margin-top: 0px;">
-			<form  style="margin-left:10%;" class="layui-form " action="dellpoint.do" method="post">
+			<form  style="margin-left:10%;" class="layui-form " action="delltoDevop.do" method="post">
 				
-				<!--点位id号-->
-				<div class="layui-form-item" style="margin-top:  10%;">
-					<label class="layui-form-label">点位id号</label>
+				<!--运维id号-->
+				<div class="layui-form-item" style="margin-top:  3%;">
+					<label class="layui-form-label">运维id号</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="pointId" id="pointId" class="layui-input" placeholder="点位id" 
+					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="devopsId" id="devopsId" class="layui-input" placeholder="点位id" 
 					  th:value="${pop}!=null ? ${pop.pointId} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--设备名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+						
+					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="equipmentName" id="equipmentName" class="layui-input" placeholder="设备名称"  
+					 required lay-verify="required"/>
+					 	
 					</div>				
 				</div>
 	<!--点位名称-->
@@ -51,16 +62,27 @@
 					<label class="layui-form-label">点位名称</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-						<span class="e" th:if="${errors}!=null" th:text="${errors.get('pointName')}"></span>
+						
 					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="pointName" id="pointName" class="layui-input" placeholder="点位名称"  
 					  th:value="${pop}!=null ? ${pop.pointName} : ''"  required lay-verify="required"/>
+					 	
+					</div>				
+				</div>
+				<!--项目名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">项目名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					
+					 <input  readonly="true" style="background:#CCCCCC"  type="text" name="projectName" id="projectName" class="layui-input" placeholder="项目名称"  
+					  th:value="${pop}!=null ? ${pop.projectName} : ''"  required lay-verify="required"/>
 					 	
 					</div>				
 				</div>
 				
 									
 				 <!--按钮-->
-				  <div class="layui-form-item" style="margin-left: 23%;margin-top:50px;">
+				  <div class="layui-form-item" style="margin-left: 23%;margin-top:20px;">
 				    <div class="layui-input-inline">
 				      <button class="layui-btn layui-bg-red" type="submit"lay-submit lay-filter="1formDemo" > <i class="layui-icon layui-icon-close-fill"></i>   确认删除</button>
 				    </div>
@@ -78,7 +100,7 @@
 
 
 
-<footer style="text-align: center;margin-top: 10%;" >
+<footer style="text-align: center;margin-top: 5%;" >
 
 	<p>
 		<span style="text-align:center">Copyright &copy;新视达视讯工程有限公司</span>

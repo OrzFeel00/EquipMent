@@ -22,21 +22,10 @@ public class DevopsBiz {
 		@Resource
 		private DevopsMapper dmpper;
 	
-	   //点位验证
-		public void addPop(PointPosition pop)throws BizException {
-			    	//可以忽略字段的验证
-			    	//经行同名验证
-		    	if((pmpper.countByCode(pop.getPointCode())>0) && (pmpper.countByPname(pop.getPointName())>0)) {
-				    throw new BizException("点位名称和编码已存在");
-			    }
+	   //运维信息add
+		public void adddep(Devops dep)throws BizException {
 			
-				if(pmpper.countByCode(pop.getPointCode())>0) {
-					throw new BizException("点位编码已存在");
-				}
-				if(pmpper.countByPname(pop.getPointName())>0) {
-					throw new BizException("点位名称已存在");
-				}
-				pmpper.insertPoint(pop);
+				dmpper.insertDevop(dep);
 		
 			}
 
@@ -61,8 +50,8 @@ public class DevopsBiz {
 				}
 				
 				//删除点位
-				public void dellpoint(PointPosition pop) {
-					pmpper.delectPointById(pop);
+				public void delldep(int depid) {
+					dmpper.delectdepById(depid);
 				}
 				//根据id查询点位
 				public PointPosition selectPointById(Integer pid) {
@@ -70,18 +59,14 @@ public class DevopsBiz {
 					return pop;
 				}
 				//根据条件模糊查询
-				public List<PointPosition> selectpointBymore(PointPosition pop)throws BizException {
+				public List<Devops> selectDevopBymore(Devops dep)throws BizException {
 					
-					return pmpper.selectpointBymore(pop);
+					return dmpper.selectDevopBymore(dep);
 				}
-				//修改点位
-				public void updatePointById(PointPosition pop)throws BizException {
-					 String inspointname=instUtils2.limt2.get("inspointname");
-				
-					if((pmpper.countByPname(pop.getPointName())>0) && (!(pop.getPointName().equals(inspointname)))) {
-						throw new BizException("点位名称已存在");
-					}
-					pmpper.updatePointById(pop);
+				//修改dep
+				public void updateDevopsById(Devops dep)throws BizException {
+					 
+					dmpper.updateDevopsById(dep);
 				}
 				
 

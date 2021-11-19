@@ -130,7 +130,7 @@
 							
 							<li><a href="toshowinstall"><i class="icon-edit"></i><span class="hidden-tablet"> 安装信息管理</span></a></li>
 						<li><a href="toshowLaw"><i class="icon-edit"></i><span class="hidden-tablet"> 执法信息管理</span></a></li>
-							<li><a href="uorder.html"><i class="icon-edit"></i><span class="hidden-tablet"> 运维信息管理</span></a></li>
+							<li><a href="toshowtoDevop"><i class="icon-edit"></i><span class="hidden-tablet"> 运维信息管理</span></a></li>
 						
 					</ul>
 				</div>
@@ -161,7 +161,7 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showpoint.do" method="post">
+				<form  action="showtoDevop.do" method="post">
 		      
 		        <div id="ownership"  style="margin-left:10px;font-weight:bold;float: left">
 			  	 产权归属：<input name="ownership" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="产权归属"/>   </div>
@@ -170,7 +170,7 @@
 			  	 维护单位：<input name="devopsUnit" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="维护单位"/>   </div>
 			  
 				<div id="devopsLiable"   style="margin-left:10px;font-weight:bold;float: left">
-				  运维负责人：<input  name="devopsLiable" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="运维负责人"/>	</div>
+				 运维负责人：<input  name="devopsLiable" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="运维负责人"/>	</div>
 				  
 				<div id="projectName"   style="margin-left:10px;font-weight:bold;float: left">
 			    项目名称：<input name="projectName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="项目名称"/>	</div>
@@ -319,13 +319,15 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
   		  closeBtn: 0,
   		  title: ['删除', 'font-size:20px;'],
   		  area: ['500px', '400px'],
-  		  content: 'todellpoint', //这里content是一url
+  		  content: 'todelltoDevop', //这里content是一url
   		  success:function(layero, index){
 			  var body = layer.getChildFrame('body', index);
 			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
 			    console.log(body.html()) //得到iframe页的body内容
-			    body.find('#pointId').val(data.pointId)
+			    body.find('#devopsId').val(data.devopsId)
 			    body.find('#pointName').val(data.pointName)		 
+			    body.find('#equipmentName').val(data.equipmentName)
+			     body.find('#projectName').val(data.projectName)
 			  }
   		});
     	
@@ -338,21 +340,24 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     		  closeBtn: 0,
     		  title: ['点位修改', 'font-size:20px;'],
     		  area: ['600px', '800px'],   	
-    		  content: ['toedtpoint','no'],//这里content是一url
+    		  content: ['toedttoDevop','no'],//这里content是一url
     		  success:function(layero, index){
     			  var body = layer.getChildFrame('body', index);
     			    var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
     			    console.log(body.html()) //得到iframe页的body内容
-    			    body.find('#pointId').val(data.pointId)
+    			    body.find('#devopsId').val(data.devopsId)
+    			    body.find('#ownership').val(data.ownership)
+    			    body.find('#devopsNature').val(data.devopsNature)
+    			    body.find('#devopsUnit').val(data.devopsUnit)
+    			    body.find('#devopsStatus').val(data.devopsStatus)
+    			    body.find('#onlineTimingStatus').val(data.onlineTimingStatus)
+    			    body.find('#warrantyPeriod').val(data.warrantyPeriod)
+    			    body.find('#cameraReplacementTime').val(data.cameraReplacementTime)
+    			    body.find('#devopsLiable').val(data.devopsLiable)
+    			    body.find('#devopsPhone').val(data.devopsPhone)
+    			    body.find('#projectName').val(data.projectName)
+    			    body.find('#equipmentName').val(data.equipmentName)
     			    body.find('#pointName').val(data.pointName)
-    			    body.find('#sectionCode').val(data.sectionCode)
-    			    body.find('#longitude').val(data.longitude)
-    			    body.find('#latitude').val(data.latitude)
-    			    body.find('#pointCode').val(data.pointCode)
-    			    body.find('#shape').val(data.shape)
-    			    body.find('#LaneNumber').val(data.LaneNumber)
-    			    body.find('#pointType').val(data.pointType)
-    			    body.find('#roadName').val(data.roadName)
     			  }
     		});
     }
@@ -370,9 +375,9 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 			  layer.open({
 	    		  type: 2, 
 	    		  closeBtn: 0,
-	    		  title: ['点位新增', 'font-size:20px;'],
+	    		  title: ['新增运维信息', 'font-size:20px;'],
 	    		  area: ['600px', '800px'],
-	    		  content: 'toaddpoint' //这里content是一个普通url
+	    		  content: 'toaddtoDevop' //这里content是一个普通url
 	    		});
 			  
 		  }   

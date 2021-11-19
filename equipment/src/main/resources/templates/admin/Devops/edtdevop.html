@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>订单管理</title>
+	
+	<!-- start: CSS -->
+	<!--layui 核心css文件-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+	
+
+<style type="text/css">
+
+.layui-form-label {
+    width: 100px;
+}
+</style>
+	
+   
+   <style type="text/css">
+.e{
+   color:red
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+		<div  style="margin-left:80% ; margin-top: 5px;">
+		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+	     </div>
+
+
+
+<!--设备表单-->
+		<div style="width:100%">
+			<form  style="margin-left: 20%;" class="layui-form " action="edttoDevop.do" method="post">
+			<!--id号-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">ID</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input  readonly="true" style="background:#CCCCCC"   type="text" name="devopsId" id="devopsId" class="layui-input" placeholder="ID"  
+					  th:value="${dep}!=null ? ${dep.devopsId} : ''"  required lay-verify="required"/>
+					 	
+					</div>				
+				</div>
+					<!--产权归属-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">产权归属</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="ownership" id="ownership" class="layui-input" placeholder="产权归属"  
+					  th:value="${dep}!=null ? ${dep.ownership} : ''"  required lay-verify="required"/>
+					 	
+					</div>				
+				</div>
+				<!--维护性质-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">维护性质</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="devopsNature" id="devopsNature" class="layui-input" placeholder="维护性质" 
+					  th:value="${dep}!=null ? ${dep.devopsNature} : ''"   required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--维护单位-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">维护单位</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="devopsUnit" id="devopsUnit" class="layui-input" placeholder="维护单位" 
+					   th:value="${dep}!=null ? ${dep.devopsUnit} : ''"   required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--维护状态-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">维护状态</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="devopsStatus" id="devopsStatus" class="layui-input" placeholder="维护状态" 
+					  th:value="${dep}!=null ? ${dep.devopsStatus} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--联网校时状态-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">联网校时状态</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="onlineTimingStatus" id="onlineTimingStatus" class="layui-input" placeholder="联网校时状态" 
+					 th:value="${dep}!=null ? ${dep.onlineTimingStatus} : ''"      required lay-verify="required"/>
+					
+					</div>				
+				</div>
+					<!--是否质保期-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">是否质保期</label>
+					<div  class="layui-input-inline">
+						
+					 <input type="text" name="warrantyPeriod" id="warrantyPeriod" class="layui-input" placeholder="是否质保期" 
+					   th:value="${dep}!=null ? ${dep.warrantyPeriod} : ''"     required lay-verify="required|warran"/>
+					</div>				
+				</div>
+				<!--相机更换时间-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">相机更换时间</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域  #{#dates.format(dep.cameraReplacementTime,'yyyy-MM-dd HH:mm:ss')} -->
+					 <input type="text" name="cameraReplacementTime" id="cameraReplacementTime" class="layui-input" placeholder="相机更换时间" 
+					   th:value="${dep}!=null ? #{#dates.format(dep.cameraReplacementTime,'yyyy-MM-dd HH:mm:ss')} : ''"     required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--运维负责人-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">运维负责人</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="devopsLiable" id="devopsLiable" class="layui-input" placeholder="运维负责人" 
+					 th:value="${dep}!=null ? ${dep.devopsLiable} : ''"      required lay-verify="required"/>
+					</div>				
+				</div>
+				<!--运维负责人联系电话-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">运维负责人电话</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input type="text" name="devopsPhone" id="devopsPhone" class="layui-input" placeholder="运维负责人电话" 
+					 th:value="${dep}!=null ? ${dep.devopsPhone} : ''"      required lay-verify="required|number"/>
+					</div>						
+				</div>
+				
+				<!--输入对应项目名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">项目名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	     <select name="projectName" id="projectName" lay-verify="required"  lay-search>
+				           <option value="" >指定点位</option>
+				           <option th:value="${dep}!=null ? ${dep.projectName} : ''" 
+				                   th:text="${dep}!=null ? ${dep.projectName} : ''"  
+				                   selected> 1</option>
+						   <option th:each="p: ${prts}" 
+						           th:value="${p}"
+						           th:text="${p}" >北京
+						   </option>
+		     	     </select>
+					</div>				
+				</div>
+				
+				
+				
+				<!--输入对应点位名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">点位名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	     <select name="pointName" id="pointName" lay-verify="required"  lay-search>
+				           <option value="" >指定点位</option>
+				           <option th:value="${dep}!=null ? ${dep.pointName} : ''" 
+				                   th:text="${dep}!=null ? ${dep.pointName} : ''"  
+				                   selected> 1</option>
+						   <option th:each="p: ${points}" 
+						           th:value="${p}"
+						           th:text="${p}" >北京
+						   </option>
+		     	     </select>
+					</div>				
+				</div>
+				
+					<!--输入对应设备名称-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">设备名称</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+		    	     <select name="equipmentName" id="equipmentName" lay-verify="required"  lay-search>
+				           <option value="" >指定点位</option>
+				           <option th:value="${dep}!=null ? ${dep.equipmentName} : ''" 
+				                   th:text="${dep}!=null ? ${dep.equipmentName} : ''"  
+				                   selected> 1</option>
+						   <option th:each="p: ${eptss}" 
+						           th:value="${p}"
+						           th:text="${p}" >北京
+						   </option>
+		     	     </select>
+					</div>				
+				</div>
+				
+					
+				
+				
+									
+				 <!--按钮-->
+				  <div class="layui-form-item">
+				    <div class="layui-input-inline">
+				      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
+				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				    </div>
+				  </div>
+				   
+			</form>   
+		</div>
+			<!--end设备表单-->
+
+
+
+
+
+
+
+
+<footer style="text-align:center; margin-top: 10%">
+
+	<p>
+		<span >Copyright &copy;新视达视讯工程有限公司</span>
+	</p>
+
+</footer>
+
+<!-- start: JavaScript-->
+<!-- layui模块化js核心文件-->
+	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
+		
+		<script type="text/javascript">
+		layui.use(['laydate','form'], function(){
+		  var form = layui.form;
+		  var laydate = layui.laydate;
+		  
+		  laydate.render({
+			    elem: '#cameraReplacementTime' ,//指定元素
+				format: 'yyyy-MM-dd HH:mm:ss',
+				//value:'2018-11-18',
+				type: 'datetime',
+				min: '2000-1-1',
+				max: '2117-12-1'
+			  });
+		  
+		  
+		  form.on('submit(outemo)', function(data){
+			  parent.reftabbel();   	  
+	    	   parent.layer.close(index); //再执行关闭 	     
+			     return false;
+				});
+		  
+		 
+		  form.verify({		    
+			  warran: [
+			    	/^[01]$/
+			        ,'0为否，1为是'
+			        ] 
+		      ,latitude: [
+			      /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/
+		        ,'纬度格式错误，最长到小数点后8位'
+		        ]   		 
+		  }); 
+		  
+		});
+		</script>
+
+
+</body>
+</html>

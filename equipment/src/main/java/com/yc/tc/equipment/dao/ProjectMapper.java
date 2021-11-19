@@ -76,6 +76,10 @@ public interface ProjectMapper {
 	    @Select("select * from project order by project_name ,point_name")
 		public List<Project> selectAllProject();
 	    
+	    // 查找所有的项目所有名称
+	    @Select("select DISTINCT project_name from project order by project_name ")
+		public List<String> selectAllProjectNames();
+	    
 	    
 	    
 	  //根据不同条件查询项目信息  if版 动态sql     concat('%',#{linkName},'%')   concat('%',#{string},'%')
