@@ -3,6 +3,9 @@
 server:
  port: 8080
  
+
+ 
+
  
 spring:
   datasource:
@@ -10,6 +13,7 @@ spring:
     username: root
     password: 1234
     driver-class-name: com.mysql.jdbc.Driver
+  
     
 
 #日志配置

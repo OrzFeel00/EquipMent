@@ -29,6 +29,15 @@ public class AdminAction {
 	
 		return "admin/login";
 	}
+	
+	//退出系统去管理员登录页面
+		@GetMapping("xtoadlogin")
+		public String  xAdminLgin( HttpSession session) {
+			session.invalidate();
+		
+			return "admin/login";
+		}
+	
 	//后台管理员登录页面
 	@PostMapping("adlogin.do")
 	public String login( Admin adm,Errors errors, HttpSession session,Model m) {
@@ -42,6 +51,7 @@ public class AdminAction {
 			
 			Admin admed= aBiz.Alogin(adm);
 		    session.setAttribute("adlogined", admed);
+		   //退出系统 session.invalidate();
 	     	m.addAttribute("adlduser",admed);
 	     	
 			

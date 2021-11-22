@@ -51,9 +51,9 @@ public class PointPositionAction {
 			
 			//do点位信息录入
 			@RequestMapping("Point.do")
-			public String register(@Valid PointPosition pop,Errors errors,Model m) {
+			public String register( PointPosition pop,Errors errors,Model m) {
 			if(errors.hasErrors()) {
-					System.out.println("12222222"+pop.toString());
+					
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("pop",pop);
 				 m.addAttribute("roads", rBiz.selectAllRdNames());
@@ -62,7 +62,7 @@ public class PointPositionAction {
 				
 				try {
 					
-					System.out.println("22222222"+pop.toString());
+			
 					//插入点位信息
 					pBiz.addPop(pop);
 		            //点位id传入map中
