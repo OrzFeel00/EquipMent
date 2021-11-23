@@ -73,7 +73,7 @@ public class equiopmentallBiz {
 				
 			}
 
-
+			//根据id得到单个设备
 			public euiopmentall selecteptrbyid(int equipmentid) {
 				// TODO Auto-generated method stub
 				return eqmpper.selecteptrbyid(equipmentid);

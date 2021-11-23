@@ -154,7 +154,7 @@ public class PointPositionAction {
 					System.out.println("12222222"+pop.toString());
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("pop",pop);
-					 m.addAttribute("roads", rBiz.selectAllRdNames());
+				    m.addAttribute("roads", rBiz.selectAllRdNames());
 					return "admin/point/addpoint";
 				}
 				
@@ -202,9 +202,7 @@ public class PointPositionAction {
 				System.out.println("ssss");
 				System.out.println("ssss"+pop.toString());
 				pBiz.dellpoint(pop);
-				//查询当前的所有点位					
-				List<PointPosition> pointlist=pBiz.selectAllPoint();
-				m.addAttribute("pointlist",pointlist);
+			
 				
 				return "admin/point/dellsucceseinPoint2";
 			}
@@ -251,9 +249,7 @@ public class PointPositionAction {
 				//System.out.println(pop.toString());
 				pBiz.updatePointById(pop);
 				
-				//查询当前的所有点位					
-				List<PointPosition> pointlist=pBiz.selectAllPoint();
-				m.addAttribute("pointlist",pointlist);
+				
 				//redirect:admin/succeseinPoint
 				
 				} catch (BizException e) {

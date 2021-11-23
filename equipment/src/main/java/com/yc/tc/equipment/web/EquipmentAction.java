@@ -185,8 +185,7 @@ public class EquipmentAction {
 			public String dellpoint(euiopmentall eptr,Model m) throws BizException {
 				
 				eqBiz.dellpoint(eptr);
-				//查询当前的所有设备  
-				m.addAttribute("e",eqBiz.selectAllEptmor());	
+				
 				
 				return "admin/equipment/dellsucceseinequipment";
 			}
@@ -206,12 +205,19 @@ public class EquipmentAction {
 			@RequestMapping("insedtequipment.do")
 			public String isnedt(euiopmentall eptr,Model m ) throws BizException {		
 				 //根据id得到单个完整的eptr  放入m	  	
-				 instUtils.limt.put("edteptrrid", eptr.getEquipmentId());
-				 instUtils2.limt2.put("EquipmentCode", eptr.getEquipmentCode());
-				 instUtils2.limt2.put("EquipmentName", eptr.getEquipmentName());
-				 m.addAttribute("eptr", eqBiz.selecteptrbyid(eptr.getEquipmentId()));
-                  instUtils2.limt2.put("eptSn", eqBiz.selecteptrbyid(eptr.getEquipmentId()).getSn());
-		      System.out.println("11111do确认去去点位编辑"+eqBiz.selecteptrbyid(eptr.getEquipmentId()));
+				 instUtils.limt.put("edteptrrid", eptr.getEquipmentId());		 
+				 instUtils2.limt2.put("EquipmentCode", eptr.getEquipmentCode());	 
+				 instUtils2.limt2.put("EquipmentName", eptr.getEquipmentName());			 
+				 m.addAttribute("eptr", eqBiz.selecteptrbyid(eptr.getEquipmentId()));	 
+				 
+				 System.out.println("do1确认去去点位编辑");
+				 String sn=eqBiz.selecteptrbyid(eptr.getEquipmentId()).getSn();
+				 if(sn==null) {
+					 sn="nullsn";
+				 }
+				 System.out.println("do2确认去去点位编辑");
+                 instUtils2.limt2.put("eptSn", sn);
+                 System.out.println("do3确认去去点位编辑");
 				return "admin/equipment/edtequipment";
 			}
 			

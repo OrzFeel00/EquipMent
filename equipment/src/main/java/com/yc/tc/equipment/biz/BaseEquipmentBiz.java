@@ -53,11 +53,13 @@ public class BaseEquipmentBiz {
 		//更新baes
 		public void updatBaesById(euiopmentall eptr)throws BizException {
 			// TODO Auto-generated method stub
-			 String eptSn=instUtils2.limt2.get("eptSn");
-				
+ 			 String eptSn=instUtils2.limt2.get("eptSn");
+			
+	           if( eptr.getSn()!="nullsn") {
 				if((eqmpper.countByeSN(eptr.getSn())>0) && (!(eptr.getSn().equals(eptSn)))) {
 					throw new BizException("出场序列号称已存在");
 				}
+			  }
 			eqmpper.insertBaeemrByEid(eptr);
 		}
 		
