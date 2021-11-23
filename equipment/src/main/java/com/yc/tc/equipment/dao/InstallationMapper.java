@@ -115,7 +115,10 @@ public interface InstallationMapper {
 	    
 	    
 	    
-	    
+	    //根据equipmentName 和pointName 验证是否重名
+	    @Select("select count(*) from installation where point_name=#{pointName} and equipment_name=#{equipmentName}")
+	   public int  countBypnen (Installation ins );
+		
 	    
 	    
 	    

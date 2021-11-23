@@ -96,6 +96,17 @@ public class InstallationBiz {
 					
 					return ipmpper.selectipbyname(p);
 				}
+               //回收ip里的点位和设备
+				public void dellinsformip(Installation install) {
+					// TODO Auto-generated method stub
+					//根据点位设备组查重
+					if(impper.countBypnen(install)>0) {
+						return;
+					}
+					//如果已经没有了这个信息
+					
+					
+				}
 				
 
 }

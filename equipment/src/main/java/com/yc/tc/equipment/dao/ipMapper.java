@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.yc.tc.equipment.bean.Installation;
 import com.yc.tc.equipment.bean.Law;
 import com.yc.tc.equipment.bean.PointPosition;
 import com.yc.tc.equipment.bean.ip;

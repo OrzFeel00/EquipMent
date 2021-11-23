@@ -150,10 +150,12 @@ public class InstallationAction {
 			@RequestMapping("dellinstall.do")
 			public String dellpoint(Installation install,Model m) throws BizException {
 			
-				
+				//根据id得到完整的install
+				Installation isn=iBiz.selectInstallById(install.getId());
+				//删除根据id
 				iBiz.dellinstall(install.getId());
-				//查询当前的所有install					
-				m.addAttribute("installlist",iBiz.selectAllinstall());
+				//每次删除的时候看看是不是最后删除，如果是，则删除ip表对应的设备和点位组
+				iBiz.dellinsformip(isn);
 				
 				return "admin/Installation/dellsucceseininstall";
 			}
@@ -207,8 +209,7 @@ public class InstallationAction {
 				//System.out.println(pop.toString());
 				iBiz.updateinstallById(install);
 				iBiz.addip(install);
-				//查询当前的所有install					
-				m.addAttribute("installlist",iBiz.selectAllinstall());
+				
 				
 				
 				} catch (BizException e) {
