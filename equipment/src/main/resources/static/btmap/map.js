@@ -1,54 +1,5 @@
-   
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <title>Title</title>
-    
-    <script type="text/javascript" src="../jquery-3.4.1/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="../layer3.1.1/layer.js"></script>
-	
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Ypu9Gm5XZhlVdnzd1j7L7RRnhcGzAqw1"></script>
-</head>
-<body>
-<div>
-<input name="address" value=""id="where" class="case_text" type="text">
 
-<div style="display: inline" onClick="sear(document.getElementById('where').value);" >
-    搜索
-</div>
-
-</div>
-<div class="zerocard_add_ys">
- 
-    <span>经度：</span>
-    <div class="box_input">
-        <input name="longitude" value=""id="lng" class="case_text" type="text">
-    </div>
-    <div class="format2">
-        <span>纬度：</span>
-    </div>
-    <div class="box_input">
-        <input name="latitude" value=""id="lat"  class="case_text" type="text">
-    </div>
-</div>
-
-<br />
-<!--  
-<h1>功能介绍</h1>
-1，自动定位当前位置；(可能要等一会儿)<br>
-2，搜索功能<br>
-3，点击地图 小红点标记，<br>
-4，点击地图获取当前位置，和当前坐标<br><br>
--->
-
-
-<div style="width:100%;height:700px;border:1px solid gray" id="container"></div>
-
-<script>
-    var is_empty =0
+    var is_empty =1  //控制自我定位开关0就开启
     lng = 114.0645;
     lat = 22.5484;
     var map = new BMap.Map("container");//在指定的容器内创建地图实例
@@ -65,9 +16,10 @@
         var geocoder = new BMap.Geocoder();
         var point = new BMap.Point(e.point.lng,e.point.lat);
         geocoder.getLocation(point,function(geocoderResult,LocationOptions){
-            map.clearOverlays()
-            map.addControl(new BMap.NavigationControl());
+            map.clearOverlays()//清除地图上所有覆盖物
+            map.addControl(new BMap.NavigationControl());//增加组件
             var marker = new BMap.Marker(point);        // 创建标注
+            
             this.map.addOverlay(marker);
             //定位成功
             var address = geocoderResult.address;
@@ -116,10 +68,3 @@
         });
         local.search(result);
     }
-</script>
-</body>
-
-
-
-
-</html>

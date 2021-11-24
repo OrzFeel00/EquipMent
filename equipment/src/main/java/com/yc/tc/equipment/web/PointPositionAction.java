@@ -49,6 +49,19 @@ public class PointPositionAction {
 			
 			
 			
+			
+			//去点位输入页面
+			@GetMapping("toPoint2")
+			public String t2ouindex(Model m) {
+				 m.addAttribute("roads", rBiz.selectAllRdNames());
+				return "admin/point/inPoint2";
+			}
+			
+			
+			
+			
+			
+			
 			//do点位信息录入
 			@RequestMapping("Point.do")
 			public String register( PointPosition pop,Errors errors,Model m) {
