@@ -30,6 +30,14 @@ public class AdminAction {
 		return "admin/login";
 	}
 	
+	@GetMapping("tobmap")
+	public String  tobmap() {
+
+	
+		return "admin/BDmap/texmap";
+	}
+	
+	
 	//退出系统去管理员登录页面
 		@GetMapping("xtoadlogin")
 		public String  xAdminLgin( HttpSession session) {

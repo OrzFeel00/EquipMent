@@ -196,9 +196,9 @@
 						  <thead>
 						  <tr>
 						    <th lay-data="{field: 'devopsId' ,sort: true, width:100 }">ID</th>
-						    <th lay-data="{field:'projectName',width: 200}">项目名称</th>
-						    <th lay-data="{field:'equipmentName',width: 200}">设备名称</th>
-						    <th lay-data="{field:'pointName',width: 200}">点位名称</th>
+						    <th lay-data="{field:'projectName',width: 200,style:'color:#009688'}">项目名称</th>
+						    <th lay-data="{field:'equipmentName',width: 200,style:'color:#5FB878'}">设备名称</th>
+						    <th lay-data="{field:'pointName',width: 200,style:'color:#393D49'}">点位名称</th>
 					        <th lay-data="{field:'devopsLiable', width:150}">运维负责人</th>
 						    <th lay-data="{field:'devopsPhone',width: 200}">运维负责人联系电话</th>
 						    <th lay-data="{field:'ownership', width:200}">产权归属</th>
@@ -302,7 +302,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       //转换静态表格
      table.init('demo', {
         height: '710' //设置高度
-        ,width :'2115'
+        ,width :'2120'
         ,limit: 14 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'运维信息'
         ,loading:true 

@@ -29,8 +29,8 @@ public class WebConfigurer implements WebMvcConfigurer {
 				"/toadlogin",
 				"/adlogin.do",
 				"/dist/**",
-				"/admin/**"
-			
+				"/admin/**",
+			    "/tobmap"
 				);
 	}
 

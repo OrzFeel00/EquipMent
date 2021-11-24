@@ -199,8 +199,8 @@
 						  <thead>
 						    <tr>
 						      <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
-						      <th lay-data="{field:'projectName', width:200 }">项目名称</th>
-						      <th lay-data="{field:'pointName',width: 200}">点位</th>
+						      <th lay-data="{field:'projectName', width:200 ,style:'color:#393D49'}">项目名称</th>
+						      <th lay-data="{field:'pointName',width: 200,style:'color:#393D49'}">点位</th>
 						      <th lay-data="{field:'equipmentName',width: 200}">设备</th>
 						      <th lay-data="{field:'purchaseDate',sort: true, width: 150}">采购日期</th>
 						      <th lay-data="{field:'installDate',sort: true, width: 150}">安装日期</th>
@@ -303,7 +303,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       //转换静态表格
      table.init('demo', {
         height: '735' //设置高度
-        ,width :'2355'
+        ,width :'2360'
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'项目信息'
         ,loading:true 
