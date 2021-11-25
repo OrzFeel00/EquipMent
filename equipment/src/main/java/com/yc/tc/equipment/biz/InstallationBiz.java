@@ -103,8 +103,9 @@ public class InstallationBiz {
 					if(impper.countBypnen(install)>0) {
 						return;
 					}
-					//如果已经没有了这个信息
+					//如果已经没有了这个install信息,则删除ip对应的点位设备组
 					
+					ipmpper.deleteIpByPnEn(install);
 					
 				}
 				

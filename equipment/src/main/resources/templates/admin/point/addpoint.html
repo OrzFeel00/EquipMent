@@ -39,7 +39,7 @@
 			
 			<!--设备表单-->
 		<div style="width:100%">
-			<form  style="margin-left: 20%;" class="layui-form " action="addPoint.do" method="post">
+			<form   style="float:left;width:35%" class="layui-form " action="addPoint.do" method="post">
 					<!--点位名称-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">点位名称</label>
@@ -65,7 +65,7 @@
 					<label class="layui-form-label">点位经度</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="longitude" id="longitude" class="layui-input" placeholder="点位经度" 
+					 <input type="text" name="longitude" id="lng" class="layui-input" placeholder="点位经度" 
 					  th:value="${pop}!=null ? ${pop.longitude} : ''"    required lay-verify="required|number|longitude"/>
 					</div>				
 				</div>
@@ -74,7 +74,7 @@
 					<label class="layui-form-label">点位纬度</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="latitude" id="latitude" class="layui-input" placeholder="点位纬度" 
+					 <input type="text" name="latitude" id="lat" class="layui-input" placeholder="点位纬度" 
 					  th:value="${pop}!=null ? ${pop.latitude} : ''"     required lay-verify="required|number|latitude"/>
 					</div>				
 				</div>
@@ -147,6 +147,26 @@
 				  </div>
 				   
 			</form>   
+			
+			
+			
+			
+			
+				<!-- 百度地图 -->	
+		<div style="float:left;width:60%" >
+			<div>
+			   <input name="address" value=""id="where" class="case_text" type="text">
+			   <div style="display: inline" onClick="sear(document.getElementById('where').value);" >
+			    <button class="layui-btn layui-btn">搜索</button>
+			   </div>
+			</div>
+			
+			<div style="width:100%;height:600px;border:1px solid gray" id="container"></div>
+		</div>    
+			
+			
+			
+			
 		</div>
 			<!--end设备表单-->
 
@@ -160,6 +180,11 @@
 
 <!-- start: JavaScript-->
 <!-- layui模块化js核心文件-->
+
+         <script type="text/javascript" src="layer3.1.1/layer.js"></script>
+         <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Ypu9Gm5XZhlVdnzd1j7L7RRnhcGzAqw1"></script>
+         <script type="text/javascript"  src="btmap/map.js"></script>  
+
 	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 		
 		<script type="text/javascript">

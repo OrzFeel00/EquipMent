@@ -32,16 +32,16 @@ public interface ipMapper {
 	    
 	    
 	    //查找所有的ip信息
-	    @Select("select * from ip where  point_name=#{pointName} and equipment_name=#{equipmentName} ")
+	    @Select("select * from ip where  point_name=#{pointName} and equipment_name=#{equipmentName} ORDER BY ip ")
 		public List<ip> selectipbyname(ip p);
 	    
 		 //根据equipmentName 验证是否重名
 	    @Select("select count(*) from point_position where point_name=#{code}")
 	   public int  countByPname (String pname );
 		
-	    //根据id删除点位
-		@Delete("delete from law where id=#{id}")
-		public void delectLawById(int lawid);
+	    //根据pointName equipmentName删除ip
+		@Delete("delete from ip where point_name=#{pointName} and equipment_name=#{equipmentName}")
+		public void deleteIpByPnEn(Installation install);
 		//根据id查询点位
 		@Select("select * from point_position where point_id=#{pointId}")
 		public PointPosition selectPointById(Integer pointId);

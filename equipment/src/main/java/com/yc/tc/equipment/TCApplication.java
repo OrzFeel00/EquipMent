@@ -20,3 +20,7 @@ public class TCApplication {
 
 	
 }
+/**
+ * maysql 5.7
+ *jdk 1.80_3
+ */

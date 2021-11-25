@@ -203,7 +203,7 @@
 					<label class="layui-form-label">硬盘数量</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="diskNumber" id="diskNumber" class="layui-input" placeholder="硬盘数量"
+					 <input type="text" name="diskNumber" id="diskNumber" class="layui-input" placeholder="填数字"
 					 th:value="${eptr}!=null ? ${eptr.diskNumber} : ''"   required lay-verify="required|number"/>
 					</div>				
 				</div>
@@ -257,7 +257,7 @@
 					<label class="layui-form-label">主机通道数  </label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="hostchannelsNumber" id="hostchannelsNumber" class="layui-input" placeholder="主机通道数" 
+					 <input type="text" name="hostchannelsNumber" id="hostchannelsNumber" class="layui-input" placeholder="填数字" 
 					  th:value="${eptr}!=null ? ${eptr.hostchannelsNumber} : ''"   required lay-verify="required|number"/>
 					</div>				
 				</div>
@@ -266,7 +266,7 @@
 					<label class="layui-form-label">设备高度(cm)</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="height" id="height" class="layui-input" placeholder="设备高度"
+					 <input type="text" name="height" id="height" class="layui-input" placeholder="保留小数点后两位"
 					  th:value="${eptr}!=null ? ${eptr.height} : ''"    required lay-verify="required"/>
 					</div>				
 				</div>
@@ -275,7 +275,7 @@
 					<label class="layui-form-label">设备长度(cm)</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="length" id="length" class="layui-input" placeholder="设备长度" 
+					 <input type="text" name="length" id="length" class="layui-input" placeholder="保留小数点后两位" 
 					 th:value="${eptr}!=null ? ${eptr.length} : ''"   required lay-verify="required"/>
 					</div>				
 				</div>

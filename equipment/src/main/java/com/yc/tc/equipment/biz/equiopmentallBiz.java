@@ -51,7 +51,7 @@ public class equiopmentallBiz {
 					throw new BizException("设备编号已存在");
 				}
 				if(eqmpper.countByeName(eq.getEquipmentName())>0) {
-					throw new BizException("设备已存在");
+					throw new BizException("设备名称已存在");
 				}
 				
 				
@@ -96,7 +96,7 @@ public class equiopmentallBiz {
 							throw new BizException("设备编号已存在");
 						}
 						if(eqmpper.countByeName(eptr.getEquipmentName())>0 ) {
-							throw new BizException("设备已存在");
+							throw new BizException("设备名称已存在");
 						} 
 				 }				
 				eqmpper.updateEptrById(eptr);

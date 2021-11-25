@@ -43,8 +43,8 @@ public class EquipmentBiz {
 		
     	//找到所有的设备名称
 				public List<String> selectAllEquptNames() {
-					List<String> eqlist=empper.selectAllEquNames();
-					return eqlist;
+					
+					return empper.selectAllEquNames();
 				}
 				
 				//查找所有的设备所有信息

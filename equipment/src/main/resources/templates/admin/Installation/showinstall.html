@@ -197,8 +197,8 @@
 						   <th lay-data="{field:'direction', width: 150}">方向</th>
 						   <th lay-data="{field:'lanes', width: 150, sort: true}">车道数</th>
 						   <th lay-data="{field:'powerPoint', width: 150}">供电的点位</th>
-						   <th lay-data="{field:'pointName', width: 150,style:'color:#009688'}">点位名称</th>
-						   <th lay-data="{field:'equipmentName', width: 150,style:'color:#009688'}">设备名称</th>
+						   <th lay-data="{field:'pointName',sort: true, width: 150,style:'color:#009688'}">点位名称</th>
+						   <th lay-data="{field:'equipmentName',sort: true, width: 150,style:'color:#009688'}">设备名称</th>
 						   <th lay-data="{field:'transmissionType', width: 130}">传输类型</th>
 						   <th lay-data="{field:'computerRoom', width:150}">接入机房</th>
 						   <th lay-data="{field:'networkAttribute',width: 200}">联网属性</th>
@@ -208,7 +208,7 @@
 						   <th lay-data="{field:'networkTiming', width:150}">联网校时功能</th>
 						   <th lay-data="{field:'timingWarning', width:150}">校时情况预警功能</th>
 						   <th lay-data="{field:'verificationDeadline', width:180}">检定有效截止时间</th>
-						   <th lay-data="{field:'ip', width:150}">ip地址</th>
+						   <th lay-data="{field:'ip',sort: true, width:150}">ip地址</th>
 						   <th lay-data="{field:'mac', width:150}">mac地址</th>
 						   <th lay-data="{field:'prot', width:150}">端口号</th>
 						
@@ -307,7 +307,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var dataList;
       //转换静态表格
      table.init('demo', {
-        height: '710' //设置高度'2350'
+        height: '710' //设置高度'2355'
         ,width :'2355'
         ,limit: 14 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'安装信息'

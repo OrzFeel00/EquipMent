@@ -106,13 +106,14 @@ public class ProjerctAction {
 			     //根据name写入roaid到point
 				 // rBiz.insetRidByname(roa.getRoadName());
 				 //根据name写入point到Projec
-				
+				 
 				    pBiz.insertPioByprName(point.getPointName());
 				    instUtils2.limt2.put("PRpointname", point.getPointName());	
 				    m.addAttribute("isprojectName", instUtils2.limt2.get("ProjectName"));
 				    m.addAttribute("ispointName", point.getPointName());
-				    
-				    m.addAttribute("equipments", eBiz.selectAllEquptNames());
+				   
+				    m.addAttribute("equipments", eqBiz.selectAllEquplltNames());
+				   
 				return "admin/Projerct/inEquipmenttoProject";
 			}
 			
@@ -134,7 +135,7 @@ public class ProjerctAction {
 			@PostMapping("EquipmenttoProject.do")
 			public String EquipmenttoProject(euiopmentall eqt,Model m,Errors errors) {				
 				if(errors.hasErrors()) {
-					m.addAttribute("equipments", eBiz.selectAllEquptNames());
+					 m.addAttribute("equipments", eqBiz.selectAllEquplltNames());
 					m.addAttribute("errors", Utils.asMap(errors));
 			     	m.addAttribute("eqt",eqt);
 			   
@@ -155,8 +156,9 @@ public class ProjerctAction {
 					m.addAttribute("ispointName", instUtils2.limt2.get("PRpointname"));
 					errors.rejectValue("equipmentId", "equipmentId",e.getMessage());
 					m.addAttribute("errors",Utils.asMap(errors));
+				    m.addAttribute("equipments", eqBiz.selectAllEquplltNames());
 					m.addAttribute("eqt",eqt);
-					m.addAttribute("equipments", eBiz.selectAllEquptNames());
+					
 					return "admin/Projerct/inEquipmenttoProject";
 				}
 				return "admin/Projerct/succeseinProjectend";
