@@ -18,9 +18,11 @@ import com.github.pagehelper.PageHelper;
 import com.yc.tc.equipment.bean.PointPosition;
 import com.yc.tc.equipment.bean.Storage;
 import com.yc.tc.equipment.bean.road;
+import com.yc.tc.equipment.bean.ws;
 import com.yc.tc.equipment.biz.BizException;
 import com.yc.tc.equipment.biz.PointPositionBiz;
 import com.yc.tc.equipment.biz.roadBiz;
+import com.yc.tc.equipment.biz.wsBiz;
 import com.yc.tc.equipment.util.Utils;
 import com.yc.tc.equipment.util.instUtils;
 import com.yc.tc.equipment.util.instUtils2;
@@ -34,6 +36,8 @@ public class PointPositionAction {
 	private  PointPositionBiz pBiz;
 	@Resource
 	private  roadBiz rBiz;
+	@Resource
+	private  wsBiz wBiz;
 	
 	
    
@@ -64,7 +68,7 @@ public class PointPositionAction {
 			
 			//do点位信息录入
 			@RequestMapping("Point.do")
-			public String register( PointPosition pop,Errors errors,Model m) {
+			public String register(ws w, PointPosition pop,Errors errors,Model m) {
 			if(errors.hasErrors()) {
 					
 					m.addAttribute("errors", Utils.asMap(errors));
@@ -74,8 +78,8 @@ public class PointPositionAction {
 				}
 				
 				try {
-					
-			
+				    //更改cod
+					pop.setPointCode(wBiz.inputwz(w.getWhereis())); 
 					//插入点位信息
 					pBiz.addPop(pop);
 		            //点位id传入map中
@@ -162,7 +166,7 @@ public class PointPositionAction {
 			
 			//do点位add
 			@PostMapping("addPoint.do")
-			public String doaddpoint(@Valid PointPosition pop,Errors errors,Model m) {
+			public String doaddpoint(ws w, PointPosition pop,Errors errors,Model m) {
 				if(errors.hasErrors()) {
 					System.out.println("12222222"+pop.toString());
 					m.addAttribute("errors", Utils.asMap(errors));
@@ -173,7 +177,9 @@ public class PointPositionAction {
 				
 				try {
 					
-					System.out.println("22222222"+pop.toString());
+				
+					  //更改cod
+					pop.setPointCode(wBiz.inputwz(w.getWhereis())); 
 					//插入点位信息
 					pBiz.addPop(pop);
 		            //点位id传入map中
@@ -234,11 +240,12 @@ public class PointPositionAction {
 
 			//do确认去去点位编辑
 			@RequestMapping("insedtpoint.do")
-			public String isnedt(PointPosition pop,Model m ) throws BizException {
+			public String isnedt(ws w,PointPosition pop,Model m ) throws BizException {
 				//把pointname保存下来
 				 instUtils2.limt2.put("inspointname", pop.getPointName());	
-				 
+				w.setWhereis(pop.getPointCode()); 
 				 m.addAttribute("pop", pop);
+			
 				 m.addAttribute("edtroads", rBiz.selectAllRdNames());
 				return "admin/point/edtpoint";
 			}
@@ -247,10 +254,10 @@ public class PointPositionAction {
 			
 			//do点位编辑
 			@PostMapping("edtpoint.do")
-			public String edtpoint(PointPosition pop,Model m,Errors errors) {
+			public String edtpoint(ws w,PointPosition pop,Model m,Errors errors) {
 				//执行点位修改
 				if(errors.hasErrors()) {
-					System.out.println("12222222"+pop.toString());
+					
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("pop",pop);
 				    m.addAttribute("roads", rBiz.selectAllRdNames());
@@ -259,6 +266,8 @@ public class PointPositionAction {
 				
 				try {
 		
+					 //更改cod
+					pop.setPointCode(wBiz.edtinputwz(w.getWhereis(),pop.getPointId())); 
 				//System.out.println(pop.toString());
 				pBiz.updatePointById(pop);
 				

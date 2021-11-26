@@ -22,13 +22,7 @@ public class PointPositionBiz {
 		public void addPop(PointPosition pop)throws BizException {
 			    	//可以忽略字段的验证
 			    	//经行同名验证
-		    	if((pmpper.countByCode(pop.getPointCode())>0) && (pmpper.countByPname(pop.getPointName())>0)) {
-				    throw new BizException("点位名称和监测点编码已存在");
-			    }
-			
-				if(pmpper.countByCode(pop.getPointCode())>0) {
-					throw new BizException("监测点编码已存在");
-				}
+		    	
 				if(pmpper.countByPname(pop.getPointName())>0) {
 					throw new BizException("点位名称已存在");
 				}

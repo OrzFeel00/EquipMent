@@ -27,6 +27,12 @@ public interface PointPositionMapper {
 		@Options(useGeneratedKeys = true, keyProperty = "pointId", keyColumn = "point_id")
 	   public  int insertPoint(PointPosition pop);
 		
+		
+		
+		//返回点位表当前最大id
+      @Select("select max(point_id) from point_position")
+      public int gettopid();
+		
 		 //根据PointCode 验证是否重名
 	    @Select("select count(*) from point_position where point_code=#{code}")
 	   public int  countByCode(String code );

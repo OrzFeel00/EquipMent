@@ -171,15 +171,15 @@
 			</ul>
 			
 		  <!--设备基础信息表单-->
-		  <div style="text-align: center; margin-top:5%;">
-			 <form style="margin-left: 40%" class="layui-form " action="road.do" method="post" >				 		 
+		  <div style=" float:left;width:35%;margin-top: 40px;">
+			 <form style="margin-left: 8%;" class="layui-form " action="road.do" method="post" >				 		 
 				<!--行政区域-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">行政区域</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="administrativeRegion" id="administrativeRegion" class="layui-input" placeholder="出行政区域"  
-					  th:value="${roa}!=null ? ${roa.administrativeRegion} : ''"  required lay-verify="required"/>
+					  th:value="${roa}!=null ? ${roa.administrativeRegion} : ''"  required lay-verify="required|max"/>
 					</div>				
 				</div>
 				<!--部门区域-->
@@ -188,7 +188,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="departmentRegion" id="departmentRegion" class="layui-input" placeholder="部门区域"  
-					 th:value="${roa}!=null ? ${roa.departmentRegion} : ''"  required lay-verify="required"/>
+					 th:value="${roa}!=null ? ${roa.departmentRegion} : ''"  required lay-verify="required|max"/>
 					 	
 					</div>				
 				</div>
@@ -199,7 +199,7 @@
 						<!--原始表单区域-->
 						 
 					 <input type="text" name="streetName" id="streetName" class="layui-input" placeholder="街道名称"  
-					 th:value="${roa}!=null ? ${roa.streetName} : ''"  required lay-verify="required"/>
+					 th:value="${roa}!=null ? ${roa.streetName} : ''"  required lay-verify="required|max"/>
 					</div>				
 				</div>
 				<!--道路名称-->
@@ -209,7 +209,7 @@
 						<!--原始表单区域-->
 						<span class="e" th:if="${errors}!=null" th:text="${errors.get('roadName')}"></span>
 					 <input type="text" name="roadName" id="roadName" class="layui-input" placeholder="道路名称" 
-					  th:value="${roa}!=null ? ${roa.roadName} : ''"    required lay-verify="required"/>
+					  th:value="${roa}!=null ? ${roa.roadName} : ''"    required lay-verify="required|max"/>
 					</div>				
 				</div>
 				<!--道路等级  -->
@@ -218,7 +218,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="roadGrade" id="roadGrade" class="layui-input" placeholder="道路等级" 
-				 th:value="${roa}!=null ? ${roa.roadGrade} : ''" 	  required lay-verify="required"/>
+				 th:value="${roa}!=null ? ${roa.roadGrade} : ''" 	lay-max="30"  required lay-verify="required|tmax"/>
 					</div>				
 				</div>
 				<!--道路编码-->
@@ -227,7 +227,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="roadCode" id="roadCode" class="layui-input" placeholder="道路编码" 
-					 th:value="${roa}!=null ? ${roa.roadCode} : ''"   required lay-verify="required"/>
+					 th:value="${roa}!=null ? ${roa.roadCode} : ''" lay-max="30"  required lay-verify="required|tmax"/>
 					 
 					</div>				
 				</div>
@@ -237,7 +237,7 @@
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
 					 <input type="text" name="roadSpeed" id="roadSpeed" class="layui-input" placeholder="道路限速 km/h" 
-					 th:value="${roa}!=null ? ${roa.roadSpeed} : ''"   required lay-verify="required|number"/>
+					 th:value="${roa}!=null ? ${roa.roadSpeed} : ''" lay-max="20"   required lay-verify="required|number|tmax"/>
 					</div>				
 				</div>
 				
@@ -253,6 +253,22 @@
 		  </div>
 			<!--end设备存储表单-->
 
+           
+           
+           
+           <!-- 百度地图 -->
+     <div style="float:left;width:60%" >
+	<div>
+	   <input name="address" value=""id="where" class="case_text" type="text" style="width:35%">
+	   <div style="display: inline" onClick="sear(document.getElementById('where').value);" >
+	    <button class="layui-btn layui-btn">搜索</button>
+	   </div>
+	</div>
+	
+	<div style="width:100%;height:700px;border:1px solid gray" id="container"></div>
+</div>    
+           
+           
            
            
            
@@ -281,11 +297,37 @@
         <script type="text/javascript">
 		layui.use('form', function(){
 		  var form = layui.form;
+		  
+		  
+		  
+		    form.verify({
+		        tmax: function(value, item){
+		            var max = item.getAttribute('lay-max');
+		            if(value.length > max){
+		                return '大于'+max+'个字符的长度';
+		            }
+		        },
+		    
+		    max: function(value, item){
+	            var max = 40;
+	            if(value.length > max){
+	                return '大于'+max+'个字符的长度';
+	            }
+	        }
+		    });
+		  
+		  
+		  
+		  
 		});
 		</script>
 
 <!-- JavaScript-->
-        <script src="admin/js/jquery-1.9.1.min.js"></script>
+       <script src="admin/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="layer3.1.1/layer.js"></script>
+         <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Ypu9Gm5XZhlVdnzd1j7L7RRnhcGzAqw1"></script>
+         <script type="text/javascript"  src="btmap/map.js"></script>  
+        
 	    <script src="admin/js/jquery-migrate-1.0.0.min.js"></script>
 	
 		<script src="admin/js/jquery-ui-1.10.0.custom.min.js"></script>

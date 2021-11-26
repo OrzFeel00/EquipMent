@@ -6,7 +6,7 @@
     map.setDefaultCursor("crosshair");//设置地图默认的鼠标指针样式
     map.enableScrollWheelZoom();//启用滚轮放大缩小，默认禁用。
     var point =new BMap.Point(lng,lat)
-    map.centerAndZoom(point, 16);
+    map.centerAndZoom(point, 14);
     map.addControl(new BMap.NavigationControl());
     var marker = new BMap.Marker(point);        // 创建标注
     this.map.addOverlay(marker);
@@ -24,6 +24,7 @@
             //定位成功
             var address = geocoderResult.address;
             document.getElementById("where").value =address
+           document.getElementById("whereis").value =address
             layer.msg('定位成功');
             // $('#suggestId').val(geocoderResult.address);
         });
@@ -40,7 +41,7 @@
         dingwei()
 
     }
-    function dingwei() {
+    function dingwei() {//自我定位
         var geolocation = new BMap.Geolocation();
         geolocation.getCurrentPosition(function(r){
             if(this.getStatus() == BMAP_STATUS_SUCCESS){

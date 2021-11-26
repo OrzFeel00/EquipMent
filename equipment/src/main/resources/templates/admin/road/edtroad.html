@@ -31,8 +31,8 @@
 
 
   <!--设备基础信息表单-->
-		  <div style="text-align: center; margin-top:5%;">
-			 <form style="margin-left: 20%" class="layui-form " action="edtroad.do" method="post" >	
+		  <div style="width:100%">
+			 <form style="float:left;width:40%" class="layui-form " action="edtroad.do" method="post" >	
 			 <!--街道id-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">街道ID</label>
@@ -119,7 +119,23 @@
 					 </div>
 				 </div>
 				 
-			 </form>		 
+			 </form>	
+			 
+			 
+			 
+			           <!-- 百度地图 -->
+     <div style="float:left;width:55%" >
+	<div>
+	   <input name="address" value=""id="where" class="case_text" type="text" style="width:55%">
+	   <div style="display: inline" onClick="sear(document.getElementById('where').value);" >
+	    <button class="layui-btn layui-btn">搜索</button>
+	   </div>
+	</div>
+	
+	<div style="width:100%;height:600px;border:1px solid gray" id="container"></div>
+</div> 
+			 
+			 	 
 		  </div>
 			<!--end设备存储表单-->
 
@@ -134,6 +150,12 @@
 
 
 <!-- start: JavaScript-->
+
+<script src="admin/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="layer3.1.1/layer.js"></script>
+         <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Ypu9Gm5XZhlVdnzd1j7L7RRnhcGzAqw1"></script>
+         <script type="text/javascript"  src="btmap/map.js"></script> 
+
 <!-- layui模块化js核心文件-->
 	    <script src="../layui/layui.js" type="text/javascript" charset="UTF-8"></script>
 		
