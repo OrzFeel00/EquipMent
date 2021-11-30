@@ -72,7 +72,7 @@ public class EquipmentAction {
 				  instUtils.limt.put("inEquipmentid", eptr.getEquipmentId());
 				  
 				  Integer eqtid= instUtils.limt.get("Equipmentid");
-					System.out.println(eqtid);
+					
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -114,7 +114,7 @@ public class EquipmentAction {
 				    		
 					//查询搜索结果放入m
 					m.addAttribute("e",eqBiz.selectEptrBymore(eptr));
-					
+					m.addAttribute("soreptr", eptr);
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -147,7 +147,7 @@ public class EquipmentAction {
 				
 				try {
 					
-					System.out.println("22222222"+eptr.toString());
+					
 					//插入设备信息
 					eqBiz.addeptmor(eptr);
 		            //点位id传入map中
@@ -210,14 +210,14 @@ public class EquipmentAction {
 				 instUtils2.limt2.put("EquipmentName", eptr.getEquipmentName());			 
 				 m.addAttribute("eptr", eqBiz.selecteptrbyid(eptr.getEquipmentId()));	 
 				 
-				 System.out.println("do1确认去去点位编辑");
+				
 				 String sn=eqBiz.selecteptrbyid(eptr.getEquipmentId()).getSn();
 				 if(sn==null) {
 					 sn="nullsn";
 				 }
-				 System.out.println("do2确认去去点位编辑");
+				
                  instUtils2.limt2.put("eptSn", sn);
-                 System.out.println("do3确认去去点位编辑");
+                 
 				return "admin/equipment/edtequipment";
 			}
 			

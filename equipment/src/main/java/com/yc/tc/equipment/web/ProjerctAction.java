@@ -200,7 +200,7 @@ public class ProjerctAction {
 							//根据pop查询得到list结果集 
 						
 							m.addAttribute("projectlist",pBiz.selectProjectBymore(prt));
-							
+							 m.addAttribute("sorprt", prt);
 						} catch (BizException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

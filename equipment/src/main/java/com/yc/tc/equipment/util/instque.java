@@ -21,16 +21,16 @@ public class instque {
 	 static  
 	    {  
 		 limt2 =  new ConcurrentHashMap<>();  
-		 limt2.put(0, "龙华区");  
-		 limt2.put(1, "龙岗区");  
-		 limt2.put(2, "坪山区");  
-		 limt2.put(3, "光明区");  
-		 limt2.put(4, "盐田区");  
-		 limt2.put(5, "南山区");  
-		 limt2.put(6, "福田区");  
-		 limt2.put(7, "宝安区");  
-		 limt2.put(8, "罗湖区");  
-		 limt2.put(9, "大鹏新");  
+		 limt2.put(440303, "罗湖区"); 
+		 limt2.put(440304, "福田区"); 
+		 limt2.put(440305, "南山区"); 
+		 limt2.put(440306, "宝安区");	 
+		 limt2.put(440307, "龙岗区");  
+		 limt2.put(440308, "盐田区");  
+		 limt2.put(440309, "龙华区"); 
+		 limt2.put(440310, "坪山区"); 
+		 limt2.put(440311, "光明区"); 		 
+		 limt2.put(440312, "大鹏新");  
 	    }  
 	
 }

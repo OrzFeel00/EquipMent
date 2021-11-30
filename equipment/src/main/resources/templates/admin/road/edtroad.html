@@ -28,7 +28,10 @@
 
 
 
-
+<!--安全关闭-->
+         <div  style="margin-left:85% ; margin-top: 5px;">
+		      <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button> 
+	     </div>
 
   <!--设备基础信息表单-->
 		  <div style="width:100%">
@@ -114,7 +117,7 @@
 				 <div class="layui-form-item">
 					 <div class="layui-input-block">
 					 <button class="layui-btn" type="submit"  lay-submit>确定提交 </button> &emsp;
-						  <button class="layui-btn layui-bg-blue" type="submit" lay-submit lay-filter="outemo"> <i class="layui-icon layui-icon-logout"></i> 安全退出</button>
+						
 						 
 					 </div>
 				 </div>
@@ -164,8 +167,8 @@
 		  var form = layui.form;
 		  
 		  form.on('submit(outemo)', function(data){
-			  parent.reftabbel();   	  
-	    	   parent.layer.close(index); //再执行关闭 	     
+			  let index = parent.layer.getFrameIndex(window.name);				 
+	    	   parent.layer.close(index); //不执行数据更新，的退出      
 			     return false;
 				});
 		  

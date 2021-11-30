@@ -153,8 +153,8 @@
 		  var form = layui.form;
 		  
 		  form.on('submit(outemo)', function(data){
-			  parent.reftabbel();    	  
-	    	   parent.layer.close(index); //再执行关闭 
+			  let index = parent.layer.getFrameIndex(window.name);				 
+	    	   parent.layer.close(index); //不执行数据更新，的退出     
   
 			     return false;
 				});

@@ -159,31 +159,32 @@
 			</ul>
 			-->
 			
-			  <!-- 表头 -->
+			  <!-- 表头  soreptr-->
 			<div>		
-				<form  action="showequipment.do" method="post">
+				<form id="myform" action="showequipment.do" method="post">
 		      
 				<div id="equipmentName"  style="margin-left:10px;font-weight:bold;float: left">
-			      设备名称：<input name="equipmentName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备名称"/>   </div>
+			      设备名称：<input th:value="${soreptr}!=null ? ${soreptr.equipmentName} : ''"  name="equipmentName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备名称"/>   </div>
 			  
 				<div id="equipmentType"   style="margin-left:10px;font-weight:bold;float: left">
-				  设备类型：<input  name="equipmentType" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备类型"/>	</div>
+				  设备类型：<input th:value="${soreptr}!=null ? ${soreptr.equipmentType} : ''"   name="equipmentType" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备类型"/>	</div>
 				  
 				<div id="afunctionType"   style="margin-left:10px;font-weight:bold;float: left">
-			     摄像机功能类型：<input name="afunctionType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="摄像机功能类型"/>	</div>
+			     摄像机功能类型：<input th:value="${soreptr}!=null ? ${soreptr.afunctionType} : ''"  name="afunctionType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="摄像机功能类型"/>	</div>
 			     
 				<div id="brand"  style="margin-left:10px;font-weight:bold;float: left">
-				 设备品牌：<input name="brand"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="品牌"/>	</div>
+				 设备品牌：<input th:value="${soreptr}!=null ? ${soreptr.brand} : ''"  name="brand"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="品牌"/>	</div>
 				  
 				<div   id="functionType" style="margin-left:10px;font-weight:bold;float: left">
-				设备功能类型：<input name="functionType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备功能类型"/>	</div>
+				设备功能类型：<input th:value="${soreptr}!=null ? ${soreptr.functionType} : ''"  name="functionType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备功能类型"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
 					 <!--按钮--> 					      
 			      	<button id="btn-sor" class="layui-btn" type="submit" >搜索</button></div>	
 			      		      
-			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="reset" >重置</button>
+			        <button id="btn-re" class="layui-btn layui-btn-primary"  type="button" >重置输入</button>
+			     	<button id="btn-re" class="layui-btn layui-bg-blue"  type="button" onclick="reftabbeladd()">刷新</button>	 
 			     			  						
 		      	</form>
 	    	</div>
@@ -335,10 +336,25 @@
 	
 	<script>
 	
+	  //编辑 删除操作
 	function reftabbel(){
+		//$("#btn-re").click();
+		$("#btn-sor").click();
+	}
+    
+	   //add 操作
+	function reftabbeladd(){
 		$("#btn-re").click();
 		$("#btn-sor").click();
 	}
+	
+	 $("#btn-re").on('click', function(){
+		  layer.load(1,{time:100});
+		  $("#myform").find('input[type=text],select,input[type=hidden]').each(function() {
+			          $(this).val('');
+			       });
+		  
+	 });
 	
 	
 	

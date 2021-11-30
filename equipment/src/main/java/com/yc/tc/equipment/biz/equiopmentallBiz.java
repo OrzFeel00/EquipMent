@@ -86,19 +86,34 @@ public class equiopmentallBiz {
 				 String EquipmentCode=instUtils2.limt2.get("EquipmentCode");
 				 String EquipmentName=instUtils2.limt2.get("EquipmentName");
 				 
-				//经行同名验证
-				 if((!(eptr.getEquipmentCode().equals(EquipmentCode))) || (!(eptr.getEquipmentName().equals(EquipmentName)))) {
+				 System.out.println(EquipmentName+"对比"+eptr.getEquipmentName());
+				//code 变 name变
+				 if((!(eptr.getEquipmentCode().equals(EquipmentCode))) && (!(eptr.getEquipmentName().equals(EquipmentName)))) {
 					 
 						if((eqmpper.countByecode(eptr.getEquipmentCode())>0) && (eqmpper.countByeName(eptr.getEquipmentName())>0)) {
-							throw new BizException("设备编号已经名称已存在");
+							throw new BizException("设备编号和设备名称已存在");
 						}
+				 }	
+				 //code 变 name不变
+				 if((!(eptr.getEquipmentCode().equals(EquipmentCode))) ) {					 
+						
 						if(eqmpper.countByecode(eptr.getEquipmentCode())>0) {
 							throw new BizException("设备编号已存在");
 						}
+				 }	
+				 
+				//code 不变  name变
+				 if(!(eptr.getEquipmentName().equals(EquipmentName))) {
+					 
 						if(eqmpper.countByeName(eptr.getEquipmentName())>0 ) {
 							throw new BizException("设备名称已存在");
 						} 
-				 }				
+				 }	
+				 
+				 
+				 
+				 
+				 
 				eqmpper.updateEptrById(eptr);
 				
 			}

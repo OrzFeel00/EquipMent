@@ -102,7 +102,7 @@ public class roadAction {
 					
 					//放入点位信息
 					m.addAttribute("roadlist",roadlist);
-					
+					 m.addAttribute("sorroad", road);
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();						

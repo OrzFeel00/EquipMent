@@ -159,30 +159,31 @@
 			</ul>
 			-->
 			
-			  <!-- 表头 -->
+			  <!-- 表头  sorinstall-->
 			<div>		
-				<form  action="showinstall.do" method="post">
+				<form id="myform"   action="showinstall.do" method="post">
 		      
 				<div id="pointName"  style="margin-left:10px;font-weight:bold;float: left">
-			  	  点位名称：<input name="pointName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="点位名称"/>   </div>
+			  	  点位名称：<input th:value="${sorinstall}!=null ? ${sorinstall.pointName} : ''"  name="pointName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="点位名称"/>   </div>
 			  
 				<div id="equipmentName"   style="margin-left:10px;font-weight:bold;float: left">
-				 设备名称：<input  name="equipmentName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备名称"/>	</div>
+				 设备名称：<input th:value="${sorinstall}!=null ? ${sorinstall.equipmentName} : ''"   name="equipmentName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备名称"/>	</div>
 				  
 				<div id="transmissionType"   style="margin-left:10px;font-weight:bold;float: left">
-			    传输类型<input name="transmissionType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="传输类型"/>	</div>
+			    传输类型<input th:value="${sorinstall}!=null ? ${sorinstall.transmissionType} : ''"  name="transmissionType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="传输类型"/>	</div>
 			     
 				<div id="computerRoom"  style="margin-left:10px;font-weight:bold;float: left">
-				  接入机房：<input name="computerRoom"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="接入机房"/>	</div>
+				  接入机房：<input th:value="${sorinstall}!=null ? ${sorinstall.computerRoom} : ''"  name="computerRoom"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="接入机房"/>	</div>
 				  
 				<div   id="ip" style="margin-left:10px;font-weight:bold;float: left">
-				  ip地址：<input name="ip"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="ip地址"/>	</div>
+				  ip地址：<input th:value="${sorinstall}!=null ? ${sorinstall.ip} : ''"  name="ip"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="ip地址"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
 					 <!--按钮--> 					      
 			      	<button id="btn-sor" class="layui-btn" type="submit" >搜索</button></div>		      
-			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="reset" >重置</button>
+			        <button id="btn-re" class="layui-btn layui-btn-primary"  type="button" >重置输入</button>
+			     	<button id="btn-re" class="layui-btn layui-bg-blue"  type="button" onclick="reftabbeladd()">刷新</button>	  	
 			     			  						
 		      	</form>
 	    	</div>
@@ -290,12 +291,27 @@
 	
 	<script>
 	
+	//编辑 删除操作
 	function reftabbel(){
+		//$("#btn-re").click();
+		$("#btn-sor").click();
+	}
+    
+	   //add 操作
+	function reftabbeladd(){
 		$("#btn-re").click();
 		$("#btn-sor").click();
 	}
 	
-	
+	 $("#btn-re").on('click', function(){
+		  layer.load(1,{time:100});
+		  $("#myform").find('input[type=text],select,input[type=hidden]').each(function() {
+			          $(this).val('');
+			       });
+		  
+	 });
+
+	  
 	
 	
 layui.use([ 'form','element','jquery','layer','table','laypage'], function(){

@@ -51,20 +51,12 @@ public class PointPositionAction {
 				return "admin/point/inPoint";
 			}
 			
-			
-			
-			
-			//去点位输入页面
-			@GetMapping("toPoint2")
-			public String t2ouindex(Model m) {
-				 m.addAttribute("roads", rBiz.selectAllRdNames());
-				return "admin/point/inPoint2";
-			}
-			
-			
-			
-			
-			
+			/*
+			 * 
+			 *  let index = parent.layer.getFrameIndex(window.name);				 
+	    	   parent.layer.close(index); //不执行数据更新，的退出	    	       
+			 * 
+			 * */
 			
 			//do点位信息录入
 			@RequestMapping("Point.do")
@@ -84,8 +76,8 @@ public class PointPositionAction {
 					pBiz.addPop(pop);
 		            //点位id传入map中
 				     instUtils.limt.put("point_id", pop.getPointId());
-				     
 				    
+				     
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -121,7 +113,7 @@ public class PointPositionAction {
 			@RequestMapping("showpoint.do")
 			public String showpoint( PointPosition pop,Model m,Errors errors) {
 				if(errors.hasErrors()) {
-					System.out.println("12222222"+pop.toString());
+					
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("pop",pop);
 					return "admin/point/showpoint";
@@ -135,14 +127,14 @@ public class PointPositionAction {
 					//查询当前的所有点位					
 					//List<PointPosition> pointlist=pBiz.selectAllPoint();
 					m.addAttribute("pointlist",pointlistmore);
-					
+					 m.addAttribute("sorpop", pop);
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
 					//errors.rejectValue("nonull", "null",e.getMessage()); 
 					
-					System.out.println("32222222"+pop.toString());
+					
 					errors.rejectValue("pointName", "pointName",e.getMessage());
 					errors.reject("pointnull",e.getMessage());
 					m.addAttribute("errors",Utils.asMap(errors));
@@ -168,7 +160,7 @@ public class PointPositionAction {
 			@PostMapping("addPoint.do")
 			public String doaddpoint(ws w, PointPosition pop,Errors errors,Model m) {
 				if(errors.hasErrors()) {
-					System.out.println("12222222"+pop.toString());
+					
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("pop",pop);
 				    m.addAttribute("roads", rBiz.selectAllRdNames());
@@ -192,7 +184,7 @@ public class PointPositionAction {
 					//三个参数  1 属性名（实体字段名）  2 对应errors里的名称 不指定就是全部 3提示报错误的信息
 					//errors.rejectValue("nonull", "null",e.getMessage()); 
 					
-					System.out.println("32222222"+pop.toString());
+					
 					errors.rejectValue("pointName", "pointName",e.getMessage());
 				    m.addAttribute("roads", rBiz.selectAllRdNames());
 					m.addAttribute("errors",Utils.asMap(errors));
@@ -218,8 +210,7 @@ public class PointPositionAction {
 			//do点位删除
 			@RequestMapping("dellpoint.do")
 			public String dellpoint(PointPosition pop,Model m) throws BizException {
-				System.out.println("ssss");
-				System.out.println("ssss"+pop.toString());
+			
 				pBiz.dellpoint(pop);
 			
 				

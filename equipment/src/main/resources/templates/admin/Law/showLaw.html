@@ -161,29 +161,29 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showLaw.do" method="post">
+				<form id="myform" action="showLaw.do" method="post">
 		      
 				<div id="equipmentName"  style="margin-left:10px;font-weight:bold;float: left">
-			  	  设备名称：<input name="equipmentName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入名称"/>   </div>
+			  	  设备名称：<input th:value="${sorlaw}!=null ? ${sorlaw.equipmentName} : ''"  name="equipmentName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入名称"/>   </div>
 			  
 				<div id="coding"   style="margin-left:10px;font-weight:bold;float: left">
-				  六合一编码：<input  name="coding" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
+				  六合一编码：<input th:value="${sorlaw}!=null ? ${sorlaw.coding} : ''"    name="coding" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
 				  
 				<div id="bayonetPurpose"   style="margin-left:10px;font-weight:bold;float: left">
-			      卡口用途：<input name="bayonetPurpose"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入用途"/>	</div>
+			      卡口用途：<input th:value="${sorlaw}!=null ? ${sorlaw.bayonetPurpose} : ''"   name="bayonetPurpose"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入用途"/>	</div>
 			     
 				<div id="lawAddress"  style="margin-left:10px;font-weight:bold;float: left">
-				  执法地址：<input name="lawAddress"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入地址"/>	</div>
+				  执法地址：<input th:value="${sorlaw}!=null ? ${sorlaw.lawAddress} : ''"   name="lawAddress"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入地址"/>	</div>
 				  
 				<div   id="llegalCode" style="margin-left:10px;font-weight:bold;float: left">
-				 违法地点代码：<input name="llegalCode"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="违法地点代码"/>	</div>
+				 违法地点代码：<input th:value="${sorlaw}!=null ? ${sorlaw.llegalCode} : ''"   name="llegalCode"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="违法地点代码"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
 					 <!--按钮--> 					      
 			      	<button id="btn-sor" class="layui-btn" type="submit" >搜索</button></div>		      
-			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="reset" >重置</button>
-			     			  						
+			             <button id="btn-re" class="layui-btn layui-btn-primary"  type="button" >重置输入</button>
+			     	<button id="btn-re" class="layui-btn layui-bg-blue"  type="button" onclick="reftabbeladd()">刷新</button>	 
 		      	</form>
 	    	</div>
 						        <!--   fixed: 'right'   style="table-layout:fixed"--> 
@@ -287,7 +287,14 @@
 	
 	<script>
 	
+	  //编辑 删除操作
 	function reftabbel(){
+		//$("#btn-re").click();
+		$("#btn-sor").click();
+	}
+    
+	   //add 操作
+	function reftabbeladd(){
 		$("#btn-re").click();
 		$("#btn-sor").click();
 	}
@@ -304,7 +311,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var dataList;
       //转换静态表格
      table.init('demo', {
-        height: '710' //设置高度
+        height: '710' //设置高度2120
         ,width :'2120'
         ,limit: 14 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'执法信息'
@@ -400,6 +407,13 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
     
       
     
+  $("#btn-re").on('click', function(){
+	  layer.load(1,{time:100});
+	  $("#myform").find('input[type=text],select,input[type=hidden]').each(function() {
+		          $(this).val('');
+		       });
+	 
+ });
       
      
      

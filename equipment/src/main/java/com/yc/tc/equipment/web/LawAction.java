@@ -72,6 +72,7 @@ public class LawAction {
 					
 					//查询当前的有的law									
 					m.addAttribute("lawlist",lBiz.selectLawBymor(law));
+					 m.addAttribute("sorlaw", law);
 					
 				} catch (BizException e) {
 					// TODO Auto-generated catch block

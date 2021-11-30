@@ -161,29 +161,29 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showpoint.do" method="post">
+				<form id="myform"  action="showpoint.do" method="post">
 		      
 				<div id="pointName"  style="margin-left:10px;font-weight:bold;float: left">
-			  	  点位名称：<input name="pointName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入名称"/>   </div>
+			  	  点位名称：<input id="pointName"  th:value="${sorpop}!=null ? ${sorpop.pointName} : ''"  name="pointName" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入名称"/>   </div>
 			  
 				<div id="sectionCode"   style="margin-left:10px;font-weight:bold;float: left">
-				  断面编号：<input  name="sectionCode" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
+				  断面编号：<input  th:value="${sorpop}!=null ? ${sorpop.sectionCode} : ''"  name="sectionCode" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
 				  
 				<div id="pointCode"   style="margin-left:10px;font-weight:bold;float: left">
-			     监测点编码：<input name="pointCode"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
+			     监测点编码：<input th:value="${sorpop}!=null ? ${sorpop.pointCode} : ''"  name="pointCode"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入编号"/>	</div>
 			     
 				<div id="pointType"  style="margin-left:10px;font-weight:bold;float: left">
-				  点位类型：<input name="pointType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入类型"/>	</div>
+				  点位类型：<input th:value="${sorpop}!=null ? ${sorpop.pointType} : ''"  name="pointType"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入类型"/>	</div>
 				  
 				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
-				 道路：<input name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入道路"/>	</div>
+				 道路：<input th:value="${sorpop}!=null ? ${sorpop.roadName} : ''"  name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="输入道路"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
 					 <!--按钮--> 					      
 			      	<button id="btn-sor" class="layui-btn" type="submit" >搜索</button></div>		      
-			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="reset" >重置</button>
-			     			  						
+			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="button" >重置输入</button>
+			     	<button id="btn-re" class="layui-btn layui-bg-blue"  type="button" onclick="reftabbeladd()">刷新</button>	  						
 		      	</form>
 	    	</div>
 						        <!--   fixed: 'right'   style="table-layout:fixed"--> 
@@ -268,13 +268,27 @@
 	
 	
 	<script>
-	
+    //编辑 删除操作
 	function reftabbel(){
+		//$("#btn-re").click();
+		$("#btn-sor").click();
+	}
+    
+	   //add 操作
+	function reftabbeladd(){
 		$("#btn-re").click();
 		$("#btn-sor").click();
 	}
 	
-	
+	 $("#btn-re").on('click', function(){
+		  layer.load(1,{time:100});
+		  $("#myform").find('input[type=text],select,input[type=hidden]').each(function() {
+			          $(this).val('');
+			       });
+		  
+	 });
+
+	  	
 	
 	
 layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
@@ -287,7 +301,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       //转换静态表格
      table.init('demo', {
         height: '710' //设置高度2120
-        ,width :'1920'
+        ,width :'2120'
         ,limit: 14 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'点位信息'
         ,loading:true 
@@ -369,6 +383,15 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
 		   
 	   });
     
+  
+  
+  
+ 
+  
+  
+  
+  
+  
       
     
       

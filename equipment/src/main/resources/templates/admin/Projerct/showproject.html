@@ -159,36 +159,37 @@
 			</ul>
 			-->
 			
-			  <!-- 表头 -->
+			  <!-- 表头  sorprt-->
 			<div>		
-				<form  action="showproject.do" method="post">
+				<form  id="myform"   action="showproject.do" method="post">
 		      
-				<div id="pointName"  style="margin-left:5px;font-weight:bold;float: left">
-			  	  项目名称：<input name="projectName" style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="项目名称"/>   </div>
+				<div id="projectName"  style="margin-left:0px;font-weight:bold;float: left">
+			  	  项目名称：<input  th:value="${sorprt}!=null ? ${sorprt.projectName} : ''"  name="projectName" style="width: 95px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="项目名称"/>   </div>
 			  
-				<div id="sectionCode"   style="margin-left:10px;font-weight:bold;float: left">
-				  承建单位：<input  name="contractor" style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="承建单位"/>	</div>
+				<div id="contractor"   style="margin-left:8px;font-weight:bold;float: left">
+				  承建单位：<input  th:value="${sorprt}!=null ? ${sorprt.contractor} : ''"  name="contractor" style="width: 95px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="承建单位"/>	</div>
 				  
-				<div id="pointCode"   style="margin-left:10px;font-weight:bold;float: left">
-			     建设单位：<input name="buildUnit"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="建设单位"/>	</div>
+				<div id="buildUnit"   style="margin-left:8px;font-weight:bold;float: left">
+			     建设单位：<input th:value="${sorprt}!=null ? ${sorprt.buildUnit} : ''"  name="buildUnit"  style="width: 95px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="建设单位"/>	</div>
 			     
-				<div id="pointType"  style="margin-left:10px;font-weight:bold;float: left">
-				  施工单位：<input name="constructionUnit"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="施工单位"/>	</div>
+				<div id="constructionUnit"  style="margin-left:8px;font-weight:bold;float: left">
+				  施工单位：<input th:value="${sorprt}!=null ? ${sorprt.constructionUnit} : ''"  name="constructionUnit"  style="width: 95px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="施工单位"/>	</div>
 				  
-				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
-				 建设项目：<input name="constructionProject"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="建设项目"/>	</div>
+				<div   id="constructionProject" style="margin-left:8px;font-weight:bold;float: left">
+				 建设项目：<input th:value="${sorprt}!=null ? ${sorprt.constructionProject} : ''"  name="constructionProject"  style="width: 95px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="建设项目"/>	</div>
 				
-				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
-				 点位：<input name="pointName"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="点位"/>	</div>
+				<div   id="pointName" style="margin-left:8px;font-weight:bold;float: left">
+				 点位：<input th:value="${sorprt}!=null ? ${sorprt.pointName} : ''"  name="pointName"  style="width: 95px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="点位"/>	</div>
 			
-				<div   id="roadName" style="margin-left:10px;font-weight:bold;float: left">
-				 设备：<input name="equipmentName"  style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备"/>	</div>
+				<div   id="equipmentName" style="margin-left:8px;font-weight:bold;float: left">
+				 设备：<input th:value="${sorprt}!=null ? ${sorprt.equipmentName} : ''"  name="equipmentName"  style="width: 95px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
 					 <!--按钮--> 					      
 			      	<button id="btn-sor" class="layui-btn" type="submit" >搜索</button></div>		      
-			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="reset" >重置</button>
+			      <button id="btn-re" class="layui-btn layui-btn-primary"  type="button" >重置</button>
+			     	<button id="btn-re" class="layui-btn layui-bg-blue"  type="button" onclick="reftabbeladd()">刷新</button>	  	
 			     			  						
 		      	</form>
 	    	</div>
@@ -285,10 +286,25 @@
 	
 	<script>
 	
+	  //编辑 删除操作
 	function reftabbel(){
+		//$("#btn-re").click();
+		$("#btn-sor").click();
+	}
+    
+	   //add 操作
+	function reftabbeladd(){
 		$("#btn-re").click();
 		$("#btn-sor").click();
 	}
+	
+	 $("#btn-re").on('click', function(){
+		  layer.load(1,{time:100});
+		  $("#myform").find('input[type=text],select,input[type=hidden]').each(function() {
+			          $(this).val('');
+			       });
+		  
+	 });
 	
 	
 	
@@ -302,7 +318,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var dataList;
       //转换静态表格
      table.init('demo', {
-        height: '735' //设置高度
+        height: '735' //设置高度2360
         ,width :'2360'
         ,limit: 15 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'项目信息'

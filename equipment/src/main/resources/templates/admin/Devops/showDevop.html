@@ -161,32 +161,32 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showtoDevop.do" method="post">
+				<form id="myform" action="showtoDevop.do" method="post">
 		      
 		        <div id="ownership"  style="margin-left:10px;font-weight:bold;float: left">
-			  	 产权归属：<input name="ownership" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="产权归属"/>   </div>
+			  	 产权归属：<input  th:value="${sordep}!=null ? ${sordep.ownership} : ''"  name="ownership" style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="产权归属"/>   </div>
 			  
 				<div id="devopsUnit"  style="margin-left:10px;font-weight:bold;float: left">
-			  	 维护单位：<input name="devopsUnit" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="维护单位"/>   </div>
+			  	 维护单位：<input th:value="${sordep}!=null ? ${sordep.devopsUnit} : ''"  name="devopsUnit" style="width: 100px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="维护单位"/>   </div>
 			  
 				<div id="devopsLiable"   style="margin-left:10px;font-weight:bold;float: left">
-				 运维负责人：<input  name="devopsLiable" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="运维负责人"/>	</div>
+				 运维负责人：<input th:value="${sordep}!=null ? ${sordep.devopsLiable} : ''"   name="devopsLiable" style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="运维负责人"/>	</div>
 				  
 				<div id="projectName"   style="margin-left:10px;font-weight:bold;float: left">
-			    项目名称：<input name="projectName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="项目名称"/>	</div>
+			    项目名称：<input th:value="${sordep}!=null ? ${sordep.projectName} : ''"  name="projectName"  style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="项目名称"/>	</div>
 			     
 				<div id="equipmentName"  style="margin-left:10px;font-weight:bold;float: left">
-				  设备名称：<input name="equipmentName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备名称"/>	</div>
+				  设备名称：<input th:value="${sordep}!=null ? ${sordep.equipmentName} : ''"  name="equipmentName"  style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="设备名称"/>	</div>
 				  
 				<div   id="pointName" style="margin-left:10px;font-weight:bold;float: left">
-				 点位名称：<input name="pointName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="点位名称"/>	</div>
+				 点位名称：<input th:value="${sordep}!=null ? ${sordep.pointName} : ''"  name="pointName"  style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="点位名称"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
 					 <!--按钮--> 					      
 			      	<button id="btn-sor" class="layui-btn" type="submit" >搜索</button></div>		      
-			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="reset" >重置</button>
-			     			  						
+			        <button id="btn-re" class="layui-btn layui-btn-primary"  type="button" >重置输入</button>
+			     	<button id="btn-re" class="layui-btn layui-bg-blue"  type="button" onclick="reftabbeladd()">刷新</button>	  	
 		      	</form>
 	    	</div>
 						        <!--   fixed: 'right'   style="table-layout:fixed"--> 
@@ -284,11 +284,25 @@
 	
 	<script>
 	
+	  //编辑 删除操作
 	function reftabbel(){
+		//$("#btn-re").click();
+		$("#btn-sor").click();
+	}
+    
+	   //add 操作
+	function reftabbeladd(){
 		$("#btn-re").click();
 		$("#btn-sor").click();
 	}
 	
+	  $("#btn-re").on('click', function(){
+		  layer.load(1,{time:100});
+		  $("#myform").find('input[type=text],select,input[type=hidden]').each(function() {
+			          $(this).val('');
+			       });
+		  
+	 });
 	
 	
 	
@@ -301,7 +315,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var dataList;
       //转换静态表格
      table.init('demo', {
-        height: '710' //设置高度
+        height: '710' //设置高度2120
         ,width :'2120'
         ,limit: 14 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'运维信息'

@@ -41,6 +41,17 @@
 	<!--设备表单-->
 		<div style="width:100%">
 			<form  style="margin-left: 20%;" class="layui-form " action="edtLaw.do" method="post">
+			
+			<!--lawid-->
+				<div class="layui-form-item">
+					<label class="layui-form-label">ID号</label>
+					<div  class="layui-input-inline">
+						<!--原始表单区域-->
+					 <input readonly="true" style="background:#CCCCCC" type="text" name="id" id="id" class="layui-input" placeholder="ID" 
+					   th:value="${law}!=null ? ${law.id} : ''"  required lay-verify="required"/>
+					</div>				
+				</div>
+			
 					<!--输入对应设备名称-->
 					<div class="layui-form-item">
 						<label class="layui-form-label">设备名称</label>
@@ -276,8 +287,8 @@
 		  
 		  
 		  form.on('submit(outemo)', function(data){
-			  parent.reftabbel();   	  
-	    	   parent.layer.close(index); //再执行关闭 	     
+			  let index = parent.layer.getFrameIndex(window.name);				 
+	    	   parent.layer.close(index); //不执行数据更新，的退出     
 			     return false;
 				});
 		  

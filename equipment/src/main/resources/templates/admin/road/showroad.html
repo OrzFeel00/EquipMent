@@ -161,31 +161,32 @@
 			
 			  <!-- 表头 -->
 			<div>		
-				<form  action="showroad.do" method="post">
+				<form id="myform"  action="showroad.do" method="post">
 		      
 				<div id="administrativeRegion" style="margin-left:10px;font-weight:bold;float: left">
-			  	 行政区域：<input   name="administrativeRegion" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder=" 行政区域"/>   </div>
+			  	 行政区域：<input  th:value="${sorroad}!=null ? ${sorroad.administrativeRegion} : ''"   name="administrativeRegion" style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder=" 行政区域"/>   </div>
 			  
 				<div  id="departmentRegion"  style="margin-left:10px;font-weight:bold;float: left">
-				 部门区域：<input   name="departmentRegion" style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder=" 部门区域"/>	</div>
+				 部门区域：<input   th:value="${sorroad}!=null ? ${sorroad.departmentRegion} : ''"   name="departmentRegion" style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder=" 部门区域"/>	</div>
 				  
 				<div id="streetName"   style="margin-left:10px;font-weight:bold;float: left">
-			     街道名称：<input  name="streetName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="街道名称"/>	</div>
+			     街道名称：<input th:value="${sorroad}!=null ? ${sorroad.streetName} : ''"    name="streetName"  style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="街道名称"/>	</div>
 			     
 				<div id="roadName"  style="margin-left:10px;font-weight:bold;float: left">
-				道路名称：<input  name="roadName"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="道路名称"/>	</div>
+				道路名称：<input th:value="${sorroad}!=null ? ${sorroad.roadName} : ''"    name="roadName"  style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="道路名称"/>	</div>
 				  
 				<div id="roadGrade"   style="margin-left:10px;font-weight:bold;float: left">
-				 道路等级：<input  name="roadGrade"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="道路等级"/>	</div>
+				 道路等级：<input th:value="${sorroad}!=null ? ${sorroad.roadGrade} : ''"    name="roadGrade"  style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="text"placeholder="道路等级"/>	</div>
 			    
 			    <div  id="roadSpeed" style="margin-left:10px;font-weight:bold;float: left">
-				 道路限速：<input   name="roadSpeed"  style="width: 120px;height: 30px;border-radius: 10px;border: solid 2px;" type="number" min="0.0" step="0.01" placeholder=" 道路限速 km/h"/>	</div>
+				 道路限速：<input  th:value="${sorroad}!=null ? ${sorroad.roadSpeed} : ''"    name="roadSpeed"  style="width: 110px;height: 30px;border-radius: 10px;border: solid 2px;" type="number" min="0.0" step="0.01" placeholder=" 道路限速 km/h"/>	</div>
 			
 			
 				<div style="margin-left:10px;font-weight:bold;float: left">
 					 <!--按钮--> 					      
 			      	<button id="btn-sor" class="layui-btn" type="submit" >搜索</button></div>		      
-			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="reset" >重置</button>
+			       <button id="btn-re" class="layui-btn layui-btn-primary"  type="button" >重置输入</button>
+			     	<button id="btn-re" class="layui-btn layui-bg-blue"  type="button" onclick="reftabbeladd()">刷新</button>	
 			     			  						
 		      	</form>
 	    	</div>
@@ -268,13 +269,27 @@
 	
 	<script>
 	
+	  //编辑 删除操作
 	function reftabbel(){
+		//$("#btn-re").click();
+		$("#btn-sor").click();
+	}
+    
+	   //add 操作
+	function reftabbeladd(){
 		$("#btn-re").click();
 		$("#btn-sor").click();
 	}
 	
-	
-	
+	$("#btn-re").on('click', function(){
+		  layer.load(1,{time:100});
+		  $("#myform").find('input[type=text],input[type=number],select,input[type=hidden]').each(function() {
+			          $(this).val('');
+			       });
+		  
+	 });
+
+	  
 	
 layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       var layer = layui.layer
@@ -286,7 +301,7 @@ layui.use([ 'form','element','jquery','layer','table','laypage'], function(){
       //转换静态表格
      table.init('demo', {
         height: '688' //设置高度2120
-        ,width :'1920'
+        ,width :'2120'
         ,limit: 14 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致   
         ,title:'街道信息'
         ,loading:true 

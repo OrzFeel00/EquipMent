@@ -75,7 +75,7 @@ public class DevopsAction {
 					
 					//根据dep查询
 					m.addAttribute("devoplist",dBiz.selectDevopBymore(dep));
-					
+					 m.addAttribute("sordep", dep);
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

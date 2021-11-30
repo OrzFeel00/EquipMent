@@ -75,7 +75,7 @@ public class InstallationAction {
 					
 					//查询当前的ins			
 					m.addAttribute("installlist",iBiz.selectinstallBymore(install));
-					
+					 m.addAttribute("sorinstall", install);
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -166,7 +166,7 @@ public class InstallationAction {
 			@GetMapping("toedtinstall")
 			public String edt(Model m ) throws BizException {
 		       
-				return "admin/Installation/insedtLaw";
+				return "admin/Installation/insedtinstall";
 			}
 			
 
