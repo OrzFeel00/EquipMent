@@ -234,7 +234,7 @@ public class PointPositionAction {
 			public String isnedt(ws w,PointPosition pop,Model m ) throws BizException {
 				//把pointname保存下来
 				 instUtils2.limt2.put("inspointname", pop.getPointName());	
-				w.setWhereis(pop.getPointCode()); 
+				 w.setWhereis(pop.getPointCode()); 
 				 m.addAttribute("pop", pop);
 			
 				 m.addAttribute("edtroads", rBiz.selectAllRdNames());

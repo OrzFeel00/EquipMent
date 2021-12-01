@@ -339,8 +339,7 @@ public class ProjerctAction {
 					public String dellpoint(Project prt,Model m) throws BizException {
 						
 						pBiz.dellprot(prt);
-						//查询当前的所有项目				
-						m.addAttribute("projectlist",pBiz.selectAllProject());
+						
 						
 						return "admin/Projerct/dellsucceseinPoint2";
 					}
@@ -384,8 +383,7 @@ public class ProjerctAction {
 							//根据id update
 						pBiz.updatePrtById(prt);
 						
-						//m加入点位结果集
-						 m.addAttribute("points", prBiz.selectAllPointNames());		
+						
 						
 						
 						} catch (BizException e) {

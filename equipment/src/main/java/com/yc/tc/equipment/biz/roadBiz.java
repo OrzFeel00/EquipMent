@@ -26,6 +26,7 @@ public class roadBiz {
 	@Resource
 	private PointPositionMapper pmpper;
 	
+	
 	//添加设备基础信息
 		public void addRod(road roa)throws BizException {
 			//可以忽略字段的验证
@@ -89,6 +90,7 @@ public class roadBiz {
 		}
 		rmpper.updateRoadById(road);
 	}
+	
 
 		
 

@@ -41,22 +41,25 @@ public class wsBiz {
 		String ws=	whereis.substring(6, 9);
 		String relut="初始区域";
 		int id=pmpper.gettopid()+1;
-		
-		for(String obj:instque.limt2.values()){
-            System.out.println("value:"+obj);
-            if(ws.equals(obj)) {
-            	relut=obj+"号"+id;
+	    String ids=id+"";
+		for(Integer key:instque.limt2.keySet()){
+        
+			 relut =instque.limt2.get(key);
+            if(ws.equals(relut)) {
+            	relut=key+ids;
+            	break;
             }
         }
-		 
-		if(relut.equals("大鹏新")) {
-			relut+="区";
-		}
 		
 			return relut;
 		}
 		
+		
 		public String edtinputwz(String whereis,int pointid)throws BizException  {
+			
+			if(whereis.substring(0,4).equals(4403+"")) {
+				return whereis;
+			}
 			 //筛选得到对应的区,并且返回
 			if(whereis.length()<6) {
 				throw new BizException("请选择深圳市区");
@@ -65,21 +68,42 @@ public class wsBiz {
 			if(!(whereis.substring(0, 6).equals("广东省深圳市"))) {
 				throw new BizException("请选择深圳市区");
 			}
+			
 		String ws=	whereis.substring(6, 9);
 		String relut="初始区域";
-		
-		for(String obj:instque.limt2.values()){
-           System.out.println("value:"+obj);
-           if(ws.equals(obj)) {
-           	relut=obj+"号"+pointid;
+		String ids=pointid+"";
+		for(Integer key:instque.limt2.keySet()){
+	        
+			 relut =instque.limt2.get(key);
+           if(ws.equals(relut)) {
+           	relut=key+ids;
+           	break;
            }
        }
 		 
-		if(relut.equals("大鹏新")) {
-			relut+="区";
-		}
 		
 			return relut;
+		}
+
+
+		public String setRegion(String administrativeRegion)throws BizException{
+			 //筛选得到对应的区,并且返回
+			
+			
+			for(String obj:instque.limt2.values()){
+	           if(administrativeRegion.equals(obj)) {
+	           return administrativeRegion;
+	           }
+	       }
+			
+			if(administrativeRegion.length()<6) {
+				throw new BizException("请选择深圳市区");
+			}
+			if(!(administrativeRegion.substring(0, 6).equals("广东省深圳市"))) {
+				throw new BizException("请选择深圳市区");
+			}
+			
+			return  administrativeRegion.substring(6, 9);
 		}
 
 }

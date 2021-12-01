@@ -17,6 +17,7 @@ import com.yc.tc.equipment.bean.Equipment;
 import com.yc.tc.equipment.bean.PointPosition;
 import com.yc.tc.equipment.bean.Storage;
 import com.yc.tc.equipment.bean.road;
+import com.yc.tc.equipment.bean.ws;
 import com.yc.tc.equipment.biz.BaseEquipmentBiz;
 import com.yc.tc.equipment.biz.BizException;
 import com.yc.tc.equipment.biz.EquipmentBiz;
@@ -26,6 +27,7 @@ import com.yc.tc.equipment.util.instUtils2;
 import com.yc.tc.equipment.biz.PointPositionBiz;
 import com.yc.tc.equipment.biz.StorageBiz;
 import com.yc.tc.equipment.biz.roadBiz;
+import com.yc.tc.equipment.biz.wsBiz;
 
 
 @Controller
@@ -34,7 +36,8 @@ public class roadAction {
 	@Resource
 	private  roadBiz rBiz;
 	
-   
+	@Resource
+	private  wsBiz wBiz;
 	        //管理员端
 	
 	
@@ -46,7 +49,7 @@ public class roadAction {
 			
 			//道路信息录入
 			@PostMapping("road.do")
-			public String register(@Valid road roa,Errors errors,Model m) {
+			public String register(ws w, road roa,Errors errors,Model m) {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("roa",roa);
@@ -54,6 +57,7 @@ public class roadAction {
 				}
 				
 				try {
+					roa.setAdministrativeRegion(wBiz.setRegion(w.getWhereis()));
 					//输入道路
 					rBiz.addRod(roa);
 					//把对应id存入当前点位表中
@@ -127,7 +131,7 @@ public class roadAction {
 			
 			//do街道add
 			@PostMapping("addroad.do")
-			public String doaddpoint(@Valid road roa,Errors errors,Model m) {
+			public String doaddpoint(ws w, road roa,Errors errors,Model m) {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("roa",roa);
@@ -135,6 +139,7 @@ public class roadAction {
 				}
 				
 				try {
+					roa.setAdministrativeRegion(wBiz.setRegion(w.getWhereis()));
 					
 					//插入街道信息
 					rBiz.addRod(roa);			    
@@ -167,13 +172,11 @@ public class roadAction {
 			@RequestMapping("dellroad.do")
 			public String dellpoint(road road,Model m) throws BizException {
 			
-				System.out.println("删除道路"+road.toString());
+				
 		
 		         
 				rBiz.dellroad(road);
-				//查询当前所有街道
-				List<road>roadlist=rBiz.selectAllRoad();
-				m.addAttribute("roadlist",roadlist);
+				
 				
 				return "admin/road/dellsucceseinroad";
 			}
@@ -205,7 +208,7 @@ public class roadAction {
 			
 			//do街道编辑
 			@PostMapping("edtroad.do")
-			public String edtpoint(road road,Model m,Errors errors) {
+			public String edtpoint(ws w,road road,Model m,Errors errors) {
 				//执行点位修改
 				if(errors.hasErrors()) {				
 					m.addAttribute("errors", Utils.asMap(errors));
@@ -214,14 +217,13 @@ public class roadAction {
 				}
 				
 				try {
-				System.out.println("街道编辑开始"+road.toString());
 				
+				
+				    road.setAdministrativeRegion(wBiz.setRegion(w.getWhereis()));
+                          				
 					rBiz.updatePointById(road);
 				
-					//查询当前所有街道
-					List<road>roadlist=rBiz.selectAllRoad();
-					m.addAttribute("roadlist",roadlist);
-				
+					
 				} catch (BizException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

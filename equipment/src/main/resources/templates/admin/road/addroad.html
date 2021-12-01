@@ -33,15 +33,16 @@
 			  <!--设备基础信息表单-->
 		  <div style="width:100%">
 			 <form  style="float:left;width:35%" class="layui-form " action="addroad.do" method="post" >				 		 
-				<!--行政区域-->
+						<!--行政区域-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">行政区域</label>
 					<div  class="layui-input-inline">
 						<!--原始表单区域-->
-					 <input type="text" name="administrativeRegion" id="administrativeRegion" class="layui-input" placeholder="出行政区域"  
-					  th:value="${roa}!=null ? ${roa.administrativeRegion} : ''"  required lay-verify="required"/>
+					 <input readonly="true" style="background:#CCCCCC"  type="text" name="whereis"id="whereis" class="layui-input" placeholder="行政区域"  
+					 th:value="${ws}!=null ? ${ws.whereis} : ''"   required lay-verify="required|max"/>
 					</div>				
 				</div>
+				
 				<!--部门区域-->
 				<div class="layui-form-item">
 					<label class="layui-form-label">部门区域</label>
