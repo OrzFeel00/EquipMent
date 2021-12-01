@@ -193,8 +193,10 @@
 						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
 						 <tr>
-						   <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
+						  <th lay-data="{field: 'aa', type:'numbers', width:100 }">序号</th>
+						  
 						   <th lay-data="{field:'installationPosition', width:200}">安装位置</th>
+						   <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>						  
 						   <th lay-data="{field:'direction', width: 150}">方向</th>
 						   <th lay-data="{field:'lanes', width: 150, sort: true}">车道数</th>
 						   <th lay-data="{field:'powerPoint', width: 150}">供电的点位</th>
@@ -220,8 +222,9 @@
 						  <tbody>
 						  
 						     <tr th:each="p : ${installlist} " >
-						      <td th:text="${p.id}">ID</td>
+						      <td></td>
 						      <td th:text="${p.installationPosition}">安装位置</td>
+						      <td th:text="${p.id}">ID</td>
 						      <td th:text="${p.direction}">方向</td>
 						      <td th:text="${p.lanes}">车道数</td>
 						      <td th:text="${p.powerPoint}">供电的点位</td>

@@ -195,8 +195,10 @@
 						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
 						  <tr>
-						    <th lay-data="{field: 'devopsId' ,sort: true, width:100 }">ID</th>
+						  <th lay-data="{field: 'aa', type:'numbers', width:100 }"rowspan="2">序号</th>
+						   
 						    <th lay-data="{field:'projectName',width: 200,style:'color:#009688'}">项目名称</th>
+						     <th lay-data="{field: 'devopsId' ,sort: true, width:100 }">ID</th>
 						    <th lay-data="{field:'equipmentName',width: 200,style:'color:#5FB878'}">设备名称</th>
 						    <th lay-data="{field:'pointName',width: 200,style:'color:#393D49'}">点位名称</th>
 					        <th lay-data="{field:'devopsLiable', width:150}">运维负责人</th>
@@ -218,8 +220,10 @@
 						  <tbody>
 						  
 						     <tr th:each="p : ${devoplist} " >
-						      <td th:text="${p.devopsId}">ID</td>
+						     <td></td>
+						     
 						      <td th:text="${p.projectName}">项目名称</td>	 
+						      <td th:text="${p.devopsId}">ID</td>
 						      <td th:text="${p.equipmentName}">设备名称</td>	  
 						      <td th:text="${p.pointName}">点位名称</td>	
 	                          <td th:text="${p.devopsLiable}">运维负责人</td>

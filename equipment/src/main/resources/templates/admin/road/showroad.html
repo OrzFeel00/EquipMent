@@ -196,8 +196,10 @@
 						  <table id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
 						    <tr>
-						      <th lay-data="{field: 'roadId' ,sort: true, width:140 }">ID</th>
+						    <th lay-data="{field: 'aa', type:'numbers', width:100 }">序号</th>
+						    
 						      <th lay-data="{field:'administrativeRegion', width:170}">行政区域</th>
+						      <th lay-data="{field: 'roadId' ,sort: true, width:140 }">ID</th>
 						      <th lay-data="{field:'departmentRegion', width: 170}">部门区域</th>
 						      <th lay-data="{field:'streetName', width: 240}">街道名称</th>
 						      <th lay-data="{field:'roadName', width: 240,style:'color:#009688'}">道路名称</th>
@@ -211,8 +213,10 @@
 						  <tbody>
 						  
 						     <tr th:each="r : ${roadlist} " >
-						      <td th:text="${r.roadId}">11</td>
-						      <td th:text="${r.administrativeRegion}">11</td>
+						     <td></td>
+						      
+						      <td th:text="${r.administrativeRegion}">行政区域</td>
+						      <td th:text="${r.roadId}">ID</td>
 						      <td th:text="${r.departmentRegion}">贤心2</td>
 						      <td th:text="${r.streetName}">贤心3</td>
 						      <td th:text="${r.roadName}">贤心4</td>

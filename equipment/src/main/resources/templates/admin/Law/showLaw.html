@@ -192,8 +192,10 @@
 						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
 								<tr>
-								  <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
+								 <th lay-data="{field: 'aa', type:'numbers', width:100 }">序号</th>
+								 
 								  <th lay-data="{field:'equipmentName', width:200,style:'color:#009688'}">监控设备名称</th>
+								  <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
 								  <th lay-data="{field:'coding', width: 150}">六合一编码</th>
 								  <th lay-data="{field:'platformCode', width: 150}">高清平台代码</th>
 								  <th lay-data="{field:'filingCode', width: 150}">集指设备备案编码</th>
@@ -220,8 +222,10 @@
 						  <tbody>
 						   
 						     <tr th:each="p : ${lawlist} " >
-						      <td th:text="${p.id}">ID</td>
+						     <td></td>
+						     
 						      <td th:text="${p.equipmentName}">监控设备名称</td>
+						       <td th:text="${p.id}">ID</td>
 						      <td th:text="${p.coding}">六合一编码</td>
 						      <td th:text="${p.platformCode}">高清平台代码</td>
 						      <td th:text="${p.filingCode}">集指设备备案编码</td>

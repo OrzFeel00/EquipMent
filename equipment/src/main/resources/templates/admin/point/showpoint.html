@@ -192,8 +192,9 @@
 						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
 						    <tr>
-						      <th lay-data="{field: 'pointId' ,sort: true, width:100 }">ID</th>
+						      <th lay-data="{field: 'aa', type:'numbers', width:100 }">序号</th>
 						      <th lay-data="{field:'pointName', width:230,style:'color:#009688'}">点位名称</th>
+						      <th lay-data="{field: 'pointId' ,sort: true, width:100 }">ID</th>      
 						      <th lay-data="{field:'sectionCode', width: 150}">断面编号</th>
 						      <th lay-data="{field:'longitude', width: 150}">点位经度</th>
 						      <th lay-data="{field:'latitude', width: 150}">点位纬度</th>
@@ -210,8 +211,10 @@
 						  <tbody>
 						  
 						     <tr th:each="p : ${pointlist} " >
-						      <td th:text="${p.pointId}">11</td>
+						     <td></td>
+						  
 						      <td th:text="${p.pointName}">11</td>
+						      <td th:text="${p.pointId}">11</td>
 						      <td th:text="${p.sectionCode}">贤心2</td>
 						      <td th:text="${p.longitude}">贤心3</td>
 						      <td th:text="${p.latitude}">贤心4</td>

@@ -194,8 +194,10 @@
 						  <table class="layui-table"  id="t" lay-filter="demo" lay-data="{id: 'idTest'}"   >
 						  <thead>
 						    <tr >
-						      <th lay-data="{field:'equipmentId' ,sort: true, width:60  }" rowspan="2">ID</th>
+						      <th lay-data="{field: 'aa', type:'numbers', width:100 }"rowspan="2">序号</th>
+						     
 						      <th lay-data="{field:'equipmentCode', width:100}"rowspan="2">设备编号</th>
+						      <th lay-data="{field:'equipmentId' ,sort: true, width:60  }" rowspan="2">ID</th>
 						      <th lay-data="{field:'equipmentName', width: 200}"rowspan="2">设备名称</th>
 						      <th lay-data="{field:'equipmentUser', width: 120}"rowspan="2">设备用户名</th>
 						      <th lay-data="{field:'equipmentPwd', width: 120}"rowspan="2">设备密码</th>
@@ -245,9 +247,9 @@
 						  <tbody>
 						  	     
 						      <tr th:each="e :${e}">
-						      				      
-						      <td th:text="${e.equipmentId}">11</td>
+						      <td></td>    
 						      <td th:text="${e.equipmentCode}">12</td>
+						      <td th:text="${e.equipmentId}">11</td>
 						      <td th:text="${e.equipmentName}">贤心3</td>
 						      <td th:text="${e.equipmentUser}">贤心4</td>
 						      <td th:text="${e.equipmentPwd}">贤心5</td>

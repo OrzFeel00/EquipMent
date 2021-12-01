@@ -199,8 +199,10 @@
 						  <table class="layui-table" id="t" lay-filter="demo" lay-data="{id: 'idTest'}"  >
 						  <thead>
 						    <tr>
-						      <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
+						      <th lay-data="{field: 'aa', type:'numbers', width:100 }">序号</th>
+						     
 						      <th lay-data="{field:'projectName', width:200 ,style:'color:#393D49'}">项目名称</th>
+						      <th lay-data="{field: 'id' ,sort: true, width:100 }">ID</th>
 						      <th lay-data="{field:'pointName',width: 200,style:'color:#393D49'}">点位</th>
 						      <th lay-data="{field:'equipmentName',width: 200}">设备</th>
 						      <th lay-data="{field:'purchaseDate',sort: true, width: 150}">采购日期</th>
@@ -222,8 +224,10 @@
 						  <tbody>
 						  <!--    ${#dates.format(p.installDate,'yyyy-MM-dd')} -->				 
 						     <tr th:each="p : ${projectlist} " >
-						      <td th:text="${p.id}">11</td>
+						     <td></td>
+						      
 						      <td th:text="${p.projectName}">11</td>
+						      <td th:text="${p.id}">11</td>
 						      <td th:text="${p.pointName}">贤心8</td>	   
                               <td th:text="${p.equipmentName}">贤心8</td>	   
 						      <td th:text="${#dates.format(p.purchaseDate,'yyyy-MM-dd')}">贤心2</td>
