@@ -4,7 +4,7 @@
     lat = 22.5484;
     var map = new BMap.Map("container");//在指定的容器内创建地图实例
     map.setDefaultCursor("crosshair");//设置地图默认的鼠标指针样式
-    map.enableScrollWheelZoom();//启用滚轮放大缩小，默认禁用。
+    map.enableScrollWheelZoom();//启用滚轮放大缩小，默认禁用。14
     var point =new BMap.Point(lng,lat)
     map.centerAndZoom(point, 14);
     map.addControl(new BMap.NavigationControl());
