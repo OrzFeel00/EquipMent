@@ -70,7 +70,7 @@ public class StorageAction {
 			@PostMapping("addStorage.do")
 			public String register( euiopmentall eptr,Errors errors,Model m) {
 				if(errors.hasErrors()) {
-					System.out.println(errors);
+					
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("eptr",eptr);
 					return "admin/associated/addaddAssociatedmor";

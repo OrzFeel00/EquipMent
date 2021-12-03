@@ -28,7 +28,7 @@ public class InstallationBiz {
 	
 	   //ins验证
 		public void addinstall(Installation install)throws BizException {
-			System.out.println("ins验证:::"+install);
+			
 		   
 				impper.insertinstall(install);
 		

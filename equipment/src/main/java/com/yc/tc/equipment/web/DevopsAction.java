@@ -119,7 +119,7 @@ public class DevopsAction {
 				}
 				
 				try {
-					System.out.println("do运维add"+dep);
+					
 			        //插入点位信息
 					dBiz.adddep(dep);
 				    

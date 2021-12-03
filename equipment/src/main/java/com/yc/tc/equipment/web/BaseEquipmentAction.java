@@ -74,7 +74,7 @@ public class BaseEquipmentAction {
 				}
 				try {
 					
-					System.out.println("3333"+eptr.toString());
+					
 					bBiz.addBqtr(eptr);
 	
 				} catch (BizException e) {

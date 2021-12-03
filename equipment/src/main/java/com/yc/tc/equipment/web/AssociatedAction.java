@@ -74,7 +74,7 @@ public class AssociatedAction {
 			@PostMapping("addAssociated.do")
 			public String register( euiopmentall eptr,Errors errors,Model m) {
 				if(errors.hasErrors()) {
-					System.out.println(errors);
+					
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("eptr",eptr);
 					return "admin/associated/addaddAssociatedmor";
@@ -118,7 +118,7 @@ public class AssociatedAction {
 				aBiz.updatAssocById(eptr);
 				//放入单个完整的eptr到m
 				 m.addAttribute("eptr",eqBiz.selecteptrbyid(eptrrid));
-				 System.out.println("关联信息edt"+eqBiz.selecteptrbyid(eptrrid));
+				
 				 
 				} catch (BizException e) {
 					// TODO Auto-generated catch block

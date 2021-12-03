@@ -86,7 +86,7 @@ public class equiopmentallBiz {
 				 String EquipmentCode=instUtils2.limt2.get("EquipmentCode");
 				 String EquipmentName=instUtils2.limt2.get("EquipmentName");
 				 
-				 System.out.println(EquipmentName+"对比"+eptr.getEquipmentName());
+				 
 				//code 变 name变
 				 if((!(eptr.getEquipmentCode().equals(EquipmentCode))) && (!(eptr.getEquipmentName().equals(EquipmentName)))) {
 					 

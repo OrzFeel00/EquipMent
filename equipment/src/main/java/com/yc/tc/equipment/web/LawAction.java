@@ -106,7 +106,7 @@ public class LawAction {
 				if(errors.hasErrors()) {
 					m.addAttribute("errors", Utils.asMap(errors));
 					m.addAttribute("law",law);
-				    System.out.println(errors);
+				   
 	
 				    m.addAttribute("eptss", eBiz.selectAllEptmor());
 					return "admin/Law/addLaw";

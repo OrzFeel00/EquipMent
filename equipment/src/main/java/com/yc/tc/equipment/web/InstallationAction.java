@@ -108,7 +108,7 @@ public class InstallationAction {
 			
 				
 				try {
-					System.out.println("insadd:::"+install);
+					
 					
 					//插入ins信息
 					iBiz.addinstall(install);

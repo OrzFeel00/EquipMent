@@ -124,7 +124,7 @@ public class ProjectBiz {
 				 int insprtid= instUtils.limt.get("insprtid");
 				 String PRpointname= instUtils2.limt2.get("insPRpointname");
 				 String  ProjectName =instUtils2.limt2.get("ProjectName");
-					System.out.println("aadd点位到项目"+PRpointname);
+					
 				 //先判断是否重复插入    ProjectName    pointname      equiname   
 				 if(pmpper.countByIdPidPpoit(ProjectName, PRpointname, equipmentName)>0){
 					 throw new BizException("该点位已有这个设备");
